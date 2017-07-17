@@ -1,0 +1,1552 @@
+$(document).ready(function() {
+     SearchForHeader2();
+     HomeSidebarVarious();
+     
+     // Wrap selects
+     $("select").wrap("<div class='select'></div>");
+     
+	// Highlight any found errors
+	$('.text-danger').each(function() {
+		var element = $(this).parent().parent();
+		
+		if (element.hasClass('form-group')) {
+			element.addClass('has-error');
+		}
+	});
+	
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && responsive_design == 'yes' && $(window).width() < 768) {
+		var i = 0;
+		var produkty = [];
+		
+		$( ".box-product .carousel .item" ).each(function() {
+			$( this ).find( ".product-grid .row > div" ).each(function() {
+				if(i > 1) {
+					produkty.push($(this).html());
+				}
+				
+				i++;
+			});
+			for ( var s = i-3; s >= 0; s--, s-- ) {
+				var html = "<div class='item'><div class='product-grid'><div class='row'>";
+				if (produkty[s-1] != undefined) {
+					html += "<div class='col-xs-6'>" + produkty[s-1] + "</div>";
+				} else {
+					html += "<div class='col-xs-6'>" + produkty[s+1] + "</div>";
+				}
+								
+				if (produkty[s] != undefined) {
+					html += "<div class='col-xs-6'>" + produkty[s] + "</div>";
+				} else {
+					html += "<div class='col-xs-6'>" + produkty[s+1] + "</div>";
+				}
+				html += "</div></div></div>";
+				
+				$( this ).after( html );
+			}
+			
+			produkty = [];
+			i = 0;
+		});
+	}
+	
+	/* Search */
+	$('.button-search').bind('click', function() {
+		url = $('base').attr('href') + 'product_search';
+		var search = $('header input[name=\'search\']').val();
+		
+		if (search) {
+			url += '?search=' + encodeURIComponent(search);
+		}
+		
+		location = url;
+	});
+	
+	$('header input[name=\'search\']').bind('keydown', function(e) {
+		if (e.keyCode == 13) {
+			url = $('base').attr('href') + 'product_search';
+			 
+			var search = $('header input[name=\'search\']').val();
+			
+			if (search) {
+				url += '?search=' + encodeURIComponent(search);
+			}
+			
+			location = url;
+		}
+	});
+	
+	$('#search2').bind('keydown', function(e) {
+		if (e.keyCode == 13) {
+			url = $('base').attr('href') + 'product_search';
+			 
+			var search = $('#search2').val();
+			
+			if (search) {
+				url += '?search=' + encodeURIComponent(search);
+			}
+			
+			location = url;
+		}
+	});
+	
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 300) {
+	    	$('.scrollup').fadeIn();
+	    } else {
+			$('.scrollup').fadeOut();
+		}
+	}); 
+	
+	$('.scrollup').click(function(){
+		$("html, body").animate({ scrollTop: 0 }, 600);
+		return false;
+	});
+	$('#mobile-nav-eva').click(function(){
+		$("html, body").animate({ scrollTop: $("#quick_evaluation").offset().top }, 600);
+		return false;
+	});
+	$('#mobile-nav-rev').click(function(){
+		$("html, body").animate({ scrollTop: $("#quick_review").offset().top }, 600);
+		return false;
+	});
+	$('#mobile-nav-gb').click(function(){
+		$("html, body").animate({ scrollTop: $("#quick_shopping").offset().top }, 600);
+		return false;
+	});
+	
+	
+	
+	/* Search MegaMenu */
+	$('.button-search2').bind('click', function() {
+		url = $('base').attr('href') + 'product_search';
+				 
+		var search = $('.container-megamenu input[name=\'search2\']').val();
+		
+		if (search) {
+			url += '?search=' + encodeURIComponent(search);
+		}
+		
+		location = url;
+	});
+	
+	$('.container-megamenu input[name=\'search2\']').bind('keydown', function(e) {
+		if (e.keyCode == 13) {
+			url = $('base').attr('href') + 'product_search';
+			 
+			var search = $('.container-megamenu input[name=\'search2\']').val();
+			
+			if (search) {
+				url += '?search=' + encodeURIComponent(search);
+			}
+			
+			location = url;
+		}
+	});
+	
+	/* Quatity buttons */
+	
+	$('#q_up').click(function(){
+		var q_val_up=parseInt($("input#quantity_wanted").val());
+		if(isNaN(q_val_up)) {
+			q_val_up=0;
+		}
+		$("input#quantity_wanted").val(q_val_up+1).keyup(); 
+		return false; 
+	});
+	
+	$('#q_down').click(function(){
+		var q_val_up=parseInt($("input#quantity_wanted").val());
+		if(isNaN(q_val_up)) {
+			q_val_up=0;
+		}
+		
+		if(q_val_up>1) {
+			$("input#quantity_wanted").val(q_val_up-1).keyup();
+		} 
+		return false; 
+	});
+	
+	// tooltips on hover
+	$('[data-toggle=\'tooltip\']').tooltip({container: 'body'});
+	
+	// Makes tooltips work on ajax generated content
+	$(document).ajaxStop(function() {
+		$('[data-toggle=\'tooltip\']').tooltip({container: 'body'});
+	});	
+	
+	FixedTop();
+	
+	$('.sticky-search > i').bind('click', function() {
+	     $(".sticky-header").addClass("sticky-bg"); 
+	     $("body").addClass("with-sticky-bg"); 
+	     $(".sticky-header .quick-search").addClass("showing"); 
+	});
+	
+	$('.sticky-search .quick-search .icon_close').bind('click', function() {
+	     $(".sticky-header").removeClass("sticky-bg");
+	     $("body").removeClass("with-sticky-bg");  
+	     $(".sticky-header .quick-search").removeClass("showing"); 
+	});
+});
+
+function getURLVar(key) {
+    var value = [];
+    
+    var query = String(document.location).split('?');
+    
+    if (query[1]) {
+        var part = query[1].split('&');
+
+        for (i = 0; i < part.length; i++) {
+            var data = part[i].split('=');
+            
+            if (data[0] && data[1]) {
+                value[data[0]] = data[1];
+            }
+        }
+        
+        if (value[key]) {
+            return value[key];
+        } else {
+            return '';
+        }
+    }
+} 
+	
+// Cart add remove functions	
+var cart = {
+	'add': function(product_id, quantity) {
+		$.ajax({
+			url: 'index.php?route=checkout/cart/add',
+			type: 'post',
+			data: 'product_id=' + product_id + '&quantity=' + (typeof(quantity) != 'undefined' ? quantity : 1),
+			dataType: 'json',
+			success: function(json) {			
+				if (json['redirect']) {
+					location = json['redirect'];
+				}
+				
+				if (json['success']) {
+				     $.notify({
+				     	message: json['success'],
+				     	target: '_blank'
+				     },{
+				     	// settings
+				     	element: 'body',
+				     	position: null,
+				     	type: "info",
+				     	allow_dismiss: true,
+				     	newest_on_top: false,
+				     	placement: {
+				     		from: "top",
+				     		align: "right"
+				     	},
+				     	offset: 20,
+				     	spacing: 10,
+				     	z_index: 2031,
+				     	delay: 1000,
+				     	timer: 6000,
+				     	url_target: '_blank',
+				     	mouse_over: null,
+				     	animate: {
+				     		enter: 'animated fadeInDown',
+				     		exit: 'animated fadeOutUp'
+				     	},
+				     	onShow: null,
+				     	onShown: null,
+				     	onClose: null,
+				     	onClosed: null,
+				     	icon_type: 'class',
+				     	template: 
+ 				     		'<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-success" role="alert">' +
+							'<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+							'<div style="width:91.66666666666666%;">'+
+
+							'<div style="width:100px;height:100px;#f00;float:left;"><img src="'+json['image']+'" style="width:100px;height:100px;"/></div>'+
+
+							'<div style="height:55px;text-overflow:ellipsis;overflow:hidden;white-space:pre-line;" >{2}</div><br/>'+
+							'<span data-notify="message" style="font-size:16px;position:relative;left:20px;"><i class="fa fa-check-circle"></i>&nbsp;Success:added to your shopping carts!<br/></span>' +
+							'</div>'+
+							    '<div style="width:100%;min-height:40px;margin:15px 0 0 0;">'+
+								'<div class="countinue_shopping"><a href="javascript:void()" aria-hidden="true" data-notify="dismiss"><span class="s1">COUNTINUE SHOPPING</span></a></div>'+
+								'<div class="view_cart_checkout"><a href="index.php?route=checkout/cart"><span class="s1">VIEW CART & CHECKOUT</span></a></div>'+'</div>'+
+								'<div class="progress" data-notify="progressbar">' +
+									'<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+								'</div>' +
+						'</div>' 
+				     });
+				     					
+					$('#cart_block #cart_content').load('index.php?route=common/cart/info #cart_content_ajax');
+					$('#cart_block #total_price_ajax').load('index.php?route=common/cart/info #total_price');
+					$('#cart_block #total_item_ajax').load('index.php?route=common/cart/info #total_item');
+				}
+			}
+		});
+	},
+	'update': function(key,quantity) {
+		$.ajax({
+			url: 'index.php?route=checkout/cart/edit',
+			type: 'post',
+			data: 'key=' + key + '&quantity=' + (typeof(quantity) != 'undefined' ? quantity : 1),
+			dataType: 'json',
+			beforeSend: function() {
+				$(".showloader").css("display", "block");
+			},      
+			complete: function() {
+				$(".showloader").css("display", "none");
+			},
+			success: function(json) {
+				$('#cart_block #cart_content').load('index.php?route=common/cart/info #cart_content_ajax');
+				$('#cart_block #total_price_ajax').load('index.php?route=common/cart/info #total_price');
+				$('#cart_block #total_item_ajax').load('index.php?route=common/cart/info #total_item');
+				$.each(json, function(index,values){
+					if(index=="products"){
+						$.each(values,function(index1,values1){
+							$("#reward_"+values1['cart_id']).text(values1['reward']);
+							$("#product_total_"+values1['cart_id']).text(values1['total']);
+						});
+					}
+					if(index="totals"){
+						$(".cart-total table").empty();
+						var template = "";
+						for(var i = 0;i<values.length;i++ ){
+							template+='<tr>'+
+						        '<td class="text-right'+values[i]['title']+'">'+values[i]['title']+':</td>'+
+						        '<td class="text-right'+values[i]['title']+'">'+values[i]['text']+'</td>'+
+						      '</tr>'
+						}
+						$(".cart-total table").append(template);
+					}
+				});
+					
+			}
+		});			
+	},
+	'remove': function(key) {
+		$.ajax({
+			url: 'index.php?route=checkout/cart/remove',
+			type: 'post',
+			data: 'key=' + key,
+			dataType: 'json',	
+			beforeSend: function() {
+				hidden_prompt();
+				$(".showloader").css("display", "block");
+			},
+			complete: function() {
+				$(".showloader").css("display", "none");
+			},
+			success: function(json) {
+					location = 'index.php?route=checkout/cart';
+			}
+		});			
+	}
+}
+
+var voucher = {
+	'add': function() {
+		
+	},
+	'remove': function(key) {
+		$.ajax({
+			url: 'index.php?route=checkout/cart/remove',
+			type: 'post',
+			data: 'key=' + key,
+			dataType: 'json',
+			beforeSend: function() {
+				$('#cart > button').button('loading');
+			},      
+			complete: function() {
+				$('#cart > button').button('reset');
+			},			
+			success: function(json) {
+				$('#cart-total').html(json['total']);
+				
+				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
+					location = 'index.php?route=checkout/cart';
+				} else {
+					$('#cart_block #cart_content').load('index.php?route=common/cart/info #cart_content_ajax');
+					$('#cart_block #total_price_ajax').load('index.php?route=common/cart/info #total_price');
+					$('#cart_block #total_item_ajax').load('index.php?route=common/cart/info #total_item');
+				}			
+			}
+		});	
+	}
+}
+$(document).delegate('.none-wish', 'click', function() {
+	wishlist.add($(this).attr('data-p-id'));
+});
+$(document).delegate('.is-wish', 'click', function() {
+	wishlist.remove($(this).attr('data-p-id'));
+});
+
+var wishlist = {
+	'add': function(product_id) {
+		$.ajax({
+			url: 'index.php?route=account/wishlist/add',
+			type: 'post',
+			data: 'product_id=' + product_id,
+			dataType: 'json',
+			success: function(json) {
+				if (json['redirect']) {
+					$('#dialog-loginbox').modal('show');
+			        return false;
+				}
+				if (json['success']) {
+					$('#add-to-links-' + product_id).attr("class","is-wish");
+					$(".moblie-box #moblie-opt-wish").attr("class","fa fa-lg fa-heart");
+					$(".customer_action .addWish i").attr("class","icon_heart");
+					$(".heart_"+product_id).html('<div class="collection collection-checked" onclick="wishlist.remove('+product_id+')" name="collection_'+product_id+'"></div>');
+					$.notify({
+						message: json['success'],
+						target: '_blank'
+					},{
+						// settings
+						element: 'body',
+						position: null,
+						type: "info",
+						allow_dismiss: true,
+						newest_on_top: false,
+						placement: {
+							from: "top",
+							align: "right"
+						},
+						offset: 20,
+						spacing: 10,
+						z_index: 2031,
+						delay: 2000,
+						timer: 2000,
+						url_target: '_blank',
+						mouse_over: null,
+						animate: {
+							enter: 'animated fadeInDown',
+							exit: 'animated fadeOutUp'
+						},
+						onShow: null,
+						onShown: null,
+						onClose: null,
+						onClosed: null,
+						icon_type: 'class',
+						template: 
+							'<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-success" role="alert">' +
+							'<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+							'<span data-notify="message"><i class="fa fa-check-circle"></i>&nbsp; {2}</span>' +
+							'<div class="progress" data-notify="progressbar">' +
+							'</div>' +
+							'<a href="{3}" target="{4}" data-notify="url"></a>' +
+						'</div>' 
+					});
+				}   
+				
+				if (json['info']) {
+					$.notify({
+						message: json['info'],
+						target: '_blank'
+					},{
+						// settings
+						element: 'body',
+						position: null,
+						type: "info",
+						allow_dismiss: true,
+						newest_on_top: false,
+						placement: {
+							from: "top",
+							align: "right"
+						},
+						offset: 20,
+						spacing: 10,
+						z_index: 2031,
+						delay: 5000,
+						timer: 1000,
+						url_target: '_blank',
+						mouse_over: null,
+						animate: {
+							enter: 'animated fadeInDown',
+							exit: 'animated fadeOutUp'
+						},
+						onShow: null,
+						onShown: null,
+						onClose: null,
+						onClosed: null,
+						icon_type: 'class',
+						template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-info" role="alert">' +
+							'<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+							'<span data-notify="message"><i class="fa fa-info"></i>&nbsp; {2}</span>' +
+							'<div class="progress" data-notify="progressbar">' +
+								'<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+							'</div>' +
+							'<a href="{3}" target="{4}" data-notify="url"></a>' +
+						'</div>' 
+					});
+				}   
+
+				$('#add-to-links-' + product_id+' em' ).html(json['totalAll']);
+				$("span[name='wishlist-total']").html(json['total']);
+				$("span[name='wishlist-All']").html(json['totalAll']);
+			}
+		});
+	},
+	'remove': function(product_id) {
+		$.ajax({
+			url: 'index.php?route=account/wishlist/remove',
+			type: 'post',
+			data: 'product_id=' + product_id,
+			dataType: 'json',
+			success: function(json) {
+				if (json['redirect']) {
+					location = json['redirect'];
+				}
+				if (json['success']) {
+					$('#add-to-links-' + product_id).attr("class","none-wish");
+					$(".moblie-box #moblie-opt-wish").attr("class","fa fa-lg fa-heart");
+					$(".customer_action .addWish i").attr("class","icon_heart");
+					$(".heart_"+product_id).html('<div class="collection" onclick="wishlist.add('+product_id+')" name="collection_'+product_id+'"></div>');
+					$.notify({
+						message: json['success'],
+						target: '_blank'
+					},{
+						// settings
+						element: 'body',
+						position: null,
+						type: "info",
+						allow_dismiss: true,
+						newest_on_top: false,
+						placement: {
+							from: "top",
+							align: "right"
+						},
+						offset: 20,
+						spacing: 10,
+						z_index: 2031,
+						delay: 2000,
+						timer: 2000,
+						url_target: '_blank',
+						mouse_over: null,
+						animate: {
+							enter: 'animated fadeInDown',
+							exit: 'animated fadeOutUp'
+						},
+						onShow: null,
+						onShown: null,
+						onClose: null,
+						onClosed: null,
+						icon_type: 'class',
+						template: 
+							'<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-success" role="alert">' +
+							'<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+							'<span data-notify="message"><i class="fa fa-check-circle"></i>&nbsp; {2}</span>' +
+							'<div class="progress" data-notify="progressbar">' +
+							'</div>' +
+							'<a href="{3}" target="{4}" data-notify="url"></a>' +
+						'</div>' 
+					});
+				}   
+				
+				if (json['info']) {
+					$.notify({
+						message: json['info'],
+						target: '_blank'
+					},{
+						// settings
+						element: 'body',
+						position: null,
+						type: "info",
+						allow_dismiss: true,
+						newest_on_top: false,
+						placement: {
+							from: "top",
+							align: "right"
+						},
+						offset: 20,
+						spacing: 10,
+						z_index: 2031,
+						delay: 5000,
+						timer: 1000,
+						url_target: '_blank',
+						mouse_over: null,
+						animate: {
+							enter: 'animated fadeInDown',
+							exit: 'animated fadeOutUp'
+						},
+						onShow: null,
+						onShown: null,
+						onClose: null,
+						onClosed: null,
+						icon_type: 'class',
+						template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-info" role="alert">' +
+							'<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+							'<span data-notify="message"><i class="fa fa-info"></i>&nbsp; {2}</span>' +
+							'<div class="progress" data-notify="progressbar">' +
+								'<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+							'</div>' +
+							'<a href="{3}" target="{4}" data-notify="url"></a>' +
+						'</div>' 
+					});
+				}   
+
+				$('#add-to-links-' + product_id+' em' ).html(json['totalAll']);
+				$("span[name='wishlist-total']").html(json['total']);
+				$("span[name='wishlist-All']").html(json['totalAll']);
+			}
+		});
+	}
+}
+
+var compare = {
+	'add': function(product_id) {
+		$.ajax({
+			url: 'index.php?route=product/compare/add',
+			type: 'post',
+			data: 'product_id=' + product_id,
+			dataType: 'json',
+			success: function(json) {							
+				if (json['success']) {
+					$.notify({
+						message: json['success'],
+						target: '_blank'
+					},{
+						// settings
+						element: 'body',
+						position: null,
+						type: "info",
+						allow_dismiss: true,
+						newest_on_top: false,
+						placement: {
+							from: "top",
+							align: "right"
+						},
+						offset: 20,
+						spacing: 10,
+						z_index: 2031,
+						delay: 5000,
+						timer: 1000,
+						url_target: '_blank',
+						mouse_over: null,
+						animate: {
+							enter: 'animated fadeInDown',
+							exit: 'animated fadeOutUp'
+						},
+						onShow: null,
+						onShown: null,
+						onClose: null,
+						onClosed: null,
+						icon_type: 'class',
+						template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-success" role="alert">' +
+							'<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+							'<span data-notify="message"><i class="fa fa-check-circle"></i>&nbsp; {2}</span>' +
+							'<div class="progress" data-notify="progressbar">' +
+								'<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+							'</div>' +
+							'<a href="{3}" target="{4}" data-notify="url"></a>' +
+						'</div>' 
+					});
+					
+					$('#compare-total').html(json['total']);
+				}   
+			}
+		});
+	},
+	'remove': function() {
+	
+	}
+}
+
+/* Agree to Terms */
+$(document).delegate('.agree', 'click', function(e) {
+	e.preventDefault();
+	
+	$('#modal-agree').remove(); 
+	
+	var element = this;
+	
+    $.ajax({
+        url: $(element).attr('href'),
+        type: 'get',
+        dataType: 'html',
+        success: function(data) {
+			html  = '<div id="modal-agree" class="modal fade">';
+			html += '  <div class="modal-dialog">';
+			html += '    <div class="modal-content">';
+			html += '      <div class="modal-header">'; 
+			html += '        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+			html += '        <h4 class="modal-title">' + $(element).text() + '</h4>';
+			html += '      </div>';
+			html += '      <div class="modal-body">' + data + '</div>';
+			html += '    </div';
+			html += '  </div>';
+			html += '</div>';
+			
+			$('body').append(html);
+			
+			$('#modal-agree').modal('show');
+        }
+    });
+});
+
+/* Autocomplete */
+(function($) {
+	function Autocomplete(element, options) {
+		this.element = element;
+		this.options = options;
+		this.timer = null;
+		this.items = new Array();
+
+		$(element).attr('autocomplete', 'off');
+		$(element).on('focus', $.proxy(this.focus, this));
+		$(element).on('blur', $.proxy(this.blur, this));
+		$(element).on('keydown', $.proxy(this.keydown, this));
+
+		$(element).after('<ul class="dropdown-menu"></ul>');
+		$(element).siblings('ul.dropdown-menu').delegate('a', 'click', $.proxy(this.click, this));
+	}
+
+	Autocomplete.prototype = {
+		focus: function() {
+			this.request();
+		},
+		blur: function() {
+			setTimeout(function(object) {
+				object.hide();
+			}, 200, this);
+		},
+		click: function(event) {
+			event.preventDefault();
+
+			value = $(event.target).parent().attr('data-value');
+
+			if (value && this.items[value]) {
+				this.options.select(this.items[value]);
+			}
+		},
+		keydown: function(event) {
+			switch(event.keyCode) {
+				case 27: // escape
+					this.hide();
+					break;
+				default:
+					this.request();
+					break;
+			}
+		},
+		show: function() {
+			var pos = $(this.element).position();
+
+			$(this.element).siblings('ul.dropdown-menu').css({
+				top: pos.top + $(this.element).outerHeight(),
+				left: pos.left
+			});
+
+			$(this.element).siblings('ul.dropdown-menu').show();
+			$(this).siblings('ul.dropdown-menu').css("opacity", "1");
+			$(this).siblings('ul.dropdown-menu').css("visibility", "visible");
+		},
+		hide: function() {
+			$(this.element).siblings('ul.dropdown-menu').hide();
+		},
+		request: function() {
+			clearTimeout(this.timer);
+
+			this.timer = setTimeout(function(object) {
+				object.options.source($(object.element).val(), $.proxy(object.response, object));
+			}, 200, this);
+		},
+		response: function(json) {
+			html = '';
+
+			if (json.length) {
+				for (i = 0; i < json.length; i++) {
+					this.items[json[i]['value']] = json[i];
+				}
+
+				for (i = 0; i < json.length; i++) {
+					if (!json[i]['category']) {
+						html += '<li data-value="' + json[i]['value'] + '"><a href="#">' + json[i]['label'] + '</a></li>';
+					}
+				}
+
+				// Get all the ones with a categories
+				var category = new Array();
+
+				for (i = 0; i < json.length; i++) {
+					if (json[i]['category']) {
+						if (!category[json[i]['category']]) {
+							category[json[i]['category']] = new Array();
+							category[json[i]['category']]['name'] = json[i]['category'];
+							category[json[i]['category']]['item'] = new Array();
+						}
+
+						category[json[i]['category']]['item'].push(json[i]);
+					}
+				}
+
+				for (i in category) {
+					html += '<li class="dropdown-header">' + category[i]['name'] + '</li>';
+
+					for (j = 0; j < category[i]['item'].length; j++) {
+						html += '<li data-value="' + category[i]['item'][j]['value'] + '"><a href="#">&nbsp;&nbsp;&nbsp;' + category[i]['item'][j]['label'] + '</a></li>';
+					}
+				}
+			}
+
+			if (html) {
+				this.show();
+			} else {
+				this.hide();
+			}
+
+			$(this.element).siblings('ul.dropdown-menu').html(html);
+		}
+	};
+
+	$.fn.autocomplete = function(option) {
+		return this.each(function() {
+			var data = $(this).data('autocomplete');
+
+			if (!data) {
+				data = new Autocomplete(this, option);
+
+				$(this).data('autocomplete', data);
+			}
+		});
+	}
+})(window.jQuery);
+
+function openPopup(module_id, product_id) {
+     product_id = product_id || undefined;
+     $.magnificPopup.open({
+          items: {
+               src: 'index.php?route=module/popup/show&module_id=' + module_id + (product_id ? '&product_id=' + product_id : '')
+          },
+          mainClass: 'popup-module mfp-with-zoom',
+          type: 'ajax',
+          removalDelay: 200
+     });
+}
+
+$(window).resize(function() {
+     FixedTop();
+});
+
+$(window).scroll(function() {
+     FixedTop();
+});
+
+function FixedTop() {
+     if($(window).width() >= 1160 && $(window).scrollTop() > 280) {
+          $('.sticky-header').addClass('fixed-header');
+     } else { 
+          $('.sticky-header').removeClass('fixed-header');
+     }
+}
+
+function SearchForHeader2() {
+     if($(window).width() < 992) {
+          $('.header-layout-2 .sticky-search > i').bind('click', function() {
+          	url = $('base').attr('href') + 'product_search';
+          	
+          	location = url;
+          });
+     }
+}
+
+$(window).resize(function() {
+     SearchForHeader2();
+});
+
+function HomeSidebarVarious() {
+     var height_two = $("header .slider-header").height()+100;
+     if($(window).height() > height_two) {
+          $("body").addClass("with-fixed");
+     } else {
+          $("body").removeClass("with-fixed");
+     }
+}
+
+$(window).resize(function() {
+     HomeSidebarVarious();
+});
+
+function show_div(id){
+	$(id).css("display", "block");
+}
+
+function mightLike(){
+	var margin_top = 20+$("#shopOpt").outerHeight(true)-$("#product-thumb").outerHeight(true);
+	return margin_top;
+		//$(".mightLike-module").css("margin-top",margin_top+"px");
+}
+
+$(document).ready(function(){
+	
+	$(document).on("click",".Pinfo .shown",function(){
+		$("html, body").animate({ scrollTop: $("#Pinfo").offset().top }, 600);
+		return false;
+	});
+	
+	$(document).on("click",".mobile-goback",function(){
+		location.reload();
+	});
+	$(document).on("click",".mobile-tolist",function(){
+		$('#product-evaluation').click();
+	});
+	$(document).on("click",".thing_review_action",function(){
+		$('#product-review').click();
+	});
+	$(document).on("click",".thing_evaluation_action",function(){
+		$('#product-evaluation').click();
+	});
+	$(document).on("click","#evaluation_comments",function(){
+		$article_id = $("#form-evaluation-comment").attr("data-id");
+		$.ajax({
+	        url: 'index.php?route=blog/article/write&article_id='+$article_id,
+	        type: 'post',
+	        dataType: 'json',
+	        data: $(".comment_form").serialize(),
+	        beforeSend: function() {
+	            $('#evaluation_comments').button('loading');
+	        },
+	        complete: function() {
+	            $('#evaluation_comments').button('reset');
+	        },
+	        success: function(json) {
+	        	if(json['success']){
+		        	 $(".comment_form").find("textarea").val('');
+		        	}
+	        	$('.alert-success, .alert-danger').remove();
+
+    			if(json.error){
+    			    $('#evaluation_comment').before('<div class="alert alert-danger"><i class="fa fa-check-circle"></i> ' + json.error + '</div>');
+    			}
+    			if(json.success){
+    			    $('#evaluation_comment').before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json.success + '</div>');
+    			}
+	        	
+	        }
+	    });
+	});
+	
+
+	
+	$(document).on("click","#review_like",function(){
+		var review_id = $(this).attr("data-id");
+		var dom = $(this);
+		$.ajax({
+            url: 'index.php?route=product/product/reviewFancy',
+            type: 'post',
+            dataType: 'json',
+            data: 'review_id=' + review_id,
+    		success: function(json) {
+    			if (json['redirect']) {
+    				$('#dialog-loginbox').modal('show');
+    		        return false;
+				}
+    			dom.empty();
+    			dom.attr("id","review_unlike");
+    			dom.attr("title","nofollow");
+    			dom.append("<i></i><span>"+json['supports_count']+"</span>");
+    		}
+        });
+	});
+	$(document).on("click","#review_unlike",function(){
+		var dom = $(this);
+		var review_id = $(this).attr("data-id");
+		$.ajax({
+            url: 'index.php?route=product/product/reviewUnFollow',
+            type: 'post',
+            dataType: 'json',
+            data: 'review_id=' + review_id,
+    		success: function(json) {
+    			dom.empty();
+    			dom.attr("id","review_like");
+    			dom.attr("title","fancy");
+    			dom.append("<i></i><span>"+json['supports_count']+"</span>");
+    		}
+        });
+	});
+	$(document).on("click","#evaluation_like",function(){
+		var article_id = $(this).attr("data-id");
+		var dom = $(this);
+		$.ajax({
+            url: 'index.php?route=blog/evaluation/evaluationFancy',
+            type: 'post',
+            dataType: 'json',
+            data: 'article_id=' + article_id,
+    		success: function(json) {
+    			if (json['redirect']) {
+    				$('#dialog-loginbox').modal('show');
+    		        return false;
+				}
+    			dom.empty();
+    			dom.attr("id","evaluation_unlike");
+    			dom.attr("title","nofollow");
+    			dom.append("<i class='fa'></i><span>"+json['supports_count']+"</span>");
+    		}
+        });
+	});
+	$(document).on("click","#evaluation_unlike",function(){
+		var dom = $(this);
+		var article_id = $(this).attr("data-id");
+		$.ajax({
+            url: 'index.php?route=blog/evaluation/evaluationUnFollow',
+            type: 'post',
+            dataType: 'json',
+            data: 'article_id=' + article_id,
+    		success: function(json) {
+    			dom.empty();
+    			dom.attr("id","evaluation_like");
+    			dom.attr("title","fancy");
+    			dom.append("<i class='fa'></i><span>"+json['supports_count']+"</span>");
+    		}
+        });
+	});
+	
+	$(document).on("click",".down",function(){
+    
+		var input = $(this).parent().find("input");
+		var num = parseInt(input.val());
+		var key = input.attr("name");
+		if(isNaN(num)){
+			num = 1;
+		}
+		if(num < 2){
+			return false;
+		}
+		num--;
+		if(num < 1){
+			num = 1;
+		$(".down").attr({"disabled":"disabled"});
+		}
+		input.val(num);
+		cart.update(key,num);
+	});
+
+	$(document).on("click",".up",function(){
+		var input = $(this).parent().find("input");
+		var num = parseInt(input.val());
+		var key = input.attr("name");
+		if(isNaN(num)){
+			num = 1;
+		}
+		num++;
+		if(num > 1){
+			$(".down").removeAttr("disabled");
+		}
+		input.val(num);
+		cart.update(key,num);
+	});
+	$(document).on("change",".numbers",function(){
+		var input = $(this).parent().find("input");
+		var num = parseInt(input.val());
+		var key = input.attr("name");
+		if(isNaN(num)||num == 0){
+			num = 1;
+		}
+		input.val(num);
+		cart.update(key,num);
+	});
+	
+	// delete
+
+	$(document).mouseup(function(e){
+	  var _con = $('.delete,.confirm');   
+	  if(!_con.is(e.target) && _con.has(e.target).length === 0){ // Mark 1
+	    $(".prompt").hide();
+	  }
+	});
+
+	
+	$(document).on("click", ".delete", function(){
+		hidden_prompt();
+		var prompt = $(this).parent().find(".prompt");
+		if(prompt.css("display")=="none"){
+            prompt.show();
+        }else{
+        	prompt.hide();
+        }
+	})
+
+	
+	// negative
+	$(document).on("click", ".negative", function(){
+		var prompt = $(this).parent().find(".prompt");
+		if($(this).hasClass(".prompt")){
+            prompt.hide();
+        }else{
+        	prompt.show();
+        }
+	})
+	$(document).on("click", "#viewMore", function(e){
+		$(this).toggleClass("shown").prev(".des").toggleClass("hiddenView");
+	})
+	$(document).on("click", "#eva-activity", function(e){
+		$(this).toggleClass("eva-shown").prev(".des").toggleClass("hiddenView");
+	})
+	
+	$(document).on('mouseenter', '.review-operate',function(e){
+		$(this).parent().addClass('imagehover');
+	});
+	$(document).on('mouseleave', '.review-operate',function(e){
+		$(this).parent().removeClass('imagehover');
+		//$(this).parent().find(".review-operate").hide();
+	});
+	
+	$('.uploadButton').change(function(e) {
+		 //e.preventDefault();
+		var objUrl = getObjectURL(this.files[0]) ;
+		if (objUrl) {
+			var files = $("#reviewImageUpload").prop('files');
+			var data = new FormData($("#form-review")[0]);
+			for (var i = 0; i < files.length; i++) {
+				  var file = files[i];
+
+				  if (!file.type.match('image.*')) {
+				    continue;
+				  }
+
+				  data.append('image[]', file);
+				}
+			  $.ajax({
+		            url: 'index.php?route=product/product/upload',
+		            type: 'post',
+		            dataType: 'json',
+		            data: data,
+		            cache: false,
+		            contentType: false,  
+		            processData: false,
+					beforeSend: function() {
+						//../img/loader_32x32.gif /image/cache/1.jpg
+						$(".reviewImage").attr("src","");
+						$(".reviewImage").addClass("loader");
+						$('.uploader_button i').addClass('loading');
+						$('#reviewImageUpload').attr("disabled","disabled");
+							
+					},
+					complete :function(){
+						$(".reviewImage").removeClass("loader");
+						$(".reviewImage").attr("src","/image/cache/add.jpg");
+						$('.uploader_button i').removeClass('loading');
+						$('#reviewImageUpload').removeAttr("disabled");
+						
+					},
+		    		success: function(json) {
+		    			$('.alert-success, .alert-danger').remove();
+		    			for(var i = 0 ;i<json['images'].length;i++){
+		    				if(json['images'][i]['error']){
+								alert(json['images'][i]['error']);
+			    			}
+		    				if(json['images'][i]['success']){
+		    		      $("#review-image-show").before('<div class="thumb-list"><img src="'+json['images'][i]['url']+'" class="uploadImage" ><div class="review-operate"><image src="/image/cache/close.jpg" class="operate-delete" onclick="del(this)"></div><input type="hidden" name="review_image[]" value="'+json['images'][i]['data']+'"></div>')
+		    		           }
+								
+		    			}
+		    		
+		    			
+		    		}
+		        });
+	        }
+	});
+	
+		function getObjectURL(file) {
+		    var url = null;
+		    if (window.createObjectURL != undefined) { // basic
+		        url = window.createObjectURL(file);
+		    } else if (window.URL != undefined) { // mozilla(firefox)
+		        url = window.URL.createObjectURL(file);
+		    } else if (window.webkitURL != undefined) { // webkit or chrome
+		        url = window.webkitURL.createObjectURL(file);
+		    }
+		    return url;
+		}
+	});
+
+
+
+function del(dom){
+	$(dom).parent().parent().remove();
+}
+
+function hidden_prompt(){
+	$(".prompt").each(function(){
+		$(this).css("display", "none");
+	})
+}
+
+
+//userHome 
+
+$(document).on("mousemove", ".plus_check", function(e){
+	 
+	$(".popr").show();
+});
+$(document).on("mouseout", ".plus_check", function(e){
+	
+	$(".popr").hide();
+});
+$(document).on("change", "#userProfileUpload", function(e){
+	var files = $("#userProfileUpload").prop('files');
+	var data = new FormData($("#userProfileForm")[0]);
+	for (var i = 0; i < files.length; i++) {
+		var file = files[i];
+
+		if (!file.type.match('image.*')) {
+			continue;
+		}
+		data.append('image[]', file);
+	}
+	$.ajax({
+		url: 'index.php?route=account/edit/editProfile',
+		type: 'post',
+		dataType: 'json',
+		data: data,
+		cache: false,
+		contentType: false,
+		processData: false,
+		beforeSend: function() {
+			$('.wait-mengban').show();
+		},
+		complete :function(){
+			$('.wait-mengban').hide();
+			},
+		success: function(json) {
+			$('.alert-success, .alert-danger').remove();
+		   if(json.success){
+			   $("#uploadhead").attr("src",json.url);
+				}
+			
+		   if(json.error){
+				 alert(json.error);
+				}
+			}
+		});	  
+	});  
+
+$(document).on("change", "#userHomeImgUploaded", function(e){
+	var files = $("#userHomeImgUploaded").prop('files');
+	var data = new FormData($("#userHomeForm")[0]);
+	for (var i = 0; i < files.length; i++) {
+		var file = files[i];
+
+		if (!file.type.match('image.*')) {
+			continue;
+		}
+		data.append('image[]', file);
+	}
+	$.ajax({
+		url: 'index.php?route=account/edit/editHomeImg',
+		type: 'post',
+		dataType: 'json',
+		data: data,
+		cache: false,
+		contentType: false,  
+		processData: false,
+		success: function(json) {
+			$('.alert-success, .alert-danger').remove();
+			if(json.success){
+				$("#uploadbackgroud").attr("src",json.url);
+			}
+		
+			if(json.error){
+			 alert(json.error);
+			}
+		}
+    });
+	  
+	}); 
+
+$(document).on("change", "#storeHomeImgUploaded", function(e){
+	var files = $("#storeHomeImgUploaded").prop('files');
+	var data = new FormData($("#userHomeForm")[0]);
+	for (var i = 0; i < files.length; i++) {
+		var file = files[i];
+
+		if (!file.type.match('image.*')) {
+			continue;
+		}
+		data.append('image[]', file);
+	}
+	  $.ajax({
+      url: 'index.php?route=account/edit/editHomeImg',
+      type: 'post',
+      dataType: 'json',
+      data: data,
+      cache: false,
+      contentType: false,  
+      processData: false,
+		success: function(json) {
+			$('.alert-success, .alert-danger').remove();
+			if(json.success){
+				$("#uploadbackgroud").attr("src",json.url);
+			}
+		
+			if(json.error){
+			 alert(json.error);
+			}
+		}
+  });
+	  
+	}); 
+
+$(document).on("click", ".followed", function(e){
+	var url = $(this).attr('c_date');
+	var obj = $(this);
+	  $.ajax({
+      url: url,
+      type: 'post',
+      dataType: 'json',
+      data: "",
+		success: function(json) {
+        if(json.redirect){
+        	$('#dialog-loginbox').modal('show');
+	        return false; 
+        }			
+	    if(json.success){
+	    	obj.toggleClass("followcheck is_followed");
+	    }
+	    
+		
+	    if(json.error){
+			 alert(json.error);
+	    }
+		}
+  });
+	  
+	}); 
+
+
+$(document).delegate(".is-followed", "click", function(){
+	follow_collection.remove($(this).attr('data-c-id'), $(this));
+});
+$(document).delegate(".none-follow", "click", function(){
+	follow_collection.add($(this).attr('data-c-id'), $(this));
+});
+var follow_collection = {
+	add : function(collection_id, obj){
+		 $.ajax({
+				url: 'index.php?route=account/collection/follow',
+				type: "POST",
+				dataType: 'json',
+				data:{"collection_id":collection_id},
+				success: function(json) {
+					if (json['redirect']) {
+						$('#dialog-loginbox').modal('show');
+				        return false; 
+					}				
+					if(json['success']){
+						obj.html('FOLLOWING');
+						obj.attr('class', 'button is-followed');
+						$('.followers').html(json['totalAll']);
+						$('.follow-span-' + collection_id + ' em').html(json['total']);
+					}
+				},
+				error: function(xhr, ajaxOptions, thrownError) {
+					alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+				}
+			});
+	},
+	remove : function(collection_id, obj){
+		 $.ajax({
+				url: 'index.php?route=account/collection/unfollow',
+				type: "POST",
+				dataType: 'json',
+				data:{"collection_id":collection_id},
+				success: function(json) {
+					if (json['redirect']) {
+						$('#dialog-loginbox').modal('show');
+				        return false; 
+					}				
+					if(json['success']){
+						obj.html('FOLLOW');
+						obj.attr('class', 'button none-follow');
+						$('.followers').html(json['totalAll']);
+						$('.follow-span-' + collection_id + ' em').html(json['total']);
+					}
+				},
+				error: function(xhr, ajaxOptions, thrownError) {
+					alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+				}
+			});
+	}
+	
+}
+//store search
+$(document).on("click", ".profiletable-bottom>.sort>.sort-select>.second", function(e){
+	if($(".popr").hasClass("hidden")){
+		$(".popr").removeClass("hidden");
+    }else{
+    	$(".popr").addClass("hidden");
+    }
+});
+$(document).on("click", ".price-kuai", function(){
+	$(this).addClass('price-kuaicheck').siblings().removeClass('price-kuaicheck');
+	var pre=$(this).attr("data-word-pre");
+	var after=$(this).attr("data-word-after");
+	$("[name='pre']").val(pre);
+	$("[name='after']").val(after);
+});
+$(document).on("keydown","[name='pre']",function(){
+	$(".price-kuai").removeClass("price-kuaicheck");
+});
+$(document).on("keydown","[name='after']",function(){
+	$(".price-kuai").removeClass("price-kuaicheck");
+});
+$(document).on("click", ".cotegary", function(e){
+	if($(".classify").hasClass("hidden")){
+		$(".classify").removeClass("hidden");
+		$(this).css("border-bottom","1px solid #fff");
+    }else{
+    	$(".classify").addClass("hidden");
+    	$(this).css("border-bottom","1px solid #aaaaaa");
+    }
+});
+$(document).on("click", ".classify>p", function(e){
+	$(".classify>p").removeClass("p-select");
+	$(".classify>p").addClass("p");
+	$(this).removeClass("p");
+	$(this).addClass("p-select");
+});
+$(document).on("click", ".reset>.save", function(e){
+	var nowUrl=window.location.href;
+	var pre=$("[name='pre']").val();
+	var after=$("[name='after']").val();
+	var category_id=$(".p-select").attr("data-word");
+	var storeHome_id=$(this).attr("data-word");
+	var url="/account/storeHome/s"+storeHome_id+"?pre="+pre+"&after="+after+"&category="+category_id;
+	location=url;
+});
+
+function loadModule(obj){
+	if($($(obj).attr('href')).find('.product-grid').first().children().length > 0){
+		return;
+	}
+	$.ajax({
+		url: 'index.php?route=module/advanced_grid/getSelectModule',
+		type: "POST",
+		dataType: "json",
+		data:{"tab_type":$(obj).attr('data-list-info')},
+		success: function(json) {
+			if (json['is_success'] && !$(obj).hasClass('active')) {
+				$($(obj).attr('href')).find('.product-grid').each(function(i){
+				    $(this).append(json['html'][i]);
+				});
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+}
+
+/*addlist start*/
+function addtolist(product_id){
+	$.ajax({
+		url: 'index.php?route=account/collection/getmodal',
+		type: "POST",
+		dataType: 'json',
+		data:{"product_id":product_id},
+		success: function(json) {
+			if (json['redirect']) {
+				$('#dialog-loginbox').modal('show');
+		        return false;
+			}				
+			if(json['html']){
+				$('#addListModal').empty();
+				$('#addListModal').attr('data-p-id', product_id);
+				$('#addListModal').append(json['html']);
+				$('#addListModal').modal('show');
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});	
+}
+
+
+$(document).delegate('#btn-save-modal', 'click', function() {
+	var list = [];
+	$('.is_select').each(function(i) {
+		if($(this).attr('data-product-id')){
+			p_id = $(this).attr('data-product-id');
+		}
+		list[i] = $(this).attr('data-collection-id') + '||' + $(this).children('.span-length').html();
+	});
+	if(list.length == 0){
+		alert("You must choose some list for this product!");
+		return;
+	}
+	if($('#modal-review').val().length > 0 && ($('#modal-review').val().length < 20 || $('#modal-review').val().length > 200)){
+		alert("The length of review must be between 20 and 200 characters!");
+		return;
+	}
+	$.ajax({
+		url: 'index.php?route=account/collection/setmodal',
+		type: "POST",
+		dataType: 'json',
+		data:{"c_lists":list,"product_id":$('#addListModal').attr('data-p-id'),"review":$('#modal-review').val()},
+		success: function(json) {
+			if (json['redirect']) {
+				location = json['redirect'];
+			}
+			if (json['error']) {
+				alert(json['error']);
+			}	
+			if(json['success']){
+				alert(json['success']);
+				$('#addListModal').modal('hide');
+				$('#addListModal').empty();
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+});
+//modal
+$(document).delegate('#addListModal .add_btn', 'click', function() {
+	var text=$.trim($(".add-content").val());
+	if(text=="" || text==undefined || text==null){
+		alert("Please enter the name");
+		return;
+	}
+	if(text.length > 30){
+		alert("The name of collection is between 1 and 30 characters!");
+		return;
+	}
+	var temp='<li data-product-id="' + $('addListModal').attr('data-p-id') + '" data-collection-id="new" class="checking_li is_select removeClass_liall abc"><span class="l span-length">'+text+'</span><i class="fa fa-check check-box r add_ul_li"></i></li>';	 
+	if(text!=""){
+		$(".add-ul").append(temp);
+		$(".add-content").val("");
+	 }else{
+	 	$(".add_btn").enabled = false;
+	 }
+});
+
+$(document).delegate(".checking_li","click",function(){
+	if($(this).hasClass('is_select')){
+		$(this).attr("class", "checking_li abc");
+		$(this).children('.abc').attr("class", "l span-length");
+		$(this).children('i').attr("class", "fa fa-check check-box r");
+	}else{
+		$(this).children('.check-box').addClass('add_ul_li');
+		$(this).addClass('is_select');
+	}	
+});
+
+$(document).delegate(".is_select","mouseover",function() {
+	$(this).addClass('afetr-check');
+	$(this).children('.check-box').attr("class", "fa fa-close r close_box");
+	$(this).removeClass('abc');
+});
+
+$(document).delegate(".is_select","mouseout",function() {
+	$(this).removeClass('afetr-check');
+	$(this).addClass('abc');
+	$(this).children('.close_box').attr("class", "fa fa-check check-box r");
+	$(this).children('.check-box').addClass('add_ul_li');
+	$(this).addClass('removeClass_liall');
+});
+$(document).keydown(function(event){ 
+	if(event.keyCode==13){ 
+ $(".add_btn").click(); 
+}
+});
+/*addlist end*/

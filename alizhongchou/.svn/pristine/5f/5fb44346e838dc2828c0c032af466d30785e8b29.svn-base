@@ -1,0 +1,168 @@
+<?php
+class ControllerReportCustomerList extends Controller {
+	public function index() {
+		$this->load->language('report/customer_list');
+
+		$this->document->setTitle($this->language->get('heading_title'));
+
+		if (isset($this->request->get['filter_date_start'])) {
+			$filter_date_start = $this->request->get['filter_date_start'];
+		} else {
+			$filter_date_start = '';
+		}
+		if (isset($this->request->get['list_name'])) {
+			$list_name = $this->request->get['list_name'];
+		} else {
+			$list_name = '';
+		}
+		if (isset($this->request->get['like_customerGroup_id'])) {
+			$like_customerGroup_id = $this->request->get['like_customerGroup_id'];
+		} else {
+			$like_customerGroup_id = 0;
+		}
+
+		if (isset($this->request->get['page'])) {
+			$page = $this->request->get['page'];
+		} else {
+			$page = 1;
+		}
+
+		$url = '';
+
+		if (isset($this->request->get['filter_date_start'])) {
+			$url .= '&filter_date_start=' . $this->request->get['filter_date_start'];
+		}
+
+		if (isset($this->request->get['list_name'])) {
+			$url .= '&list_name=' . $this->request->get['list_name'];
+		}
+
+		if (isset($this->request->get['like_customerGroup_id'])) {
+			$url .= '&like_customerGroup_id=' . $this->request->get['like_customerGroup_id'];
+		}
+
+		if (isset($this->request->get['page'])) {
+			$url .= '&page=' . $this->request->get['page'];
+		}
+
+		$data['breadcrumbs'] = array();
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true)
+		);
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
+			'href' => $this->url->link('report/customer_like', 'token=' . $this->session->data['token'] . $url, true)
+		);
+
+		$filter_data = array(
+			'filter_date_start'	     => $filter_date_start,
+			'list_name'	     => $list_name,
+			'like_customerGroup_id' => $like_customerGroup_id,
+			'start'                  => ($page - 1) * $this->config->get('config_limit_admin'),
+			'limit'                  => $this->config->get('config_limit_admin')
+		);
+		//var_dump($filter_data);exit;
+		$this->load->model('report/collection');
+		$customerLists_total = $this->model_report_collection->getCollectionListsTotal($filter_data);
+		//var_dump($customerLists_total);exit;
+		$results = $this->model_report_collection->getCollectionLists($filter_data);
+		//var_dump($results);exit;
+		$data['lists']=array();
+		foreach ($results as $result) {
+			$data['lists'][] = array(
+				'date_added'       => $result['date_added'],
+				'listname'      => $result['collection_name'],
+				'nickname'         => $result['nickname'],
+				'groupname'         => $result['name'],
+				"listProductNum"      => $result['product_count'],
+				"listFollowNum"      => $result['follow_count']
+			);
+		}
+		//var_dump($data['lists']);exit;
+		$this->load->model('customer/customer_group');
+		$customerGroups = $this->model_customer_customer_group->getCustomerGroups();
+		
+		foreach($customerGroups as $customerGroup){
+			$data["customerGroups"][]=array(
+				"customer_group_id" => $customerGroup['customer_group_id'],
+				"name" => $customerGroup["name"]
+			);
+		}
+		//var_dump($data["customerGroups"]);exit;
+		$data['heading_title'] = $this->language->get('heading_title');
+
+		$data['text_list'] = $this->language->get('text_list');
+		$data['text_no_results'] = $this->language->get('text_no_results');
+		$data['text_confirm'] = $this->language->get('text_confirm');
+		$data['text_all_customer_group'] = $this->language->get('text_all_customer_group');
+
+		$data['column_nickname'] = $this->language->get('column_nickname');
+		$data['column_groupname'] = $this->language->get('column_groupname');
+		$data['column_list_name'] = $this->language->get('column_list_name');
+		$data['column_date_added'] = $this->language->get('column_date_added');
+		$data['column_list_product_num'] = $this->language->get('column_list_product_num');
+		$data['column_list_product_follow_num'] = $this->language->get('column_list_product_follow_num');
+		$data['entry_date_start'] = $this->language->get('entry_date_start');
+		$data['entry_customer_group'] = $this->language->get('entry_customer_group');
+		$data['entry_list'] = $this->language->get('entry_list');
+		$data['entry_list_name'] = $this->language->get('entry_list_name');
+		$data['button_filter'] = $this->language->get('button_filter');
+
+		$data['token'] = $this->session->data['token'];
+
+		$pagination = new Pagination();
+		$pagination->total = $customerLists_total;
+		$pagination->page = $page;
+		$pagination->limit = $this->config->get('config_limit_admin');
+		$pagination->url = $this->url->link('report/customer_like', 'token=' . $this->session->data['token'] . $url . '&page={page}', true);
+
+		$data['pagination'] = $pagination->render();
+
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($customerLists_total) ? (($page - 1) * $this->config->get('config_limit_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_limit_admin')) > ($customerLists_total - $this->config->get('config_limit_admin'))) ? $customerLists_total : ((($page - 1) * $this->config->get('config_limit_admin')) + $this->config->get('config_limit_admin')), $customerLists_total, ceil($customerLists_total / $this->config->get('config_limit_admin')));
+
+		$data['filter_date_start'] = $filter_date_start;
+		$data['like_customerGroup_id'] = $like_customerGroup_id;
+		$data['list_name'] = $list_name;
+		$data['header'] = $this->load->controller('common/header');
+		$data['column_left'] = $this->load->controller('common/column_left');
+		$data['footer'] = $this->load->controller('common/footer');
+		
+		$this->response->setOutput($this->load->view('report/customer_list', $data));
+	}
+	public function autocomplete() {
+		$json = array();
+		if (isset($this->request->get['filter_name'])) {
+			if (isset($this->request->get['filter_name'])) {
+				$filter_name = $this->request->get['filter_name'];
+			} else {
+				$filter_name = '';
+			}
+	
+			if (isset($this->request->get['limit'])) {
+				$limit = $this->request->get['limit'];
+			} else {
+				$limit = 5;
+			}
+	
+			$filter_data = array(
+					'filter_name'  => $filter_name,
+					'start'        => 0,
+					'limit'        => $limit
+			);
+			$this->load->model('report/collection');
+			$results = $this->model_report_collection->getCollectionIdForName($filter_data);
+			//var_dump($results);exit;
+			foreach ($results as $result) {
+				$json[] = array(
+						'collection_id' => $result['collection_id'],
+						'collection_name'       => $result['collection_name']
+				);
+			}
+		}
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+}

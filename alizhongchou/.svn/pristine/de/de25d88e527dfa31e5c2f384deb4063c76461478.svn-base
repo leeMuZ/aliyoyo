@@ -1,0 +1,956 @@
+<?php echo $header;?>
+<form class="form-horizontal" action="index.php?route=project/crowdfund/personal" method="post" enctype="multipart/form-data">
+<ul class="shipping-rules" style="display: block;">
+                                                    	<li class="nnn bbb">
+                                                    		<select name="reward[0][rewards_shipping_country][0][country]" class="col-sm-6">
+                                                    			<option value="0">世界其他国家</option>
+                                                    		</select>
+                                                    		<input type="text" class="col-sm-6 " name="reward[0][rewards_shipping_Postage][0][postage]">
+                                                    	</li>
+                                                     	<li class="nnn"><select name="reward[0][rewards_shipping_country][1][country]" class="col-sm-6"><option value="0">选择国家</option><option value="244">Aaland Islands</option><option value="1">Afghanistan</option><option value="2">Albania</option><option value="3">Algeria</option><option value="4">American Samoa</option><option value="5">Andorra</option><option value="6">Angola</option><option value="7">Anguilla</option><option value="8">Antarctica</option><option value="9">Antigua and Barbuda</option><option value="10">Argentina</option><option value="11">Armenia</option><option value="12">Aruba</option><option value="252">Ascension Island (British)</option><option value="13">Australia</option><option value="14">Austria</option><option value="15">Azerbaijan</option><option value="16">Bahamas</option><option value="17">Bahrain</option><option value="18">Bangladesh</option><option value="19">Barbados</option><option value="20">Belarus</option><option value="21">Belgium</option><option value="22">Belize</option><option value="23">Benin</option><option value="24">Bermuda</option><option value="25">Bhutan</option><option value="26">Bolivia</option><option value="245">Bonaire, Sint Eustatius and Saba</option><option value="27">Bosnia and Herzegovina</option><option value="28">Botswana</option><option value="29">Bouvet Island</option><option value="30">Brazil</option><option value="31">British Indian Ocean Territory</option><option value="32">Brunei Darussalam</option><option value="33">Bulgaria</option><option value="34">Burkina Faso</option><option value="35">Burundi</option><option value="36">Cambodia</option><option value="37">Cameroon</option><option value="38">Canada</option><option value="251">Canary Islands</option><option value="39">Cape Verde</option><option value="40">Cayman Islands</option><option value="41">Central African Republic</option><option value="42">Chad</option><option value="43">Chile</option><option value="44">China</option><option value="45">Christmas Island</option><option value="46">Cocos (Keeling) Islands</option><option value="47">Colombia</option><option value="48">Comoros</option><option value="49">Congo</option><option value="50">Cook Islands</option><option value="51">Costa Rica</option><option value="52">Cote D'Ivoire</option><option value="53">Croatia</option><option value="54">Cuba</option><option value="246">Curacao</option><option value="55">Cyprus</option><option value="56">Czech Republic</option><option value="237">Democratic Republic of Congo</option><option value="57">Denmark</option><option value="58">Djibouti</option><option value="59">Dominica</option><option value="60">Dominican Republic</option><option value="61">East Timor</option><option value="62">Ecuador</option><option value="63">Egypt</option><option value="64">El Salvador</option><option value="65">Equatorial Guinea</option><option value="66">Eritrea</option><option value="67">Estonia</option><option value="68">Ethiopia</option><option value="69">Falkland Islands (Malvinas)</option><option value="70">Faroe Islands</option><option value="71">Fiji</option><option value="72">Finland</option><option value="74">France, Metropolitan</option><option value="75">French Guiana</option><option value="76">French Polynesia</option><option value="77">French Southern Territories</option><option value="126">FYROM</option><option value="78">Gabon</option><option value="79">Gambia</option><option value="80">Georgia</option><option value="81">Germany</option><option value="82">Ghana</option><option value="83">Gibraltar</option><option value="84">Greece</option><option value="85">Greenland</option><option value="86">Grenada</option><option value="87">Guadeloupe</option><option value="88">Guam</option><option value="89">Guatemala</option><option value="256">Guernsey</option><option value="90">Guinea</option><option value="91">Guinea-Bissau</option><option value="92">Guyana</option><option value="93">Haiti</option><option value="94">Heard and Mc Donald Islands</option><option value="95">Honduras</option><option value="96">Hong Kong</option><option value="97">Hungary</option><option value="98">Iceland</option><option value="99">India</option><option value="100">Indonesia</option><option value="101">Iran (Islamic Republic of)</option><option value="102">Iraq</option><option value="103">Ireland</option><option value="254">Isle of Man</option><option value="104">Israel</option><option value="105">Italy</option><option value="106">Jamaica</option><option value="107">Japan</option><option value="257">Jersey</option><option value="108">Jordan</option><option value="109">Kazakhstan</option><option value="110">Kenya</option><option value="111">Kiribati</option><option value="253">Kosovo, Republic of</option><option value="114">Kuwait</option><option value="115">Kyrgyzstan</option><option value="116">Lao People's Democratic Republic</option><option value="117">Latvia</option><option value="118">Lebanon</option><option value="119">Lesotho</option><option value="120">Liberia</option><option value="121">Libyan Arab Jamahiriya</option><option value="122">Liechtenstein</option><option value="123">Lithuania</option><option value="124">Luxembourg</option><option value="125">Macau</option><option value="127">Madagascar</option><option value="128">Malawi</option><option value="129">Malaysia</option><option value="130">Maldives</option><option value="131">Mali</option><option value="132">Malta</option><option value="133">Marshall Islands</option><option value="134">Martinique</option><option value="135">Mauritania</option><option value="136">Mauritius</option><option value="137">Mayotte</option><option value="138">Mexico</option><option value="139">Micronesia, Federated States of</option><option value="140">Moldova, Republic of</option><option value="141">Monaco</option><option value="142">Mongolia</option><option value="242">Montenegro</option><option value="143">Montserrat</option><option value="144">Morocco</option><option value="145">Mozambique</option><option value="146">Myanmar</option><option value="147">Namibia</option><option value="148">Nauru</option><option value="149">Nepal</option><option value="150">Netherlands</option><option value="151">Netherlands Antilles</option><option value="152">New Caledonia</option><option value="153">New Zealand</option><option value="154">Nicaragua</option><option value="155">Niger</option><option value="156">Nigeria</option><option value="157">Niue</option><option value="158">Norfolk Island</option><option value="112">North Korea</option><option value="159">Northern Mariana Islands</option><option value="160">Norway</option><option value="161">Oman</option><option value="162">Pakistan</option><option value="163">Palau</option><option value="247">Palestinian Territory, Occupied</option><option value="164">Panama</option><option value="165">Papua New Guinea</option><option value="166">Paraguay</option><option value="167">Peru</option><option value="168">Philippines</option><option value="169">Pitcairn</option><option value="170">Poland</option><option value="171">Portugal</option><option value="172">Puerto Rico</option><option value="173">Qatar</option><option value="174">Reunion</option><option value="175">Romania</option><option value="176">Russian Federation</option><option value="177">Rwanda</option><option value="178">Saint Kitts and Nevis</option><option value="179">Saint Lucia</option><option value="180">Saint Vincent and the Grenadines</option><option value="181">Samoa</option><option value="182">San Marino</option><option value="183">Sao Tome and Principe</option><option value="184">Saudi Arabia</option><option value="185">Senegal</option><option value="243">Serbia</option><option value="186">Seychelles</option><option value="187">Sierra Leone</option><option value="188">Singapore</option><option value="189">Slovak Republic</option><option value="190">Slovenia</option><option value="191">Solomon Islands</option><option value="192">Somalia</option><option value="193">South Africa</option><option value="194">South Georgia &amp; South Sandwich Islands</option><option value="113">South Korea</option><option value="248">South Sudan</option><option value="195">Spain</option><option value="196">Sri Lanka</option><option value="249">St. Barthelemy</option><option value="197">St. Helena</option><option value="250">St. Martin (French part)</option><option value="198">St. Pierre and Miquelon</option><option value="199">Sudan</option><option value="200">Suriname</option><option value="201">Svalbard and Jan Mayen Islands</option><option value="202">Swaziland</option><option value="203">Sweden</option><option value="204">Switzerland</option><option value="205">Syrian Arab Republic</option><option value="206">Taiwan</option><option value="207">Tajikistan</option><option value="208">Tanzania, United Republic of</option><option value="209">Thailand</option><option value="210">Togo</option><option value="211">Tokelau</option><option value="212">Tonga</option><option value="213">Trinidad and Tobago</option><option value="255">Tristan da Cunha</option><option value="214">Tunisia</option><option value="215">Turkey</option><option value="216">Turkmenistan</option><option value="217">Turks and Caicos Islands</option><option value="218">Tuvalu</option><option value="219">Uganda</option><option value="220">Ukraine</option><option value="221">United Arab Emirates</option><option value="222">United Kingdom</option><option value="223">United States</option><option value="224">United States Minor Outlying Islands</option><option value="225">Uruguay</option><option value="226">Uzbekistan</option><option value="227">Vanuatu</option><option value="228">Vatican City State (Holy See)</option><option value="229">Venezuela</option><option value="230">Viet Nam</option><option value="231">Virgin Islands (British)</option><option value="232">Virgin Islands (U.S.)</option><option value="233">Wallis and Futuna Islands</option><option value="234">Western Sahara</option><option value="235">Yemen</option><option value="238">Zambia</option><option value="239">Zimbabwe</option> </select><input type="text" class="col-sm-6" name="reward[0][rewards_shipping_Postage][1][postage]"><i class="fa fa-close shanchu"></i></li><li class="addguojia"><span href=""><i class="fa fa-plus"></i>添加新的国家</span></li>
+
+                                                    </ul>
+                                                    <button>tijiao</button>
+
+</form>
+
+
+
+
+
+		<div class="container">
+				<div class="validate">
+					<div class="validateleft col-md-8 col-sm-8">
+						<ul class="validateleftul">
+							<li class="validateleftul-li-hover"><i class="fa fa-check-circle validateleftul-li-i-active"></i>公司认证</li>
+							<li class=""><i class="fa fa-check-circle"></i>产品信息</li>
+							<li class=""><i class="fa fa-check-circle"></i>奖金设置</li>
+							<li class=""><i class="fa fa-check-circle"></i>产品详情</li>
+						</ul>
+					</div>
+					<div class="validateright col-md-4 col-sm-4">
+						<div class="validaterightone col-md-6 col-sm-6">
+							 <p>预览</p>
+						</div>
+						<div class="validaterightone col-md-6 col-sm-6">
+							 <p class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">提交</p>
+						</div>
+	           <!-- ================================提交 按钮 模态框=================================================== -->
+						<div class="modal fade submitmodel" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						  	<div class="modal-dialog" role="document">
+							    <div class="modal-content">
+								    <div class="modal-header">
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-close"  aria-hidden="true"></i></button>
+								        <h4 class="modal-title" id="myModalLabel">提交项目</h4>
+								    </div>
+								    <div class="modal-body">
+								        <p style="font-size:16px;">您的项目正在提交，请耐心等待...</p>
+								        <div class="progress">
+											<div class="progress-bar" style="width:60%; ">
+												<!-- <div class="progress-value">60%</div> -->
+											</div>
+										</div>
+								    </div>
+							  	</div>
+						  	</div>
+						</div>
+						
+					</div>
+				</div>
+				<!-- 正文部分 -->
+				<div class="validatesubstance">
+					<div class="validatesubstancecontent validate-active">
+						<div class="validate-table-one col-md-push-1 col-md-10 col-sm-12">
+							<p class="information-p">企业证件信息</p>
+							<form class="form-horizontal">
+							    <div class="form-group">
+							        <label for="inputEmail1" class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;法人代表：</label>
+							    	<div class="col-md-4 col-sm-4">
+							      		<input type="text" class="form-control" maxlength="10" name="name">
+									</div>
+							  	</div>
+							  	<div class="form-group">
+							        <label  class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;法人身份证：</label>
+							    	<div class="col-md-2 col-sm-3 certificate " >
+							    		<div class="img_div ">
+											<img src="img/plus.png" alt="" class="uploadimg impotimg" name="identity_image[]">
+											<input type="file" name="myFile" id="myFile" multiple="multiple"  class="form-control form-control-contiuimg uploading"/   onclick="javascript:closeShade()">
+											<i class='fa fa-close' onclick='removeImg(this)'></i>
+										</div>
+							    		<span class="col-md-2">身份证正面</span>
+							      	</div>
+							    	<div class="col-md-2 col-sm-3 certificate ">
+							      		<div class="img_div ">
+											<img src="img/plus.png" alt="" class="uploadimg impotimg" name="identity_image[]">
+											<input type="file" name="myFile" id="myFile" multiple="multiple"  class="form-control form-control-contiuimg uploading"/   onclick="javascript:closeShade()">
+											<i class='fa fa-close' onclick='removeImg(this)'></i>
+										</div>
+							      		<span class="col-md-2">身份证反面</span>
+							      	</div>
+							      	<div class="shade">
+										<div class="">
+											<span class="text_span">
+											</span>
+										</div>
+									</div>
+							  	</div>
+							  	<div class="form-group">
+							        <label  class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;法人身份证：</label>
+							       
+							        <div class="col-sm-10 certificate-none">
+							        	<p class="zheng col-sm-2"><input type="radio" name="photoType" value="0" id="sixPhotos" checked=""><img src="img/sx.jpg" alt="">非三证合一</p>
+							        	<p  class="zheng col-sm-2"> <input type="radio" name="photoType" value="1" id="sixPhotos" checked=""><img src="img/kx.jpg" alt="">三证合一</p>
+							        	<span class="span-zheng col-sm-8">(如果营业执照、组织机构代码证和税务登记证为一个证件，选择三证合一)</span>
+								    </div>
+							       <label  class="col-sm-2 control-label   showder"></label>
+							        <div class="zhengjianall validate-active">
+							        	<div class="col-md-2 col-sm-3 certificate ">
+							        		<div class="img_div ">
+											<img src="img/plus.png" alt="" class="uploadimg impotimg">
+											<input type="file" name="businessLicence" id="myFile" multiple="multiple"  class="form-control form-control-contiuimg little-inputs"/   onclick="javascript:closeShadelittle()">
+											<i class='fa fa-close' onclick='removeImg(this)'></i>
+										</div>
+								      		<span class="col-md-2">营业执照</span>
+								      	</div>
+								    	<div class="col-md-2 col-sm-3 certificate ">
+								      		<div class="img_div ">
+												<img src="img/plus.png" alt="" class="uploadimg impotimg">
+												<input type="file" name="organizationCode" id="myFile" multiple="multiple"  class="form-control form-control-contiuimg little-inputs"/  onclick="javascript:closeShadelittle()">
+												<i class='fa fa-close' onclick='removeImg(this)'></i>
+												
+											</div>
+									      	<span class="col-md-2">组织机构代码</span>
+								      	</div>
+								    	<div class="col-md-2 col-sm-3 certificate ">
+								      		<div class="img_div ">
+												<img src="img/plus.png" alt="" class="uploadimg impotimg">
+												<input type="file" name="taxRegCertificate" id="myFile" multiple="multiple"  class="form-control form-control-contiuimg little-inputs"/   onclick="javascript:closeShadelittle()">
+												<i class='fa fa-close' onclick='removeImg(this)'></i>
+											</div>
+								      		<span class="col-md-2">税务登记证</span>
+								      	</div>
+								    	<div class="col-md-2 col-sm-3 certificate ">
+								      		<div class="img_div ">
+												<img src="img/plus.png" alt="" class="uploadimg impotimg">
+												<input type="file" name="bankAccPermits" id="myFile" multiple="multiple"  class="form-control form-control-contiuimg little-inputs"/  onclick="javascript:closeShadelittle()">
+												<i class='fa fa-close' onclick='removeImg(this)'></i>
+											</div>
+								      		<span class="col-md-2">银行开户许可证照片</span>
+								      	</div>
+								      	<div class="shade" >
+											<div class="">
+												<span class="text_span">
+												</span>
+											</div>
+										</div>
+							        </div>
+							        <div class="zhengjianall">
+							        	<div class="col-md-2 col-sm-3 certificate ">
+							        		<div class="img_div ">
+												<img src="img/plus.png" alt="" class="uploadimg impotimg">
+												<input type="file" name="businessLicence" id="myFile" multiple="multiple"  class="form-control form-control-contiuimg uploading"/  onclick="javascript:closeShade()">
+												<i class='fa fa-close' onclick='removeImg(this)'></i>
+											</div>
+								      		<span class="col-md-2">营业执照</span>
+								      	</div>
+								    	<div class="col-md-2 col-sm-3 certificate ">
+								      		<div class="img_div ">
+												<img src="img/plus.png" alt="" class="uploadimg impotimg">
+												<input type="file" name="organizationCode" id="myFile" multiple="multiple"  class="form-control form-control-contiuimg uploading"/  onclick="javascript:closeShade()">
+												<i class='fa fa-close' onclick='removeImg(this)'></i>
+											</div>
+								      		<span class="col-md-2">组织机构代码</span>
+								      	</div>
+								      	<div class="shade">
+											<div class="">
+												<span class="text_span">
+												</span>
+											</div>
+										</div>
+								    </div>
+							    </div>
+							</form>
+							<p class="information-p">公司基本信息</p>
+							<form class="form-horizontal"  action="">
+							    <div class="form-group">
+							        <label for="inputEmail1" class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;公司名称：</label>
+							    	<div class="col-sm-4">
+							      		<input type="text" class="form-control projectmingchen" name="company_name"  maxlength="30">
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							        <label class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;注册时间：</label>
+							    	<div class="col-sm-4 datarili-div">
+							      		<input type="text" class="form-control" onClick="laydate()" name="registeredTime" value="">
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							        <label class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;联系电话：</label>
+							    	<div class="col-sm-4">
+							      		<input type="text" class="form-control" maxlength="20" name="phone">
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							        <label class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;常用邮箱：</label>
+							    	<div class="col-sm-4">
+							      		<input type="text" class="form-control" name="email">
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							        <label  class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;公司详细地址：</label>
+							    	<div class="col-sm-10" id="distpicker1"  data-toggle="distpicker">
+							      		<select class="form-control"  name="province">
+							      		<option value=''>请选择</option>
+							      		<?php foreach ($provinces as $province){?>
+							      		<option value="<?php  echo $province['code'];?>"><?php echo $province['name'];?></option>
+							      		<?php }?>
+							      		</select>
+							    		<select class="form-control" name="city">
+							    		<option value=''>请选择</option>
+							    		</select>
+								    	<select class="form-control"  name="region">
+								    	<option value=''>请选择</option>
+								    	</select>
+							    	</div>
+							    	
+							    	<label  class="col-sm-2 control-label"></label>
+							    	<div class="col-small-6 vbidaddress">
+							    		<input type="text" class="form-control" placeholder="详细地址"  maxlength="60">
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							        <label class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;公司详细介绍：</label>
+							    	<div class="col-small-6">
+							      		<textarea class="form-control" id="inputlength" maxlength="100" rows="5" name="company_description"></textarea>
+									</div>
+							    	<span class="col-sm-3 produace">一句话介绍你的公司，50字以内</span>
+							  	</div>
+							<p class="information-p">收款人信息</p>
+							    <div class="form-group">
+							        <label  class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;收款人姓名：</label>
+							    	<div class="col-sm-4">
+							      		<input type="text" class="form-control projectmingchen"  maxlength="30" name="payee">
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							        <label class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;收款人电话：</label>
+							    	<div class="col-sm-4 ">
+							      		<input type="text" class="form-control" onClick="laydate()" name="payee_phone">
+							    	</div>
+							  	</div>
+							  	<div class="form-group">
+							        <label class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;收款银行卡号：</label>
+							    	<div class="col-sm-4">
+							    	<input type="text" class="form-control" maxlength="20" name="bank_name">
+							    </div>
+							        
+							  	</div>
+							  	<div class="form-group">
+							  	    <div class="col-sm-2"></div>
+							  	    <div class="col-sm-4">
+							  	    <input type="text" class="form-control" maxlength="20" name="bank_card">
+                                    </div>							  	    
+							  	</div>
+							  	</form>
+						</div>
+					</div>
+					<div class="validatesubstancecontent">
+						<div class="validate-table-one col-md-push-1 col-md-10 col-sm-12">
+							<!-- <p class="information-p">企业证件信息</p> -->
+							<form class="form-horizontal" action="index.php?route=project/crowdfund/personal" method="post" enctype="multipart/form-data">
+							    <div class="form-group">
+							        <label  class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;项目图片：</label>
+							    	<div class="col-sm-8 certificate xiangmutupian">
+								    	<div class="img_div ">
+											<img src="img/plus.png" alt="" class="uploadimg impotimg">
+											<input type="file" name="image"  multiple="multiple"  class="form-control form-control-contiuimg little-inputs"/ onclick="javascript:closeShadelittle()">
+											<i class='fa fa-close' onclick='removeImg(this)'></i>
+											
+										</div>
+										<span class="sportsevent-span">这是人们第一次看到你项目时的图片，图片支持JPG, PNG, GIF, 和BMP格式。5MB以内。至少为1024x576px，长宽比为16:9。</span>
+								    </div>
+								    <div class="shade" >
+										<div class="">
+											<span class="text_span">
+											</span>
+										</div>
+									</div>
+							    </div>
+							  	<div class="form-group">
+							        <label  class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;项目名称：</label>
+							    	<div class="col-sm-8 certificate ">
+							      		<input type="text" class="form-control " name="name" id="projectmingc" maxlength="60" onblur="if(!(/^[0-9a-zA-Z]*$/g.test(this.value)) ){$('.missing').text('不能輸入中文,且字符長度小於等於60');this.value=value.replace(/[\W]/g,'');$(this).addClass('border-color');this.focus();}else{$('.missing').text('');$(this).removeClass('border-color')}"  >
+							      		<span class="missing"></span>
+							      		<span class="sportsevent-span">用户搜索的时候可以搜索查找到你的项目标题，所以让他们清楚明白你在做什么，才可以让他们明智的选择你。请填写英文。</span>
+							    	</div>
+							    </div>
+							    <div class="form-group">
+							        <label  class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;项目简介：</label>
+							    	<div class="col-sm-8 certificate ">
+							      		<textarea  class="form-control " name="introduce" rows="4" id="inputchangeName" maxlength="135" onblur="if(!(/^[0-9a-zA-Z]*$/g.test(this.value)) ){$('.missed').text('不能輸入中文,且字符長度小於等於135');this.value=value.replace(/[\W]/g,'');$(this).addClass('border-color');this.focus();}else{$('.missed').text('');$(this).removeClass('border-color')}"></textarea>
+							      		<span class="missed"></span>
+							      		<span class="sportsevent-span">请一句话简短的介绍一下你的产品。您填写的内容将会在首页中显示。</span>
+							    	</div>
+							    </div>
+							    <div class="form-group">
+							        <label  class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;类别：</label>
+							    	<div class="col-sm-8 certificate ">
+							    		<div class="select_box form-control valid-item" id="inputchangeName" >
+							                <span class="select_txt"></span>
+							                <a class="selet_open">
+							                	<i class="fa fa-angle-down"></i>
+							                </a>
+							                <div class="option">
+							                    <ul>
+													<li class="option_li">
+														<a>Tech & Innovation</a>
+														<a>Audio</a>
+														<a>Camera Gear</a>
+														<a>Energy & Green Tech</a>
+														<a>Fashion & Wearables</a>
+														<a>Food & Beverages</a>
+														<a>Health & Fitness</a>
+														<a>Home</a>
+														<a>Phones & Accessories</a>
+														<a>Productivity</a>
+														<a>Transportation</a>
+														<a>Travel & Outdoors</a>
+													</li>
+													<li class="option_li">
+														<a>Creative Works</a>
+														<a>Art</a>
+														<a>Comics</a>
+														<a>Dance & Theater</a>
+														<a>Film</a>
+														<a>Music</a>
+														<a>Photography</a>
+														<a>Podcasts, Blogs & Vlogs</a>
+														<a>Tabletop Games</a>
+														<a>Video Games</a>
+														<a>Web Series & TV Shows</a>
+														<a>Writing & Publishing</a>
+													</li>
+													<li class="option_li">
+														<a>Community Projects</a>
+														<a>Animal Rights</a>
+														<a>Culture</a>
+														<a>Education</a>
+														<a>Environment</a>
+														<a>Human Rights</a>
+														<a>Local Businesses</a>
+														<a>Spirituality</a>
+														<a>Wellness</a>
+													</li>
+												</ul>
+							                </div>
+							            </div>
+							      		<input type="text" id="inputchangeName" class="form-control">
+							    	</div>
+							    </div>
+							    <div class="form-group">
+							        <label  class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;众筹周期：</label>
+							    	<div class="col-sm-8 certificate zhouqi">
+							    		<span class="action-data">开始时间</span>
+							      		<input type="text" class="form-control col-sm-6 action-input action-inputfirst-child" name="date_start" onClick="laydate()">
+							      		<span class="action-data action-inputlast-child">结束时间</span>
+							      		<input type="text" class="form-control clo-sm-6 action-input " name="date_ended" onClick="laydate()">
+							      		<span class="sportsevent-span active-span">周期越短的项目有较高的成功率。当项目发出后，您将无法调节你的持续时间(建议30天到60 )。</span>
+							      	</div>
+							    </div>
+							    <div class="form-group">
+							        <label  class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;众筹目标：</label>
+							    	<div class="col-sm-8 certificate ">
+							      		<input type="text" name="total_goal" class="form-control "  >
+							      	</div>
+							    </div>
+							
+						</div>	
+					</div>
+					<div class="validatesubstancecontent">
+						<div class="validate-table-one col-md-push-1 col-md-10 col-sm-12" id="appfather">
+							
+								<ol class="getabonus col-md-push-2 col-md-8 col-sm-push-1 col-sm-10 fields rewards m0">
+									
+									<li class="getabonusall">
+                                        <div class="getabonus-left col-sm-2">
+                                            <p><em>*</em>&nbsp;&nbsp;奖励 #1：</p>
+                                            <p>&nbsp;&nbsp;0 支持者</p>
+                                        </div>
+                                        <div class="getabonus-right col-sm-10">
+                                            <div class="form-group biaogeform">
+                                                <label class="col-sm-3 control-label biaogelable">标题</label>
+                                                <div class="col-sm-9 biaogediv">
+                                                    <input class="form-control biaogeinput" name="reward[0][tile]">
+                                                </div>
+                                            </div>
+                                            <div class="form-group biaogeform">
+                                                <label class="col-sm-3 control-label biaogelable">赞助额度</label>
+                                                <div class="col-sm-9 biaogediv">
+                                                    <input  class="form-control biaogeinput" name="reward[0][pledge_amount]">
+                                                </div>
+                                            </div>
+                                            <div class="form-group biaogeform">
+                                                <label class="col-sm-3 control-label biaogelable biaogelable-three">描述</label>
+                                                <div class="col-sm-9 biaogediv" >
+                                                    <textarea name=""  rows="4" class="form-control biaogeinput biaogeinput-three" 
+                                                    style="background:#fff;" name="reward[0][description]"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group biaogeform">
+                                                <label class="col-sm-3 control-label biaogelable">预计交货时间</label>
+                                                <div class="col-sm-9 biaogediv">
+                                                    <select class="form-control biaogeinput col-sm-6 select-year" name="reward[0][estimated_delivery_year]">
+                                                    	<option value="">选择年</option>
+                                                    	<option value="2017">2017</option>
+                                                    	<option value="2018">2018</option>
+                                                    	<option value="2019">2019</option>
+                                                    	<option value="2020">2020</option>
+                                                    	<option value="2021">2021</option>
+                                                    	<option value="2022">2022</option>
+                                                    </select>
+                                                    <select class="form-control biaogeinput col-sm-6 select-year" name="reward[0][estimated_delivery_month]">
+                                                    	<option value="">选择月</option>
+                                                    	<option value="1">1月</option>
+                                                    	<option value="2">2月</option>
+                                                    	<option value="3">3月</option>
+                                                    	<option value="4">4月</option>
+                                                    	<option value="5">5月</option>
+                                                    	<option value="6">6月</option>
+                                                    	<option value="7">7月</option>
+                                                    	<option value="8">8月</option>
+                                                    	<option value="9">9月</option>
+                                                    	<option value="10">10月</option>
+                                                    	<option value="11">11月</option>
+                                                    	<option value="12">12月</option>
+                                                    </select>
+                                                   
+                                                </div>
+                                            </div>
+                                            <div class="form-group biaogeform">
+                                                <label for="inputEmail3" class="col-sm-3 control-label biaogelable heightauto">运输事项</label>
+                                                <div class="col-sm-9 biaogediv">
+                                                     <select class="form-control biaogeinput selectchange" name="reward[0][shipping_method]">
+                                                        <option value="">物流选择</option>
+                                                     	<option value="0">无需物流费用</option>
+                                                     	<option value="1">指定物流国家</option>
+                                                     	<option value="2">全球物流</option>
+                                                     </select>
+                                                    <ul class="shipping-rules">
+                                                    	<li class='nnn bbb'>
+                                                    		<select name='reward[0][rewards_shipping_country][0][country]'  class='col-sm-6'>
+                                                    			<option value='0'>世界其他国家</option>
+                                                    		</select>
+                                                    		<input type='text' class='col-sm-6 '  name="reward[0][rewards_shipping_Postage][0][postage]">
+                                                    	</li>
+                                                     	<li class="addguojia"><span href=""><i class="fa fa-plus"></i>添加新的国家</span></li>
+
+                                                    </ul>
+												</div>
+                                            </div>
+                                            <div class="form-group biaogeform havebottom-line">
+                                                <label class="col-sm-3 control-label biaogelable xianeshuoming">限额说明</label>
+                                                <div class="col-sm-9 xianzhi">
+                                                	<div class="xiane">	
+														<input type="checkbox" class="clickbox" name="reward[0][limit_availability]" value="1">&nbsp;&nbsp;添加限制额度
+                                                	</div>
+                                                    
+                                                    <div class="moremoney">
+                                                    	<div class="money-div">
+                                                    		<input type="checkbox" class="large-input" id="inputchangeName" >&nbsp;&nbsp;份数限制
+                                                    		<input type="text" class="little-input" value="" name="reward[0][limit_backer]">
+                                                    	</div>
+                                                    	<div class="money-div">
+                                                    		<input type="checkbox" class="shijianxian-large-input " >&nbsp;&nbsp;时间限制
+                                                    		<div class="col-sm-4 datarili-div shijianxian">
+													      		<input type="text" class="form-control shijianxian-input" placeholder="开始"  onClick="laydate()" name="reward[0][limit_time_begin]">
+													      		
+													    	</div>
+                                                    		<div class="col-sm-4 datarili-div shijianxian">
+													      		<input type="text" class="form-control shijianxian-input" placeholder="结束"  onClick="laydate()" name="reward[0][limit_time_begin]">
+													      	</div>
+                                                    	</div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="addprojuct">
+                                                <div class="addprojuct-left col-sm-6">
+                                                    <i class="fa fa-plus"></i>
+                                                                                                                                                                         添加一个新的项目
+                                                </div>
+                                            </div>
+                                        </div>
+                                     </li>
+								</ol>
+						</div>
+								<button>tijiao</button>
+						</form>
+					</div>
+					<div class="validatesubstancecontent">
+						<div class="validate-table-one col-md-push-1 col-md-10 col-sm-12">
+							<form class="form-horizontal">
+							    <div class="form-group">
+							        <label  class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;产品视频：</label>
+							    	<div class="col-sm-8 certificate ">
+							      		<div class="img_div ">
+											<img src="img/img.jpg" alt="" class="uploadimg impotimg">
+											<input type="file" name="myFile" id="myFile" multiple="multiple"  class="form-control form-control-contiuimg uploading"/>
+											<i class='removeBtn fa fa-close' onclick='removeImg(this)'></i>
+											<div class="shade" onclick="javascript:closeShade()">
+												<div class="">
+													<span class="text_span">
+													</span>
+												</div>
+											</div>
+										</div>
+							      		<span class="sportsevent-span">请从你的电脑选择一个视频上传，支持MOV / MPEG / AVI / MP4 / 3GP / WMV / FLV格式视频。文件大小5G以内。</span>
+							    	</div>
+							    </div>
+							  	<div class="form-group">
+							        <label  class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;产品描述：</label>
+							    	<div class="col-sm-8 certificate ">
+							      		<div id="editor">
+  
+										</div>
+							    	</div>
+							    </div>
+							    <div class="form-group">
+							        <label  class="col-sm-2 control-label"><em>*</em>&nbsp;&nbsp;风险和挑战：</label>
+							    	<div class="col-sm-8 certificate ">
+							    		<span class="fenxian-span">
+							    			你的项目在进行过程中将要面对什么风险和挑战，以及你如何客服它们？每个项目都有其独特的风险，让你的支持者知道你准备如何克服这些挑战，阐述有哪些风险可能会导致延误或者改变你的生产计划。
+										</span>
+										<textarea id="inputchangeName"  rows="10" class="form-control form-control-fenxian"></textarea>
+							      	</div>
+							    </div>
+							</form>
+						</div>	
+					</div>
+					
+					
+				</div>
+				<div class="submit-pingshen clearfix col-md-12 col-sm-12">
+					<div class="shenhexiangmu  col-md-push-1 col-md-10 col-sm-12">
+						<div class="pingshen col-md-12 col-sm-12">
+							<div class="pingshenbuzhou col-md-5 col-sm-5">
+								<span class="number-circle">1</span>
+								<span class="pingshen-zhuangtai">提交项目</span>
+								<span class="pingshen-xian"></span>
+							</div>
+							<div class="pingshenbuzhou col-md-5 col-sm-5">
+								<span class="number-circle">2</span>
+								<span class="pingshen-zhuangtai">审核项目</span>
+								<span class="pingshen-xian"></span>
+							</div>
+							<div class="pingshenbuzhou col-md-2 col-sm-2">
+								<span class="number-circle">3</span>
+								<span class="pingshen-zhuangtai">发布项目</span>
+							</div>
+						</div>
+						<!-- 笑脸部分 -->
+						<div class="col-sm-12 clearfix">
+							<p class="col-sm-12 clearfix decrition">
+								<i class="fa fa-smile-o"></i>
+								<span>恭喜你项目提交成功！</span>
+							</p>
+							<p class="col-sm-12 clearfix decrition">
+								<span>恭喜你项目提交成功！我们会以最快的速度审核您的项目，并在三至五个工作日内将审核结果发送到您的邮箱。</span>
+								<br>
+								<span>请您注意查收邮件。您也可以在个人中心里面查看项目进度。</span>
+							</p>
+							<div class="col-sm-12 clearfix decrition">
+								<button class="btn">确定</button>
+							</div>
+						</div>
+						<!-- 哭脸部分 -->
+						<div class="col-sm-12 clearfix">
+							<p class="col-sm-12 clearfix decrition">
+								<i class="fa fa-frown-o"></i>
+								<span>抱歉项目审核失败！</span>
+							</p>
+							<div class="col-sm-12 clearfix decrition">
+								<span class="thefail">失败原因：</span>
+								<ol class="failedyunyin">
+									<li>企业认证，法人身份证，未按规定上传。</li>
+									<li>在产品详情，视频上传错误，不是该产品视频。</li>
+									<li>太丑太丑太丑</li>
+								</ol>
+							</div>
+							<div class="col-sm-12 clearfix decrition">
+								<button class="btn">返回编辑</button>
+							</div>
+						</div>
+						<!-- 发布 -->
+						<div class="col-sm-12 clearfix">
+							<p class="col-sm-12 clearfix decrition">
+								<i class="fa fa-smile-o"></i>
+								<span>恭喜你项目发布成功！</span>
+							</p>
+							<p class="col-sm-12 clearfix decrition">
+								<span>你可以在首页和个人中心中看到你的项目，感谢你对阿里优优的支持。</span>
+								<br>
+								<span>祝您众筹成功！</span>
+							</p>
+							<div class="col-sm-12 clearfix decrition">
+								<button class="btn">确定</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 放弃 保存 -->
+			<div class="validate-preserve">
+				<div class="container">
+					<button class='btn validate-preserve-never' data-toggle="modal" data-target="#fangqi">放弃</button>
+					<button class="btn validate-preserve-btn">保存</button>
+				</div>
+			</div>
+			<div class="modal fade submitmodel fangqi" id="fangqi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  	<div class="modal-dialog" role="document">
+				    <div class="modal-content">
+					    <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-close"  aria-hidden="true"></i></button>
+					        <h4 class="modal-title" id="myModalLabel">您的修改信息还未保存</h4>
+					    </div>
+					    <div class="modal-body">
+					        <p style="font-size:16px;">请保存修改信息或放弃修改</p>
+					        
+					    </div>
+					    <div class="modal-footer">
+					    	<button type="button" class="btn btn-primary">保存</button>
+					        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					        
+					    </div>
+				  	</div>
+			  	</div>
+			</div>
+		</div>
+	</div>
+	<script>
+	// ================================公司认证 页面 *1* =======================================
+			// ======================================公司简介限制字符长度================================
+			$("#inputlength").keyup(function(event) {
+				var curLength=$("#inputlength").val().length; 
+				if(curLength>100){ 
+					$(".produace").text('请控制在50字之内哦')
+					$(".produace").css('color', 'red');
+				} 
+				
+			});
+			// ======================================公司简介限制字符长度 end================================
+			// shangchun 图片
+			
+			// data riqi
+				//laydate({});
+	// ================================产品信息类别 select *2* ========================================
+			
+			$(document).ready(function(){
+	            $(".select_box").click(function(event){   
+	                event.stopPropagation();
+	                $(this).find(".option").toggle();
+	                $(this).parent().siblings().find(".option").hide();
+	            });
+	            $(document).click(function(event){
+	                var eo=$(event.target);
+	                if($(".select_box").is(":visible") && eo.attr("class")!="option" && !eo.parent(".option").length)
+	                $('.option').hide();                                      
+            });
+            /*赋值给文本框*/
+            $(".option_li a").click(function(){
+            	var value=$(this).text();
+                $(this).parent().parent().parent().siblings(".select_txt").text(value);
+                $("#select_value").val(value)
+             })
+        })
+	// ================================产品信息类别 select *2*  end========================================
+				$('.validateleftul li').click(function(event) {
+					$(this).addClass('validateleftul-li-hover');
+					$(this).siblings('li').removeClass('validateleftul-li-hover')
+					$(this).children("i").addClass('validateleftul-li-i-active');
+					$(this).siblings().children("i").removeClass('validateleftul-li-i-active');
+					$(".validatesubstance .validatesubstancecontent").eq($(this).index()).addClass('validate-active').siblings().removeClass('validate-active');
+			});
+			// ==================================================
+			$('.form-control').bind('input propertychange', function() {
+				$('.validate-preserve').show();
+			}); 
+			// ==============================================================
+			$(".zheng").click(function(event) {
+				$(this).children().attr("src","img/sx.jpg");
+				$(this).siblings().children().attr("src","img/kx.jpg");	
+				$(".zhengjianall").eq($(this).index()).addClass('validate-active').siblings().removeClass('validate-active');
+			});
+		// ==========================奖金设置 页面 *3* ========================================
+		    $(document).delegate('.addprojuct-left', 'click', function(event){
+		        var google = Math.random();
+		        var aa='<li class="getabonusall"><div class="getabonus-left col-sm-2"><p><em>*</em>&nbsp;&nbsp;奖励 #1：</p><p>&nbsp;&nbsp;0 支持者</p></div><div class="getabonus-right col-sm-10"><div class="form-group biaogeform"><label class="col-sm-3 control-label biaogelable">标题</label><div class="col-sm-9 biaogediv"><input  class="form-control biaogeinput" id="inputchangeName"></div></div><div class="form-group biaogeform"><label class="col-sm-3 control-label biaogelable">赞助额度</label><div class="col-sm-9 biaogediv"><input  class="form-control biaogeinput" id="inputchangeName"></div></div><div class="form-group biaogeform"><label class="col-sm-3 control-label biaogelable biaogelable-three">描述</label><div class="col-sm-9 biaogediv"><textarea name=""  rows="4" class="form-control biaogeinput biaogeinput-three" id="inputchangeName"></textarea></div></div><div class="form-group biaogeform"><label class="col-sm-3 control-label biaogelable">预计交货时间</label><div class="col-sm-9 biaogediv"><select class="form-control biaogeinput col-sm-6 select-year" id="inputchangeName"></select><select class="form-control biaogeinput col-sm-6 select-year" id="inputchangeName"></select></div></div><div class="form-group biaogeform"><label for="inputEmail3" class="col-sm-3 control-label biaogelable heightauto">运输事项</label><div class="col-sm-9 biaogediv"><select class="form-control biaogeinput selectchange" id="inputchangeName"><option value=""></option><option value="0"></option><option value="1"></option><option value="2">only</option></select><ul class="shipping-rules"><li class="addguojia"><span href=""><i class="fa fa-plus"></i>添加新的国家</span></li></ul></div></div><div class="form-group biaogeform havebottom-line"><label class="col-sm-3 control-label biaogelable xianeshuoming">限额说明</label><div class="col-sm-9 xianzhi"><div class="xiane"><input type="checkbox" class="clickbox" id="inputchangeName">&nbsp;&nbsp;添加限制额度</div><div class="moremoney"><div class="money-div"><input type="checkbox" class="large-input" id="inputchangeName">&nbsp;&nbsp;添加限制额度<input type="text" class="little-input" value="$" id="inputchangeName"></div><div class="money-div"><input type="checkbox" class="large-input" id="inputchangeName">&nbsp;&nbsp;添加限制额度<input type="text" class="little-input" value="$" id="inputchangeName"></div></div></div></div><div class="addprojuct"><div class="addprojuct-left col-sm-6"><i class="fa fa-plus"></i>添加一个新的项目</div></div></div></li>';
+		       	$(".getabonus").append(aa);
+		        		bindListener();
+			 });
+			function bindListener(){
+		        $(".addprojuct-right").unbind().click(function(){
+		          $(this).parent().parent().parent().remove();
+		        });
+		    }
+        // =============================tianjia guojia=============================================================
+			$(".selectchange").bind("change",function(){ 
+			    if($(this).val()==2){
+			    	$('.shipping-rules').show();
+			    	$('.bbb').show();
+			    }
+			    else if($(this).val()==1){
+			     	$('.shipping-rules').show();
+			     	$('.bbb').hide();
+			     	
+			    }
+			    else{
+			    	$(this).parent().siblings('ul').addClass('shipping-rules');
+			    	$('.bbb').hide();
+			    	$('.shipping-rules').hide();
+			    }
+			}); 
+			 var tamp ="class='col-sm-6'><option value='0'>选择国家</option>";
+			 $(function(){
+				 
+				 $.ajax({
+	          			url: 'index.php?route=location/location/getCountries',
+	          			type: 'post',
+	          			dataType: 'json',
+	          			success: function(json) {
+	          				 $.each(json, function(index,values){ 
+		               				$.each(values,function(key,value){ 
+	          				tamp += "<option value='"+value.country_id+"'>"+value.name+"</option>";
+		               				})
+	          				 })
+		          			}
+			    })
+		     }) 
+		     
+			$(".addguojia").click(function(event) {
+				var timestamp = new Date().getTime();
+				atamp = "<li class='nnn'><select name='reward[0][rewards_shipping_country][1][country]'"+tamp+" <input type='text' class='col-sm-6' name='reward[0][rewards_shipping_Postage][1][postage]' ><i class='fa fa-close shanchu'></i></li>"
+			 	$(".addguojia").before(atamp);
+			 	var checkText=$(".bbb").find("option:selected").text();
+				$(".shanchu").click(function(event){
+			    	$(this).parent(".nnn").remove();
+			    });
+			});
+		    
+		// =============================tianjia guojia end===========================================
+	
+			$(".clickbox").change(function() {
+	            if($(this).is(":checked")){ 
+	           		$('.moremoney').show();
+	           	} else { 
+	           		$('.moremoney').hide();
+	           	}                        
+			});
+		   $(".large-input").change(function() {
+	            if($(this).is(":checked")){ 
+	           		$(this).siblings('.little-input').show();
+				} else { 
+	           		$(this).siblings('.little-input').hide();
+	           	 }                        
+			});
+		   $(".shijianxian-large-input").change(function() {
+	            if($(this).is(":checked")){ 
+	           		$(this).siblings('.shijianxian').show();
+				} else { 
+	           		$(this).siblings('.shijianxian').hide();
+	           	 }                        
+			});
+		// =========================================奖金页面 *3*  end======================================
+
+		// ====================================产品详情 *4*  页面===========================================
+			$('#editor').summernote({
+				// disableDragAndDrop:true
+				height: 200,
+				toolbar: [
+					['style', ['bold', 'italic','style']],
+					['layout',['ul']],
+					['insert', ['link','video','picter']],
+					// ['color', ['color']],
+					// ['para', ['ul', 'ol', 'paragraph']],
+					// ['height', ['height']],
+					// ['insert', ['picture', 'link']], // no insert buttons
+					// ['table', ['table']], // no table button
+					// ['help', ['help']] //no help button
+				]
+			});
+		// ====================================产品详情 *4*  页面 end======================================
+
+
+
+		$(function() {
+				var objUrl;
+				var img_html;
+				$(".uploading").each(function(index, el) {
+					$(this).change(function() {
+					/*
+					鉴定每个图片大小总和
+				 	* */
+						var file_size = this.files[0].size;
+						if(file_size > 1048576) {
+							$(this).parent().parent().siblings(".shade").fadeIn(500);
+							$(this).parent().parent().siblings(".shade").children().children(".text_span").html("<i class='fa fa-exclamation-circle'></i>"+"上传的图片大小不能超过100k");
+							$(this).siblings('.uploadimg').css('border-color', 'red');
+							return false;
+						}
+							$(this).siblings('i').addClass('removeBtn');
+							$(this).siblings('.removeBtn').hide();
+							var filepath = $("input[name='myFile']").val();
+					   		 objUrl = getObjectURL(this.files[0]);
+							$(this).siblings(".uploadimg").attr("src",objUrl);
+						$(this).parent().parent(".certificate").hover(function() {
+							$(this).children().children('.removeBtn').show();
+						}, function() {
+							$(this).children().children('.removeBtn').hide();
+						});
+						$(this).siblings('.removeBtn').click(function(event) {
+							$(this).siblings('.uploadimg').attr('src', 'img/plus.png');
+							$(this).removeClass('removeBtn');
+						});
+						
+						return true;
+					});
+				});
+				/*
+				 * */
+				function getObjectURL(file) {
+					var url = null;
+					if(window.createObjectURL != undefined) { 
+						url = window.createObjectURL(file);
+					} else if(window.URL != undefined) { // mozilla(firefox)
+						url = window.URL.createObjectURL(file);
+					} else if(window.webkitURL != undefined) { // webkit or chrome
+						url = window.webkitURL.createObjectURL(file);
+					}
+					//console.log(url);
+					return url;
+				}
+		});
+		/*
+		 * */
+		function removeImg(r){
+			$(r).siblings('.uploadimg').attr('src', 'img/plus.png');
+		}
+		
+		/*
+		描述：关闭弹出层
+		 * */
+		function closeShade(){
+			var width=$(".certificate").width();
+			$(".shade").fadeOut(500);
+			$(".uploadimg").css('border-color', '#ccc');
+			$(".shade").css('right', 400+'px');
+		}
+// ==============================================================================================================
+		$(function() {
+				var objUrl;
+				var img_html;
+				$(".little-inputs").each(function(index, el) {
+					$(this).change(function() {
+					/*
+					鉴定每个图片大小总和
+				 	* */
+						var file_size = this.files[0].size;
+						if(file_size > 1048576) {
+							$(this).parent().parent().siblings(".shade").fadeIn(500);
+							$(this).parent().parent().siblings(".shade").children().children(".text_span").html("<i class='fa fa-exclamation-circle'></i>"+"上传的图片大小不能超过100k");
+							$(this).siblings('.uploadimg').css('border-color', 'red');
+							return false;
+						}
+							$(this).siblings('i').addClass('removeBtn');
+							$(this).siblings('.removeBtn').hide();
+							var filepath = $("input[name='myFile']").val();
+					   		 objUrl = getObjectURL(this.files[0]);
+							$(this).siblings(".uploadimg").attr("src",objUrl);
+						$(this).parent().parent(".certificate").hover(function() {
+							$(this).children().children('.removeBtn').show();
+						}, function() {
+							$(this).children().children('.removeBtn').hide();
+						});
+						$(this).siblings('.removeBtn').click(function(event) {
+							$(this).siblings('.uploadimg').attr('src', 'img/plus.png');
+							$(this).removeClass('removeBtn');
+						});
+						
+						return true;
+					});
+				});
+				/*
+				 * */
+				function getObjectURL(file) {
+					var url = null;
+					if(window.createObjectURL != undefined) { 
+						url = window.createObjectURL(file);
+					} else if(window.URL != undefined) { // mozilla(firefox)
+						url = window.URL.createObjectURL(file);
+					} else if(window.webkitURL != undefined) { // webkit or chrome
+						url = window.webkitURL.createObjectURL(file);
+					}
+					//console.log(url);
+					return url;
+				}
+			});
+			/*
+			 * */
+			function removeImg(r){
+				$(r).siblings('.uploadimg').attr('src', 'img/plus.png');
+			}
+			
+			/*
+			描述：关闭弹出层
+			 * */
+			function closeShadelittle(){
+				var width=$(".certificate").width();
+				$(".shade").fadeOut(500);
+				$(".uploadimg").css('border-color', '#ccc');
+				$(".shade").css('right', 40+'px');
+			}
+
+             $("select[name='province']").change(function(){
+                 var code = $(this).val();
+            	 $.ajax({
+          			url: 'index.php?route=location/location',
+          			type: 'post',
+          			data: 'code=' + code,
+          			dataType: 'json',
+          			success: function(json) {	
+         				$("select[name='city']").children("option").remove();
+          				$("select[name='region']").children("option").remove();
+          				$("select[name='city']").append("<option value=''>请选择</option>");
+          				$("select[name='region']").append("<option value=''>请选择</option>");
+         				 $.each(json, function(index,values){ 
+          				$.each(values,function(key,value){ 
+            		          $("select[name='city']").append("<option value='"+value.code+"'>"+value.name+"</option>");
+            		        });
+          				});
+              			}
+                 });
+             });
+
+             $("select[name='city']").change(function(){
+                 var code = $(this).val();
+            	 $.ajax({
+          			url: 'index.php?route=location/location',
+          			type: 'post',
+          			data: 'code=' + code,
+          			dataType: 'json',
+          			success: function(json) {	
+         				 $("select[name='region']").children("option").remove();
+          				 $("select[name='region']").append("<option value=''>请选择</option>");
+         				 $.each(json, function(index,values){ 
+          				$.each(values,function(key,value){ 
+            		          $("select[name='region']").append("<option value='"+value.code+"'>"+value.name+"</option>");
+            		        });
+          				});
+              			}
+                 });
+             });
+
+             
+	</script>
+		
+<?php echo $footer;?>

@@ -1,0 +1,10 @@
+$(function () {
+    $('#acontant_ul a:first').tab('show')
+  
+	$('#acontant_ul a').click(function (e) {
+  		e.preventDefault()
+  		$(this).tab('show');
+  		$(this).addClass('acontantactive').parent().siblings().children().removeClass('acontantactive');
+});
+	
+})

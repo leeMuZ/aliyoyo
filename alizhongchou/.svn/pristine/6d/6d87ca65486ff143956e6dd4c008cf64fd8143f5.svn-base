@@ -1,0 +1,42 @@
+<?php
+class ControllerAccountassortment extends Controller {
+   
+	public function index() {
+		if (!$this->customer->isLogged()) {
+			$this->session->data['redirect'] = $this->url->link('account/order', '', true);
+
+			$this->response->redirect($this->url->link('account/login', '', true));
+		}
+		$this->load->model('account/assortment');
+		
+		 if (isset($this->request->get['url'])) {
+			 $arr=$this->model_account_assortment->getcategory($this->request->get['url']);
+			 $data['arr'] = $arr;
+			 $result=$this->model_account_assortment->getproducts($this->request->get['url']);
+			 $data['result'] = $result;
+		  if (isset($this->request->get['src'])) {
+				  $result=$this->model_account_assortment->getproduct($this->request->get['src']);
+				  $data['result'] = $result;
+			      $data['name'] = $this->request->get['name'];
+			      $data['src1']= $this->request->get['src'];				  
+				  if(isset($this->request->get['surl'])){
+					  $data['rname'] = $this->request->get['rname'];
+					  $result=$this->model_account_assortment->getproducte($this->request->get['src'],$this->request->get['surl']);
+					  $data['result'] = $result;
+				  }
+			  }
+		 }
+		$this->document->addStyle('catalog/view/stylesheet/individual.css');
+		$this->document->addStyle('catalog/view/stylesheet/assortment.css');
+
+	    $this->document->setTitle($this->config->get('config_meta_title'));
+		$this->document->setDescription($this->config->get('config_meta_description'));
+		$this->document->setKeywords($this->config->get('config_meta_keyword'));
+		$data['footer'] = $this->load->controller('common/footer');
+		$data['header'] = $this->load->controller('common/header');
+		$data['src'] = $this->url->link('account/assortment');
+		$data['url'] = $this->request->get['url'];
+        
+		$this->response->setOutput($this->load->view('account/assortment', $data));
+	}
+}

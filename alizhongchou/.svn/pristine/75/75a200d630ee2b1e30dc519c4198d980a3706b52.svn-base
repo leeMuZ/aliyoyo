@@ -1,0 +1,42 @@
+ <div class="profile_one col-lg-offset-2 col-lg-8" >
+   <?php
+   if(isset($success)){ ?>
+   <div class="alert alert-success success"><button type="button" class="close" data-dismiss="alert">&times;</button><?php echo $success?></div>
+   
+   <script>
+     $(':input','#pwdform')
+             .not(':button, :submit, :reset, :hidden')
+             .val('')
+             .removeAttr('checked')
+             .removeAttr('selected');
+   </script>
+   <?php }?>
+    <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data"  class="col-lg-12" name="resetpwd" onsubmit="return editPwd()" id="pwdform">
+      <div class="profile_one col-lg-12">
+        <div class="form-group">
+          <label for="exampleInputEmail1">CURRENT PASSWORD</label>
+          <input  class="form-control" type="password" name="current" value="<?php echo $current; ?>" placeholder="<?php echo $entry_currentpassword; ?>" id="input-current">
+          <?php if ($error_current) { ?>
+          <div class="text-danger"><?php echo $error_current; ?></div>
+          <?php } ?>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">NEW PASSWORD</label>
+          <input  class="form-control" type="password" name="password" value="<?php echo $password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-password">
+          <?php if ($error_password) { ?>
+          <div class="text-danger"><?php echo $error_password; ?></div>
+          <?php } ?>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">PASSWORD CONFIRM</label>
+          <input type="password" name="confirm" value="<?php echo $confirm; ?>" placeholder="<?php echo $entry_confirm; ?>" id="input-confirm" class="form-control" >
+          <?php if ($error_confirm) { ?>
+          <div class="text-danger"><?php echo $error_confirm; ?></div>
+          <?php } ?>
+        </div>
+        <div class="submit">
+          <button type="submit" class="btn btn-default"><?php echo $button_change?></button>
+        </div>
+      </div>
+    </form>
+  </div>

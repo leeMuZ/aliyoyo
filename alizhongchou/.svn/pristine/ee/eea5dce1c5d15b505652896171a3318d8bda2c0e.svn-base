@@ -1,0 +1,88 @@
+<?php
+class ControllerAccountHome extends Controller {
+   
+   //add by liuxuewen at 20170408 个人中心展示
+	public function index() {
+		if (!$this->customer->isLogged()) {
+			$this->session->data['redirect'] = $this->url->link('account/home', '', true);
+
+			$this->response->redirect($this->url->link('account/login', '', true));
+		}
+		$this->document->addStyle('catalog/view/stylesheet/individual.css');
+		$this->load->model('account/home');
+			
+		if(!empty($this->request->get['url'])){
+		 $url = $this->request->get['url'];
+		  //收藏过的商品
+		 if ($url==1 ) {
+			  $result = $this->model_account_home->getcrowdfunding();
+			  $data['result']=$result;
+			  $data['url']=1;
+		}elseif($url==2 ){
+			    $result = $this->model_account_home->getproduct();
+				$data['result']=$result;
+				$data['url']=2;
+
+		}elseif($url==3 ){
+			  //用户发布过的商品
+			  $uid=$this->customer->getId();
+			  $result = $this->model_account_home->getcrowdfundings($uid);
+			  $data['result']=$result;
+			  $data['url']=3;
+		}
+		}else{
+
+		  if(!empty($this->request->get['customer_id'])){
+			$uid=$this->request->get['customer_id'];
+			$result = $this->model_account_home->getcrowdfundings($uid);
+			$data['result']=$result;
+			$data['url']=3;
+		   }else{
+			  //收藏过的商品
+			  $result = $this->model_account_home->getcrowdfunding();
+			  $data['result']=$result;
+			  $data['url']=1;
+		   }
+		}
+		 //取消收藏
+		 if (isset($this->request->get['remove'])) {
+			// Remove home
+			$this->model_account_home->deletehome($this->request->get['remove']);
+			$this->response->redirect($this->url->link('account/home'));
+		}
+		 //取消自己添加的商品
+		 if (isset($this->request->get['rem'])) {
+			// Remove home
+			$this->model_account_home->deleteproduct($this->request->get['rem']);
+			$this->response->redirect($this->url->link('account/home'));
+		}
+		if ($this->request->server['REQUEST_METHOD'] != 'POST') {
+			$customer_info = $this->model_account_home->getCustomer($this->customer->getId());
+		}
+		//add by yagami at 20170408 
+		if (isset($this->request->post['avatar'])){
+		    $data['photo'] = $this->request->post['avatar'];
+			echo $data['photo'] ;
+		} elseif (!empty($customer_info)) {
+		    $this->load->model('tool/image');
+		    $data['photo'] = $this->model_tool_image->profileResize($customer_info['image'],100,100);
+		} else {
+		    $data['photo'] = '';
+		}
+	    //$this->document->addScript('catalog/view/theme/' . $this->config->get($this->config->get('config_theme') . '_directory') . '/js/imagesloaded.pkgd.min.js');
+	    //$this->document->addStyle('view/stylesheet/livehelp.css');
+	    $this->document->setTitle($this->config->get('config_meta_title'));
+		$this->document->setDescription($this->config->get('config_meta_description'));
+		$this->document->setKeywords($this->config->get('config_meta_keyword'));
+		$data['footer'] = $this->load->controller('common/footer');
+		$data['header'] = $this->load->controller('common/header');
+		$data['href'] = $this->url->link('account/home');
+		$data['href1'] = $this->url->link('account/datepage');
+		$data['edit'] = $this->url->link('account/edit');
+		$data['href2'] = $this->url->link('crowdfunding/campaign');
+		$data['action'] = $this->url->link('account/edit', '', true);
+		$data['name'] = $customer_info;
+		$this->response->setOutput($this->load->view('account/home', $data));
+	}
+
+}

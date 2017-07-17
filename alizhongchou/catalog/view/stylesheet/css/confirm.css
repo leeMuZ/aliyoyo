@@ -1,0 +1,118 @@
+body {
+    background: #f5f5f5;
+    font-family: "Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif;
+    font-size: 16px;
+    color:#353535;
+    margin: 0;
+    padding: 0;
+}
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;text-decoration:none!important;}
+img{
+    display: block;
+}
+@media (max-width: 768px){
+    .container {
+        width: 100%;
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+    }
+}
+.container {
+    max-width: 1270px;
+    margin: 0px auto;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+@media (max-width: 1270px) and (min-width: 1160px){
+    .container {
+        width: 1160px;
+    }
+}
+.pament_true_all{
+	margin-top: 30px;
+}
+.pament_true{
+	background: #fff;
+}
+.pament_true_top,.pament_true_bottom{
+	padding:50px;
+}
+.pament_true_top{
+	border-bottom: 1px dashed #ccc;
+}
+.pament_true_top p,.pament_true_bottom p{
+	margin-bottom: 40px;
+}
+.pament_true_top p:last-child,.pament_true_bottom p:last-child{
+	margin-bottom: 0px;
+}
+.pament_true_top p span:first-child,.pament_true_bottom p span:first-child{
+	font-weight: bold;
+	margin-right: 20px;
+}
+.cart-total {
+    overflow: auto;
+    margin-bottom: 20px;
+    padding-top: 25px;
+}
+.cart-total table {
+    float: right;
+}
+.cart-total td {
+    padding: 0px 0px 0px 25px;
+    text-align: right;
+    font-weight: normal;
+}
+.cart-total table tr td:last-child {
+    font-weight: bold;
+    font-size: 16px;
+}
+.cart-total .Total {
+    color: orange;
+}
+.buttons {
+    overflow: auto;
+    margin: 10px 0px 20px 0px;
+}
+.buttons .right {
+    float: right;
+    text-align: right;
+}
+.buttons .right .button {
+    margin-left: 10px;
+}
+.buttons .right .button {
+    margin-left: 10px;
+    text-transform: none;
+}
+.proceed {
+    background: #26cada;
+    color: #fff;
+    border: 0;
+    border-radius: 3px;
+}
+.proceed:hover{
+	color: #fff;
+}
+.button, .btn {
+    display: inline-block;
+    cursor: pointer;
+   	outline: none;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    height: 40px;
+    line-height: 38px;
+    padding: 0 15px;
+    border: 1px solid #e5e5e5;
+    white-space: normal;
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: uppercase;
+     margin: 7px 0px;
+}

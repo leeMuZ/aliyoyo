@@ -1,0 +1,708 @@
+<link rel="stylesheet" href="catalog/view/stylesheet/css/home.css">
+<!-- ========================banner bufen======================================== -->
+<div class="home-banner">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="img/lunbo1.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/lunbo2.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/lunbo3.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="img/lunbo4.jpg" alt="">
+            </div>
+
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next">
+            <i class="fa fa-angle-right qiehuan"></i>
+        </div>
+        <div class="swiper-button-prev">
+            <i class="fa fa-angle-left qiehuan"></i>
+        </div>
+    </div>
+</div>
+<!-- ========================banner bufen end======================================== -->
+<!-- ==================================fanzhuan tupian================================================== -->
+<div class="container">
+                <!-- guanggaowei -->
+                <div class="guanggaowei clearfix col-sm-12">
+                    <ul class="regularly-item-list">
+                        <li class="first viewport-flip">
+                            <div class="flip-box flip out turnoff">
+                                <a href="">
+                                    <p>6 FUTURE <br>Find Smarter Life Here!</p>
+                                    <p>
+                                        <span>View more</span>
+                                        <span>>></span>
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="flip-box flip yuanyou">
+                                <p>6 FUTURE <br>Find Smarter Life Here!</p>
+                                <p>
+                                    <span>View more</span>
+                                    <span>>></span>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="last viewport-flip">
+                            <div class="flip-box flip out tupianfanzhuan">
+                                <a href="">
+                                    <p>Foldio360 – A smart turntable to create stunning 360 images</p>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 85%; ">
+                                        </div>
+                                    </div>
+                                    <p class="little-margin">Pledged: $207000000</p>
+                                    <p class="little-margin">35 day 20 hours left</p>
+                                </a>
+
+                            </div>
+                            <div class="flip-box flip">
+                                <img src="img/ad1.jpg" alt="">
+                            </div>
+                        </li>
+                        <li class="last viewport-flip">
+                            <div class="flip-box flip out tupianfanzhuan">
+                                <a href="">
+                                    <p>Foldio360 – A smart turntable to create stunning 360 images</p>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 85%; ">
+                                        </div>
+                                    </div>
+                                    <p class="little-margin">Pledged: $207000000</p>
+                                    <p class="little-margin">35 day 20 hours left</p>
+                                </a>
+
+                            </div>
+                            <div class="flip-box flip">
+                                <img src="img/ad2.jpg" alt="">
+                            </div>
+                        </li>
+                        <li class="last viewport-flip" style="margin-right:0">
+                            <div class="flip-box flip out tupianfanzhuan">
+                                <a href="">
+                                    <p>Foldio360 – A smart turntable to create stunning 360 images</p>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 85%; ">
+                                        </div>
+                                    </div>
+                                    <p class="little-margin">Pledged: $207000000</p>
+                                    <p class="little-margin">35 day 20 hours left</p>
+                                </a>
+
+                            </div>
+                            <div class="flip-box flip">
+                                <img src="img/ad3.jpg" alt="">
+                            </div>
+                        </li>
+                        <li class="last viewport-flip">
+                            <div class="flip-box flip out tupianfanzhuan">
+                                <a href="">
+                                    <p>Foldio360 – A smart turntable to create stunning 360 images</p>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 85%; ">
+                                        </div>
+                                    </div>
+                                    <p class="little-margin">Pledged: $207000000</p>
+                                    <p class="little-margin">35 day 20 hours left</p>
+                                </a>
+
+                            </div>
+                            <div class="flip-box flip">
+                                <img src="img/ad4.jpg" alt="">
+                            </div>
+                        </li>
+                        <li class="last viewport-flip">
+                            <div class="flip-box flip out tupianfanzhuan">
+                                <a href="">
+                                    <p>Foldio360 – A smart turntable to create stunning 360 images</p>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 85%; ">
+                                        </div>
+                                    </div>
+                                    <p class="little-margin">Pledged: $207000000</p>
+                                    <p class="little-margin">35 day 20 hours left</p>
+                                </a>
+
+                            </div>
+                            <div class="flip-box flip">
+                                <img src="img/ad5.jpg" alt="">
+                            </div>
+                        </li>
+                        <li class="last viewport-flip" style="margin-right:0">
+                            <div class="flip-box flip out tupianfanzhuan">
+                                <a href="">
+                                    <p>Foldio360 – A smart turntable to create stunning 360 images</p>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 85%; ">
+                                        </div>
+                                    </div>
+                                    <p class="little-margin">Pledged: $207000000</p>
+                                    <p class="little-margin">35 day 20 hours left</p>
+                                </a>
+
+                            </div>
+                            <div class="flip-box flip">
+                                <img src="img/ad6.jpg" alt="">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- InDemand -->
+                <div class="InDemand clearfix col-sm-12">
+                    <div class="bottom">
+                        <div class="clearfix col-sm-12 InDemand-top">
+                            <span>Top picks for you</span>
+                            <a href="">View more</a>
+                        </div>
+                        <div class="product-grid">
+
+                            <div class="col-sm-4 col-xs-6">
+                                <div class="product clearfix product-hover">
+                                    <div class="left">
+                                        <div class="image ">
+                                            <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="name">
+                                            <a href="">Foldio360 – A smart turntable to create stunning 360 images</a>
+                                        </div>
+                                        <div class="nduanluo">
+                                            A vegetable compartment design stems from concerns about food safety, product quality, appearance and fusion of modern art of the per
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width:60%; ">
+                                                <div class="progress-value">60%</div>
+                                            </div>
+                                        </div>
+                                        <div class="pledge">
+                                            <p class="pledge-left l">
+                                                Pledged: $207000000
+                                            </p>
+                                            <p class="pledge-right r">
+                                                35 day 20 hours left
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-xs-6">
+                                <div class="product clearfix product-hover">
+                                    <div class="left">
+                                        <div class="image ">
+                                            <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="name">
+                                            <a href="">Foldio360 – A smart turntable to create stunning 360 images</a>
+                                        </div>
+                                        <div class="nduanluo">
+                                            A vegetable compartment design stems from concerns about food safety, product quality, appearance and fusion of modern art of the per
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 85%; ">
+                                                <div class="progress-value">85%</div>
+                                            </div>
+                                        </div>
+                                        <div class="pledge">
+                                            <p class="pledge-left l">
+                                                Pledged: $207000000
+                                            </p>
+                                            <p class="pledge-right r">
+                                                35 day 20 hours left
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-xs-6">
+                                <div class="product clearfix product-hover">
+                                    <div class="left">
+                                        <div class="image ">
+                                            <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="name">
+                                            <a href="">Foldio360 – A smart turntable to create stunning 360 images</a>
+                                        </div>
+                                        <div class="nduanluo">
+                                            A vegetable compartment design stems from concerns about food safety, product quality, appearance and fusion of modern art of the per
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 85%; ">
+                                                <div class="progress-value">85%</div>
+                                            </div>
+                                        </div>
+                                        <div class="pledge">
+                                            <p class="pledge-left l">
+                                                Pledged: $207000000
+                                            </p>
+                                            <p class="pledge-right r">
+                                                35 day 20 hours left
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  categories  -->
+                <div class="categories clearfix col-sm-12">
+                    <div class="bottom">
+                        <div class="clearfix col-sm-12 InDemand-top">
+                            <span>Explore categories</span>
+                            <a href="">View more</a>
+                        </div>
+                        <div class="categories-bottom">
+                            <div class="categories-div col-sm-3">
+                                <img src="img/fenlei1.jpg" alt="">
+                                <div class="img-zhezhao clearfix">
+                                    <div class="zhezhaoimg">
+                                    </div>
+                                </div>
+                                <div class="xianshidiv">
+                                    <i class="fa fa-home"></i>
+                                    <span>Home</span>
+                                </div>
+                            </div>
+                            <?php foreach($category as $k=>$v):?>
+                            <div class="categories-div col-sm-3">
+                                <img src="img/fenlei2.jpg" alt="">
+                                <div class="img-zhezhao clearfix">
+                                    <div class="zhezhaoimg">
+                                    </div>
+                                </div>
+                                <div class="xianshidiv">
+                                    <i class="fa fa-heartbeat"></i>
+                                    <span><?php echo $v['name'];?></span>
+                                </div>
+                            </div>
+                            <?php endforeach;?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--  Product Marketplace -->
+<div class="Marketplace clearfix col-sm-12">
+    <div class="container">
+        <div class="bottom" style="margin-left: 0;margin-right: 0;">
+            <div class="clearfix col-sm-12 InDemand-top">
+                <span>Aliyoyo Product Marketplace</span>
+                <a href="">View more</a>
+            </div>
+            <!-- <div class="container-fluid warrp col-md-12">
+                <!--slide-->
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="carousel slide" id="myCarousel">
+                        <div class="carousel-inner product-grid">
+                            <div class="item active">
+                                <ul class="thumbnails product product-hover">
+                                    <li class="span3 ">
+                                        <div class="left">
+                                            <div class="image ">
+                                                <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                    <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <div class="name">
+                                                <a href="">DIY XY-Plotter Version 2.0 Drawing Robot Kit with electronics for Ardunio Fan</a>
+                                            </div>
+                                            <div class="price">$279.88 </div>
+                                        </div>
+                                    </li>
+                                    <li class="span3 ">
+                                        <div class="left">
+                                            <div class="image ">
+                                                <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                    <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                                </a>
+                                            </div>
+                                        </div>status
+                                        <div class="right">
+                                            <div class="name">
+                                                <a href="">DIY XY-Plotter Version 2.0 Drawing Robot Kit with electronics for Ardunio Fan</a>
+                                            </div>
+                                            <div class="price">$279.88 </div>
+                                        </div>
+                                    </li>
+                                    <li class="span3 ">
+                                        <div class="left">
+                                            <div class="image ">
+                                                <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                    <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <div class="name">
+                                                <a href="">DIY XY-Plotter Version 2.0 Drawing Robot Kit with electronics for Ardunio Fan</a>
+                                            </div>
+                                            <div class="price">$279.88 </div>
+                                        </div>
+                                    </li>
+                                    <li class="span3 ">
+                                        <div class="left">
+                                            <div class="image ">
+                                                <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                    <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <div class="name">
+                                                <a href="">DIY XY-Plotter Version 2.0 Drawing Robot Kit with electronics for Ardunio Fan</a>
+                                            </div>
+                                            <div class="price">$279.88 </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div><!-- /Slide1 -->
+                            <div class="item">
+                                <ul class="thumbnails product product-hover">
+                                    <li class="span3 ">
+                                        <div class="left">
+                                            <div class="image ">
+                                                <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                    <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <div class="name">
+                                                <a href="">DIY XY-Plotter Version 2.0 Drawing Robot Kit with electronics for Ardunio Fan</a>
+                                            </div>
+                                            <div class="price">$279.88 </div>
+                                        </div>
+                                    </li>
+                                    <li class="span3 ">
+                                        <div class="left">
+                                            <div class="image ">
+                                                <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                    <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <div class="name">
+                                                <a href="">DIY XY-Plotter Version 2.0 Drawing Robot Kit with electronics for Ardunio Fan</a>
+                                            </div>
+                                            <div class="price">$279.88 </div>
+                                        </div>
+                                    </li>
+                                    <li class="span3 ">
+                                        <div class="left">
+                                            <div class="image ">
+                                                <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                    <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <div class="name">
+                                                <a href="">DIY XY-Plotter Version 2.0 Drawing Robot Kit with electronics for Ardunio Fan</a>
+                                            </div>
+                                            <div class="price">$279.88 </div>
+                                        </div>
+                                    </li>
+                                    <li class="span3 ">
+                                        <div class="left">
+                                            <div class="image ">
+                                                <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                    <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <div class="name">
+                                                <a href="">DIY XY-Plotter Version 2.0 Drawing Robot Kit with electronics for Ardunio Fan</a>
+                                            </div>
+                                            <div class="price">$279.88 </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div><!-- /Slide2 -->
+                            <div class="item">
+                                <ul class="thumbnails product product-hover">
+                                    <li class="span3 ">
+                                        <div class="left">
+                                            <div class="image ">
+                                                <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                    <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <div class="name">
+                                                <a href="">DIY XY-Plotter Version 2.0 Drawing Robot Kit with electronics for Ardunio Fan</a>
+                                            </div>
+                                            <div class="price">$279.88 </div>
+                                        </div>
+                                    </li>
+                                    <li class="span3 ">
+                                        <div class="left">
+                                            <div class="image ">
+                                                <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                    <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <div class="name">
+                                                <a href="">DIY XY-Plotter Version 2.0 Drawing Robot Kit with electronics for Ardunio Fan</a>
+                                            </div>
+                                            <div class="price">$279.88 </div>
+                                        </div>
+                                    </li>
+                                    <li class="span3 ">
+                                        <div class="left">
+                                            <div class="image ">
+                                                <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                    <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <div class="name">
+                                                <a href="">DIY XY-Plotter Version 2.0 Drawing Robot Kit with electronics for Ardunio Fan</a>
+                                            </div>
+                                            <div class="price">$279.88 </div>
+                                        </div>
+                                    </li>
+                                    <li class="span3 ">
+                                        <div class="left">
+                                            <div class="image ">
+                                                <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                    <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <div class="name">
+                                                <a href="">DIY XY-Plotter Version 2.0 Drawing Robot Kit with electronics for Ardunio Fan</a>
+                                            </div>
+                                            <div class="price">$279.88 </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div><!-- /Slide3 -->
+                        </div>
+                        <!-- <div class="control-box hidden-lg">
+                            <a data-slide="prev" href="#myCarousel" class="left carousel-control left-bj">‹</a>
+                            <a data-slide="next" href="#myCarousel" class="right carousel-control left-bj">›</a>
+                        </div> --><!-- /.control-box -->
+                    </div><!-- /#myCarousel -->
+                </div><!-- /.span12 -->
+            </div><!-- /.row -->
+            <!--slide end-->
+        </div>
+    </div>
+
+<a data-slide="prev" href="#myCarousel" class="left carousel-control left-bj hidden-xs" id="sever-prev">
+			<span id="prev-nav" aria-hidden="true">
+				<i class="fa fa-angle-left"></i>
+			</span>
+</a>
+<a data-slide="next" href="#myCarousel" class="right carousel-control left-bj hidden-xs" id="sever-next">
+			<span id="next-nav" aria-hidden="true">
+				<i class="fa fa-angle-right"></i>
+			</span>
+</a>
+</div>
+<!-- Mostfunded -->
+<div class="container">
+                <div class="Mostfunded clearfix col-sm-12">
+                    <div class="bottom">
+                        <div class="clearfix col-sm-12 InDemand-top">
+                            <span>Explore InDemand</span>
+                            <a href="">View more</a>
+                        </div>
+                        <div class="product-grid">
+                            <div class="col-sm-4 col-xs-6">
+                                <div class="product clearfix product-hover">
+                                    <div class="left">
+                                        <div class="image ">
+                                            <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="name">
+                                            <a href="">Foldio360 – A smart turntable to create stunning 360 images</a>
+                                        </div>
+                                        <div class="nduanluo">
+                                            A vegetable compartment design stems from concerns about food safety, product quality, appearance and fusion of modern art of the per
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width:60%; ">
+                                                <div class="progress-value">60%</div>
+                                            </div>
+                                        </div>
+                                        <div class="pledge">
+                                            <p class="pledge-left l">
+                                                Pledged: $207000000
+                                            </p>
+                                            <p class="pledge-right r">
+                                                35 day 20 hours left
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-xs-6">
+                                <div class="product clearfix product-hover">
+                                    <div class="left">
+                                        <div class="image ">
+                                            <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="name">
+                                            <a href="">Foldio360 – A smart turntable to create stunning 360 images</a>
+                                        </div>
+                                        <div class="nduanluo">
+                                            A vegetable compartment design stems from concerns about food safety, product quality, appearance and fusion of modern art of the per
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 85%; ">
+                                                <div class="progress-value">85%</div>
+                                            </div>
+                                        </div>
+                                        <div class="pledge">
+                                            <p class="pledge-left l">
+                                                Pledged: $207000000
+                                            </p>
+                                            <p class="pledge-right r">
+                                                35 day 20 hours left
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-xs-6">
+                                <div class="product clearfix product-hover">
+                                    <div class="left">
+                                        <div class="image ">
+                                            <a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+                                                <img src="img/a-500x500.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="right">
+                                        <div class="name">
+                                            <a href="">Foldio360 – A smart turntable to create stunning 360 images</a>
+                                        </div>
+                                        <div class="nduanluo">
+                                            A vegetable compartment design stems from concerns about food safety, product quality, appearance and fusion of modern art of the per
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 85%; ">
+                                                <div class="progress-value">85%</div>
+                                            </div>
+                                        </div>
+                                        <div class="pledge">
+                                            <p class="pledge-left l">
+                                                Pledged: $207000000
+                                            </p>
+                                            <p class="pledge-right r">
+                                                35 day 20 hours left
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<script src="catalog/view/stylesheet/js/jquery.min.js"></script>
+<script src="catalog/view/stylesheet/js/bootstrap.min.js"></script>
+<script src="catalog/view/stylesheet/js/swiper-3.3.1.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        slidesPerView: 1,
+        paginationClickable: true,
+        spaceBetween: 30,
+        autoplay: 2500,
+        loop: true
+    });
+
+    // =====================================广告位占位============================
+
+    $(function(){
+        var $regularlyItems=$(".regularly-item-list li");
+        $regularlyItems.each(function(){
+            var _$this=$(this);
+            _$this.children(".flip-box").eq(0).addClass("out").removeClass("in");
+            setTimeout(function() {
+                _$this.find(".flip-box").show().eq(1).addClass("in").removeClass("out");
+                _$this.children(".flip-box").eq(0).hide();
+            }, 500);
+        });
+        $regularlyItems.hover(function(){
+            var _$this=$(this);
+            _$this.children(".flip-box").eq(1).addClass("out").removeClass("in");
+            setTimeout(function() {
+                _$this.find(".flip-box").show().eq(0).addClass("in").removeClass("out");
+                _$this.children(".flip-box").eq(1).hide();
+            }, 225);
+        },function(){
+            var _$this=$(this);
+            _$this.children(".flip-box").eq(0).addClass("out").removeClass("in");
+            setTimeout(function() {
+                _$this.find(".flip-box").show().eq(1).addClass("in").removeClass("out");
+                _$this.children(".flip-box").eq(0).hide();
+            }, 400);
+        });
+    });
+    //
+    var dd=$(".elect").length;
+    for(var i=0; i<=dd;i++){
+        var aa=$(".elect").eq(i).text();
+        var name=aa;
+        $(".svgimg").eq(i).css("background","url(img/"+name+"-1.svg) no-repeat");
+    };
+    $(".categories-div").hover(function() {
+        var name=$(this).children().children(".elect").text();
+        $(this).children().children(".svgimg").css("background-image","url(img/"+name+"-0.svg)");
+        $(this).children(".xianshidiv").addClass('xianshidiv-active');
+        $(this).siblings().children('.xianshidiv').removeClass('xianshidiv-active');
+
+
+
+    }, function() {
+        var name=$(this).children().children(".elect").text();
+        $(this).children().children(".svgimg").css("background-image","url(img/"+name+"-1.svg)");
+        $(this).children(".xianshidiv").removeClass('xianshidiv-active');
+        $(this).children('.xianshidiv').children('svg').children('path').removeClass('redsvgactive');
+
+    });
+
+</script>

@@ -1,0 +1,172 @@
+<?php
+class ControllerProjectCrowdFund extends Controller {
+	private $error = array();
+
+	public function index() {
+	    
+	    $this->document->addStyle('catalog/view/stylesheet/css/crowdfund.css');
+	    $data['personal'] = $this->url->link('project/crowdfund/createProject','type=0');
+	    $data['company'] = $this->url->link('project/crowdfund/createProject','type=1');
+	    $data['footer'] = $this->load->controller('common/footer');
+		$data['header'] = $this->load->controller('common/header');
+	    $this->response->setOutput($this->load->view('project/crowdfund',$data));
+	}
+	
+	public function createProject(){
+	    //personal type 0 ,company type 1 
+	  if($this->customer->isLogged()){
+	    $this->load->model('project/crowdfund');
+	    $funding_id = $this->model_project_crowdfund->creatProject($this->request->get['type']);
+	    if($this->request->get['type']){
+	        $this->response->redirect($this->url->link('project/crowdfund/company', 'funding_id='.$funding_id, true));
+	    }else{
+	        $this->response->redirect($this->url->link('project/crowdfund/personal', 'funding_id='.$funding_id, true));
+	    }
+	  }else{
+	        $this->session->data['redirect'] = $this->url->link('project/crowdfund', '', true);
+	        $this->response->redirect($this->url->link('account/login', '', true));
+	  }
+	}
+	public function company(){
+	    //后续补全安全校验 
+	    $this->document->addStyle('catalog/view/stylesheet/css/crowdfund.css');
+	    $this->document->addStyle('catalog/view/javascript/summernote/summernote.css');
+	    $this->document->addScript('catalog/view/javascript/summernote/summernote.js');
+	    $this->document->addScript('catalog/view/javascript/laydate/laydate.js');
+	    $this->load->model('localisation/region');
+	    $this->load->model('project/category');
+	    $this->load->model('project/crowdfund');
+	    $this->load->model('project/rewards');
+	    $this->load->model('tool/image');
+	    $funding_id = $this->request->get['funding_id'];
+	    $data['project'] = $this->model_project_crowdfund->getCrowdFunding($funding_id);
+	    if($data['project']['image']==''){
+	      $data['project']['image_src'] = $this->model_tool_image->profileResize('image/picture.jpg',700,420);
+	    }else{
+   	      $data['project']['image_src'] = $this->model_tool_image->profileResize($data['project']['image'],700,420);
+	    }
+	    if($data['project']['date_start']=="0000-00-00 00:00:00"){
+	        $data['project']['date_start']='';
+	    }
+	    if($data['project']['date_ended']=="0000-00-00 00:00:00"){
+	        $data['project']['date_ended']='';
+	    }
+	    if($data['project']['total_goal']==0){
+	        $data['project']['total_goal']='';
+	    }
+	    $data['projectDescription'] = $this->model_project_crowdfund->getCrowdFundingDescription($funding_id);
+	    $data['rewards'] = $this->model_project_rewards->getRewards($funding_id);//estimated_delivery
+	    foreach ($data['rewards'] as $k=>$v){
+	        if($v['pledge_amount']==0){
+	            $data['rewards'][$k]['pledge_amount'] = '';
+	        }
+	        $data['rewards'][$k]['estimated_year'] = substr($v['estimated_delivery'],0,4);
+	        $data['rewards'][$k]['estimated_month'] = substr($v['estimated_delivery'],5,2);
+	    }
+	    $data['reward_row'] =count($data['rewards']);
+	    $data['estimated_setting']['years'] = ['2017','2018','2019','2020','2021','2022'];
+	    $data['estimated_setting']['months'] = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+	    $data['companyInfo'] = $this->model_project_crowdfund->getCompanyInfo($funding_id);
+	    if($data['companyInfo']['identity_image_face']==''){
+	      $data['companyInfo']['identity_image_face_src'] = $this->model_tool_image->profileResize('image/picture.jpg',145,160);
+	    }else{
+   	      $data['companyInfo']['identity_image_face_src'] = $this->model_tool_image->profileResize($data['companyInfo']['identity_image_face'],145,160);
+	    }
+	    if($data['companyInfo']['identity_image_back']==''){
+	        $data['companyInfo']['identity_image_back_src'] = $this->model_tool_image->profileResize('image/picture.jpg',145,160);
+	    }else{
+	        $data['companyInfo']['identity_image_back_src'] = $this->model_tool_image->profileResize($data['companyInfo']['identity_image_back'],145,160);
+	    }
+	    if($data['companyInfo']['businessLicence']==''){
+	        $data['companyInfo']['businessLicence_src'] = $this->model_tool_image->profileResize('image/picture.jpg',145,160);
+	    }else{
+	        $data['companyInfo']['businessLicence_src'] = $this->model_tool_image->profileResize($data['companyInfo']['businessLicence'],145,160);
+	    }
+	    if($data['companyInfo']['organizationCode']==''){
+	        $data['companyInfo']['organizationCode_src'] = $this->model_tool_image->profileResize('image/picture.jpg',145,160);
+	    }else{
+	        $data['companyInfo']['organizationCode_src'] = $this->model_tool_image->profileResize($data['companyInfo']['organizationCode'],145,160);
+	    }
+	    if($data['companyInfo']['taxRegCertificate']==''){
+	        $data['companyInfo']['taxRegCertificate_src'] = $this->model_tool_image->profileResize('image/picture.jpg',145,160);
+	    }else{
+	        $data['companyInfo']['taxRegCertificate_src'] = $this->model_tool_image->profileResize($data['companyInfo']['taxRegCertificate'],145,160);
+	    }
+	    if($data['companyInfo']['bankAccPermits']==''){
+	        $data['companyInfo']['bankAccPermits_src'] = $this->model_tool_image->profileResize('image/picture.jpg',145,160);
+	    }else{
+	        $data['companyInfo']['bankAccPermits_src'] = $this->model_tool_image->profileResize($data['companyInfo']['bankAccPermits'],145,160);
+	    }
+	    if($data['companyInfo']['registeredTime']=="0000-00-00 00:00:00"){
+	        $data['companyInfo']['registeredTime']='';
+	    }
+	    $data['provinces'] = $this->model_localisation_region->getProvinces();
+	    $data['citys'] = $this->model_localisation_region->getRegionsByProveinceCode($data['companyInfo']['province_id']);
+	    $data['areas'] = $this->model_localisation_region->getRegionsByProveinceCode($data['companyInfo']['city_id']);
+	    $data['categories'] = $this->model_project_category->getAllCategory();
+	    
+	    $data['footer'] = $this->load->controller('common/footer');
+	    $data['header'] = $this->load->controller('common/header');
+	    $this->response->setOutput($this->load->view('project/company',$data));
+	}
+	
+	public function personal(){
+	    $data['b'] = $this->request->post;
+	    var_dump($data['b']);
+	    $this->document->addStyle('catalog/view/stylesheet/css/crowdfund.css');
+	    $data['footer'] = $this->load->controller('common/footer');
+	    $data['header'] = $this->load->controller('common/header');
+	   // $this->response->setOutput($this->load->view('project/personal',$data));
+	}
+	
+	public function upload(){
+	    $json = Array();
+	    $this->load->model("tool/image");
+	    $path = 'project/'.$this->customer->getId().'/';
+	    $data = $this->model_tool_image->upload(['files' => $this->request->files['image'], 'directory' => $path,'limit_size' =>5242880]);
+	    if(isset($data['images'][0]['success'])){
+	       if(isset($this->request->post['large'])){
+	        $data['images'][0]['image_url'] =  $this->model_tool_image->profileResize($data['images'][0]['url'],700,420);
+	       } else{
+	        $data['images'][0]['image_url'] =  $this->model_tool_image->profileResize($data['images'][0]['url'],145,160);
+	       }
+	    }
+	    $this->response->addHeader('Content-Type:application/json');
+	    $this->response->setOutput(json_encode($data)); 
+	}
+	
+	public function summernoteUpload(){
+	    $json = Array();
+	    $this->load->model("tool/image");
+	    $path = 'project/'.$this->customer->getId().'/';
+	    $data = $this->model_tool_image->upload(['files' => $this->request->files['image'], 'directory' => $path,'limit_size' =>5242880]);
+	foreach ($data['images'] as $key=>$image){
+	        if(isset($image['success'])){
+	        $img_px =  getimagesize(DIR_IMAGE . $image['url']);
+	        if($img_px[0] > $img_px[1] && $img_px[0]>600 ){
+	        $data['images'][$key]['url'] =   $this->model_tool_image->resize($image['url'],600,ceil(600*$img_px[1]/$img_px[0]));
+	        }
+	        elseif($img_px[1]>$img_px[0] && $img_px[1]>600){
+	         $data['images'][$key]['url'] =  $this->model_tool_image->resize($image['url'],ceil(600*$img_px[0]/$img_px[1]),600);
+	        }else{
+	            $data['images'][$key]['url'] = HTTP_CATALOG."image/". $image['url'];
+	        }
+	        }
+	    	
+	    }
+	    $this->response->addHeader('Content-Type:application/json');
+	    $this->response->setOutput(json_encode($data));
+	}
+	
+	public function project(){
+	    
+	    
+	}
+	
+	public function rewards(){
+	     
+	     
+	}
+	
+
+}

@@ -1,0 +1,46 @@
+<?php
+class ControllerCustomerCollection extends Controller {
+	private $error = array();
+
+public function autocompleteCollection() {
+	    $json = array();
+	
+	    if (isset($this->request->get['filter_name']) || isset($this->request->get['filter_model'])) {
+	        $this->load->model('customer/collection');
+	        $this->load->model('catalog/option');
+	
+	        if (isset($this->request->get['filter_name'])) {
+	            $filter_name = $this->request->get['filter_name'];
+	        } else {
+	            $filter_name = '';
+	        }
+	
+	
+	        if (isset($this->request->get['limit'])) {
+	            $limit = $this->request->get['limit'];
+	        } else {
+	            $limit = 5;
+	        }
+	
+	        $filter_data = array(
+	            'filter_name'  => $filter_name,
+	            'start'        => 0,
+	            'limit'        => $limit
+	        );
+	
+	        $results = $this->model_customer_collection->getCollections($filter_data);
+	
+	         foreach ($results as $result) {
+	             $json[] = array(
+	                 'collection_id' => $result['collection_id'],
+	                 'collection_name'       => strip_tags(html_entity_decode($result['collection_name'], ENT_QUOTES, 'UTF-8'))."->".strip_tags(html_entity_decode($result['nickname'], ENT_QUOTES, 'UTF-8'))."->".$result['follow_count']
+	             );
+	         } 
+	    }
+	
+	    $this->response->addHeader('Content-Type: application/json');
+	    $this->response->setOutput(json_encode($json));
+	}
+
+	
+}

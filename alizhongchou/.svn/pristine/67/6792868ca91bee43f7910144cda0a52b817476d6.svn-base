@@ -1,0 +1,470 @@
+/* CSS Document */
+*{margin:0px;padding:0px;}
+body{
+	background: url(../images/bg.jpg);
+
+}
+html,body{
+	height:100%;
+	font-family: Helvetica, Arial, "Microsoft YaHei", sans-serif;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #101010;
+}
+li{list-style-type:none;}
+img{vertical-align:middle;}
+a{
+	text-decoration:none;
+	outline:none;blr:
+	expression(this.onFocus=this.blur());
+}
+.thanksgiving_all{
+	position: relative;
+}
+.thanksgiving_banner{
+	padding:0;
+	height: 944px;
+	position: relative;
+}
+.thanksgiving_banner img{
+	bottom: -1000%;
+    left: -1000%;
+    margin: auto;
+    max-width: 200%;
+    min-height: 100%;
+    position: absolute;
+    right: -1000%;
+    top: -1000%;
+}
+
+/* .clear{clear:both;} */
+.thanksgiving_ul{
+	display: table;
+}
+.ce{
+	margin-top: 40px;
+	display:block;
+	display: table;
+}
+
+.ce .ce_li .ce_img2{
+	display:none;
+}
+.ce li{
+	margin-bottom: 30px;
+}
+.ce li a{
+	color:rgb(60,60,60);
+	display:block;
+	cursor:pointer;
+	text-align: center;
+	font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.ce li a img{
+	margin: 0 auto;
+	width: 115px;
+	height: 115px;
+}
+.ce li a span{
+	display: block;
+	color: #fff;
+}
+.ce li .dqian{
+	background:none;
+}
+.ce li .xz{
+	/* border-bottom:2px solid rgb(0,82,228); */
+}
+.ce_img1{
+	margin-top:-40px;
+}
+.ce2{
+	margin-top: 110px;
+	margin-bottom: 20px;
+}
+
+.ce2 .ce_li .ce_img2{
+	display:block;
+	
+}
+.ce2 .ce_li .ce_img{
+	display:none;
+}
+.ce2 li a{
+	border:0px;
+}
+#div0{
+	display: table;
+	margin-bottom: 20px;
+}
+.thanksgiving_scroll{
+	display: table;
+}
+.by_more{
+	height: 90px;
+	line-height: 90px;
+	font-size: 20px;
+	text-align: center;
+	margin:0;
+	font-weight: bold;
+}
+.youhuiquan{
+	display: table;
+}
+.youhuiquan_list{
+	margin-bottom: 40px;
+}
+/* .youhuiquan_list img{
+	height: 240px;
+
+} */
+.btn:hover{
+	color: #101010;
+}
+#div1{
+	display: table;
+	margin-bottom: 10px;
+}
+.thanksgiving_scroll_banner_all{
+	margin-bottom: 20px;
+}
+.large-margin{
+	margin-top: 20px;
+}
+.thanksgiving_scroll_banner img,.youhuiquan_list img{
+	width: 100%;
+}
+.thanksgiving_scroll_banner_all img{
+	width: 100%;
+}
+.list_div{
+	margin-bottom: 30px;
+}
+.list_div .list_div_content{
+        width:100%
+	display: table;
+	padding:0;
+	background: #fff;
+}
+.list_div .list_div_content .content_top{
+	position: relative;
+
+}
+.list_div .list_div_content .content_top .bfb{
+	position:absolute;
+	top:10px;
+	right: 10px;
+	z-index: 100px;
+	background: #fff;
+	width: 62px;
+	height: 33px;
+	text-align: center;
+	line-height: 33px;
+	color: #ff0000;
+	font-size: 13px;
+	opacity: 0.8;
+	filter: alpha(opacity:0.8);
+}
+.list_div .list_div_content .content_top img{
+	width: 100%;
+	height: 280px;
+}
+.specialPrice{
+	color:#999999;
+	text-decoration:line-through;
+}
+.list_div .list_div_content .content_bottom{
+	padding:10px 5px 10px 5px;
+	background: #fff;
+	display: table;
+}
+.list_div .list_div_content .content_bottom p{
+	font-size: 13px;
+	color: #000;
+	    text-align: center;
+	height:40px;
+	overflow:hidden;
+}
+.list_div .list_div_content .content_bottom .money span:first-child{
+	font-size: 16px;
+	font-weight: bold;
+	color: #101010;
+	    text-align: center;
+}
+.list_div .list_div_content .content_bottom .shop{
+	padding: 10px 0px 0 0px;
+	
+}
+.but1,.but2,.but3{
+	padding:0;
+	font-size: 14px;
+}
+.but1 .btn,.but2 .btn,.but3 .btn{
+	border:1px solid #bbbbbb;
+	border-radius:0;
+	height: 40px;
+	background: #fff;
+	padding: 0;
+}
+.knumcheck{
+	color: #4cbcbc!important;
+	background: #f0ffff!important;
+	border-color: #7cc4c4!important;
+}
+.kadd:active {
+	color: #4cbcbc!important;
+	background: #f0ffff!important;
+	border-color: #7cc4c4!important;
+}
+.kshopcheck{
+	color: #fff!important;
+	background: #333333!important;
+	border-color: #444444!important;
+}
+.but1 .btn{
+	width: 90%
+}
+.but2 .btn{
+	width: 93%
+}
+.but3 .btn{
+	width: 100%
+}
+#div2{display: table;}
+#div3{display: table;}
+#div4{display: table;}
+#div5{display: table;}
+#div6{display: table;}
+
+
+#test{  
+position: fixed;
+    top: 10%;
+    right: 0px;
+    width: 130px;
+    color: #fff;
+    font-size: 14px;
+    display: none;
+	z-index:10;
+}  
+@media screen and (max-width: 768px){
+	#test{
+	    display: none !important;
+	}
+}
+
+ #test  .test_ul{
+ 	padding-top: 130px;
+    height: 590px;
+    background: url(../images/dh.png) no-repeat;
+    background-size: 100% 100%;
+ }
+
+#test  .test_ul li a{
+    display: block;
+    text-align: center;
+    line-height: 46px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+}
+#test  .offset_top{
+	background: url(../images/top.png) no-repeat;
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+/* #test  .offset_top i{
+	line-height: 50px;
+	font-size: 20px;
+
+} */
+
+.is-border{
+	padding-left: 3px;
+	padding-right: 3px;
+	background: #fff;
+}
+.is-border .content_top{
+	list-style: none;
+	padding:5px;
+}
+/* .is-border .content_top li{
+	height: 154px;
+	padding:1px;
+	margin-bottom: 2px;
+} */
+img{
+	display: block;
+}
+/* .is-border .content_top li img{
+	width: 134px;
+	height: 154px!important;
+} */
+.list_div_content .list-name{
+	border-bottom: 1px dashed #bbbbbb;
+	padding-bottom: 15px;
+	text-align: center;
+	color: #101010;
+	font-size: 16px;
+}
+.is-border  .liked {
+	text-align: right;
+	padding-top: 10px;
+}
+.is-border .content_top .one{
+	height: 270px!important;
+}
+.is-border .content_top .one img{
+	height: 270px!important;
+}
+.is-border .dh{
+	padding:0;
+}
+.is-border .dh i{
+	padding:0;
+	color: #cccccc;
+}
+.is-border .dh span{
+	padding:0;
+	display: block;
+	font-size: 13px;
+	color: #999999;
+	text-align:left;
+}
+.is-border .list-name .p1{
+	padding-bottom: 10px;
+}
+.is-border .content_top .two{
+	height: 134px!important;
+}
+
+
+
+.view-xiaohongmao {
+    display: table;
+    padding-top: 40px;
+    width: 100%;
+}
+
+.xiaohongmao {
+    background: url(../images/viewmore.png)no-repeat;
+    width: 180px;
+    margin: 0 auto;
+    height: 86px;
+    display: table;
+    padding-top: 40px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.xiaohongmao .chas {
+    color: #fff;
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.beauful-all{
+	height: 600px;
+}
+.beautful{
+	background:url(../images/button.png) no-repeat;
+	height:590px;
+	background-position: center;
+	background-size: 100% 100%;
+	top:13px;
+	left:0;
+}
+@media screen and (min-width: 1200px){
+.block_list>li, .block_list>.thing, .block_list>.thing_list, .block_list>.discussion {
+    width: 33.33333%;
+}
+}
+@media (min-width: 768px){
+	.block_list{background-color:transparent;font-size:0;margin-left:auto;margin-right:auto;padding: 0;}
+}
+@media (min-width: 992px){
+	.block_list{
+	padding: 0;
+ }
+}
+.block_list>li{
+	margin-bottom:20px
+}
+@media (min-width: 768px){
+	.block_list>li,.block_list>.activity:not(.activity--text),.block_list>.thing,.block_list>.thing_list,.block_list>.discussion{
+		display:inline-block;font-size:14px;padding-left:15px;padding-right:15px;vertical-align:top
+}
+}
+@media (min-width: 768px){
+	.block_list>.activity:not(.activity--text){
+	width:50%
+}
+}
+@media (min-width: 1200px){
+	.block_list>li,.block_list>.thing,.block_list>.thing_list,.block_list>.discussion{
+	width:33.33333%
+}
+}
+.block_list>.loading-things{
+	padding-top:1em}.block_list.js-waterfall{padding-bottom:28px
+	}
+.block_list.js-waterfall>.loading-things,.block_list.js-waterfall>.nomore{
+	bottom:0;font-size:14px;height:28px;padding-top:0;position:absolute
+	}
+.block_list.js-waterfall>.nomore{
+	line-height:28px;padding:0;width:100%
+    }
+    
+@media only screen and (min-width:768px) and (max-width:1200px) {
+	.block_list>li{
+	  width:50%!important;
+}
+}
+
+
+@media screen and (min-width:320px) and (max-width:414px){
+	.thanksgiving_banner img {
+	    height: 200px;
+	}
+
+}
+
+@media screen and (min-width:415px) and (max-width:768px){
+	.thanksgiving_banner{
+	    height: 600px;
+	}
+	.thanksgiving_banner img{
+		height: 600px;
+	}
+	
+
+}
+
+@media screen and (max-width: 414px){
+		.thanksgiving_banner{
+			height: 240px;
+			background-size: 100% 100%;
+		}
+}
+
+@media screen and (min-width:320px) and (max-width:768px){
+	.beauful-all{
+			height: 240px;
+		}
+		.beautful{
+			height:240px;
+		}
+}
+
+@media(max-width:992px){
+.thanksgiving_ul.container{
+	padding:0 !important;
+}
+}

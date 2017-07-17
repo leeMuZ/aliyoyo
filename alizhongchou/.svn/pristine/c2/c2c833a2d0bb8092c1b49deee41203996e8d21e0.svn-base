@@ -1,0 +1,216 @@
+
+<body>
+	<div>
+		<center>
+			<table border="0" cellpadding="0" cellspacing="0" width="100%" id="bodyTable" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin: 0;padding: 0;width: 100%;background-color: #4ACE97;background: linear-gradient(60deg, #4ed7d7,#91f9f9, #eceb8f,#efd350);background-image: linear-gradient(20deg, rgb（78, 215, 215）, rgb（145, 249, 249）,rgb（236, 235, 143）,rgb（239, 211, 80）);background-repeat: repeat;background-attachment: scroll;background-position: 0% 0%;background-clip: border-box;background-origin: padding-box;background-size: auto auto;">
+				<tbody>
+					<tr>
+						<td align="center" valign="bottom" width="100%" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 550px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+								<tbody>
+									<tr>
+										<td align="left" valign="top" style="padding-right: 2px;padding-bottom: 10px;padding-left: 2px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" id="templateHeader">
+											<table class="mcnDividerBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;" border="0" cellpadding="0" cellspacing="0" width="100%">
+											    <tbody class="mcnDividerBlockOuter">
+											        <tr>
+											            <td class="mcnDividerBlockInner" style="min-width: 100%;padding: 10px 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+											                <table class="mcnDividerContent" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" border="0" cellpadding="0" cellspacing="0" width="100%">
+											                    <tbody><tr>
+											                        <td style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+											                            <span></span>
+											                        </td>
+											                    </tr>
+											                </tbody></table>
+
+											            </td>
+											        </tr>
+											    </tbody>
+											</table>
+											<table class="mcnCodeBlock" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+	    										<tbody class="mcnTextBlockOuter">
+											        <tr>
+											            <td class="mcnTextBlockInner" valign="top" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+											                
+											            </td>
+											        </tr>
+	    										</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" valign="bottom" width="100%" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 550px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+								<tbody>
+									<tr>
+										<td align="left" valign="top" style="padding-right: 2px;padding-bottom: 10px;padding-left: 2px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" id="templateHeader">
+											<table class="mcnDividerBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;" border="0" cellpadding="0" cellspacing="0" width="100%">
+											    <tbody class="mcnDividerBlockOuter">
+											        <tr>
+											            <td class="mcnDividerBlockInner" style="min-width: 100%;padding: 10px 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+											                <table class="mcnDividerContent" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" border="0" cellpadding="0" cellspacing="0" width="100%">
+											                    <tbody><tr>
+											                        <td style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+											                            <span></span>
+											                        </td>
+											                    </tr>
+											                </tbody></table>
+
+											            </td>
+											        </tr>
+											    </tbody>
+											</table>
+											<table class="mcnCodeBlock" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+	    										<tbody class="mcnTextBlockOuter">
+											        <tr>
+											            <td class="mcnTextBlockInner" valign="top" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+											            </td>
+											        </tr>
+	    										</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" valign="top" class="bodyBackground" style="padding-top: 20px;padding-bottom: 20px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;z_background-color: #FFFFFF;">
+							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 550px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background:#fff;border-radius:5px;">
+								<tbody>
+									<tr>
+										<td align="left" valign="top" id="templateBody" style="padding-right: 2px;padding-bottom: 21px;padding-left: 2px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+											<table class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0">
+											    <tbody class="mcnTextBlockOuter">
+											        <tr>
+											            <td class="mcnTextBlockInner" style="padding-top: 40px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign="top">
+											               <table style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" class="mcnTextContentContainer" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
+											                    <tbody>
+											                    	<tr>
+																		<td class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 20px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #101010;font-family: Montserrat,arial,serif;font-size: 16px;line-font-weight: 400;text-align: left;" valign="top">
+											                        		<span class="preheader" style="color: #101010;display: none !important;height: 0;opacity: 0;visibility: hidden;width: 0;">Take the guesswork out of e-commerce, and send personalized emails for individual customers in just a few clicks.</span>
+																			<p style="display: block;margin: 0;padding: 0;color: #3ed6d6;font-family: Montserrat,arial,serif;font-style: normal;font-weight: bold;line-letter-spacing: normal;text-align: left;font-size:24px;font-size: 24px;letter-spacing: -1px;">审核通知</p>
+																		</td>
+											                    	</tr>
+											                	</tbody>
+											            	</table>
+														</td>
+											        </tr>
+											    </tbody>
+											</table>
+											<table class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0">
+											    <tbody class="mcnTextBlockOuter">
+											        <tr>
+											            <td class="mcnTextBlockInner" style="padding-top: 0px;padding-left: 30px;padding-right:30px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign="top">
+											              	<table style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" class="mcnTextContentContainer" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">
+											                    <tbody>
+											                    	<tr>
+																	 
+																		<td class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #101010;font-family: Montserrat,arial,serif;font-size: 14px;line-font-weight: 400;text-align: left;line-height: 28px;" valign="top">
+																		<?php echo $info['firstname'].$info['lastname']; ?>先生/女士，您好！<br>&nbsp;&nbsp;&nbsp;&nbsp;
+																	        很抱歉通知您，您提交在我们平台上的 <span style="font-weight:bold;">“<?php echo $info['name'] ?>”</span> 项目审核未能通过。<br>
+																	        &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight:bold;">未通过的原因是</span><br>
+																	        <?php echo $info['content'] ?>
+																			<br>
+																		为了您的项目能尽快通过审核完成众筹，请您最近及时修改，重新提交。<br>
+																		<a href="" style="display:inline-block;background:#3ed6d6;color:#fff;text-decoration:none;padding:0px 15px;border-radius:3px;">点击这里</a> &nbsp;&nbsp;在个人中心里面查看原因。<br>
+																		<span style="font-weight:bold;margin-top:20px;display:inline-block;">北京阿里优优科技有限公司 </span>
+												                        </td>
+																		
+											                    	</tr>
+											                   </tbody>
+											                </table>
+														</td>
+											        </tr>
+											    </tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td style="text-align:center;width:100%;font-size:12px;color:#bababa;padding-bottom: 30px;">Aliyoyo ? 2006 - 2017 Aliyoyo.com All Rights Reserved.</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" valign="bottom" width="100%" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 550px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+								<tbody>
+									<tr>
+										<td align="left" valign="top" style="padding-right: 2px;padding-bottom: 10px;padding-left: 2px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" id="templateHeader">
+											<table class="mcnDividerBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;" border="0" cellpadding="0" cellspacing="0" width="100%">
+											    <tbody class="mcnDividerBlockOuter">
+											        <tr>
+											            <td class="mcnDividerBlockInner" style="min-width: 100%;padding: 10px 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+											                <table class="mcnDividerContent" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" border="0" cellpadding="0" cellspacing="0" width="100%">
+											                    <tbody><tr>
+											                        <td style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+											                            <span></span>
+											                        </td>
+											                    </tr>
+											                </tbody></table>
+
+											            </td>
+											        </tr>
+											    </tbody>
+											</table>
+											<table class="mcnCodeBlock" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+	    										<tbody class="mcnTextBlockOuter">
+											        <tr>
+											            <td class="mcnTextBlockInner" valign="top" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+											                
+											            </td>
+											        </tr>
+	    										</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" valign="bottom" width="100%" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 550px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+								<tbody>
+									<tr>
+										<td align="left" valign="top" style="padding-right: 2px;padding-bottom: 10px;padding-left: 2px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" id="templateHeader">
+											<table class="mcnDividerBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;" border="0" cellpadding="0" cellspacing="0" width="100%">
+											    <tbody class="mcnDividerBlockOuter">
+											        <tr>
+											            <td class="mcnDividerBlockInner" style="min-width: 100%;padding: 10px 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+											                <table class="mcnDividerContent" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" border="0" cellpadding="0" cellspacing="0" width="100%">
+											                    <tbody><tr>
+											                        <td style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+											                            <span></span>
+											                        </td>
+											                    </tr>
+											                </tbody></table>
+
+											            </td>
+											        </tr>
+											    </tbody>
+											</table>
+											<table class="mcnCodeBlock" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+	    										<tbody class="mcnTextBlockOuter">
+											        <tr>
+											            <td class="mcnTextBlockInner" valign="top" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+											                
+											            </td>
+											        </tr>
+	    										</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
+	</div>

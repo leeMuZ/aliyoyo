@@ -1,0 +1,442 @@
+<?php echo $header; ?>
+ <script>
+  function lxfEndtime(){
+          $(".r").each(function(){
+                var lxfday=$(this).attr("lxfday");//用来判断是否显示天数的变量
+                var endtime = new Date($(this).attr("endtime")).getTime();//取结束日期(毫秒值)
+				var kaishi = new Date($(this).attr("starttime")).getTime(); 
+                var nowtime = new Date().getTime();        //今天的日期(毫秒值)
+				var start = nowtime - kaishi ;
+				var end = endtime - kaishi ;
+                var youtime = end-start ;//还有多久(毫秒值)
+                var seconds = youtime/1000;
+                var minutes = Math.floor(seconds/60);
+                var hours = Math.floor(minutes/60);
+                var days = Math.floor(hours/24);
+                var CDay= days ;
+                var CHour= hours % 24;
+                var CMinute= minutes % 60;
+                var CSecond= Math.floor(seconds%60);//"%"是取余运算，可以理解为60进一后取余数，然后只要余数。
+                if(start-end>0 ){
+                        $(this).html("")//如果结束日期小于当前日期就提示过期啦
+                        }else{
+                                if((end-start)/86400/1000<=3){
+                                        $(this).html("<span>"+((days * 24)+CHour)+"</span><span  style='margin-left:5px'>hours</span><span> left");          //输出没有天数的数据
+                                        }else{
+                        $(this).html("<span>"+days+"</span><span style='margin-left:5px'>day</span><span style='margin-left:5px'>"+CHour+"</span><span style='margin-left:5px'>hours</span><span style='margin-left:5px'> left</span>");          //输出有天数的数据
+                                }
+                        }
+          });
+   setTimeout("lxfEndtime()",1000);
+  };
+  $(function(){
+      lxfEndtime();
+   });
+
+</script>
+<body>
+
+<div class="standard-body">
+	<div id="header" class="row">
+		<div class="vcard-canopy">
+			 <img src="catalog/view/img/vdio.jpg" id="uploadbackgroud">
+			<div class="mengban col-lg-12 col-md-12 col-xs-12 col-sm-12 "></div>
+		</div>
+		<div class="dingwei col-md-12 col-xs-12 col-sm-12 col-lg-12">
+		 	<form action="" id="userHomeForm">
+				<span class="plus e" style="float:right">
+				<?php  if(empty($uid)){ ?>
+					<span class="photo"><i class="fa fa-plus-circle plus_check">
+					</i></span>
+                <?php } ?>
+					<div class="popr" style="display:none">
+						<p class="load-p">
+							<span style="line-height:35px;color:#fff">Upload Cover Image</span>
+						</p>
+					</div>
+				</span>
+			</form>
+		</div>
+		<div class="vcard col-md-12  col-xs-12">
+			<div class="header-img col-md-12 col-xs-12">
+				<form  method="post" enctype="multipart/form-data" class="col-lg-12" id='new-match' >
+					<div class="shangchuan" >
+					<?php if(empty($uid)){ ?>
+						<img src="<?php echo $photo?>" alt="" class="member_img">						
+						<div class="upload" >
+								<input  type="file" class="input-files" id="reviewImageUpload"  accept="image/gif, image/jpeg, image/png, image/jpg" title="Upload Profile Photo" />
+							<i class="fa fa-cloud-upload" ></i>
+						</div>
+						<?php }else{ ?>
+						<img src="<?php echo DIR_IMAGE.$name1['image']?>" alt="" class="member_img">
+						<?php } ?>
+						<div class="wait-mengban"></div>
+					</div>
+				</form>
+				  
+			</div>
+			<div class="card-word col-md-12 col-xs-12">			
+			   <?php
+                  if(empty($uid)){
+			       echo $name['nickname'];
+                  }else{
+					echo $name1['nickname'];  
+				  }				   
+			   
+			   ?>
+			</div>
+			<div class="card-yoyo col-md-12 col-xs-12">
+				<i class="fa fa-ticket"></i>
+				0 
+			</div>
+			<div class="card-there col-md-12 col-xs-12">
+				<span></span>
+			</div>
+			<a href="http://www.aliyoyo.com/account/edit">
+				<i class="fa fa-pencil fa-2x pen"></i>
+			</a>
+			<div class="edit col-lg-offset-5 col-lg-2 col-md-offset-4 col-md-4 col-xs-offset-3 col-sm-offset-4 col-sm-4 hidden-xs ">
+			 <?php if(empty($uid)){ ?>
+				<a href="<?php echo $edit ?>">
+					<div class="account">
+						Edit Account 
+					</div>
+				</a>
+			 <?php } ?>
+			</div>
+		</div>
+	</div>
+	<div class="main-content full-width inner-page" style="background-color: #ebeced">
+		<div class="background">
+			<div class="container new-container">
+				<div class="col-md-12 center-column new-container" id="content" style="padding-top:30px;">
+					<div class="contaner">
+						<div class="top row">
+							<div class=" profiletable-top nochong_padding">
+								<div class="llll col-lg-12">
+									<ul class="nav nav-tabs ul1" id="acontant_ul">
+										<!-- <li class="col-lg-offset-2 col-lg-4 col-md-6 col-sm-6 col-xs-6">
+											<a href="" class=" col-lg-offset-6 col-lg-6 col-md-offset-8 col-md-4 col-sm-offset-8 col-sm-4 col-xs-12 follower_a ">
+												<div class="follower-left col-lg-12 col-md-12 col-offset-12 col-xs-12  ">
+													<p>following</p>
+													<p>0</p>
+												</div>
+											</a>
+										</li>
+										<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
+											<a href="" class="col-lg-6 col-md-4 col-sm-4  col-xs-12 follower_a ">
+												<div class="follower-left  col-lg-12 col-md-12 col-xs-12">
+												<p>followers </p>
+												<p>0</p>
+												</div>
+											</a>
+										</li> -->
+										<li class="col-md-4 col-sm-4 col-xs-4">
+										<a href="<?php echo $href.'&url=1' ?>" <?php if($url==1){ ?>class="acontantactive"<?php } ?>>
+												<i class="fa fa-star"></i>
+											          <span class="hidden-xs-xs">Remind Project</span>
+												<span class="hidden-xs-xs"><?php echo $total ?></span>
+											</a>
+										</li>
+										<li class="col-md-4 col-sm-4 col-xs-4">
+											<a href="<?php echo $href.'&url=2' ?>" <?php if($url==2){ ?>class="acontantactive"<?php } ?>>
+												<i class="fa fa-life-saver"></i>
+												<span class="hidden-xs-xs">Supported Project</span>
+												<span class="hidden-xs-xs"><?php echo $total1 ?></span>
+											</a>
+										</li>
+										<li class="col-md-4 col-sm-4 col-xs-4">
+											<a href="<?php echo $href.'&url=3' ?>" <?php if($url==3){ ?>class="acontantactive"<?php } ?>>
+												<i class="fa fa-lightbulb-o"></i>
+												<span class="hidden-xs-xs">Published Project</span>
+												<span class="hidden-xs-xs"><?php echo $total2 ?></span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div> 
+						<div class="bottom row">
+							<div class=" profiletable-bottom  ">
+								<div class="tab-content  acontant-tab">
+									<div class="tab-pane fade in col-md-12 col-xs-12 active" id="acontant-tabthree">
+										<div class="own_list_one col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	 										<div class="product-grid">
+												<div class="row norow">
+												<?php
+                                                  if(!empty($result)){
+
+                                                       foreach($result as $v){
+														   if(!empty($v['funding_id'])){
+													
+												   ?>
+												   
+													<div class="filxbox" >
+														<div class="product product-hover">
+															<div class="left">
+																<div class="image ">
+																	<a href="http://www.aliyoyo.com/WOWSTICK-SMART-LITHIUM-CORDLESS-SCREWDRIVER-POWER-TOOLS-WORK-AT-HOME-WITH-ELECTRIC-SCREWDRIVER.html" target="_blank">
+																	<img src="http://p1.so.qhimgs1.com/sdr/1228_768_/t0169965245024885bd.jpg" alt="WOWSTICK SMART LITHIUM CORDLESS SCREWDRIVER POWER TOOLS WORK AT HOME WITH ELECTRIC SCREWDRIVER" class="zoom-image-effect">
+																	</a>
+																</div>
+																<a href="">
+																	<div class="heartlike" >
+																		<i class="fa fa-heart"></i>
+																	</div>
+																</a>
+																
+																  <?php 
+																     if($url==1){
+																  ?>
+																	 <div class="deleted">
+																	  <a href='<?php echo $href."&remove=".$v['funding_id'] ?>'><i class="fa fa-trash-o"></i></a>
+																	 </div>																  
+																   <?php }elseif($url==2){ ?>
+																	  <span></span>
+																	 <?php }elseif($url==3){  
+																	    if($v['status']!=15 ){
+																	  ?>
+																  	 <div class="deleted">
+																	   <a href='<?php echo $href."&rem=".$v['funding_id']  ?>'><i class="fa fa-trash-o"></i></a>
+																	 </div>	
+																	 <?php }}else{ ?>
+																      <div class="deleted">
+																	   <a href='<?php echo $href."&remove=".$v['funding_id']  ?>'><i class="fa fa-trash-o"></i></a>
+																	  </div>	
+																  <?php } ?>
+															
+															</div>
+															<div class="right">
+																<div class="name">
+																	<a href="<?php echo $href2."&funding_id=".$v['funding_id'] ?>"><?php echo substr($v['name'],0,30) ?></a>
+																</div>
+																<div class="nduanluo">
+																     <?php echo $v['introduce'] ?>
+																</div>
+																<div class="progress">
+																	<div class="progress-bar" style="width:<?php if(sprintf("%.2f",$v['current_goal']/$v['total_goal'])*100>=100){echo '100';}else{echo sprintf("%.2f",$v['current_goal']/$v['total_goal'])*100 ;} ?>%; ">
+																		<div class="progress-value"><?php echo $v['total_goal']>0 ? sprintf("%.2f",$v['current_goal']/$v['total_goal'])*100  : 0; ?>%</div>
+																	</div>
+																</div>
+																<div class="pledge">
+																	<p class="pledge-left l">
+																		Pledged: $<?php echo $v['current_goal'] ?>
+																	</p>
+																	<p class="pledge-right r" id="lxftime" endtime="<?php echo $v['date_ended'] ?>" starttime="<?php echo $v['date_start'] ?>" style="margin-top:-1%"></p>
+																</div>
+															</div>
+															<!-- add -->
+															<?php 
+															   if($url==3 && $v['status']==15 ){
+															 ?>
+															<div class="hover-product" style="display:none">
+																<div class="product-zhezhao clearfix col-sm-12">
+																</div>			
+																<div class="zhezhao-btn">
+																	 <a href="<?php echo $href2."&funding_id=".$v['funding_id'] ?>"><button class="btn"><i class="fa fa-eye"></i><span>View Project</span></button></a>
+																     <button class="btn"><i class="fa fa-edit"></i><span>Edit Project</span></button>
+																     <a href='<?php echo $href1."&url=".$v['funding_id'] ?>'><button class="btn"><i class="fa fa-database"></i><span>View Data</span></button></a>
+																</div>
+																
+															</div>
+															<?php } ?>
+															<!-- add end -->
+														</div>
+													</div>
+														   <?php }else{?>															   
+																											  <center>
+													     <div class="user_avatar " >
+														   <img src="image/Profile_Photo-60x60.png" style="width:100px;height:100px">
+														   <span >Nothing</span>
+														 </div>
+														</center>	   
+												  <?php }}}else{ ?>
+													  <div>
+													  <center>
+													     <div class="user_avatar " >
+														   <img src="image/Profile_Photo-60x60.png" style="width:100px;height:100px">
+														   <span >Nothing</span>
+														 </div>
+														</center>
+													  </div>
+												 <?php } ?>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<!-- <div class="nothing_think ">
+							<div class="nothing_think_img">
+								<div class="img-div"></div>
+								<span>Nothing</span>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$(".photo").on('click',function(){
+		$("input[type='file']").click();
+	})
+
+	//uoload img
+	$('.input-files').change(function (e) {
+
+		if (getObjectURL(this.files[0])) {
+			if(typeof(data) == 'undefine'){
+				var data = new FormData($("#new-match")[0]);
+			}
+			var data = new FormData($("#new-match")[0]);
+			var files = $("#reviewImageUpload").prop('files');
+			for(var i = 0 ;i<files.length;i++){
+				var file = files[i];
+				if (!file.type.match('image.*')) {
+					continue;
+				}
+				data.append('image[]', file);
+			}
+			$.ajax({
+				url: "index.php?route=account/edit",
+				type: 'post',
+				data: data,
+				dataType:'json',
+				cache: false,
+				contentType: false,
+				processData: false,
+				beforeSend: function() {
+				$('.photo').button('loading');
+				},
+				success: function(data) {
+				 $('.photo').button('reset');
+					if(data.code == 1){
+						$('#file_error').hide();
+						$('.member_img').attr('src', data.data);
+					}else if(data.code == 0){
+						$('#file_error').show();
+						$('#file_error').html(data.data)
+					}else if(data.code == 2){
+						location.href=data.data;
+					}
+
+				},
+				complete :function(){ $('.photo').removeAttr('disabled')}
+			});
+		}
+		function getObjectURL(file) {
+			var url = null;
+			if (window.createObjectURL != undefined) { // basic
+				url = window.createObjectURL(file);
+			} else if (window.URL != undefined) { // mozilla(firefox)
+				url = window.URL.createObjectURL(file);
+			} else if (window.webkitURL != undefined) { // webkit or chrome
+				url = window.webkitURL.createObjectURL(file);
+			}
+			return url;
+		}
+
+	})
+	/*$(function () {
+	    //$('#acontant_ul a：first-child').tab('show')
+	  
+		$('#acontant_ul a').click(function (e) {
+	  		e.preventDefault()
+	  		//$(this).tab('show');
+	  		$(this).addClass('acontantactive').parent().siblings().children().removeClass('acontantactive');
+
+		});
+		
+	})*/
+	$(".product").hover(function() {
+		$(this).children().children('.deleted').addClass('activve');
+	}, function() {
+		$(this).children().children('.deleted').removeClass('activve');
+	});
+	/*$(".deleted").click(function(event) {
+		/* Act on the event */
+		/*$(this).parent().parent().parent().remove();
+	});*/
+	
+		//uoload img
+	$('.input-files').change(function (e) {
+
+		if (getObjectURL(this.files[0])) {
+			if(typeof(data) == 'undefine'){
+				var data = new FormData($("#new-match")[0]);
+			}
+			var data = new FormData($("#new-match")[0]);
+			var files = $("#reviewImageUpload").prop('files');
+			for(var i = 0 ;i<files.length;i++){
+				var file = files[i];
+				if (!file.type.match('image.*')) {
+					continue;
+				}
+				data.append('image[]', file);
+			}
+			$.ajax({
+				url: "index.php?route=account/edit",
+				type: 'post',
+				data: data,
+				dataType:'json',
+				cache: false,
+				contentType: false,
+				processData: false,
+				beforeSend: function() {
+				$('#photo').button('loading');
+				},
+				success: function(data) {
+				 $('#photo').button('reset');
+					if(data.code == 1){
+						$('#file_error').hide();
+						$('.member_img').attr('src', data.data);
+					}else if(data.code == 0){
+						$('#file_error').show();
+						$('#file_error').html(data.data)
+					}else if(data.code == 2){
+						location.href=data.data;
+					}
+
+				},
+				complete :function(){ $('#photo').removeAttr('disabled')}
+			});
+		}
+		function getObjectURL(file) {
+			var url = null;
+			if (window.createObjectURL != undefined) { // basic
+				url = window.createObjectURL(file);
+			} else if (window.URL != undefined) { // mozilla(firefox)
+				url = window.URL.createObjectURL(file);
+			} else if (window.webkitURL != undefined) { // webkit or chrome
+				url = window.webkitURL.createObjectURL(file);
+			}
+			return url;
+		}
+
+	})
+
+	// hover zhe zhao btn
+	$(document).ready(function(){
+		
+		$(".product").hover(function(){
+	     
+		 $(this).children('.hover-product').show();
+	   $(".product-zhezhao").height($(this).height());
+	  } ,function() {
+	 	$(this).children('.hover-product').hide();
+	  })
+	  
+	})
+		
+	
+	
+
+</script>
+
+</body>
+
+<?php echo $footer; ?>

@@ -1,0 +1,67 @@
+<footer class="newfooter col-sm-12 clearfix">
+				<div class="container">
+					<div class="newfooter-down">
+						<ul class="newfooter-down_ul clearfix">
+							<li>
+								<a href="">Home</a>
+								<a href="">Create a Project</a>
+								<a href="">Explore Projects</a>
+								<a href="">Login & Register</a>
+								<a href="">Collections</a>
+								<a href="">Partner</a>
+								<a href="">Shop</a>
+							</li>
+							<li>
+								<a href="">About us</a>
+								<a href="">How it works</a>
+								<a href="">FAQS</a>
+								<a href="">Newsletters</a>
+								<a href="">Trust & Safety</a>
+								<a href="">Contact</a>
+							</li>
+							<li>
+								<a href="">Terms of Use </a>
+								<a href="">Privacy </a>
+								<a href="">Fees</a>
+							</li>
+							<li>
+								<a href="">TSign up for more inspiration</a>
+								<div class="newfooter-down_ul_li_div">
+									<input type="text" placeholder="Your email address">
+									<button class="btn">SIGN UP NOW</button>
+								</div>
+								<a href=""><em>Private, secure, spam-free</em></a>
+							</li>
+						</ul>
+						<div class="newfooter-icon clearfix">
+							<img src="img/ALIYOYO2.png" alt="" class="newfooter-icon_img">
+							<p class="newfooter-icon_icon">
+								<a>
+									<i class="fa fa-facebook-square"></i>
+								</a>
+								<a>
+									<i class="fa fa-instagram"></i>
+								</a>
+								<a>
+									<i class="fa fa-twitter"></i>
+								</a>
+								<a>
+									<i class="fa fa-google"></i>
+								</a>
+								<a>
+									<i class="fa fa-linkedin-square"></i>
+								</a>
+								<a>
+									<i class="fa fa-pinterest"></i>
+								</a>
+							</p>
+						</div>
+						<h6>Aliyoyo © 2006 - 2017 Aliyoyo.com All Rights Reserved. </h6>
+					</div>
+				</div>
+			</footer>
+			
+   </div>
+</div>
+
+</body></html>

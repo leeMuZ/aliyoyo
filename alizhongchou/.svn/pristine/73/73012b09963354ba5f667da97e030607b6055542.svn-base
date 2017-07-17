@@ -1,0 +1,73 @@
+<?php
+class ModelAccountassortment extends Model {
+	
+     //add by liuxuewen at 20170425 获取分类信息
+	public function getcategory($id) {
+		$query = $this->db->query("SELECT name,category_id FROM cf_category WHERE  parent_id = " . (int)$id );
+		return $query->rows;
+	}
+
+   //add by liuxuewen at 20170425 获取分类商品
+	public function getproduct($id) {
+        $query = $this->db->query("SELECT * FROM cf_crowdfunding   WHERE status=15 and category_id = " . (int)$id);
+		return $query->rows;
+	}
+	
+    //add by liuxuewen at 20170425 获取主分类商品
+	public function getproducts($id) {
+        $query = $this->db->query("SELECT a.name,a.image,a.current_goal,a.total_goal,a.introduce,a.funding_id,a.status,a.date_start,a.date_ended FROM cf_crowdfunding as a left join cf_category as b on a.category_id=b.category_id  WHERE  a.status=15 and parent_id = " . (int)$id);
+		return $query->rows;
+	}
+
+   //add by liuxuewen at 20170503 获取分类商品
+	public function getproducte($id,$sid) {
+		$query = $this->db->query("SELECT * FROM cf_crowdfunding   WHERE status=15 and  category_id = " . (int)$id);
+		$arr=array();
+        if($sid==3){
+		foreach($query->rows as $v){
+			if((strtotime($v['date_ended'])-strtotime($v['date_start']))-(strtotime(date('Y-m-d h:i:s',time()))-strtotime($v['date_start']))>0){
+			 $arr[]=$v;
+			}			
+		}
+		return $arr;
+		}elseif($sid==1){
+		  foreach($query->rows as $v){
+			if($v['current_goal']>=$v['total_goal']){
+			 $arr[]=$v;
+			}
+			
+		 }
+		return $arr;		   
+		}elseif($sid==2){
+		   $query = $this->db->query("SELECT * FROM cf_crowdfunding   WHERE status=15 and category_id = " . (int)$id);
+		   return $query->rows;
+			
+		}
+	}
+
+      public function getproducta($id,$url) {
+        $query = $this->db->query("SELECT a.name,a.image,a.current_goal,a.total_goal,a.introduce,a.funding_id,a.status,a.date_start,a.date_ended FROM cf_crowdfunding as a left join cf_category as b on a.category_id=b.category_id  WHERE  a.status=15 and parent_id = " . (int)$url);
+		$arr=array();
+        if($id==3){
+		foreach($query->rows as $v){
+			if((strtotime($v['date_ended'])-strtotime($v['date_start']))-(strtotime(date('Y-m-d h:i:s',time()))-strtotime($v['date_start']))>0){
+			 $arr[]=$v;
+			}			
+		}
+		return $arr;
+		}elseif($id==1){
+		  foreach($query->rows as $v){
+			if($v['current_goal']>=$v['total_goal']){
+			 $arr[]=$v;
+			}
+		  }
+          return $arr;		  
+		}elseif($id==2){
+			$query = $this->db->query("SELECT a.name,a.image,a.current_goal,a.total_goal,a.introduce,a.funding_id,a.status,a.date_start,a.date_ended FROM cf_crowdfunding as a left join cf_category as b on a.category_id=b.category_id  WHERE  a.status=15 and parent_id = " . (int)$url);
+             return $query->rows;
+			  
+		  }       		
+		  
+	  }		  
+
+}

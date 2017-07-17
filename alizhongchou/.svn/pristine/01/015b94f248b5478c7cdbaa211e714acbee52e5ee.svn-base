@@ -1,0 +1,140 @@
+<?php
+class ModelProjectCrowdFund extends Model {
+    public function creatProject($type){
+        $funding_id = time().rand(0, 9);
+        $query = $this->db->query("INSERT INTO ".DB_PREFIX."crowdfunding set funding_id='".$funding_id."',customer_id='".$this->customer->getId()."',date_added=NOW()");
+        $query = $this->db->query("INSERT INTO ".DB_PREFIX."crowdfunding_rewards set funding_id='".$funding_id."'");
+        $query = $this->db->query("INSERT INTO ".DB_PREFIX."crowdfunding_description set funding_id='".$funding_id."'");
+        $query = $this->db->query("INSERT INTO ".DB_PREFIX."funds_recipient_address set province_id='0',city_id='0',area_id='0'");
+        if($type){
+            $query = $this->db->query("INSERT INTO ".DB_PREFIX."funds_recipient_company set funding_id='".$funding_id."'");
+        }else{
+            $query = $this->db->query("INSERT INTO ".DB_PREFIX."funds_recipient_pesonal set funding_id='".$funding_id."'");
+        }
+        
+        return $funding_id;
+    }
+	public function getCrowdFunding($funding_id) {
+		$query = $this->db->query("SELECT 
+		     funding_id,
+		     customer_id,
+		     name,
+		     introduce,
+		     current_goal,
+		     total_goal,
+		     backers,
+		     image,
+		     viedo,
+		     status,
+		     category_id,
+		     date_added,
+		     date_modified,
+		     date_start,
+		     date_ended,
+		     sort_order
+		     FROM " . DB_PREFIX . "crowdfunding WHERE funding_id = '" . $funding_id . "'");
+		return $query->row;
+	}
+	
+	public function getCrowdFundingDescription($funding_id) {
+	    $query = $this->db->query("SELECT 
+	        description,
+	        risk_description,
+	        meta_title,
+	        meta_description,
+	        meta_keyword 
+	        FROM " . DB_PREFIX . "crowdfunding_description WHERE funding_id = '" . $funding_id . "'");
+	    return $query->row;
+	}
+	
+	public function getCrowdFundingUpdates($data) {
+	    $sql = "SELECT
+	        update_id,
+	        title,
+	        content,
+	        like_num,
+	        comment_num,
+	        post_type,
+	        date_added
+	        FROM " . DB_PREFIX . "crowdfunding_updates WHERE funding_id = '" . $data['funding_id'] . "'";
+	    //支持者不传post_type 非支持者传0
+	    if(isset($data['post_type'])){
+	       $sql.= " AND post_type='0'";
+	    }
+	            
+	    $query = $this->db->query($sql);
+	    return $query->rows;
+	}
+	
+	public function getCrowdFundingUpdate($update_id) {
+	    $query = $this->db->query("SELECT
+	        update_id,
+	        title,
+	        content,
+	        like_num,
+	        comment_num,
+	        post_type,
+	        date_added
+	        FROM " . DB_PREFIX . "crowdfunding_updates WHERE update_id = '" . $update_id . "'");
+	    return $query->row;
+	}
+	
+	public function getCrowdFundingComment($funding_id){
+	    $query = $this->db->query("SELECT
+	        customer_id,
+	        target_customer_id,
+	        content,
+	        date_added
+	        FROM " . DB_PREFIX . "crowdfunding_comment WHERE funding_id = '" . $funding_id . "'");
+	    return $query->row;
+	}
+	
+	public function getPersonalInfo($funding_id){
+	    $query = $this->db->query("SELECT
+	        frp.name,
+	        frp.identity_code,
+	        frp.identity_image_face,
+	        frp.identity_image_back,
+	        frp.phone,
+	        frp.email,
+	        frp.bank_card,
+	        frp.bank_name,
+	        frp.address_id,
+	        fra.province_id,
+	        fra.city_id,
+	        fra.area_id,
+	        fra.address
+	        FROM " . DB_PREFIX . "funds_recipient_pesonal frp LEFT JOIN " . DB_PREFIX . "funds_recipient_address fra ON frp.address_id=fra.address_id  WHERE funding_id = '" . $funding_id . "'");
+	    return $query->row;
+	}
+	
+	public function getCompanyInfo($funding_id){
+	    $query = $this->db->query("SELECT
+	        frc.name,
+	        frc.identity_code,
+	        frc.identity_image_face,
+	        frc.identity_image_back,
+	        frc.phone,
+	        frc.email,
+	        frc.address_id,
+	        frc.licence_type,
+	        frc.businessLicence,
+	        frc.organizationCode,
+	        frc.taxRegCertificate,
+	        frc.bankAccPermits,
+	        frc.company_name,
+	        frc.registeredTime,
+	        frc.company_intorduce,
+	        frc.company_description,
+	        frc.payee,
+	        frc.payee_phone,
+	        frc.bank_card,
+	        frc.bank_name,
+	        fra.province_id,
+	        fra.city_id,
+	        fra.area_id,
+	        fra.address
+	        FROM " . DB_PREFIX . "funds_recipient_company frc LEFT JOIN " . DB_PREFIX . "funds_recipient_address fra ON frc.address_id=fra.address_id  WHERE funding_id = '" . $funding_id . "'");
+	    return $query->row;
+	}
+}

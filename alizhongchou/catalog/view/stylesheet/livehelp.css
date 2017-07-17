@@ -1,0 +1,593 @@
+/* ICON FONTS */
+    @font-face {
+        font-family: 'icomoon';
+        src:url('fonts/icomoon.eot?bghqwzw');
+        src:url('fonts/icomoon.eot?#iefixbghqwzw') format('embedded-opentype'),
+            url('fonts/icomoon.ttf?bghqwzw') format('truetype'),
+            url('fonts/icomoon.woff?bghqwzw') format('woff'),
+            url('fonts/icomoon.svg?bghqwzw#icomoon') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    [class^="icon1-"], [class*=" icon1-"] {
+        font-family: 'icomoon';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .icon1-caret-down:before {
+        content: "\e606";
+    }
+    .icon1-close:before {
+    	/* e607 */
+        content: "\e607";
+    }
+    .icon1-image:before {
+        content: "\e608";
+    }
+     .icon1-cart:before {
+        content: "\e600";
+    } 
+    .icon1-pushpin:before {
+        content: "\e601";
+    }
+    .icon1-bubbles:before {
+    	/* e602 */
+        content: "\e602";
+    }
+    .icon1-user:before {
+    	/*e603 */
+        content: "\e005";
+    }
+    .icon1-spinner:before {
+        content: "\e609";
+    }
+    .icon1-cog:before {
+        content: "\e60a";
+    }
+    .icon1-link:before {
+    	/*e60b*/
+        content: "\e60b";
+    }
+    .icon1-happy:before {
+        content: "\e60c";
+    }
+    .icon1-info:before {
+    	/* e60d */
+        content: "\e60d";
+    }
+    .icon1-exit:before {
+        content: "\e60e";
+    }
+    .icon1-volume-high:before {
+        content: "\e60f";
+    }
+    .icon1-volume-mute:before {
+        content: "\e610";
+    }
+    .icon1-bold:before {
+        content: "\e611";
+    }
+    .icon1-underline:before {
+        content: "\e612";
+    }
+    .icon1-italic:before {
+        content: "\e613";
+    }
+    .icon1-youtube:before {
+        content: "\e614";
+    }
+    .icon1-sound:before {
+        content: "\e604";
+    }
+    .icon1-soundoff:before {
+        content: "\e605";
+    }
+/* -- */
+
+/* Dragging overlay helper */
+    .dragging-sticking-to-right:after {
+        position: fixed;
+        z-index: 900;
+        background-color: rgba(0,0,0,0.2);
+        border: 2px dashed #2597D8;
+        content: " ";
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 30px;
+    }
+    .dragging-sticking-to-left:after {
+        position: fixed;
+        z-index: 900;
+        background-color: rgba(0,0,0,0.2);
+        border: 2px dashed #2597D8;
+        content: " ";
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 30px;
+    }
+    .dragging-sticking-to-bottom:after {
+        position: fixed;
+        z-index: 900;
+        background-color: rgba(0,0,0,0.2);
+        border: 2px dashed #2597D8;
+        content: " ";
+        right: 0;
+        left: 0;
+        bottom: 0;
+        height: 30px;
+    }
+/* -- */
+
+/* Simple Scroller */
+    .simplebar, [data-simplebar-direction] {
+        position: relative;
+        overflow: hidden;
+        -webkit-overflow-scrolling: touch; /* Trigger native scrolling for mobile, if not supported, plugin is used. */
+    }
+
+    .simplebar .simplebar-scroll-content,
+    [data-simplebar-direction] .simplebar-scroll-content {
+        overflow-y: scroll;
+        overflow-x: auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        -ms-overflow-style: none; /* hide browser scrollbar on IE10+ */
+    }
+
+    /* hide browser scrollbar on Webkit (Safari & Chrome) */
+    .simplebar-scroll-content::-webkit-scrollbar {
+        display: none;
+    }
+
+    [data-simplebar-direction="horizontal"] .simplebar-scroll-content,
+    .simplebar.horizontal .simplebar-scroll-content {
+        overflow-x: scroll;
+        overflow-y: auto;
+    }
+
+    .simplebar-track {
+        z-index: 10;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 11px;
+    }
+
+    .simplebar-track .simplebar-scrollbar {
+        position: absolute;
+        right: 2px;
+        -webkit-border-radius: 7px;
+        -moz-border-radius: 7px;
+        border-radius: 7px;
+        min-height: 10px;
+        width: 7px;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        opacity: 0;
+        -webkit-transition: opacity 0.2s linear;
+        -moz-transition: opacity 0.2s linear;
+        -o-transition: opacity 0.2s linear;
+        -ms-transition: opacity 0.2s linear;
+        transition: opacity 0.2s linear;
+        background: #939393;
+        -webkit-background-clip: padding-box;
+        -moz-background-clip: padding;
+    }
+
+    .simplebar-track:hover .simplebar-scrollbar {
+        /* When hovered, remove all transitions from drag handle */
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+        opacity: 0.7;
+        -webkit-transition: opacity 0 linear;
+        -moz-transition: opacity 0 linear;
+        -o-transition: opacity 0 linear;
+        -ms-transition: opacity 0 linear;
+        transition: opacity 0 linear;
+    }
+
+    .simplebar-track .simplebar-scrollbar.visible {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+        opacity: 0.7;
+    }
+
+    [data-simplebar-direction="horizontal"] .simplebar-track,
+    .simplebar.horizontal .simplebar-track {
+        top: auto;
+        left: 0;
+        width: auto;
+        height: 11px;
+    }
+
+    [data-simplebar-direction="horizontal"] .simplebar-track .simplebar-scrollbar,
+    .simplebar.horizontal .simplebar-track .simplebar-scrollbar {
+        right: auto;
+        top: 2px;
+        height: 7px;
+        min-height: 0;
+        min-width: 10px;
+        width: auto;
+    }
+/* -- */
+
+/* Widget */
+
+    #livehelp {
+        position: fixed;
+        z-index: 999;
+        width: 260px;
+        border-bottom: 1px solid #B8B8B8;
+        -webkit-transform: translate(0, 0);
+        -moz-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        -o-transform: translate(0, 0);
+        transform: translate(0, 0);
+        -webkit-transition: -webkit-transform .3s ease-in;
+        -moz-transition: -moz-transform .3s ease-in;
+        -o-transition: -o-transform .3s ease-in;
+        transition: transform .3s ease-in;
+    }
+    #livehelp.dragging { opacity: .75; }
+
+    /* Positioning */
+        #livehelp.widget-stick-bottom
+        {
+            bottom: 0;
+            right: 5%;
+        }
+
+        #livehelp.widget-stick-right.lb-collapsed
+        {
+            -webkit-transform: translate(0, -250px);
+            -moz-transform: translate(0, -250px);
+            -ms-transform: translate(0, -250px);
+            -o-transform: translate(0, -250px);
+            transform: translate(0, -250px);
+        }
+
+        /* RIGHT */
+        #livehelp.widget-stick-right
+        {
+            right: 0;
+            top: 20%;
+        }
+
+        #livehelp.widget-stick-right.lb-collapsed
+        {
+            -webkit-transform: translate(260px, 0);
+            -moz-transform: translate(260px, 0);
+            -ms-transform: translate(260px, 0);
+            -o-transform: translate(260px, 0);
+            transform: translate(260px, 0);
+        }
+
+        /* LEFT */
+        #livehelp.widget-stick-left
+        {
+            left: 0;
+            top: 20%;
+        }
+
+        #livehelp.widget-stick-left.lb-collapsed
+        {
+            -webkit-transform: translate(-260px, 0);
+            -moz-transform: translate(-260px, 0);
+            -ms-transform: translate(-260px, 0);
+            -o-transform: translate(-260px, 0);
+            transform: translate(-260px, 0);
+        }
+
+
+        /* Positioning - up to down */
+
+        .widget-stick-right .lh-head-bar {
+            position: absolute;
+            left: -40px;
+            width: 40px;
+            padding: 10px 15px;
+            border-radius: 5px 0 0 5px; 
+        }
+
+        .widget-stick-left .lh-head-bar {
+            position: absolute;
+            right: -40px;
+            width: 40px;
+            padding: 10px 15px;
+            border-radius: 0 5px 5px 0; 
+        }
+
+        .widget-stick-right .lh-hb-text,
+        .widget-stick-left .lh-hb-text {
+           width: 1px;
+           line-height: 1.2;
+           word-break: break-all;
+        }
+
+        .lh-hb-text {
+        text-transform: uppercase;
+        }
+
+        .lh-hb-text i {
+            margin-right: 10px;
+        }
+
+        /* Stick bottom + unsticked */
+        .lh-head-bar {
+            padding: 6px 10px;
+            border-radius: 5px 5px 0 0; 
+        }
+
+        .widget-stick-right .lh-badge,
+        .widget-stick-left .lh-badge {
+            margin-top: 15px;
+            margin-left: -5px;
+        }
+    
+    /* -- */
+/* -- */
+
+
+.lh-body-buttons .lh-head-btn {
+    display: inline-block;
+    margin: 0px 0px 0px 10px;
+    padding-top: 2px;
+    cursor: pointer;
+}
+
+
+.lh-body-buttons .lh-head-btn a:hover, 
+.lh-body-buttons .lh-head-btn a:focus {
+    text-decoration: none;
+    color: #22ACE9;
+}
+
+.lh-oi-name {
+    margin: 0 0 4px 0;
+    text-shadow: -1px 1px 0px rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.lh-oi-description {
+    overflow: hidden;
+    font-size: 10px;
+    line-height: 12px;
+}
+
+
+/*
+ *		BODY
+ */
+
+#livehelp-body.collapse, #livehelp-body .lh-preloader { display: none; }
+
+.lh-widget-body {
+	background-color: white;
+    padding: 0;
+    border-radius: 0px;
+    border-bottom: 0px;
+}
+
+/* collpase bottom fix */
+.lh-widget #livehelp-body.collapse { display: block; }
+.lh-widget.widget-stick-bottom #livehelp-body.collapse { display: none; }
+
+
+.lh-widget-body .lb-msg-wrapper
+{
+    height: 248px;
+    width: 260px;
+}
+
+.lh-widget-body .lh-messages {
+    padding: 5px 10px;
+    height: 248px;
+    overflow-y: scroll;
+}
+
+#livehelp-body [data-simplebar-direction] .lh-messages
+{
+    height: 100%;
+    overflow: hidden;
+}
+
+/* LOGIN FORM */
+.lh-widget .lh-login-form {
+    padding: 10px 15px;
+}
+
+.lh-widget .lh-login-form label {
+	margin-top: 5px;
+}
+
+/* FORM */
+.operator-pick-heading 
+{
+    text-align: center;
+}
+
+.operator-switch-row 
+{
+    margin-top: 10px;
+}
+
+
+#operator_switch  {
+    padding-top: 15px;
+}
+
+.lh-operator-switch-arrow 
+{
+    position: relative;
+    top: 55px;
+}
+
+.operator-img {
+    margin-bottom: 15px;
+}
+
+.operator-select-name {
+    font-weight: bold;
+    font-size: 10px;
+    margin-bottom: 10px;
+}
+
+/* EMOTICON EXTENSION */
+    .emoticon-list {
+        width: 216px;
+    }
+
+    .emoticon-list .emoticon-item {
+        display: block;
+        float: left;
+        width: 24px;
+        height: 24px;
+        margin: 4px 6px;
+        background: url("../image/emoticons.png");
+        background-repeat: no-repeat;
+        opacity: 0.85;
+        cursor: pointer;
+    }
+
+    .emoticon-list .emoticon-item:hover {
+        opacity: 1;
+    }
+
+    .emoticon-item.emote-smile {
+        background-position: -6px -6px;
+    }
+
+    .emoticon-item.emote-kiss {
+        background-position: -40px -6px;
+    }
+
+    .emoticon-item.emote-plain {
+        background-position: -74px -6px;
+    }
+
+    .emoticon-item.emote-kissing {
+        background-position: -108px -6px;
+    }
+
+    .emoticon-item.emote-sad {
+        background-position: -142px -6px;
+    }
+
+    .emoticon-item.emote-blush {
+        background-position: -176px -6px;
+    }
+
+    .emoticon-item.emote-surprise {
+        background-position: -6px -41px;
+    }
+
+    .emoticon-item.emote-devil {
+        background-position: -40px -41px;
+    }
+
+    .emoticon-item.emote-wink {
+        background-position: -74px -41px;
+    }
+
+    .emoticon-item.emote-angel {
+        background-position: -108px -41px;
+    }
+
+    .emoticon-item.emote-dude {
+        background-position: -142px -41px;
+    }
+
+    .emoticon-item.emote-beer {
+        background-position: -176px -41px;
+    }
+
+    .emoticon-item.emote-razz {
+        background-position: -6px -75px;
+    }
+
+    .emoticon-item.emote-silence {
+        background-position: -40px -75px;
+    }
+
+    .emoticon-item.emote-stop {
+        background-position: -74px -75px;
+    }
+
+    .emoticon-item.emote-inlove {
+        background-position: -108px -75px;
+    }
+
+    .emoticon-item.emote-happy {
+        background-position: -142px -75px;
+    }
+
+    .emoticon-item.emote-rude {
+        background-position: -176px -75px;
+    }
+
+    .emoticon-item.emote-bored {
+        background-position: -6px -109px;
+    }
+
+    .emoticon-item.emote-thumbsup {
+        background-position: -40px -109px;
+    }
+
+    .emoticon-item.emote-cry {
+        background-position: -74px -109px;
+    }
+
+    .emoticon-item.emote-angry {
+        background-position: -108px -109px;
+    }
+
+    .emoticon-item.emote-kissed {
+        background-position: -142px -109px;
+    }
+
+    .emoticon-item.emote-laughting {
+        background-position: -176px -109px;
+    }
+/* -- */
+
+/* BBCODE */
+    .bbcode-list {
+        width: 140px;
+    }
+
+    .bbcode-list > a {
+        width: 34px;
+        display: block;
+        float: left;
+        margin: 4px 6px;
+        cursor: pointer;
+        padding: 5px 6px;
+        background-color: #E4E4E4;
+        transition: all ease 0.4s;
+        text-decoration: none;
+        color: #3C3C3C;
+        text-align: center;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+
+    .bbcode-list > a:hover, 
+    .bbcode-list > a:focus {
+        background-color: #1FABE8;
+        color: white;
+    }
+/* -- 

@@ -1,0 +1,57 @@
+<?php echo $header;?>
+<?php echo $index_goods?>
+<article class="campaign">
+    <div class="scroll-inforlink">
+        <ul class="inforlink">
+            <?php
+            foreach($link as $k=>$v):
+            ?>
+            <li><button class="<?php echo $k=='community'?'btn forlinkactive':'btn';?>" onclick="window.location.href='<?php echo $v;?>'"><?php echo $k; ?></button></li>
+            <?php
+             endforeach;
+             ?>
+            <div class="scroll-project">
+                <div class="project-top  col-md-5">
+                    <a href="backproject.html"><button class="btn">Back This Project</button></a>
+                </div>
+                <div class="project-right col-md-4">
+                    <button class="btn huistar no-border"><i class="fa fa-star"></i><span>Remind me</span></button>
+                </div>
+            </div>
+        </ul>
+    </div>
+    <div class="campaigntableall">
+        <!-- ======================================table all one ============================================= -->
+    </div>
+    <div class="campaigntable-active" id="campaigntable-four">
+        <div class="supportersko">
+            <p class="suppor-p">Here are a few of the supporters.</p>
+            <div class="nomal">
+                <ul>
+                    <?php if(!empty($person)):?>
+                    <?php foreach($person as $v):?>
+                    <li class="col-md-3 col-sm-4">
+                        <div class="supporters">
+                            <div class="supporters-img">
+                                <img src="<?php echo $v['image'];?>" alt="">
+                            </div>
+                            <p class="supporters-name"><?php echo $v['firstname'].' '.$v['lastname']?></p>
+                            <p class="supporters-number">
+                                Backed <?php echo $v['projects']['projects']?> projects
+                            </p>
+
+                        </div>
+                    </li>
+                    <?php endforeach;?>
+                    <?php endif;?>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!---必带----->
+    </div>
+</article>
+</div>
+<!---必带----->
+<?php echo $index_js?>
+<?php echo $footer?>

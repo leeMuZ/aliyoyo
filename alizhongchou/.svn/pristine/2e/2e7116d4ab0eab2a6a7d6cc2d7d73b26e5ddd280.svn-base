@@ -1,0 +1,11 @@
+<?php
+class ControllerCrowdfundingIndex extends Controller {
+    public function index() {
+        //$this->document->addScript('catalog/view/theme/' . $this->config->get($this->config->get('config_theme') . '_directory') . '/js/imagesloaded.pkgd.min.js');
+        //$this->document->addStyle('view/stylesheet/livehelp.css');
+        $this->load->model('crowdfunding/crowdfunding');
+        $data['category'] = $this->model_crowdfunding_crowdfunding->take_recommend_category();
+        return $this->load->view('crowdfunding/index', $data);
+    }
+
+}

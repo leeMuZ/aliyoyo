@@ -1,0 +1,55 @@
+<?php
+class ControllerProjectCrowdFund extends Controller {
+	private $error = array();
+
+	public function index() {
+	    
+	    $this->document->addStyle('catalog/view/stylesheet/css/crowdfund.css');
+	    $data['personal'] = $this->url->link('project/crowdfund/personal');
+	    $data['company'] = $this->url->link('project/crowdfund/company');
+	    $data['footer'] = $this->load->controller('common/footer');
+		$data['header'] = $this->load->controller('common/header');
+	    $this->response->setOutput($this->load->view('project/crowdfund',$data));
+	}
+	
+	public function company(){
+	    $this->document->addStyle('catalog/view/stylesheet/css/crowdfund.css');
+	    $this->document->addStyle('catalog/view/javascript/summernote/summernote.css');
+	    $this->document->addScript('catalog/view/javascript/summernote/summernote.js');
+	    $this->document->addScript('catalog/view/javascript/laydate/laydate.js');
+	    $this->load->model('localisation/region');
+	    $this->load->model('project/category');
+	    $data['provinces'] = $this->model_localisation_region->getProvinces();
+	    $data['categories'] = $this->model_project_category->getAllCategory();
+	    $data['reward_row'] = 1;
+	    $data['footer'] = $this->load->controller('common/footer');
+	    $data['header'] = $this->load->controller('common/header');
+	    $this->response->setOutput($this->load->view('project/company',$data));
+	}
+	
+	public function personal(){
+	    $data['b'] = $this->request->post;
+	    var_dump($data['b']);
+	    $this->document->addStyle('catalog/view/stylesheet/css/crowdfund.css');
+	    $data['footer'] = $this->load->controller('common/footer');
+	    $data['header'] = $this->load->controller('common/header');
+	   // $this->response->setOutput($this->load->view('project/personal',$data));
+	}
+	
+	public function upload(){
+	    $json = Array();
+	    $this->load->model("tool/image");
+	    $path = 'project/'.$this->customer->getId().'/';
+	    $data = $this->model_tool_image->upload(['files' => $this->request->files['image'], 'directory' => $path,'limit_size' =>3145728]);
+	    if(isset($data['images']['success'])){
+	        
+	    }
+	    if(isset($json['images']['error'])){
+	        $rejson['error'] = $json['images']['error'];
+	    }
+	    $this->response->addHeader('Content-Type:application/json');
+	    $this->response->setOutput(json_encode($data));
+	}
+	
+
+}

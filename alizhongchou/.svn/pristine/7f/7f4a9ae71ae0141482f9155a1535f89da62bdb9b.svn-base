@@ -1,0 +1,117 @@
+<link rel="stylesheet" href="catalog/view/stylesheet/css/index.css">
+<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=58f9d4de49bbaa00120f493f&product=inline-share-buttons' async='async'></script>
+<div class="container">
+    <header class="fold">
+        <p><?php echo $message['name'];?></p>
+    </header>
+    <article class="medail">
+        <div class="vdio col-md-8 col-sm-8" id="you_video_div">
+            <iframe id="you_video" width="100%" height="100%" src="<?php echo $message['viedo'];?>" frameborder="0" allowfullscreen="1" scrolling="no"></iframe>
+        </div>
+        <script>
+            $(function(){
+                var videoUrl=$("#you_video").attr("src");
+                var ytRegExp = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+                var ytMatch = videoUrl.match(ytRegExp);
+                if (ytMatch && ytMatch[1].length === 11) {
+                    var youtubeId = ytMatch[1];
+                    $("#you_video").attr("src","https://www.youtube.com/embed/"+youtubeId);
+                }else {
+                    $("#you_video_div").html("<h3>Unable to play video source</h3>");
+                }
+            })
+            /* $(function () {
+             var src =$("#you_video").attr("src");
+             var arg = src.split("/");
+             if (arg < 1){return;}
+             var n=0;
+             for (var i=0;i < arg.length; i++)
+             {
+             if (arg[i] == "www.youtube.com")
+             {
+             n=1;
+             break;
+             }
+             else if (arg[i] == "youtu.be")
+             {
+             n=1;
+             break;
+             }
+             }
+             if (n)
+             {
+             var url = arg[arg.length-1];
+             var replace = "https://www.youtube.com/embed/"+url;
+             $("#you_video").attr("src",replace);
+             } else {
+             $("#you_video").attr("src"," ");
+             }
+
+             })*/
+        </script>
+        <div class="percent col-md-4 col-sm-4">
+            <div class="percent-top">
+                <!-- 波浪 进度条 -->
+                <div class="canvas-div">
+
+                    <canvas width="250" height="250" id="canvas">对不起，您的浏览器不支持canvas</canvas>
+                    <p class="ofdollor">Goal : $<?php echo $message['total_goal']?></p>
+                </div>
+                <div class="process" style="display:none">
+                    <div class="process-passed" style="display:none"><span class="process-btn"></span></div>
+                    <div class="arrow-box" style="display:none">拖我</div>
+                </div>
+                <button class="control" type="button" style="display:none">自动演示</button>
+                <div class="message bounce animated hide" style="display:none">
+                    DONE!
+                </div>
+                <div class="shade hide" style="display:none"></div>
+                <!-- 波浪 进度条 end-->
+            </div>
+            <div class="percent-center">
+                <p><span><?php echo $message['backers'];?></span>backers</p>
+            </div>
+            <p class="goalmoney"><span>$<?php echo $message['current_goal']?></span>  &nbsp;pledged</p>
+            <!-- 倒计时============================================= -->
+            <div class="percent-bottom col-md-12 col-sm-12">
+                <div>
+                    <time style="color: #353535;"  datetime="<?php echo $message['date_ended'];?>"></time>
+                    <span class="leri">left</span>
+                </div><!-- Paris (winter) -->
+            </div>
+            <div class="back-project">
+                <a href="<?php echo $back_link;?>"><button class="btn">Back This Project</button></a>
+            </div>
+        </div>
+    </article>
+    <article class="presonoal">
+        <div class="product col-md-8 col-sm-8">
+            <div class="product-all">
+							<span class="los-p">
+								<i class="fa fa-heart"></i>
+								<span>Project we love</span>
+							</span>
+                <!-- <span class="los-p">
+                    <i class="fa fa-map-marker"></i>
+                    <span>Los Angeles, CA</span>
+                </span> -->
+                <span class="los-p">
+								<i class="fa fa-compass"></i>
+								<span>Traffic</span>
+							</span>
+                <span   id="share_message" style="width: 100px;float: right;margin-top: 5px;display: none">
+                    <div class="sharethis-inline-share-buttons">
+                    </div>
+                </span>
+            </div>
+        </div>
+        <div class="teantheme col-md-4 col-sm-4">
+            <div class="col-md-6 col-sm-6">
+                <button class="btn huistar"><i class="fa fa-star"></i><span>Remind me</span></button>
+                <!-- <button class="btn huistarred"><i class="fa fa-star"></i>Saved</button> -->
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <a class="a_share" href="javascript:void(0)"><button id="share_button" class="btn"><i class="fa fa-share"></i> Share</button></a>
+            </div>
+        </div>
+    </article>

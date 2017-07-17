@@ -1,0 +1,302 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: alice
+ * Date: 2017/4/7
+ * Time: 16:28
+ */
+class ModelCrowdfundingCrowdfunding extends Model
+{
+    public function getSingle($id)
+    {
+        $query = $this->db->query("SELECT * FROM " . DB_SHARE_PREFIX ."crowdfunding WHERE funding_id = ".$id);
+        return $query->row;
+    }
+
+    public function getMetaMessage($id)
+    {
+        $query = $this->db->query("SELECT * FROM " . DB_SHARE_PREFIX ."crowdfunding_description WHERE funding_id = ".$id);
+        return $query->row;
+
+    }
+
+    public function getReward($id)
+    {
+        $query = $this->db->query("SELECT cr.rewards_id, c.backers AS all_man, cd.*, c2.image,c2.firstname, c2.lastname, c2.nickname, c2.description AS word, ".
+                                  " cr.pledge_amount, cr.description AS award, cr.name, cr.backers, cr.shipping_method, cr.limit_availability, cr.limit_backer, cr.limit_time_begin, cr.limit_time_end, cr.stock ".
+                                  "FROM " . DB_SHARE_PREFIX .
+                                  "crowdfunding AS c INNER JOIN ".DB_SHARE_PREFIX .
+                                  "crowdfunding_description AS cd ON c.funding_id=cd.funding_id INNER JOIN ". DB_PREFIX.
+                                  "customer as c2 ON c.customer_id=c2.customer_id LEFT JOIN ". DB_SHARE_PREFIX.
+                                  "crowdfunding_rewards AS cr ON c.funding_id=cr.funding_id WHERE c.funding_id=".$id);
+        return $query->rows;
+
+    }
+
+    public function changeTime($time)
+    {
+        $array=explode('-',$time);
+        switch ($array[1])
+        {
+            case "01":
+                $new = 'Jan.';
+                break;
+            case "02":
+                $new = 'Feb.';
+                break;
+            case "03":
+                $new = 'Mar.';
+                break;
+            case "04":
+                $new = 'Apr.';
+                break;
+            case "05":
+                $new = 'May';
+                break;
+            case "06":
+                $new = 'Jun.';
+                break;
+            case "07":
+                $new = 'Jul.';
+                break;
+            case "08":
+                $new = 'Aug.';
+                break;
+            case "09":
+                $new = 'Sept.';
+                break;
+            case "10":
+                $new = 'Oct.';
+                break;
+            case "11":
+                $new = 'Nov.';
+                break;
+            case "12":
+                $new = 'Dec.';
+                break;
+            default:
+                $new = '';
+        }
+        $last = explode(" ",$array[2]);
+        return $new.' '.$last[0];
+    }
+
+    public function getProjectUpdate($id)
+    {
+        $query = $this->db->query("SELECT * FROM ". DB_SHARE_PREFIX ."crowdfunding_updates WHERE funding_id=".$id);
+        $array = $query->rows;
+        foreach ($array as $k=>$v)
+        {
+           $query = $this->db->query("SELECT a.*, b.firstname, b.lastname, b.image, d.image AS di, d.firstname AS df, d.lastname AS dl FROM ". DB_SHARE_PREFIX .
+                                     "update_comment AS a INNER JOIN ".DB_PREFIX."customer AS b ON a.customer_id=b.customer_id ".
+                                     " INNER JOIN ".DB_PREFIX."customer AS d ON a.targert_customer_id=d.customer_id "." WHERE a.update_id=".$v['update_id']);
+            $result= $query->rows;
+            $array[$k]['now_comment'] = $result;
+        }
+
+        return $array;
+    }
+
+    public function getPost($reward_id)
+    {
+        $query = $this->db->query("SELECT rs.*, c.name FROM ".DB_SHARE_PREFIX."rewards_shipping AS rs INNER JOIN ".DB_PREFIX.
+                                  "country AS c ON rs.country_id=c.country_id  WHERE rewards_id=".$reward_id);
+        return $query->rows;
+    }
+    public function take_out_id($id)
+    {
+        $query = $this->db->query("SELECT customer_id FROM ". DB_SHARE_PREFIX ."crowdfunding WHERE funding_id = ".$id);
+        return $query->row;
+    }
+    public function insertComment($data)
+    {
+        $string = "(";
+        $value  = "(";
+        foreach ($data as $k=>$v)
+        {
+            $string .= $k.",";
+            $value  .= "'".$v."'".",";
+        }
+        $string = rtrim($string, ',').')';
+        $value  = rtrim($value, ',').')';
+        $this->db->query("INSERT INTO ". DB_SHARE_PREFIX. "update_comment ".$string."VALUES".$value);
+
+    }
+
+    public function getBackers($id)
+    {
+        $query  = $this->db->query("SELECT c.image, c.firstname, c.lastname, c1.firstname AS tarfirst, c1.lastname AS tarlast, cc.content, cc.STATUS, cc.date_added FROM ".
+                                   DB_SHARE_PREFIX."crowdfunding_comment AS cc INNER JOIN ".
+                                   DB_PREFIX."customer AS c ON cc.customer_id=c.customer_id INNER JOIN ".
+                                   DB_PREFIX."customer AS c1 ON cc.target_customer_id=c1.customer_id WHERE cc.funding_id=".$id);
+
+        return $query->rows;
+    }
+
+    public function checkCustomer($customer_id, $funding_id)
+    {
+        $query = $this->db->query("SELECT customer_id FROM ". DB_SHARE_PREFIX ."rewards_backers WHERE funding_id=".$funding_id);
+        $result= $query->rows;
+        $array = array();
+        foreach ($result as $v)
+        {
+            $array[] = $v['customer_id'];
+        }
+
+        if(in_array($customer_id, $array))
+        {
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    public function insertSelfComment($data)
+    {
+        $customer_id = $this->db->query("SELECT customer_id FROM " .DB_SHARE_PREFIX. "crowdfunding WHERE funding_id=".$data['funding_id']);
+        $result = $customer_id->row;
+        $data['target_customer_id'] = $result['customer_id'];
+        $data['date_added'] = date("Y-m-d: H:i:s", time());
+        $string = "(";
+        $value  = "(";
+        foreach ($data as $k=>$v)
+        {
+            $string .= $k.",";
+            $value  .= "'".$v."'".",";
+        }
+        $string = rtrim($string, ',').')';
+        $value  = rtrim($value, ',').')';
+        $this->db->query("INSERT INTO ". DB_SHARE_PREFIX. "crowdfunding_comment ".$string."VALUES".$value);
+
+
+    }
+
+    public function findPerson($id)
+    {
+        $query = $this->db->query("SELECT a.customer_id, b.firstname, b.lastname, b.image, a.pledge_amount FROM ". DB_SHARE_PREFIX .
+                                  "rewards_backers AS a INNER JOIN ".DB_PREFIX."customer AS b ON a.customer_id=b.customer_id".
+                                  " WHERE funding_id=".$id." LIMIT 0,8");
+
+        $result = $query->rows;
+        foreach ($result as $k=>$v)
+        {
+            $query = $this->db->query("SELECT COUNT(funding_id) AS projects FROM ".DB_SHARE_PREFIX."rewards_backers WHERE customer_id=".$v['customer_id']);
+            $result[$k]['projects'] = $query->row;
+        }
+
+        return $result;
+    }
+
+    public function take_reward($funding_id)
+    {
+        $query = $this->db->query("SELECT * FROM ". DB_SHARE_PREFIX ."crowdfunding_rewards WHERE funding_id=".$funding_id);
+        return $query->rows;
+    }
+
+    public function selectGoodMessage($funding_id, $reward_id=0)
+    {
+        if ($reward_id==0)
+        {
+            $query = $this->db->query("SELECT name, image FROM " . DB_SHARE_PREFIX ."crowdfunding AS c WHERE funding_id=".$funding_id);
+        }else{
+            $query = $this->db->query("SELECT c.name, c.image, cr.name, cr.shipping_method AS reward FROM " . DB_SHARE_PREFIX .
+                                      "crowdfunding AS c INNER JOIN ".DB_SHARE_PREFIX.
+                                      "crowdfunding_rewards AS cr WHERE c.funding_id=".$funding_id." AND cr.rewards_id=".$reward_id);
+        }
+        return $query->row;
+    }
+
+    public function select_my_address($customer_id)
+    {
+        $query = $this->db->query("SELECT a.*, c.name AS country, z.name AS zone_name FROM ". DB_PREFIX ."address AS a INNER JOIN ".DB_PREFIX.
+                                  "country AS c ON c.country_id=a.country_id INNER JOIN ".DB_PREFIX.
+                                  "zone AS z ON c.country_id=z.country_id".
+                                  " WHERE customer_id=".$customer_id);
+        return $query->rows;
+    }
+
+    public function select_counties()
+    {
+        $query = $this->db->query("SELECT * FROM ".DB_PREFIX."country");
+        $countries = $query->rows;
+        foreach ($countries as $k=>$country)
+        {
+            $result = $this->db->query("SELECT * FROM ".DB_PREFIX."zone WHERE country_id=".$country['country_id']);
+            $countries[$k]['zone'] = $result->rows;
+        }
+
+        return $countries;
+    }
+
+    public function insertAddress($data)
+    {
+        $string = "(";
+        $value  = "(";
+        foreach ($data as $k=>$v)
+        {
+            $string .= $k.",";
+            $value  .= "'".$v."'".",";
+        }
+        $string = rtrim($string, ',').')';
+        $value  = rtrim($value, ',').')';
+        $this->db->query("INSERT INTO ". DB_PREFIX. "address ".$string."VALUES".$value);
+        return $this->db->getLastId();
+    }
+
+    public function takePost($shipping_id)
+    {
+        $query = $this->db->query("SELECT Postage FROM ".DB_SHARE_PREFIX."rewards_shipping WHERE shipping_id=".$shipping_id);
+        $result= $query->row;
+        return $result['Postage'];
+    }
+
+    public function insertOrderBasic($data)
+    {
+        $string = "(";
+        $value  = "(";
+        foreach ($data as $k=>$v)
+        {
+            $string .= $k.",";
+            $value  .= "'".$v."'".",";
+        }
+        $string = rtrim($string, ',').')';
+        $value  = rtrim($value, ',').')';
+        $this->db->query("INSERT INTO ". DB_SHARE_PREFIX. "order ".$string."VALUES".$value);
+        return $this->db->getLastId();
+    }
+
+    public function updateOrderMessage($data, $order_id)
+    {
+
+        $string = "";
+        foreach ($data as $k=>$v)
+        {
+            $string .= $k."="."'".$v."',";
+        }
+        $string = rtrim($string,",");
+        $this->db->query("UPDATE ".DB_SHARE_PREFIX."order SET ".$string." WHERE order_id='".$this->db->escape($order_id)."'");
+    }
+
+    public function show_request_address($address_id)
+    {
+        $query = $this->db->query("SELECT telephone AS shipping_telephone, firstname AS shipping_firstname, lastname AS shipping_lastname, address_1 AS shipping_address_1, address_2 AS shipping_address_2, city AS shipping_city, c.name AS shipping_country, z.name AS shipping_zone FROM ".
+                                  DB_PREFIX."address AS a INNER JOIN ".DB_PREFIX."country AS c ON a.country_id=c.country_id".
+                                            " INNER JOIN ".DB_PREFIX."zone AS z ON z.zone_id=a.zone_id".
+                                            " WHERE address_id=".$address_id);
+        return $query->row;
+
+    }
+
+    public function check_ticket($ticket)
+    {
+        //$query = $this->db->query("SELECT * ");//返回数组折扣和优惠状态
+
+    }
+
+    public function take_recommend_category()
+    {
+        $query = $this->db->query("SELECT * FROM ".DB_SHARE_PREFIX."category WHERE parent_id = 0 LIMIT 0,7");
+        return $query->rows;
+    }
+}

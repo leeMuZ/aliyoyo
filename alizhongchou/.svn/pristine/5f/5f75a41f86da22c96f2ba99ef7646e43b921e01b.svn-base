@@ -1,0 +1,151 @@
+/*$(function () {
+    $('#acontant_ul a:nth-child(3)').tab('show')
+  
+	$('#acontant_ul a').click(function (e) {
+  		e.preventDefault()
+  		$(this).tab('show');
+  		$(this).addClass('acontantactive').parent().siblings().children().removeClass('acontantactive');
+
+	});
+	
+})*/
+ $(document).ready(function(){
+ 	$('.switch').click(function(){
+		 $(this).toggleClass("switchOn");
+		 if($(this).hasClass("switchOn")){
+			 $('input[name="status"]').val('1');
+		 }else{
+			 $('input[name="status"]').val('0');
+		 }
+ 	});
+ 
+ });
+ 
+ $(document).delegate('#btn_add_collection', 'click', function(event) {
+	 $.ajax({
+			url: 'index.php?route=account/collection/addCollection',
+			type: "POST",
+			dataType: 'json',
+			data:$("#add-collection").serialize(),
+			beforeSend: function() {
+				$('#btn_edit_collection').button('loading');
+			},
+			complete: function() {
+				$('#btn_edit_collection').button('reset');
+			},
+			success: function(json) {
+				if (json['redirect']) {
+					location = json['redirect'];
+				}				
+				if(json['error']){
+					alert(json['error']);
+				}				
+				if(json['success']){
+					alert(json['success']);
+					window.location.reload();
+				}
+			},
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+			}
+		});	
+ });
+ 
+$("#acontant_ul a:nth-child(3)").click(function(event) {
+	/* Act on the event */
+	$(".follower_a").removeClass('follower-leftcheck');
+});
+$(".follower_a").click(function(event) {
+	/* Act on the event */
+	$(this).addClass('follower-leftcheck').parent().siblings().children().removeClass('follower-leftcheck');
+});
+// Favourite List 切换
+/*
+$(".own-list").click(function(event) {
+	$(".own-list").eq($(this).index()).addClass('own-listcheck').siblings().removeClass('own-listcheck');
+});
+$(".own-list").eq(0).click(function(event) {
+	$(".own_list_two").hide();
+	$(".own_list_one").show();	
+});
+$(".own-list").eq(1).click(function(event) {
+	$(".own_list_two").show();
+	$(".own_list_one").hide();	
+})*/
+$(".shangchuan").hover(function() {
+	/* Stuff to do when the mouse enters the element */
+	$(".upload").show();
+}, function() {
+	/* Stuff to do when the mouse leaves the element */
+	$(".upload").hide();
+});
+
+// 点击加号发生的事件
+var num=0;
+$(".plus_check").click(function(event) {
+	/* Act on the event */
+	num++;
+	if(num%2!=0){
+		$(".popr").show();
+	}else{
+		$(".popr").hide();
+	}
+});
+// 点击1.2k加
+
+$(document).delegate(".knum", "click", function(){
+		$(this).addClass('knumcheck');
+		$(this).addClass('no_knum');
+});
+$(document).delegate(".no_knum", "click", function(){
+		$(this).removeClass('knumcheck');
+		$(this).removeClass('no_knum');
+});
+// 点击购物车
+
+$(document).delegate(".kshop", "click", function(){
+		$(this).addClass('kshopcheck');
+		$(this).addClass('no_kshop');
+});
+$(document).delegate(".no_kshop", "click", function(){
+		$(this).removeClass('kshopcheck');
+		$(this).removeClass('no_kshop');
+});
+
+$(document).delegate(".star_li", "click", function(){
+	$(this).children(".check_star").hide();
+	$(this).children(".red_star").show();
+});
+// 及时上传图片
+$("#imgUpload").change(function(e) {  
+  for (var i = 0; i < e.target.files.length; i++) {  
+    var file = e.target.files.item(i);            
+    var freader = new FileReader();  
+    freader.readAsDataURL(file);  
+    freader.onload = function(e) {  
+      var src = e.target.result;  
+      $("#uploadhead").attr("src",src);  
+    }  
+  }  
+});  
+
+
+
+$("#imgUploaded").change(function(e) {  
+  for (var i = 0; i < e.target.files.length; i++) {  
+    var file = e.target.files.item(i);            
+    var freader = new FileReader();  
+    freader.readAsDataURL(file);  
+    freader.onload = function(e) {  
+      var src = e.target.result;  
+      $("#uploadhead").attr("src",src);  
+    }  
+  }  
+});  
+
+
+
+
+
+
+

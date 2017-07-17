@@ -1,0 +1,62 @@
+body{
+	background: #f0f0f2;;
+	color: #101010;
+	font-family: "Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif;
+	font-size: 1.4rem;
+	position: relative;
+}
+.standard-body .full-width .container {
+    max-width: 1270px;
+    margin: 0px auto;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+select::-ms-expand { display: none; }
+select {
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+}
+
+@media (min-width: 1200px){
+	.container {
+	    width: 1170px;
+	}
+}
+
+@media (min-width: 992px){
+	.container {
+    	width: 970px;
+	}
+}
+@media (min-width: 768px){
+	.container {
+	    width: 100%;
+	    padding-left: 0px!important;
+	    padding-right: 0px!important;
+	}
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.center-column{
+	background: #fff;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.tijiao{
+	background: #26cada;
+	border:none;
+	border-radius: 3px;
+	color: #fff;
+}
+/* 隐藏的  已添加过地址的css */
+.hidegroup{
+	display: none;
+}
+table td{
+	padding:30px 15px;
+}

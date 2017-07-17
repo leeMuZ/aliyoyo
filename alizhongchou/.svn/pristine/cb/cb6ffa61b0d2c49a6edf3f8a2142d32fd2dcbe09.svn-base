@@ -1,0 +1,38 @@
+<?php echo $header; ?>
+<div class="aboutus clearfix col-sm-12">
+		<div class="aboutus-top">
+			<img src="image/ahout-us.jpg" alt="">
+			<div class="imgmb"></div>
+			<p class="aboutus-top-p">Our mission is to empower people to unite around ideas that matter to them and together make those ideas come to life.</p>
+		</div>
+		<div class="aboutus-bottom">
+			<div class="container">
+				<div class="about-neirong">
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;6 Future helps artists, musicians, filmmakers, designers, and other creators find the resources and support they need to make their ideas a reality. To date, tens of thousands of creative projects — big and small — have come to life with the support of the 6 Future community.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="aboutus clearfix col-sm-12">
+		<div class="aboutus-top">
+			<img src="image/bg2.jpg" alt="">
+			<div class="imgmb"></div>
+			<p class="aboutus-top-p">Together</p>
+		</div>
+		
+		<div class="aboutus-bottom">
+			<div class="container">
+				<div class="about-neirong">
+					<h3>Founded to Revolutionize Funding</h3>
+					<p>
+						When creative people work together, amazing things happen. Danae Ringelmann grew up seeing her parents struggle to get small business loans. In his spare time, Eric Schell attempted to help a Chicago theater company get funding. Slava Rubin fundraised for a cure for Myeloma, the disease that killed his father. They came together because they found a fundamental flaw in the system: for centuries, access to funding had been controlled by a select few. Your crazy, cool, genius ideas were getting stuck.
+						<br><br>
+						Danae, Eric, and Slava founded Indiegogo in 2008 to shift the power into your hands—to empower creative, entrepreneurial people everywhere to bring their ideas to life. We can’t wait to see what you create next.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php echo $footer; ?>

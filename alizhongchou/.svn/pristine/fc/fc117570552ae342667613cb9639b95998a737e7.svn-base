@@ -1,0 +1,32 @@
+<?php
+class ModelAccountassortment extends Model {
+	
+     //add by liuxuewen at 20170425 获取分类信息
+	public function getcategory($id) {
+		$query = $this->db->query("SELECT name,category_id FROM cf_category WHERE  parent_id = " . (int)$id );
+		return $query->rows;
+	}
+
+   //add by liuxuewen at 20170425 获取分类商品
+	public function getproduct($id) {
+        $query = $this->db->query("SELECT * FROM cf_crowdfunding   WHERE status=15 and category_id = " . (int)$id);
+		return $query->rows;
+	}
+	
+    //add by liuxuewen at 20170425 获取主分类商品
+	public function getproducts($id) {
+        $query = $this->db->query("SELECT a.name,a.image,a.current_goal,a.total_goal,a.introduce,a.funding_id,a.status FROM cf_crowdfunding as a left join cf_category as b on a.category_id=b.category_id  WHERE  a.status=15 and parent_id = " . (int)$id);
+		return $query->rows;
+	}
+
+   //add by liuxuewen at 20170503 获取分类商品
+	public function getproducte($id,$sid) {
+        if($sid==0){
+        $query = $this->db->query("SELECT * FROM cf_crowdfunding   WHERE status=15 and category_id = " . (int)$id);
+		return $query->rows;
+		}elseif($sid==1){
+		    return $id;
+		}
+	}	
+
+}

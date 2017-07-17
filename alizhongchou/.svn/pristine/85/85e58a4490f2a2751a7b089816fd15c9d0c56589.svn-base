@@ -1,0 +1,202 @@
+#addListModal .modal-title{
+	color: #b0b0b0;
+	font-size: 16px;
+}
+#addListModal .modal-title i{
+	width: 30px;
+}
+#addListModal .modal-title .black{
+	color: #000;
+	font-size: 16px;
+	margin: 0 20px;
+	display: block;
+	text-transform: uppercase;
+}
+#addListModal .close{
+	opacity: 1;
+}
+#addListModal .close span i{
+	color: #444;
+	
+}
+#addListModal .modal-body-cotent-left{
+	padding:0;
+}
+#addListModal .modal-body-cotent-left img{
+	height: 260px;
+}
+#addListModal .modal-body{
+	display: table;
+	padding:0;
+}
+#addListModal .modal-header{
+	border-bottom: 0;
+}
+#addListModal .modal-content{
+	background:#f0f0f0;
+	padding:0;
+	display: table;
+}
+#addListModal .modal-dialog{
+	width: 600px;
+}
+@media(min-width: 320px) and (max-width: 414px){
+	#addListModal .modal-dialog{
+		width:300px!important;
+	}
+	#addListModal .modal-footer textarea{
+		font-size: 12px;
+	}
+	#addListModal .modal-title .black{
+		font-size: 14px;
+	}	
+}
+
+
+
+
+
+
+@media(min-width: 415px) and (max-width: 679px){
+	#addListModal .modal-dialog{
+		width:400px!important;
+	}
+
+}
+#addListModal .modal-body-cotent{
+	display: table;
+}
+#addListModal #no-margin{
+	margin-bottom: 7px;
+	background-color: #26cada;
+    border-color: #26cada;
+}
+#addListModal .modal-footer{
+	border-top:0;
+	padding: 0 15px;
+	margin-bottom: 20px;
+}
+#addListModal .modal-footer textarea{
+	border-radius: 5px;
+}
+#addListModal .modal-body-cotent-right{
+	background: #fff;
+	height: 260px;
+
+}
+#addListModal .modal-body-cotent-right .add-ul{
+	margin:0;
+	padding: 0;
+    margin-top: 10px;
+    height: 180px;
+    margin-bottom: 20px;
+    overflow-y: scroll;
+}
+#addListModal .modal-body-cotent-right .add-ul li{
+	padding:10px 10px 10px 5px;
+	margin-bottom: 5px;
+	    height: 40px;
+	border-radius: 5px;
+}
+#addListModal .modal-body-cotent-right .add-ul .abc:hover{
+	background: #26cada;
+	color: #fff;
+}
+
+#addListModal .modal-body-cotent-right .add-ul li .check-box{
+	display: none;
+	color:#4cbcbc; 
+	font-size: 20px;
+}
+#addListModal .modal-body-cotent-right .creat{
+	position: relative;
+	height: 40px;
+	background: #ededed;
+	border-radius: 5px;
+	line-height: 40px;
+}
+#addListModal .modal-body-cotent-right .creat .add_btn{
+	position: absolute;
+	top:0;
+	right:0;
+	margin:0;
+	border-radius: 5px;
+    background-color: #4cbcbc;
+    border-color: #4cbcbc;
+}
+#addListModal .modal-body-cotent-right .creat .add_btn i{
+	font-size: 26px;
+    color: #fff;
+    margin-top: 7px;
+}
+#addListModal .modal-body-cotent-right .creat .add-content{
+	position: absolute;
+	left:0;
+	top:0;
+	border:0;
+	height: 40px;
+	background: #ededed;
+	margin:0;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+#addListModal .add_ul_li{
+	display: block!important;
+}
+#addListModal .afetr-check{
+	background: #c9c9c9!important;
+	color: #fff;
+}
+#addListModal .modal-footer .btn{
+	margin:10px 0;
+}
+
+#addListModal .modal-footer .btn-primary{
+	border:1px solid #7cc4c4;
+	color: #4cbcbc;
+	background-color: #f0ffff!important;	
+}
+
+#addListModal .modal-footer .btn-default:hover{	
+	background: #999!important;
+	color: #fff;	
+}
+#addListModal .modal-footer .btn-primary:hover{	
+	border:1px solid #4cbcbc!important;
+	background-color: #4cbcbc!important;
+	color: #fff;	
+}
+#addListModal .modal-footer .btn-default{	
+	background: #fff!important;
+	color: #000;	
+}
+#addListModal .close_box{
+	color: #fff;
+	font-size: 20px;
+	/* display: block!important; */
+}
+#addListModal .span-length{
+	width: 180px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+#addListModal .l {
+	float: left;
+}
+#addListModal .r {
+	float: right;
+}
+@media screen and (max-width: 768px) and (min-width: 320px){
+	.modal-footer .btn {
+    padding-left: 15px;
+    padding-right: 15px;
+   
+}
+.buts1{
+	float:left;
+}
+.buts2{
+	float: right
+}
+}

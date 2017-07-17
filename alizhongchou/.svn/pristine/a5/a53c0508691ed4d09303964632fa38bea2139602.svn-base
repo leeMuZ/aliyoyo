@@ -1,0 +1,29 @@
+<?php
+// HTTP
+define('HTTP_SERVER', 'http://127.0.0.1:83/');
+
+
+// HTTPS
+define('HTTPS_SERVER', 'https://127.0.0.1:83/');
+
+// DIR
+define('DIR_APPLICATION', 'E:/aliyoyoPhp/aliyoyo_com/crowdfund/catalog/');
+define('DIR_SYSTEM', 'E:/aliyoyoPhp/aliyoyo_com/system/');
+define('DIR_IMAGE', 'E:/aliyoyoPhp/aliyoyo_com/image/');
+define('DIR_S3IMAGE', 'http://image.aliyoyo.com/image/');
+define('DIR_LANGUAGE', 'E:/aliyoyoPhp/aliyoyo_com/crowdfund/catalog/language/');
+define('DIR_TEMPLATE', 'E:/aliyoyoPhp/aliyoyo_com/crowdfund/catalog/view/theme/');
+define('DIR_CONFIG', 'E:/aliyoyoPhp/aliyoyo_com/system/config/');
+define('DIR_CACHE', 'E:/aliyoyoPhp/aliyoyo_com/system/storage/cache/');
+define('DIR_LOGS', 'E:/aliyoyoPhp/aliyoyo_com/system/storage/logs/');
+define('DIR_UPLOAD', 'E:/aliyoyoPhp/aliyoyo_com/system/storage/upload/');
+define('DIR_MODIFICATION', 'E:/aliyoyoPhp/aliyoyo_com/system/storage/modification/');
+
+// DB
+define('DB_DRIVER', 'mysqli');
+define('DB_HOSTNAME', 'localhost');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '0626');
+define('DB_DATABASE', 'aliyoyo_com');
+define('DB_PORT', '3306');
+define('DB_PREFIX', 'oc_');

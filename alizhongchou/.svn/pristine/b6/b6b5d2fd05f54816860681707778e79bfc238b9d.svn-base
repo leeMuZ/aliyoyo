@@ -1,0 +1,500 @@
+@import url("animate-tool.css");
+body {
+    background: #f5f5f5;
+    font-family: "Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif;
+    font-size: 14px;
+    color:#353535;
+    margin: 0;
+    padding: 0;
+}
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;text-decoration:none;}
+.l{
+    float: left;
+}
+.r{
+    float:right;
+}
+img{
+    display: block;
+    width:100%;
+    height:100%;
+}
+/* --------------------------banner 图片bufen--------------------------- */
+.home-banner{
+    height: 650px;
+   /*  display: none; */
+   margin-bottom: 60px;
+}
+.home-banner .swiper-container {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.home-banner .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.home-banner .swiper-slide img{
+    display: block;
+    width: 100%;
+    height: 100%;
+
+}
+.home-banner .swiper-button-next,.home-banner .swiper-button-prev{
+    background-image: none;
+}
+.qiehuan{
+    font-size: 30px;
+    color: #fff;
+}
+.home-banner .swiper-pagination-bullet{
+    background: #fff;
+    opacity: 1;
+}
+.home-banner .swiper-pagination-bullet-active {
+    background: #a8a8a8;
+}
+/* --------------------------banner 图片bufen end--------------------------- */
+
+/* --------------------------fanzhun tupian--------------------------- */
+@media (max-width: 768px){
+    .container {
+        width: 100%;
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+    }
+}
+
+@media (min-width: 992px){
+    .container {
+        width: 970px;
+    }
+}
+@media (min-width: 1200px){
+    .container {
+        width: 1170px;
+    }
+}
+/* ============================guanggaowi=================== */
+.guanggaowei{
+    padding:0 ;
+    margin-bottom: 30px;
+}
+.regularly-item-list li.first{
+    width: 18%!important;
+    height: 350px!important;
+    
+}
+.regularly-item-list li{
+    width: 26.33333%;
+    height: 170px; 
+    float: left; 
+    display: inline; 
+    position: relative;
+    margin-right: 1%;
+    margin-bottom: 10px;
+}
+.regularly-item-list li .flip-box img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.regularly-item-list li.first .flip-box{
+    width: 100%;
+    height: 350px; 
+    padding:150px 15px 0 15px;
+}
+.regularly-item-list li.first .flip-box p{
+    font-weight: bold;
+}
+.regularly-item-list li.first .flip-box p span{
+    padding-bottom: 5px;
+}
+.regularly-item-list li.first .flip-box p:last-child span:first-child{
+    border-bottom: 1px solid;
+} 
+.regularly-item-list li .flip-box{
+    width:100%; 
+    height:170px;
+    position: absolute;
+    left: 0;
+    top: 0; 
+    overflow: hidden;
+
+}
+.yuanyou{
+    background: #4cbcbc;
+
+}
+.turnoff{
+     background: #fff;
+     
+}
+.yuanyou p{
+    color: #fff;
+}
+.turnoff p{
+    color: #101010;
+}
+.yuanyou p:first-child{
+    font-size: 20px;
+
+}
+.turnoff p:first-child{
+    font-size: 20px;
+
+}
+.little-margin{
+    margin-bottom: 5px;
+}
+.tupianfanzhuan{
+    padding:20px 15px;
+    background: #fff;
+    
+}
+.tupianfanzhuan a:hover{
+    color: #101010;
+}
+.tupianfanzhuan a p{
+    font-weight: bold;
+}
+.tupianfanzhuan .progress{
+    height: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background-color: #e8e8e8;
+    overflow: visible;
+}
+.tupianfanzhuan .progress .progress-bar{
+    background: #26c6da; 
+    position: relative;
+    animation: animate-positive 2s;
+    border-radius: 20px;
+    box-shadow: none;
+}
+/* InDemand */
+.InDemand,.categories,.Marketplace,.Mostfunded{
+    padding:0;
+    margin-bottom: 30px;
+}
+.bottom{
+     margin-left: -15px;
+     margin-right: -15px;
+}
+.InDemand-top{
+    margin-bottom: 20px;
+}
+.InDemand-top span{
+    float: left;
+    font-size: 20px;
+    color: #424242;
+    font-weight: bold;
+}
+.InDemand-top a{
+    float: right;
+    font-size: 16px;
+    color: #26cada;
+    line-height: 40px;
+    font-weight: bold;
+}
+.product-grid .product:hover .image img.zoom-image-effect{
+    transform: none;
+}
+.product-grid .product .image a{
+    transition: none;
+}
+
+.product-grid{
+    margin-top: 0;
+   
+}
+.product-grid .product{
+    padding-top: 0;
+}
+.product .left .heartlike{
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    text-align: center;
+    line-height: 35px;
+    background: #e84e40;
+    border-radius: 100%;
+}
+.product .left .heartlike i{
+    color: #fff;
+    font-size: 18px;
+}
+.product .left .deleted{
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    display: none;
+    text-align: center;
+    line-height: 33px;
+    background: #fff;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.product .left .deleted i{
+    font-size: 20px;
+}
+.acontantactive {
+    background: #dedede!important;
+    color: #101010;
+}
+.product .right{
+    padding:0 10px 10px 10px;
+}
+.product-grid .product .name a{
+    line-height: 22px;
+}
+.product-grid .product .name{
+    height: auto;
+    line-height: 22px;
+    margin-bottom: 10px;
+}
+
+.product-grid .product{
+    background: #fff;
+    text-align: left;
+   
+}
+.product-grid .product .name{
+    margin-top: 10px;
+    text-align: left;
+}
+.nduanluo{
+    color: #757575;
+    line-height: 18px;
+    letter-spacing: 0;
+    font-size: 13px;
+    margin-bottom: 20px;
+    height: 55px;
+    word-wrap: break-word;
+
+    overflow: hidden;
+}
+/* jidutiao */
+.product-grid .product .progress{
+    height: 10px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    background-color: #e8e8e8;
+    overflow: visible;
+}
+.product-grid .product .progress .progress-bar{
+    background: #26c6da; 
+    position: relative;
+    animation: animate-positive 2s;
+    border-radius: 20px;
+    box-shadow: none;
+}
+.progress .progress-value{
+    display: block;
+    font-size: 13px;
+    color: #101010;
+    position: absolute;
+    bottom: -25px;
+    right: -15px;
+}
+
+@-webkit-keyframes animate-positive{
+    0% { width: 0%; }
+}
+@keyframes animate-positive{
+    0% { width: 0%; }
+}
+/* jindutiao end */
+/* categories */
+.categories-div{
+    height: 245px;
+    position: relative;
+    margin-bottom: 30px;
+}
+.categories-div img{
+    display: block;
+    width: 100%;
+ 
+    height: 100%;
+}
+
+.img-zhezhao{
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.zhezhaoimg{
+    width: 100%;
+    height: 100%;
+    opacity:0.4;
+    background: #000;
+    z-index: 10;
+    padding:5%;
+    display: table;
+}
+.xianshidiv{
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    top: 15%;
+    left:15%;
+    text-align: center;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    color: #fff;
+    font-size: 16px;
+}
+.xianshidiv-active{
+    background: #fff;
+    color: #101010;
+}
+
+.xianshidiv svg{
+    font-size: 25px;
+    margin-top: 25%;
+    display: inline-block;
+    width: 30px;
+    line-height: 60px;
+    height: 40px;
+}
+.svg_hover{
+    fill:#101010!important;
+}
+use.aliyoyo-icon{
+    fill: #fff;
+}
+
+.xianshidiv span{
+    width: 100%;
+    display: block;
+    letter-spacing: 1px;
+}
+/* Product Marketplace  */
+.Marketplace .product-grid .product{
+    text-align: center;
+}
+.Marketplace .product-grid .product .name {
+    margin: 20px 0 0;
+    height: 33px;
+    line-height: 33px;
+    overflow: hidden;
+    text-align: center;
+}
+.product-grid .product .name a {
+    text-transform: none;
+    font-weight: bold;
+}
+.pledge p {
+    font-weight: bold;
+    font-size: 13px;
+}
+.product-grid .product:hover .image img.zoom-image-effect{
+    transform: none;
+}
+.product-grid .product .image a{
+    transition: none;
+}
+
+.bottoms{
+    position: relative;
+}
+.bottoms .swiper-container {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.bottoms .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+
+}
+.bottoms  .product-grid{
+    margin-left: -15px;
+    margin-right: -15px;
+
+}
+.Marketplace .swiper-button-next,.Marketplace  .swiper-button-prev{
+    background: none;
+    width: auto;
+    height: auto;
+    top:40%;
+    color: #c5c5c5;
+}
+.Marketplace  .swiper-button-next:hover,.Marketplace  .swiper-button-prev:hover{
+    color:#26cada;
+}
+.Marketplace .swiper-button-prev{
+    left:-15%;
+}
+.Marketplace .swiper-button-next{
+    right:-15%;
+}
+.Marketplace  .swiper-button-next i,.Marketplace .swiper-button-prev i{
+    font-size: 150px;
+
+}
+@media (max-width: 992px){
+    .Marketplace  .swiper-button-prev{
+        left:0;
+    }
+    .Marketplace .swiper-button-next{
+        right:0;
+    }
+
+}
+@media (min-width: 992px) and (max-width: 1400px){
+    .Marketplace .swiper-button-prev{
+        left:0;
+    }
+    .Marketplace .swiper-button-next{
+        right:0;
+    }
+
+}
+
+@media(max-width: 769px){
+    .home-banner{
+        height: 300px;
+    }
+   .tupianfanzhuan a p{
+        font-size: 12px;
+
+    }
+    .tupianfanzhuan .progress{
+        margin-bottom: 10px;
+    }
+
+}
+a {
+    text-decoration: none!important;
+}
+/* end */

@@ -1,0 +1,78 @@
+<?php
+class ModelProjectCrowdFund extends Model {
+	public function getCrowdFunding($funding_id) {
+		$query = $this->db->query("SELECT 
+		     funding_id,
+		     customer_id,
+		     name,
+		     introduce,
+		     current_goal,
+		     total_goal,
+		     backers,
+		     image,
+		     viedo,
+		     status,
+		     category_id,
+		     date_added,
+		     date_modified,
+		     date_start,
+		     date_ended,
+		     sort_order
+		     FROM " . DB_PREFIX . "crowdfunding WHERE funding_id = '" . $funding_id . "'");
+		return $query->row;
+	}
+	
+	public function getCrowdFundingDescription($funding_id) {
+	    $query = $this->db->query("SELECT 
+	        description,
+	        risk_description,
+	        meta_title,
+	        meta_description,
+	        meta_keyword 
+	        FROM " . DB_PREFIX . "crowdfunding_description WHERE funding_id = '" . $funding_id . "'");
+	    return $query->row;
+	}
+	
+	public function getCrowdFundingUpdates($data) {
+	    $sql = "SELECT
+	        update_id,
+	        title,
+	        content,
+	        like_num,
+	        comment_num,
+	        post_type,
+	        date_added
+	        FROM " . DB_PREFIX . "crowdfunding_updates WHERE funding_id = '" . $data['funding_id'] . "'";
+	    //支持者不传post_type 非支持者传0
+	    if(isset($data['post_type'])){
+	       $sql.= " AND post_type='0'";
+	    }
+	            
+	    $query = $this->db->query($sql);
+	    return $query->rows;
+	}
+	
+	public function getCrowdFundingUpdate($update_id) {
+	    $query = $this->db->query("SELECT
+	        update_id,
+	        title,
+	        content,
+	        like_num,
+	        comment_num,
+	        post_type,
+	        date_added
+	        FROM " . DB_PREFIX . "crowdfunding_updates WHERE update_id = '" . $update_id . "'");
+	    return $query->row;
+	}
+	
+	public function getCrowdFundingComment($funding_id){
+	    $query = $this->db->query("SELECT
+	        customer_id,
+	        target_customer_id,
+	        content,
+	        date_added
+	        FROM " . DB_PREFIX . "crowdfunding_comment WHERE funding_id = '" . $funding_id . "'");
+	    return $query->rows;
+	}
+	
+}

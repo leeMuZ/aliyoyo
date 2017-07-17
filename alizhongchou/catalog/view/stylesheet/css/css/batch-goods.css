@@ -1,0 +1,707 @@
+/* 众筹 */
+/* CSS Document */
+body{
+	background: #f9f9f9;
+}
+.raised-left{
+	height: 500px;
+}
+.guanggaowei{
+    padding:0 ;
+}
+.regularly-item-list{
+	padding:0;
+}
+
+.regularly-item-list li.first{
+    width: 18%!important;
+ }
+.regularly-item-list li{
+    width: 100%;
+    height: auto; 
+    float: left; 
+    display: inline; 
+    position: relative;
+    margin-right: 1%;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+.product-Name{
+	font-size: 30px;
+}
+.Crowd-funding{
+	height: 100px;
+}
+.new-Crowd{
+	height: 80px;
+}
+.new-Crowdleft,.new-Crowdright{
+	width: 50%;
+	float: left;
+}
+.backspan{
+	float: left;
+	width: 50%;
+	text-align: center;
+}
+.clickbutton{
+	border-radius: 5px!important;
+	background: rgba(134, 189, 233, 1);
+	width: 100%;
+	color: #fff;
+	
+}
+.likesharebtn .btn{
+	width: 48%;
+	border-radius: 5px!important;
+	background: #fff;
+	border-color: #999;
+	float: left;
+}
+.likesharebtn .btn:first-child{
+	margin-right: 4%;
+}
+.small-p{
+	font-size: 14px;
+}
+.number-red{
+	font-size: 28px;
+    color: #FF3300;
+    margin-right: 10px;
+}
+.number-black{
+	font-size: 28px;
+}
+
+.regularly-item-list li .flip-box img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.regularly-item-list li.first .flip-box{
+    width: 100%;
+    height: auto; 
+    padding:150px 15px 0 15px;
+}
+.regularly-item-list li.first .flip-box p{
+    font-weight: bold;
+}
+.regularly-item-list li.first .flip-box p span{
+    padding-bottom: 5px;
+}
+.regularly-item-list li.first .flip-box p:last-child span:first-child{
+    border-bottom: 1px solid;
+} 
+.regularly-item-list li .flip-box{
+    width:100%; 
+    position: absolute;
+    left: 0;
+    top: 0; 
+    overflow: hidden;
+
+}
+.yuanyou{
+    background: #4cbcbc;
+
+}
+.turnoff{
+     background: #fff;
+     
+}
+.yuanyou p{
+    color: #fff;
+}
+.turnoff p{
+    color: #101010;
+}
+.yuanyou p:first-child{
+    font-size: 20px;
+
+}
+.turnoff p:first-child{
+    font-size: 20px;
+
+}
+.little-margin{
+    margin-bottom: 5px;
+}
+.tupianfanzhuan{
+    padding:20px 15px;
+    padding-right: 2px;
+    padding-top:5px;
+}
+.tupianfanzhuan a:hover{
+    color: #101010;
+}
+.tupianfanzhuan a p{
+    font-size: 16px;
+	color: #666;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 500;
+ }
+
+.fanzhuanspan{
+	margin-right: 5px;
+	font-family: "Raleway", sans-serif;
+	font-weight: 600;
+	width: 65px;
+    display: inline-block;
+
+}
+
+input[name="nan"]{
+    vertical-align: middle;
+    margin-top: -2px;
+}
+input[name="squer"]{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin:0;
+    opacity: 0;
+}
+input[name="size"]{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin:0;
+    opacity: 0;
+}
+.span-squer{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	border:1px solid #e5e5e5;
+	vertical-align: middle;
+}
+.span-squer_active{
+	border:2px solid #8fc356!important;
+}
+.span-size_active{
+	border:1px solid #8fc356!important;
+}
+.span-squer_one{
+	background: #171717;
+}
+.span-squer_two{
+	background: #f5f5f5;
+}
+.span-squer_three{
+	background: #ff8c53;
+}
+.span-squer_four{
+	background: #c41330;
+}
+.span-squer_five{
+	background: #3c044e;
+}
+.span-squer_six{
+	background: #242e4e;
+}
+
+.span-squer_seven{
+	background: #060f16;
+}
+.span-size{
+	display: inline-block;
+	width: 70px;
+	height: 30px;
+	background: #f9f9f9;
+	border:1px solid #e5e5e5;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 30px;
+}
+input[name="sex"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+}
+
+.span-sex {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #999;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 100%;
+    margin-right: 5px;
+    margin-bottom: 3px;
+}
+.circlequan{
+	width: 12px;
+	height: 12px;
+	background: #8fc356;
+	border-radius: 100%;
+    margin: auto;
+    margin-bottom: 1px;
+    display: none;
+    margin-top: 3px;
+}
+.circlequan-show{
+	display: block!important;
+}
+.choose-color,.choose-size,.choose-sex{
+	display: inline-block;
+	position: relative;
+	margin-right: 5px;
+	margin-bottom: 10px;
+}
+.choose-size{
+	margin-right: 13px;
+}
+.Spinner a i{
+	display: inline-block;
+    height: 30px;
+    border-bottom: 1px solid #333;
+    width: 25px;
+    text-align: center;
+    vertical-align: top;
+    font-size: 20px;
+    line-height: 30px;
+    color: #8fc356;
+}
+.Spinner .DisDe i{
+	border-right:0;
+}
+.Spinner .Increase i{
+	border-left:0;
+}
+.Spinner input{
+	border:none;
+	border-bottom:1px solid #333;
+	border-right:0;
+	border-left:0;
+	height: 30px;
+	text-align: center;
+	width: 90px;
+	background: #f9f9f9;
+}
+.Previousbtn{
+	margin-top: 30px;
+}
+.Previousbtn .btn{
+	width: 100%;
+	border-radius: 5px!important;
+	font-weight: bold;
+	font-family: "Raleway", sans-serif;
+	font-size: 16px;
+	background: #8fc356;
+	color: #fff;
+
+}
+.Previousbtn .btn:hover{
+	background: #acdd76;
+}
+.Previousbtntwo .btn{
+	text-transform: none;
+    width: 48%;
+    float: left;
+    border-radius: 5px!important;
+    background: #fff;
+    color: #666;
+    border: none;
+    box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0;
+    height: 40px;
+    font-family: "Raleway", sans-serif;
+
+}
+.Previousbtntwo .btn i{
+	margin-right: 5px;
+}
+.Previousbtntwo .btn:hover{
+	color: #f7a06c;
+	box-shadow: 0 0px 3px 0 rgba(247,160,108,0.9);
+	
+}
+.Previousbtntwo .btn:first-child{
+	margin-right: 4%;
+}
+#products-raisedtab{
+	list-style: none;
+	margin:0;
+	padding:0;
+	margin-left: -15px;
+	margin-right: -15px;
+	margin-top: 30px;
+}
+#products-raisedtab li{
+	width: 25%;
+}
+#products-raisedtab li a img{
+	height: 100px;
+}
+.batchsgood{
+	font-size: 16px;
+	position: relative!important;
+}
+.fanspanname{
+	font-size: 24px;
+	color: #333;
+	font-family: "Raleway", sans-serif;
+	width: 100%;
+}
+.fullwidth{
+	width: 100%;
+	font-weight: 600!important;
+	font-family: "Raleway", sans-serif!important;
+
+}
+.fullwidth span{
+	font-weight: 500!important;
+	margin-left: 15px;
+	font-size: 14px;
+
+}
+.childtwo{
+	font-size: 24px;
+	font-weight: bold;
+	color:#f7326a;
+	font-family: Work Sans Regular;
+}
+.color_p{
+	color: #666666!important;
+}
+.Spinner.Previous-Step{
+	width: 200px;
+	margin-right: 4%;
+}
+
+.Spinner.Previous-Step .DisDe i,.Spinner.Previous-Step .Decrease i{
+	width: 10%;
+}
+.Spinner.Previous-Step .Decrease i{
+	border-right: 0;
+}
+.Spinner.Previous-Step .Increase i{
+	width: 10%;
+}
+.colorul{
+	background: #f5f5f5!important;
+	border:none!important;
+}
+.colorul li a{
+	font-size:20px;
+}
+/* paseidon-follow */
+.paseidon-follow{
+	background: #fff;
+	padding: 30px;
+}
+.sw-avatar--xlarge{
+	max-height: 60px;
+    max-width: 60px;
+    border-width: 2px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    overflow: hidden;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+	padding:0;
+	
+
+}
+.pason{
+	text-align: center;
+	padding-left: 0;
+	float: left;
+	margin-right: 30px;
+}
+.pasone p{
+	font-size: 16px;
+	margin-top: 10px;
+    margin-bottom: 10px;
+    color: #333;
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+}
+.pasone .btn{
+	border-radius: 5px!important;
+    background: #8fc356;
+    width: 120px;
+    height: 30px;
+    padding: 0;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    font-family: "Raleway", sans-serif;
+    border:none;
+}
+.pasone .btn i{
+	margin-right: 5px;
+}
+.pasone .btn:hover{
+	background: #acdd76;
+}
+.learn-p{
+	margin:0;
+	font-size: 14px;
+	position: relative;
+	margin-top: 25px;
+	color: #666;
+	font-family: "Work Sans", sans-serif;
+}
+.learn-p i{
+	font-size: 25px;
+	color: #eee;
+}
+.quoteleft,.quoteright{
+	position: absolute;
+	color:#999999;
+}
+.quoteleft{
+	top: -15px;
+    left: -35px;
+}
+.quoteright{
+	right: 0px;
+    bottom: -15px;
+}
+/* 产品详情 */
+/* zuobian */
+.product-details{
+	margin-top: 50px;
+	
+}
+#product-details{
+	list-style: none;
+	padding: 0;
+	border-bottom: 1px solid #eee;
+	background: #fff;
+	margin:0;
+	height: 61px;
+	display: block;
+}
+#product-details li{
+	text-align: center;
+	line-height: 60px
+}
+#product-details li a{
+	padding:20px 0;
+	font-size: 16px;
+    color: #666;
+   position: relative;
+  text-transform: none;
+}
+
+
+.p-detailslook .tab-content{
+	background: #fff;
+}
+.review--ul{
+	list-style: none;
+	margin-bottom: 60px;
+}
+.review--li{
+	padding:30px 40px 30px 30px;
+	border-bottom: 1px dashed #eee;
+}
+.review--li-l{
+	margin-right: 30px;
+}
+.review--li-l,.review--li-r{
+	float: left;
+}
+.review--li-r{
+	width: 85%;
+	color: #666;
+	font-family: "Raleway", sans-serif;
+}
+.review--li-l img{
+	border-radius: 100%;
+	margin-bottom: 10px;
+}
+.review--li-l p{
+	font-weight: bold;
+	font-family: "Raleway", sans-serif;
+	font-size: 14px;
+	color: #333;
+}
+.review--li-r p{
+	color: #666;
+	margin-bottom: 0;
+	font-family: "Work Sans", sans-serif;
+	
+}
+.data--span{
+	float: left;
+	color: #999;
+	font-size: 12px;
+	font-family: "Work Sans", sans-serif;
+}
+.like--sp{
+	float: right;
+	color: #666;
+	font-size: 12px;
+	font-family: "Work Sans", sans-serif;
+}
+.like--sp i{
+	margin-right: 10px;
+	font-size: 15px;
+}
+.nth--more{
+	text-align: center;
+	color: #999;
+	font-size: 16px;
+	font-family: "Work Sans", sans-serif;
+}
+/* 右边 */
+.love-product {
+	background: #fff;
+}
+.tolove{
+	font-size: 16px;
+	border-bottom:1px solid #eee;
+	padding:19px 0;
+	text-align: center;
+	color: #666;
+	margin-bottom: 0;
+	font-weight: bold;
+	font-family: "Raleway", sans-serif;
+}
+.mabylove{
+	padding: 20px;
+}
+.guesslike{
+	-webkit-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+.guesslike:hover{
+	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+	
+}
+.guesslike img{
+	height: 233px;
+}
+.mabylove p{
+	text-align: center;
+}
+.mabylove p:first-child{
+	font-size: 16px;
+	font-weight: bold;
+	font-family: "Raleway", sans-serif;
+	color: #666;
+}
+.mabylove p:last-child{
+	font-size: 14px;
+	font-family: "Work Sans", sans-serif;
+	color: #999;
+}
+.p-detailslike{
+	padding-right: 0;
+}
+.love-product .mabylove:last-child{
+	margin-bottom: 60px;
+}
+/* 批量商品页面css */
+
+
+
+/* 放大镜 */
+/* smallImg */
+.smallImg{
+	position:relative;
+	height:500px; 
+	padding: 0;
+	overflow:hidden;
+	float:left;
+}
+.scrollbutton{
+	width: 100%;
+    height: 25px;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+    font-size: 30px;
+    z-index: 30;
+    text-align: center;
+    color: #666;
+}
+.scrollbutton.smallImgUp{
+	top:0;
+}
+.scrollbutton.smallImgDown{ 
+	bottom:0px;
+}
+#imageMenu {
+	height:460px;
+	overflow:hidden; 
+	margin-top:30px;
+	position: absolute;
+	z-index: 10;
+	top: 0px;
+}
+#imageMenu ul{
+	height: 500px;
+}
+#imageMenu li {
+	width: 100%;
+	margin-bottom: 10px;
+}
+#imageMenu li img{
+	cursor:pointer;
+	width: 100px;
+	height: 100px;
+}
+#imageMenu li#onlickImg img{
+	border:1px solid #8fc356;
+}
+/* bigImg */
+#midimg{
+	width: 500px;
+	height:500px;
+}
+.bigImg{
+	position: relative;
+    overflow: hidden;
+    padding: 0;
+    height: 500px;
+    width: 500px;
+    margin-left: 22px;
+}
+
+#winSelector{
+	background-position: 0px 0px;
+    float: right;
+    overflow: hidden;
+    z-index: 999;
+    transform: translateZ(0px);
+    opacity: 0.4;
+    zoom: 1;
+    width: 260px;
+    height: 260px;
+    background-color: #000;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 32px;
+    top: 215px;
+    display: none;
+}
+/* bigView */
+#bigView{
+	position:absolute;
+	border: 3px solid #999;
+	overflow: hidden;
+	width:260px;
+	height:350px;
+	top:300px;
+	left:540px;
+z-index:999;}
+#bigView img{
+	position:absolute;
+}
+/* 后期添加页面 */

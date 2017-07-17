@@ -1,0 +1,79 @@
+
+ // $(window).scroll(function(){
+	//     var top = $(window).scrollTop();   //设置变量top,表示当前滚动条到顶部的值
+ //        if (top > 70)                      //当滚动条到顶部的值大于70时，添加类".ce2"到".ce"中
+ //        {
+	// 		$(".ce").addClass("ce2");
+ //        }
+	// 	else                              //当滚动条到顶部的值小于等于70时，把".ce"中的类".ce2"删除
+	// 	{
+	// 	    $(".ce").removeClass("ce2");
+	// 	}
+        
+	// 	var tt = $(window).height();    //设置变量tt,表示当前窗口高度的值
+	// 	var num =0;
+	// 	for(var n=0;n<7;n++)            
+ //        {
+	// 	     if(top >= n*tt && top <= (n+1)*tt)  //在此处通过判断滚动条到顶部的值和当前窗口高度的关系（当前窗口的n倍 <= top <= 当前窗口的n+1倍）来取得和导航索引值的对应关系
+	// 		   {
+	// 		      num=n;
+				  
+	// 		   }
+	// 		   $(".ce > li > a").removeClass("xz").eq(num).addClass("xz");     //先删除导航所有的选中状态，在通过上面判断中获得的导航索引值给当前导航加选中样式！
+	// 	}
+
+	// })
+$(document).ready(function () {
+	 $(".ce li").each(function(index, el) {
+		$(this).click(function(event) {
+			$("html,body").animate({scrollTop:$(".thanksgiving_scroll .alicom").eq($(this).index()).offset().top},600);
+		});
+	});
+    var menuYloc = $("#test").offset().top;  
+    $(window).scroll(function () { 
+		 // var offsetTop = menuYloc + $(window).scrollTop() + "px";  
+        // $("#test").animate({ top: offsetTop }, { duration: 600, queue: false });  
+       var div0_height = $("#div0").offset().top;
+		if($(this).scrollTop()>div0_height){
+			$('#test').fadeIn();
+		}else{
+			$('#test').fadeOut();
+		}
+	 }); 
+	 // 返回顶部
+	$(".offset_top").click(function(event) {
+		$("html,body").animate({scrollTop:$(".thanksgiving_banner").offset().top},600);
+	})
+	$(".test_ul li").each(function(index, el) {
+		$(this).click(function(event) {
+			$("html,body").animate({scrollTop:$(".thanksgiving_scroll .alicom").eq($(this).index()).offset().top},600);
+		});
+	});  	
+});   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

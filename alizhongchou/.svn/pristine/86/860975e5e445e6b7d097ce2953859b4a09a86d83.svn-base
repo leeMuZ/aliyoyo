@@ -1,0 +1,138 @@
+ $(document).ready(function(){
+ 	$('.switch').click(function(){
+		 $(this).toggleClass("switchOn");
+		 if($(this).hasClass("switchOn")){
+			 $('input[name="status"]').val('1');
+		 }else{
+			 $('input[name="status"]').val('0');
+		 }
+ 	});
+ 
+ });
+//  $('#mymm').map(function() {
+//        $(this).modal('hide'); 
+// });
+ // var n=0;
+ // $(".dele").click(function(event) {
+ // 	n++;
+ // 	/* Act on the event */
+ // 	if(n%2!=0){
+ // 		$('#mymm').modal('show');
+ // 	}else{
+ // 		$('#mymm').modal('hide');
+ // 	}
+ 
+ // });
+ $(document).on("click", "#btn_del_product", function(e){
+	 var product_arr = new Array();
+	 $('.fuxuancheck').each(function(i){
+		 product_arr[i] = $(this).attr('data-pro-id');
+	 });
+	 $.ajax({
+			url: 'index.php?route=account/collection/delete',
+			type: "POST",
+			dataType: 'json',
+			data:{"product_id":product_arr, "collection":$('#myModalLabel').attr('data-collection')},
+			beforeSend: function() {
+				$('#btn_del_product').button('loading');
+			},
+			complete: function() {
+				$('#btn_del_product').button('reset');
+				//window.location.reload();
+			},
+			success: function(json) {
+				if (json['redirect']) {
+					location = json['redirect'];
+				}					
+				if(json['error']){
+					alert(json['error']);
+				}				
+				if(json['success']){
+					alert(json['success']);
+					window.location.reload();
+				}
+			},
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+			}
+		});	
+ });
+ 
+ $(document).on("click", "#btn_edit_collection", function(e){
+	 $.ajax({
+			url: 'index.php?route=account/collection/editCollection',
+			type: "POST",
+			dataType: 'json',
+			data:$("#edit-collection").serialize(),//{"collection_id":$('input[name="collection_id"]'), "collection_name":$('input[name="collection_name"]'), "status":$('input[name="status"]'), "description":$('input[name="description"]')},//
+			beforeSend: function() {
+				$('#btn_edit_collection').button('loading');
+			},
+			complete: function() {
+				$('#btn_edit_collection').button('reset');
+				//window.location.reload();
+			},
+			success: function(json) {
+				if (json['redirect']) {
+					location = json['redirect'];
+				}				
+				if(json['success']){
+					window.location.reload();
+				}
+			},
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+			}
+		});	
+ });
+ 
+ $(document).on("click", "#btn_del_collection", function(e){
+	 $.ajax({
+		url: 'index.php?route=account/collection/deleteCollection',
+		type: "POST",
+		dataType: 'json',
+		data:{"collection":$('#myModalLabel').attr('data-collection')},
+		beforeSend: function() {
+			$('#btn_del_collection').button('loading');
+		},
+		complete: function() {
+			$('#btn_del_collection').button('reset');
+			//window.location.reload();
+		},
+		success: function(json) {
+			if (json['redirect']) {
+				location = json['redirect'];
+			}				
+			if(json['success']){
+				location = json['success'];
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});	
+ });
+ 
+ 
+ $(document).on("click", ".chose", function(e){
+	/* Act on the event */
+	$(".blocked").show();
+	$(".none").hide();
+	$(".fuxuan").show();
+});
+$(document).delegate(".goback", "click", function(){
+	$(".blocked").hide();
+	$(".none").show();
+	$(".fuxuan").hide();
+	$(".no-block").addClass('followers');
+});
+$(document).delegate(".fuxuan", "click", function(){
+	$(this).addClass("fuxuancheck");
+	$(".no-block").removeClass('followers');
+	$(this).addClass('no-select');
+
+});
+$(document).delegate(".no-select", "click", function(){
+	$(this).removeClass('fuxuancheck');
+	$(this).removeClass('no-select');
+});
+

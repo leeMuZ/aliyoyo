@@ -1,0 +1,115 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: alice
+ * Date: 2017/4/7
+ * Time: 11:34
+ */
+class ControllerCrowdfundingUpdates extends Controller
+{
+    public function index()
+    {
+        $data['funding_id'] = $this->request->get['funding_id'];
+        $this->load->model('crowdfunding/crowdfunding');
+        $this->load->model('tool/time');
+        $data['meta'] = $this->model_crowdfunding_crowdfunding->getMetaMessage($data['funding_id']);
+        $data['update'] = $this->model_crowdfunding_crowdfunding->getProjectUpdate($data['funding_id']);
+        $my_check = $this->model_crowdfunding_crowdfunding->getSingle($data['funding_id']);
+        if (empty($my_check)) {
+            $data['continue'] = $this->url->link('common/home');
+            $this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
+            $data['footer'] = $this->load->controller('common/footer');
+            $data['header'] = $this->load->controller('common/header');
+            $this->response->setOutput($this->load->view('error/not_found', $data));
+        }else{
+
+            foreach ($data['update'] as $k=>$v)
+            {
+                if (!empty($v['now_comment']))
+                {
+                    foreach ($v['now_comment'] as $kk=>$vv)
+                    {
+                        if ($vv['target_comment_id']!=0)
+                        {
+                            $data['reply'][] = $vv;
+                            unset($data['update'][$k]['now_comment'][$kk]);
+                        }
+                    }
+                    sort($data['update'][$k]['now_comment']);
+                }
+            }
+            if (isset($data['reply']) && count($data['reply'])>0){
+                foreach ($data['reply'] as $k=>$v)
+                {
+                    $data['reply'][$k]['date_added']=$this->model_tool_time->getdelay($v['date_added']);
+                }
+            }
+            $data['owner'] = $this->model_crowdfunding_crowdfunding->getOwner($data['funding_id']);
+            //var_dump($data['update']);exit;
+            if (!empty($this->session->data['customer_id'])){
+                $data['customer_id'] = $this->session->data['customer_id'];
+            }
+            // $check = array();
+            foreach ($data['update'] as $k=>$v) {
+                $data['update'][$k]['date_added'] = $this->model_crowdfunding_crowdfunding->changeTime($v['date_added']);
+                //$check[]        = $v['update_id'];
+            }
+            //未登录跳转地址
+            $data['login'] = $this->url->link("account/login");
+            //var_dump($data['update']);exit;
+            $document_message = array(
+                "title"       => isset($data['meta']['meta_title'])?$data['meta']['meta_title']:'updates',
+                "description" => isset($data['meta']['meta_description'])?$data['meta']['meta_description']:'updates',
+                "keywords"    => isset($data['meta']['meta_keyword'])?$data['meta']['meta_keyword']:'updates'
+            );
+            $data['link'] = array(
+                'campaign' => $this->url->link('crowdfunding/campaign', "funding_id=".$data['funding_id']),
+                'updates'  => $this->url->link('crowdfunding/updates', "funding_id=".$data['funding_id']),
+                'comments' => $this->url->link('crowdfunding/comments', "funding_id=".$data['funding_id']),
+                'community'=> $this->url->link('crowdfunding/community', "funding_id=".$data['funding_id'])
+            );
+            $data['ajax'] = $this->url->link('crowdfunding/updates/insetComment');
+            $this->document->setTitle($document_message['title']);
+            $this->document->setDescription($document_message['description']);
+            $this->document->setKeywords($document_message['keywords']);
+            $data['index_goods']  = $this->load->controller('crowdfunding/goods');
+            $data['index_js']     = $this->load->controller('common/js');
+            $data['footer'] = $this->load->controller('common/footer');
+            $data['header'] = $this->load->controller('common/header');
+            $this->response->setOutput($this->load->view('crowdfunding/updates', $data));
+
+        }
+        //var_dump($data['update']);exit;
+
+
+    }
+
+    public function insetComment()
+    {
+        $this->load->model('crowdfunding/crowdfunding');
+
+       $funding_id = $this->request->post['funding_id'];
+       $data['update_id'] = $this->request->post['update_id'];
+       $data['customer_id'] = $this->request->post['customer_id'];
+       $data['content'] = $this->request->post['content'];
+       if (isset($this->request->post['comment_id']))
+       {
+           $data['target_comment_id'] = $this->request->post['comment_id'];
+           $result = 1;
+       }else{
+           $result = $this->model_crowdfunding_crowdfunding->checkCustomer($data['customer_id'], $funding_id);
+
+       }
+       //$result = $this->model_crowdfunding_crowdfunding->take_out_id($funding_id);
+       //$data['targert_customer_id'] = $result['customer_id'];
+        if ($result)
+        {
+            $this->model_crowdfunding_crowdfunding->insertComment($data);
+            exit("1");
+        }else{
+           exit("0");
+        }
+
+    }
+
+}

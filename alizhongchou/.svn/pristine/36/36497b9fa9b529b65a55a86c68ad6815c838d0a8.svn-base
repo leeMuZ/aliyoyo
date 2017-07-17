@@ -1,0 +1,78 @@
+$(function () {
+    $('#acontant_ul a:first').tab('show')
+  
+	$('#acontant_ul a').click(function (e) {
+  		e.preventDefault()
+  		$(this).tab('show');
+  		$(this).addClass('acontantactive').parent().siblings().children().removeClass('acontantactive');
+});
+	
+})
+var num=0;
+$(".second").click(function(event) {
+	$(".popr").show();
+	
+});
+$(".save").click(function(event) {
+	/* Act on the event */
+	$(".popr").fadeOut('fast');
+});  
+// 点击1.2k
+$(document).delegate(".knum", "click", function(){
+		$(this).addClass('knumcheck');
+		$(this).addClass('no_knum');
+});
+$(document).delegate(".no_knum", "click", function(){
+		$(this).removeClass('knumcheck');
+		$(this).removeClass('no_knum');
+});
+// 点击购物车
+
+$(document).delegate(".kshop", "click", function(){
+		$(this).addClass('kshopcheck');
+		$(this).addClass('no_kshop');
+});
+$(document).delegate(".no_kshop", "click", function(){
+		$(this).removeClass('kshopcheck');
+		$(this).removeClass('no_kshop');
+});
+
+//点击follow
+
+$(document).delegate(".followed", "click", function(){
+	$(this).addClass('followcheck');
+	$(this).text("FOLLOWING");
+	$(this).addClass('is_followed');
+});
+$(document).delegate(".is_followed", "click", function(){
+    $(this).removeClass('followcheck');
+	$(this).text("FOLLOW");
+	$(this).removeClass('is_followed');
+});
+
+// 点击btn
+
+$(document).delegate(".price-kuai", "click", function(){
+	$(this).addClass('price-kuaicheck').siblings().removeClass('price-kuaicheck');
+	
+});
+$(document).delegate(".leibie", "click", function(){
+	$(this).addClass('leibiecheck');
+	$(this).addClass('is_leibie');
+});
+$(document).delegate(".is_leibie", "click", function(){
+    $(this).removeClass('leibiecheck');
+	$(this).removeClass('is_leibie');
+});
+var nn=0;
+$(document).delegate(".cotegary_p", "click", function(){
+	nn++;
+	if(nn%2!=0){
+		$(this).children('.tubiao').addClass('cotegary_pcheck');
+		$(".classify").show();
+	}else{
+		$(this).children('.tubiao').removeClass('cotegary_pcheck');
+		$(".classify").hide();
+	}
+	
+});

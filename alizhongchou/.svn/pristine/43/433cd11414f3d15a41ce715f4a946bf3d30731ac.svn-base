@@ -1,0 +1,344 @@
+<?php echo $header;?>
+<link rel="stylesheet" href="catalog/view/stylesheet/css/backproject.css">
+<div class="standard-body">
+    <div class="full-width">
+        <div class="container">
+            <header class="fold">
+                <p><?php echo $reward[0]['crowdfunding_name'];?></p>
+            </header>
+            <div class="support">Support this project</div>
+            <article class="make-pledg">
+                <div class="make-pledgleft col-md-8 col-sm-8">
+                    <ul class="scale-ul">
+                        <!-- ===============================one li-->
+                        <li class="scale-li">
+                            <div class="dossormore">
+                                <div class="dollor col-md-8 col-sm-12">
+                                    <p class="big">
+                                        <i class="fa fa-check-circle-o radio"></i>
+                                        Make a pledge without a reward
+                                        <strong class="btn-more"></strong>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="conceal">
+                                <div class="concealall">
+                                    <div class="form-group">
+                                        <label for="example" class="lablefor">Email address</label>
+                                        <div class="input-group col-md-6 col-sm-6">
+											    <span class="input-group-addon">
+											    	<i class="fa fa-usd"></i>
+											    </span>
+                                            <input type="text" class="form-control" id="price_support_without" aria-describedby="inputGroupSuccess4Status">
+                                        </div>
+                                        <button type="button" id="submit_price_without" class="btn btn-primary btn-lg">Countinue</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <?php foreach($reward as $reward):?>
+                        <?php if($reward['shipping_method']==0) { ?>
+                        <!-- ===============================two li-->
+                        <li class="scale-li">
+                            <div class="dossormore">
+                                <div class="dollor col-md-8 col-sm-8">
+                                    <p class="bigb">
+                                        <i class="fa fa-check-circle-o radio" ></i>
+                                        $<?php echo $reward['pledge_amount'];?> or more</p>
+                                    <p>****<?php echo  $reward['name']; ?>****</p>
+                                    <p><?php echo $reward['crowdfunding_name'];?> - Your choices of:</p>
+                                    <p>• <?php echo $reward['description'];?></p>
+                                    <p>• All Brass</p>
+                                    <p>• Stainless Steel Barrel, Brass Bolt and Brass Thumb-stud</p>
+                                    <p>>>All of your pledge details will be collected after the campaign ends.<<</p>
+                                    <strong class="btn-more">MORE</strong>
+                                </div>
+                                <div class="riqi col-md-4 col-sm-4">
+                                    <div class="riqiinfo">
+                                        <span class="east">ESTIMATED DELIVERY</span>
+                                        <span class="dating"><?php echo $reward['estimated_delivery'];?></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="conceal">
+                                <div class="concealall">
+                                    <div class="form-group">
+                                        <label for="example" class="lablefor">Email address</label>
+                                        <div class="input-group col-md-6 col-sm-6">
+											    <span class="input-group-addon">
+											    	<i class="fa fa-usd"></i>
+											    </span>
+                                            <input type="text" class="form-control " id="price_support"  aria-describedby="inputGroupSuccess4Status">
+                                        </div>
+
+                                    </div>
+                                    <button type="button" id="submit_price<?php echo $reward['rewards_id'];?>"  class="btn btn-primary btn-lg">Countinue</button>
+                                </div>
+                            </div>
+                        </li>
+                        <?php }else{ ?>
+                        <!-- ===============================three li-->
+                        <li class="scale-li">
+                            <div class="dossormore">
+                                <div class="dollor col-md-8 col-sm-8">
+                                    <p class="bigb">
+                                        <i class="fa fa-check-circle-o radio" ></i>
+                                        $80 or more</p>
+                                    <p>****<?php echo  $reward['name']; ?>****</p>
+                                    <p><?php echo $reward['crowdfunding_name'];?></p>
+                                    <p>INCLUDES:</p>
+                                    <ul class="ul-p">
+                                        <li class="lii"><?php echo $reward['description'];?></li>
+                                        <li class="lii">Signed physical copy of the album</li>
+                                    </ul>
+                                    <strong class="btn-more">MORE</strong>
+                                </div>
+                                <div class="riqi col-md-4 col-sm-4">
+                                    <div class="riqiinfo">
+                                        <span class="east">ESTIMATED DELIVERY</span>
+                                        <span class="dating"><?php echo $reward['estimated_delivery']?></span>
+                                    </div>
+                                    <?php if ($reward['shipping_method']==2):?>
+                                    <div class="riqiinfo">
+                                        <span class="east">SHIPS TO</span>
+                                        <span class="dating">Anywhere in the world</span>
+                                    </div>
+                                    <?php endif;?>
+                                </div>
+                            </div>
+                            <div class="conceal">
+                                <div class="concealall">
+                                    <div class="form-group col-md-6 col-sm-4 selating" >
+                                        <label for="exampleInputEmail1" class="lablefor">SHIPPING DESTINATION</label>
+                                        <!-- <select name="" id="country" class="form-control">
+                                            <option value="">Select the country</option>
+                                            <option value="">Select the country</option>
+                                            <option value="">Select the country</option>
+                                        </select>
+                                        <i class="fa fa-angle-down xialatubiao" ></i> -->
+                                        <div class="select_box form-control" id="input-payment-country">
+                                            <span class="select_txt"></span>
+                                            <a class="selet_open">
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <?php if ($reward['shipping_method']==1){ ?>
+                                            <div class="option">
+                                                <?php foreach($reward['my_post'] as $v):?>
+                                                <a data-text="<?php echo $v['shipping_id'];?>" ><?php echo $v['name'].'---$'.$v['Postage']; ?></a>
+                                                <?php endforeach; ?>
+                                                <a data-text="a">Anywhere in the world---<?php echo  $reward['shipping_postage'];?></a>
+                                            </div>
+                                            <?php }else{ ?>
+                                            <div class="option">
+                                                <a data-text="a">Anywhere in the world---<?php echo  $reward['shipping_postage'];?></a>
+                                            </div>
+                                                    <?php } ?>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3 col-sm-4">
+                                        <label for="exampleInputEmail1"  class="lablefor">PLEDGE AMOUNT</label>
+                                        <!-- <span class="input-group-addon">
+                                            <i class="fa fa-usd"></i>
+                                        </span> -->
+
+                                        <div class="input-group">
+											    <span class="input-group-addon">
+											    	<i class="fa fa-usd"></i>
+											    </span>
+                                            <input type="text" class="form-control example"  id="price_support<?php echo $reward['rewards_id'];?>" aria-describedby="inputGroupSuccess4Status">
+                                        </div>
+                                    </div>
+                                    <button type="button" id="submit_price<?php echo $reward['rewards_id'];?>"  class="btn btn-primary btn-lg col-md-2 col-sm-4">Countinue</button>
+                                </div>
+                            </div>
+                        </li>
+                        <?php } ?>
+                        <script type="application/javascript">
+                            $(document).ready(function () {
+                                $('#submit_price_without').click(function () {
+                                    var price = $('#price_support_without').val();
+                                    if(price > stock)
+                                    {
+                                        alert('Excess share');
+                                        return;
+                                    }else{
+                                        $('#input_support_price').val(price);
+                                        $('#pay_form').submit();
+                                    }
+                                });
+                                $("#submit_price<?php echo $reward['rewards_id'];?>").click(function () {
+                                    var price = $("#price_support<?php echo $reward['rewards_id'];?>").val();
+                                    var is_limit = <?php echo $reward['limit_availability'];?>;
+                                    var stock    = <?php echo $reward['stock'];?>;
+                                    var rewards_id = <?php echo $reward['rewards_id'];?>;
+                                    $('#reward_id_input').val(rewards_id);
+                                    if(is_limit==1)
+                                    {
+                                        var limit_backer = <?php echo $reward['limit_backer'];?>;
+                                        if(price > limit_backer)
+                                        {
+                                            alert('Over limit');
+                                            return;
+
+                                        } else {
+
+                                            if(price > stock)
+                                            {
+                                                alert('Excess share');
+                                                return;
+                                            }else{
+                                                $('#input_support_price').val(price);
+                                                $('#pay_form').submit();
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if(price > stock)
+                                        {
+                                            alert('Excess share');
+                                            return;
+                                        }else{
+                                            $('#input_support_price').val(price);
+                                            $('#pay_form').submit();
+                                        }
+                                    }
+                                });
+                            });
+                        </script>
+                        <?php endforeach;?>
+                    </ul>
+                </div>
+
+                <div class="make-pledgright col-md-4 col-sm-4">
+                    <ul class="pledgright-ul">
+                        <li class="pledgright-li">
+                            <p class="pledgright-lip">Aliyoyo is not a store.</p>
+                            <p class="pledgright-liptwo">It's a way to bring creative projects to life.</p>
+                            <p>Aliyoyo does not guarantee projects or investigate a creator's ability to complete their project. It is the responsibility of the project creator to complete their project as promised, and the claims of this project are theirs alone.</p>
+                            <p class="pledgright-licolor">Learn more about accountability</p>
+                        </li>
+                        <li class="pledgright-li">
+                            <p class="frequen">Frequently asked questions</p>
+                            <ul class="selingging-ul">
+                                <li class="selingging-li">
+                                    <a class="liduanluo"><i class="fa fa-caret-right"></i> How do I pledge?</a>
+                                    <p class="xialaduanluo">When your reward is ready, Gil Mckinney will send you a survey via email to request any info needed to deliver your reward (mailing address, T-shirt size, etc).</p>
+                                </li>
+                                <li class="selingging-li">
+                                    <a class="liduanluo"><i class="fa fa-caret-right"></i> When is my card charged?</a>
+                                    <p class="xialaduanluo">When your reward is ready, Gil Mckinney will send you a survey via email to request any info needed to deliver your reward (mailing address, T-shirt size, etc).</p>
+
+                                </li>
+                                <li class="selingging-li">
+                                    <a class="liduanluo"><i class="fa fa-caret-right"></i> So I'm only charged if funding succeeds?</a>
+                                    <p class="xialaduanluo">When your reward is ready, Gil Mckinney will send you a survey via email to request any info needed to deliver your reward (mailing address, T-shirt size, etc).</p>
+                                </li>
+                                <li class="selingging-li">
+                                    <a class="liduanluo"><i class="fa fa-caret-right"></i> What if I want to change my pledge?</a>
+                                    <p class="xialaduanluo">When your reward is ready, Gil Mckinney will send you a survey via email to request any info needed to deliver your reward (mailing address, T-shirt size, etc).</p>
+                                </li>
+                                <li class="selingging-li">
+                                    <a class="liduanluo"><i class="fa fa-caret-right"></i> If this project is funded, how do I get my reward?</a>
+                                    <p class="xialaduanluo">When your reward is ready, Gil Mckinney will send you a survey via email to request any info needed to deliver your reward (mailing address, T-shirt size, etc).</p>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </article>
+            <form action="<?php echo $payment;?>" method="post" id="pay_form">
+                <input type="hidden" name="customer_id" value="<?php echo $customer_id;?>"/>
+                <input type="hidden" name="funding_id" value="<?php echo $funding_id;?>"/>
+                <input type="hidden" name="support_price" id="input_support_price" value=""/>
+                <input type="hidden" name="reward_id" id="reward_id_input" value=""/>
+                <input type="hidden" name="input_post" id="input-post" value=""/>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    // selecct 下拉图标
+    $(document).ready(function(){
+        $(".select_box").click(function(event){
+            event.stopPropagation();
+            $(this).find(".option").toggle();
+            $(this).parent().siblings().find(".option").hide();
+        });
+        $(document).click(function(event){
+            var eo=$(event.target);
+            if($(".select_box").is(":visible") && eo.attr("class")!="option" && !eo.parent(".option").length)
+                $('.option').hide();
+        });
+        /*赋值给文本框*/
+        $(".option a").click(function(){
+            var value=$(this).text();
+            var id   =$(this).attr('data-text');
+            $(this).parent().siblings(".select_txt").text(value);
+            $("#select_value").val(value);
+            $("#input-post").val(id);
+        })
+    })
+    $(".scale-ul .scale-li").click(function(){
+        $(this).children('.conceal').addClass('concealblock');
+        $(this).siblings('li').children('.conceal').removeClass('concealblock');
+
+        $(this).children().children('.dollor').addClass('click-dollor');
+        $(this).siblings('li').children().children('.dollor').removeClass('click-dollor');
+
+        $(this).children().children('.dollor').children('.btn-more').addClass('concealblock');
+        $(this).siblings('li').children().children('.dollor').children('.btn-more').removeClass('concealblock');
+
+        $(this).children().children().children().children('i').removeClass('fa-c=heck-circle-o').addClass('fa-check-circle');
+        $(this).siblings('li').children().children().children().children('i').removeClass('fa-check-circle').addClass('fa-check-circle-o');
+
+        //改
+        $(this).children().children().children('strong').addClass('concealblock')
+        $(this).children().children().children('strong').removeClass('btn-less').addClass('btn-more').html("MORE");
+        $(this).siblings('li').children().children().children('strong').removeClass('concealblock').hide();
+    });
+
+
+    $(".scale-ul .scale-li strong").click(function(event) {
+        if($(this).hasClass("btn-more")){
+            $(this).parent().removeClass('click-dollor');
+            $(this).html("LESS");
+            $(this).removeClass('btn-more');
+            $(this).addClass('btn-less');
+            event.stopPropagation();
+            //alert(".btn-more")
+        }else{
+            //alert("456")
+        }
+    });
+    // =======================================xialabufen
+    $(document).delegate('.selingging-li', 'click', function(event) {
+        $(this).children('.liduanluo').addClass('activelilunbo');
+        $(this).siblings('li').children('.liduanluo').removeClass('activelilunbo');
+
+        $(this).children('.xialaduanluo').addClass('concealblock');
+        $(this).siblings('li').children('.xialaduanluo').removeClass('concealblock');
+
+        $(this).children('a').children('i').removeClass('fa-caret-right').addClass('fa-caret-down');
+        $(this).siblings('li').children('a').children('i').removeClass('fa-caret-down').addClass('fa-caret-right');
+
+
+        $(this).addClass('closeing-li').siblings('li').removeClass('closeing-li');
+        $(this).removeClass('selingging-li').siblings('li').addClass('selingging-li');
+
+    });
+    $(document).delegate('.closeing-li', 'click', function(event) {
+        $(this).children('.xialaduanluo').removeClass('concealblock');
+        // $(this).siblings("li").children('.xialaduanluo').addClass('concealblock')
+        $(this).children('a').children('i').removeClass('fa-caret-down').addClass('fa-caret-right');
+        $(this).children('.liduanluo').removeClass('activelilunbo');
+        // $(this).siblings('li').children('liduanluo').addClass('activelilunbo');
+        $(this).addClass('selingging-li');
+        $(this).removeClass('closeing-li');
+
+    });
+
+</script>
+<?php echo $index_js?>
+<?php echo $footer;?>

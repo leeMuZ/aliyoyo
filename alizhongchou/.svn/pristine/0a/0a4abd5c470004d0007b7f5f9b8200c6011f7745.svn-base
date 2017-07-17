@@ -1,0 +1,49 @@
+<!-- InDemand -->
+<div>
+    <div class="InDemand clearfix col-sm-12">
+    <div class="bottom">
+        <div class="clearfix col-sm-12 InDemand-top">
+            <span>Explore categories</span>
+            <a href="">View more</a>
+        </div>
+        <div class="product-grid">
+            <?php foreach(${$type}['array'] as $k=>$v):?>
+            <?php if(!empty($v['price'])):?>
+            <div class="col-sm-4 col-xs-6">
+                <div class="product clearfix product-hover">
+                    <div class="left">
+                        <div class="image ">
+                            <a href="<?php echo $v['url'];?>" target="_blank">
+                                <img src="<?php echo $v['product_image'];?>" alt="<?php echo $v['product_name'][1];?>" class="zoom-image-effect">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="name">
+                            <a href="<?php echo $v['url'];?>"><?php echo $v['product_name'][1];?></a>
+                        </div>
+                        <div class="nduanluo">
+                            <?php echo $v['price']['introduce'];?>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width:<?php echo $v['price']['percent'];?>%; ">
+                                <div class="progress-value"><?php echo $v['price']['percent'];?>%</div>
+                            </div>
+                        </div>
+                        <div class="pledge">
+                            <p class="pledge-left l">
+                                Pledged: $<?php echo $v['price']['now_pay'];?>
+                            </p>
+                            <p class="pledge-right r">
+                                <?php echo $v['price']['left'];?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endif;?>
+            <?php endforeach;?>
+        </div>
+    </div>
+    </div>
+</div>

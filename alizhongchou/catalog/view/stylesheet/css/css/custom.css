@@ -1,0 +1,406 @@
+/* 众筹 */
+/* CSS Document */
+@import url("animate-tool.css");    
+body{
+	background: #f5f5f5;
+}
+.btn{
+	text-transform: none;
+}
+.guanggaowei{
+    padding:0 ;
+    margin-bottom: 30px;
+}
+.regularly-item-list{
+	padding:0;
+}
+
+.regularly-item-list li.first{
+    width: 18%!important;
+    /* height: 350px!important; */
+    
+}
+.regularly-item-list li{
+    width: 100%;
+    height: auto; 
+    float: left; 
+    display: inline; 
+    position: relative;
+    margin-right: 1%;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.product-Name{
+	font-size: 30px;
+}
+.Crowd-funding{
+	height: 100px;
+	vertical-align: bottom;
+}
+
+.new-Crowdleft,.new-Crowdright{
+	width: 50%;
+	float: left;
+}
+.backspan{
+	float: left;
+	width: 50%;
+	text-align: center;
+}
+.clickbutton{
+	border-radius: 5px!important;
+	background: rgba(134, 189, 233, 1);
+	width: 100%;
+	color: #fff;
+	
+}
+.likesharebtn .btn{
+	width: 48%;
+	border-radius: 5px!important;
+	background: #fff;
+	border-color: #999;
+	float: left;
+}
+.likesharebtn .btn:first-child{
+	margin-right: 4%;
+}
+.small-p{
+	font-size: 14px;
+}
+.number-red{
+	font-size: 28px;
+    color: #FF3300;
+    margin-right: 10px;
+}
+.number-black{
+	font-size: 28px;
+}
+
+.regularly-item-list li .flip-box img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.regularly-item-list li.first .flip-box{
+    width: 100%;
+    height: auto; 
+    padding:150px 15px 0 15px;
+}
+.regularly-item-list li.first .flip-box p{
+    font-weight: bold;
+}
+.regularly-item-list li.first .flip-box p span{
+    padding-bottom: 5px;
+}
+.regularly-item-list li.first .flip-box p:last-child span:first-child{
+    border-bottom: 1px solid;
+} 
+.regularly-item-list li .flip-box{
+    width:100%; 
+    position: absolute;
+    left: 0;
+    top: 0; 
+    overflow: hidden;
+
+}
+.yuanyou{
+    background: #4cbcbc;
+
+}
+.turnoff{
+     background: #fff;
+     
+}
+.yuanyou p{
+    color: #fff;
+}
+.turnoff p{
+    color: #101010;
+}
+.yuanyou p:first-child{
+    font-size: 20px;
+
+}
+.turnoff p:first-child{
+    font-size: 20px;
+
+}
+.little-margin{
+    margin-bottom: 5px;
+}
+.tupianfanzhuan{
+    padding:20px 15px;
+    background: #fff;
+    
+}
+.tupianfanzhuan a:hover{
+    color: #101010;
+}
+.tupianfanzhuan a p{
+    font-weight: bold;
+    color: #353535;
+}
+.fanzhuanspan{
+	margin-right: 15px;
+}
+.fanzhuanspan-red{
+	color:#FF3300;
+	font-size: 20px;
+	margin-right: 5px;
+}
+input[name="nan"]{
+    vertical-align: middle;
+    margin-top: -2px;
+}
+input[name="squer"]{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin:0;
+    opacity: 0;
+}
+input[name="size"]{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin:0;
+    opacity: 0;
+}
+.span-squer{
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background: #f00;
+	border:1px solid #999;
+	vertical-align: middle;
+}
+.span-size{
+	display: inline-block;
+	width: 50px;
+	height: 25px;
+	background: #fff;
+	border:1px solid #999;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 25px;
+}
+.choose-color,.choose-size{
+	display: inline-block;
+	position: relative;
+	margin-right: 5px;
+	margin-bottom: 10px;
+}
+.Spinner a i{
+	display: inline-block;
+    height: 40px;
+    border: 1px solid #999;
+    width: 25px;
+    text-align: center;
+    vertical-align: top;
+    font-size: 20px;
+    line-height: 40px;
+}
+.Spinner .DisDe i{
+	border-right:0;
+}
+.Spinner .Increase i{
+	border-left:0;
+}
+.Spinner .DisDe i,.Spinner .Decrease i{
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	background: #fff;
+	width: 10%;
+}
+.Spinner .Decrease i{
+	border-right: 0;
+}
+.Spinner .Increase i{
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background: #fff;
+	width: 15%;
+}
+.Spinner input{
+	border:1px solid #999;
+	border-right:0;
+	border-left:0;
+	border-color: #999;
+	height: 40px;
+	text-align: center;
+	width: 120px;
+}
+.Previousbtn{
+	margin-top: 20px;
+}
+.Previousbtn .btn{
+	width: 48%;
+	float: left;
+	border-radius: 5px!important;
+
+}
+.Previousbtn .btn:first-child{
+	margin-right: 4%;
+	background: #fff;
+	border-color: #999;
+}
+.Previousbtn .btn:last-child{
+	background: rgba(134, 189, 233, 1);
+	color: #fff;
+}
+
+
+.bar-chart{
+	width: 20%;
+	float: left;
+	height: 100px;
+	background: #f5f5f5;
+	position: relative;
+	bottom: 0;
+}
+.bar-chart-tiao{
+	position: absolute;
+	left:0;
+	bottom:0;
+	width: 100%;
+}
+.bar-chart-tiao.one{
+	background: #f00;
+	/* height: 50px; */
+}
+.bar-chart-tiao.two{
+	background: green;
+	/* height: 30px; */
+}
+.bar-chart-tiao.three{
+	background: black;
+	height: 20px;
+}
+.bar-chart-tiao.four{
+	background: yellow;
+	/* height: 40px; */
+}
+.bar-chart-tiao.five{
+	background: pink;
+	/* height: 60px; */
+}
+.bar-chart-number{
+	position: absolute;
+	bottom: -25px;
+	left:0;
+}
+.chart-num{
+	text-align: center;
+    display: block;
+    margin-top: -25px;
+}
+/* paseidon-follow */
+.paseidon-follow{
+	background: #fff;
+	padding: 30px;
+}
+.sw-avatar--xlarge{
+	max-height: 100px;
+    max-width: 100px;
+    border-width: 2px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    overflow: hidden;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+	padding:0;
+	margin:0;
+	margin-right: 15px;
+
+}
+.pason{
+	text-align: center;
+}
+.pason p{
+	font-size: 20px;
+	margin-top: 15px;
+    margin-bottom: 10px;
+}
+.pason div{
+	float: left;
+}
+.pason div .btn{
+	border-radius: 5px!important;
+	background: #fff;
+	border-color: #999;
+}
+.learn-p{
+	margin:0;
+	font-size: 14px;
+	position: relative;
+}
+.quoteleft,.quoteright{
+	position: absolute;
+	color:#999999;
+}
+.quoteleft{
+	top:-5px;
+	left:-20px;
+}
+.quoteright{
+	right:-5px;
+	bottom:-5px;
+}
+/* 产品详情 */
+.product-details{
+	margin-top: 20px;
+	
+}
+.p-detailslook{
+
+
+}
+#product-details{
+	list-style: none;
+	padding: 0;
+	border-bottom: 1px solid #999;
+	background: #fff;
+	margin:0;
+}
+#product-details li{
+	text-align: center;
+	padding:0 40px;
+}
+#product-details li a{
+	display: block;
+	padding:15px 0;
+	width: 100%;
+}
+#product-details .active a{
+	border-bottom:3px solid rgba(134, 189, 233, 1);
+}
+.p-detailslook .tab-content{
+	background: #fff;
+}
+/* 右边 */
+.love-product {
+	background: #fff;
+}
+.tolove{
+	font-size: 16px;
+	font-weight: bold;
+	border-bottom:1px solid #ccc;
+	padding:16.5px 0;
+	text-align: center;
+}
+.mabylove{
+	padding-top: 15px;
+	margin-bottom: 20px;
+}
+.mabylove p{
+	text-align: center;
+	font-size: 16px;
+	padding-top: 10px;
+	margin-bottom: 0;
+}
+.p-detailslike{
+	padding-right: 0;
+}

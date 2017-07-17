@@ -1,0 +1,31 @@
+/* creat */
+.ng-div-img{
+	background: url("../images/beautiful.png") no-repeat;
+	display: table;
+	padding: 100px;
+    background-size: 100% 100%;
+}
+.add-inner{
+	background: #fff;
+	padding: 80px 20px;
+	
+}
+.add-inner p:first-child{
+	font-size: 30px;
+	font-weight: bold;
+	margin-bottom: 40px;
+}
+
+.add-innerfather{
+	text-align: center;
+}
+.add-inner .lasp{
+	text-align: left!important;
+	font-size: 16px;
+	margin-bottom: 40px;
+}
+.add-inner .btn{
+	border-radius: 5px!important;
+	background-color: rgba(134, 189, 233, 1);
+	color: #fff;
+}

@@ -1,0 +1,155 @@
+<?php echo $header; ?>
+<div class="standard-body">
+	<div class="full-width">
+		<div class="partten">
+			<div class="container">
+				<div class="privacypolicy_all col-sm-12 clearfix">
+					<div class="privacypolicy">
+						<h1>Privacy Policy</h1>
+						<!-- one -->
+						<p class="blue-p"></p>
+						<p class="p-next">Hi, and thanks for visiting 6FUTURE’s Privacy Policy. We’re updating our Policy on April ,11, 2017. Here are some of the changes you’ll see:</p>
+						<ul>
+							<li>
+								We’ve reorganized the Policy to more clearly explain how we collect information and how we use it, especially when it relates to how we share information with trusted third parties.
+							</li>
+							<li>
+								We’ve added clarity around the payment information we collect and store.
+							</li>
+							<li>We’ve clarified how we may use information we collect to allow us to promote Kickstarter on other sites.</li>
+						</ul>
+						<p class="p-next">Most of our Privacy Policy hasn’t changed, including the fact that we will never sell your data.</p>
+						<p class="p-next">You can read the full new Policy below. The Privacy Policy that's in effect until March 14, 2017 can still be accessed here. You can look at a comparison of the new and previous Policies here. As always, thanks for using Kickstarter, and please let us know if you have any questions or feedback.</p><br>
+
+						<!-- two -->
+						<p class="blue-p"></p>
+						<p class="p-next">This Policy describes the information we collect from you and how we use that information. It applies to any of the Services that Kickstarter or any of its subsidiaries or affiliates provide. If you see a capitalized word, it’s defined in our
+						<a href="">Terms of Use.</a> <br><br>
+						Protecting your information—and being transparent about the ways we use it—is one of the core commitments we make to you. You entrust us with your information, and we take our responsibility to protect that trust to heart.</p><br>
+
+						<!-- three -->
+						<p class="blue-p"></p>
+						<p class="p-next"> What We Collect<br><br>
+						In order for you to create an account on 6FUTURE and use our Services, we need to collect and process some information. Depending on your use of the Services, that may include:</p><br>
+
+						<ul>
+							<li>
+								Information that you provide by completing forms on Kickstarter — your name, email and postal addresses, telephone number, country of residence, login, and password details. We will ask for this information if you register as a user of the Services, subscribe to our newsletters, upload or submit any material through Kickstarter, or request any information;
+							</li><br><br>
+							<li>
+								Details of any requests or transactions you make through the Services. All payment information you submit is collected and used by our payment processors in accordance with their privacy policies. Kickstarter doesn’t store your payment information apart from the last four digits of your account, expiration date, and country, which we require for tax, government regulatory, and security purposes; 
+							</li><br><br>
+							<li>
+								Information about your activity on and interaction with Kickstarter (such as your IP address, the type of device or browser you use, and your actions on the site);
+							</li><br><br>
+							<li>
+								Communications you send to us (for example, when you ask for support, send us questions or comments, or report a problem); and
+							</li><br><br>
+							<li>
+								Information that you submit to Kickstarter in the form of comments, contributions to discussions, or messages to other users.
+							</li><br>
+						</ul>
+
+						<!--four --> 
+						<p class="blue-p"></p>
+						<p class="p-next"> How we Use this Information<br><br>
+						We use the information we collect for the following purposes:</p><br>
+						<ul>
+							<li>
+								To keep your account secure;
+							</li><br><br>
+							<li>
+								To enable us to provide you with our Services, and to improve, promote, and protect our Services;
+							</li><br><br>
+							<li>
+								To set up and administer your account, contact you, and customize your experience on Kickstarter (for example, to show you projects that we think may interest you based on your previous use); and
+							</li><br><br>
+							<li>
+								To track use of the Services so that we can improve Kickstarter.
+							</li><br>
+						</ul>
+
+						<!-- five -->
+						<p class="blue-p"></p>
+						<p class="p-next"> How this Information is Shared<br><br>
+						<span>Information that’s shared publicly</span></p><br>
+						<p class="p-next">When you create an account, we create a basic profile page for you on Kickstarter, containing your account name, the date the account was created, and a list of projects you have backed or launched. Whenever your account name appears on Kickstarter (for instance, when you post comments, send messages, or back projects), people can click your account name to see your profile. Here are some of the things that will be publicly viewable on your profile, or elsewhere on 6FUTURE:</p>
+						<ul>
+							<li>
+								The account name, and the date it was created;
+							</li><br><br>
+							<li>
+								Any information you choose to add to your profile (like a picture, bio, or your location);
+							</li><br><br>
+							<li>
+								Projects you've backed (but not pledge amounts or rewards chosen);
+							</li><br><br>
+							<li>
+								Projects you've launched;
+							</li><br><br>
+							<li>
+								Any comments you’ve posted on Kickstarter; and
+							</li><br><br>
+							<li>
+								If you have "Liked" a project update.
+							</li><br>
+						</ul>
+						<p class="p-next">Please note that each project page lists the community of users who have backed the project. If you don’t want others to see your name or profile image on a project’s Community tab, choose an account image or name that is not identifiable (e.g., CatLuvr02).<br><br>
+						Creators are also asked to verify their identities before launching a project. Once this has been done, the creator’s Verified Name will be publicly displayed on their account profile and on any projects they launch.</p><br><br>
+						<p class="p-weight">Information that’s shared publicly</p><br>
+						<p class="p-next">The following data will not be publicly displayed or revealed to other users:</p>
+						<ul>
+							<li>
+								Any payment information you provide;
+							</li><br><br>
+							<li>
+								Your password details;
+							</li><br><br>
+							<li>
+								Your IP address;
+							</li><br><br>
+							<li>
+								Your phone number; and
+							</li><br><br>
+							<li>
+								Communications you send to us (for example, when you ask for support, send us questions or comments, or report a problem).
+							</li><br>
+						</ul>
+						<p class="p-next">We never post anything to your Facebook, Twitter, or other third-party accounts without your permission. We do not and will not sell your data.</p>
+						<p class="p-weight">Information that’s shared with trusted third-party services</p><br>
+						<p class="p-next">We may share your information with certain trusted third-party services to help us provide, improve, promote, or protect 6FUTURE’s Services (like when we partner with payment processors, or use services that help us manage our ads on other sites). When we share data with third-party services that support our delivery of the 6FUTURE Services, we require that they use your information only for the purposes we’ve authorized, and that they protect your personal information at least to the same standards we do. We may also share information that’s aggregated and anonymized in a way that it doesn’t directly identify you.</p><br>
+
+						<p class="p-weight">Information that’s shared with creators & collaborators</p><br>
+						<p class="p-next">When you back a project, the project’s creator will know your account name, the amount you have pledged, and the reward you have selected. Creators never receive backers’ credit card details or other payment information.<br><br>
+						If a project you have backed is successfully funded, the creator will receive the email address associated with your 6FUTURE account. They may also send you a survey requesting information needed to provide your reward. (For instance, they may need your mailing address, or T-shirt size.) Any information you provide in such surveys will be received by the creator.<br><br>
+						Creators have the option to appoint collaborators to help manage their project. These collaborators may be able to access some of the information available to creators (including backers’ names, email addresses, pledge amounts, reward selections, messages, and survey responses), and are required to treat backers’ personal information with the same care and respect as creators are.<br><br>
+						Creators and their collaborators may also receive anonymized information about the ways people visit and interact with their project pages, in the form of routine traffic analytics. You can choose not to be included in Google Analytics here.</p><br>
+
+						<p class="p-weight">Information that’s shared to protect 6FUTURE & comply with the law</p><br>
+						<p class="p-next">We do reserve the right to disclose personal information when we believe that doing so is reasonably necessary to comply with the law or law enforcement, to prevent fraud or abuse, or to protect 6FUTURE’s legal rights.</p><br>
+
+						<!--  -->
+						<p class="blue-p"></p>
+						<p class="p-next">Email<br><br>
+						We want to communicate with you only if you want to hear from us. We try to keep emails to a minimum and give you the ability to opt out of any marketing communications we send.<br><br>
+						We will send you email relating to your transactions on 6FUTURE. You will also receive certain marketing email communications, in accordance with your preferences, and from which you may opt out at any time.<br><br>
+						We’ll also send you service-related announcements when it’s necessary to do so.</p><br>
+
+						<!--  -->
+						<p class="blue-p"></p>
+						<p class="p-next">Access to Your Information<br><br>
+						To modify or delete the personal information you’ve provided to us, please log in and update your profile. We may retain certain information as required by law or for necessary business purposes.<br><br>
+						On request, we will give you a copy of all the personal information about you that we hold. This information is subject to a fee not exceeding the prescribed fee permitted by law.</p><br><br>
+
+						<!--  -->
+						<p class="blue-p"></p>
+						<p class="p-next">Wrap-up<br><br>
+						People under 18 (or the legal age in your jurisdiction) are not permitted to use 6FUTURE on their own, and so this privacy policy makes no provision for their use of the site.<br><br>
+						Information that you submit through the Services may be transferred to countries other than where you reside (for example, to our servers in the United States). We will protect all information we receive in accordance with this Privacy Policy.</p><br><br>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<?php echo $footer; ?>

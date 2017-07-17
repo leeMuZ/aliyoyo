@@ -1,0 +1,123 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: alice
+ * Date: 2017/4/6
+ * Time: 17:15
+ */
+class ControllerCrowdfundingCampaign extends Controller
+{
+    public function index()
+    {
+        $this->load->model('crowdfunding/crowdfunding');
+        $my_check = $this->model_crowdfunding_crowdfunding->getSingle(isset($this->request->get['funding_id']) ? $this->request->get['funding_id'] : 0);
+
+		if (!isset($this->request->get['funding_id']) || empty($my_check))
+        {
+            $data['continue'] = $this->url->link('common/home');
+            $this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
+            $data['footer'] = $this->load->controller('common/footer');
+            $data['header'] = $this->load->controller('common/header');
+            $this->response->setOutput($this->load->view('error/not_found', $data));
+            $this->response->redirect($this->url->link('campaign/not_found'));
+
+        }else{
+
+            $data['funding_id'] = $this->request->get['funding_id'];
+            $this->load->model('tool/time');
+            /* $check = $this->model_crowdfunding_crowdfunding->searchProject($data['funding_id']);
+             if (!$check)
+             {
+                 $data['continue'] = $this->url->link('common/home');
+                 $this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
+                 $data['footer'] = $this->load->controller('common/footer');
+                 $data['header'] = $this->load->controller('common/header');
+                 $this->response->setOutput($this->load->view('error/not_found', $data));
+                 exit;
+             }*/
+            $data['reward'] = $this->model_crowdfunding_crowdfunding->getReward($data['funding_id']);
+            $data['payment'] = $this->url->link('crowdfunding/payment');
+            $data['login'] = $this->url->link("account/login");
+            if (isset($this->session->data['customer_id']))
+            {
+                $data['customer_id'] = $this->session->data['customer_id'];
+            }
+            if (isset($data['reward'][0]['image'])):
+                $image = $this->image_ajax($data['reward'][0]['image']);
+            endif;
+
+
+            foreach ($data['reward'] as $k => $v) {
+                if ($v['estimated_delivery']):
+                    $data['reward'][$k]['new_last'] = $this->model_crowdfunding_crowdfunding->changeTime($v['estimated_delivery']);
+                endif;
+                if ($v['limit_time_begin']):
+                    $data['reward'][$k]['begin_project'] = $this->model_crowdfunding_crowdfunding->changeTime($v['limit_time_begin'], 1);
+                endif;
+                if ($v['limit_time_end']):
+                    $data['reward'][$k]['end_project'] = $this->model_crowdfunding_crowdfunding->changeTime($v['limit_time_end'], 1);
+                endif;
+                if ($v['image']):
+                    $data['reward'][$k]['image'] = $this->image_ajax($v['image']);
+                endif;
+
+                if ($data['reward'][$k]['shipping_method']==2)
+                {
+                    $data['reward'][$k]['my_post'] = $this->model_crowdfunding_crowdfunding->getPost($v['rewards_id'], 2);
+
+                }elseif($data['reward'][$k]['shipping_method']==0){
+
+                    $data['reward'][$k]['my_post'] = $this->model_crowdfunding_crowdfunding->getPost($v['rewards_id']);
+
+                }elseif ($data['reward'][$k]['shipping_method']==1){
+
+                    $data['reward'][$k]['my_post'] = $this->model_crowdfunding_crowdfunding->getPost($v['rewards_id'], 1);
+
+                }
+            }
+
+            //var_dump($data['reward']);exit;
+
+            if (isset($data['reward'][0]['meta_title']) && isset($data['reward'][0]['meta_description']) && isset($data['reward'][0]['meta_keyword']))
+            {
+                $document_message = array(
+                    "title"       => $data['reward'][0]['meta_title'],
+                    "description" => $data['reward'][0]['meta_description'],
+                    "keywords"    => $data['reward'][0]['meta_keyword']
+                );
+
+                $this->document->setTitle($document_message['title']);
+                $this->document->setDescription($document_message['description']);
+                $this->document->setKeywords($document_message['keywords']);
+            }
+
+            $data['link'] = array(
+                'campaign' => $this->url->link('crowdfunding/campaign', "funding_id=".$data['funding_id']),
+                'updates'  => $this->url->link('crowdfunding/updates', "funding_id=".$data['funding_id']),
+                'comments' => $this->url->link('crowdfunding/comments', "funding_id=".$data['funding_id']),
+                'community'=> $this->url->link('crowdfunding/community', "funding_id=".$data['funding_id'])
+            );
+
+            $data['index_goods']  = $this->load->controller('crowdfunding/goods');
+            $data['index_js']     = $this->load->controller('common/js');
+            $data['footer'] = $this->load->controller('common/footer');
+            $data['header'] = $this->load->controller('common/header');
+            $this->response->setOutput($this->load->view('crowdfunding/campaign', $data));
+
+        }
+
+    }
+
+    public function image_ajax($image)
+    {
+        $this->load->model('tool/image');
+        if (is_file(DIR_IMAGE.$image)) {
+            $image = $this->model_tool_image->resize($image, 100, 100);
+        }  else {
+            $image = $this->model_tool_image->resize('no_image.png', 100, 100);
+        }
+        return $image;
+
+    }
+
+}

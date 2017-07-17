@@ -1,0 +1,296 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: alice
+ * Date: 2017/4/24
+ * Time: 14:36
+ */
+class ControllerModuleFutureHome extends Controller
+{
+
+
+    public function index()
+    {
+        $this->document->addStyle('view/stylesheet/advanced_grid.css');
+        $this->load->language('module/future_home');
+        $this->document->setTitle($this->language->get('heading_title'));
+        $this->load->model('setting/setting');
+        $this->load->model('setting/future');
+        $this->load->model('catalog/product');
+        $this->load->model('catalog/category');
+        if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+           // var_dump($_POST);exit;
+            $this->model_setting_future->editSetting('future_home', $this->request->post);
+
+            $this->session->data['success'] = $this->language->get('text_success');
+
+            $this->response->redirect($this->url->link('module/future_home', 'token=' . $this->session->data['token'], true));
+        }
+
+        $this->getPage();
+
+    }
+
+    public function getPage()
+    {
+        $data['header'] = $this->load->controller('common/header');
+        $data['column_left'] = $this->load->controller('common/column_left');
+        $data['footer'] = $this->load->controller('common/footer');
+        $data['action'] = $this->url->link('module/future_home', 'token=' . $this->session->data['token'], true);
+        // Multistore
+        $data['stores'] = array();
+        $this->load->model('setting/store');
+        $results = $this->model_setting_store->getStores();
+        $data['stores'][] = array(
+            'name' => 'Default',
+            'href' => '',
+            'store_id' => 0
+        );
+
+        foreach ($results as $result) {
+            $data['stores'][] = array(
+                'name' => $result['name'],
+                'href' => $result['url'],
+                'store_id' => $result['store_id']
+            );
+        }
+
+        // Wyświetlanie powiadomień
+        if (isset($this->error['warning'])) {
+            $data['error_warning'] = $this->error['warning'];
+        } else {
+            $data['error_warning'] = '';
+        }
+
+        if (isset($this->session->data['success'])) {
+            $data['success'] = $this->session->data['success'];
+            unset($this->session->data['success']);
+        } else {
+            $data['success'] = '';
+        }
+
+        $data['token'] = $this->session->data['token'];
+
+        // Ładowanie listy modułów
+        $data['modules'] = array();
+
+        if (isset($this->request->post['future_home_module'])) {
+            $data['modules'] = $this->request->post['future_home_module'];
+        } else {
+            $data['modules'] = $this->model_setting_future->GetModuleFuture('future_home_module');
+            if(!empty( $data['modules'])) {
+                foreach ($data['modules'] as $k => $v):
+                    $data['modules']['value'] = json_decode($v, true);
+                endforeach;
+                $data['modules'] = $data['modules']['value'];
+            }
+        }
+
+        foreach ($data['modules'] as $k=>$v)
+        {
+            if(!empty($v['column'])) {
+                foreach ($v['column'] as $kk => $vv) {
+                    foreach ($vv['module'] as $k3 => $v3) {
+                        foreach ($v3["{$v3['type']}"]['array'] as $k1 => $v1) {
+                            if (isset($v1['image'])) {
+                                $data['modules'][$k]['column'][$kk]['module'][$k3]["{$v3['type']}"]['array'][$k1]['show_image'] = $this->image_ajax($v1['image']);
+                            } elseif (isset($v1['product_image'])) {
+                                $data['modules'][$k]['column'][$kk]['module'][$k3]["{$v3['type']}"]['array'][$k1]['show_image'] = $this->image_ajax($v1['product_image']);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        //var_dump($data['modules']);exit;
+        $this->load->model('extension/extension');
+
+        $data['load_modules'] = array();
+        // Get a list of installed modules
+        $extensions = $this->model_extension_extension->getInstalled('module');
+        // Add all the modules which have multiple settings for each module
+        foreach ($extensions as $code) {
+            $this->load->language('module/' . $code);
+
+            $i = 1;
+
+            $module_data = array();
+
+            if ($this->config->has($code . '_module')) {
+                $modules = $this->config->get($code . '_module');
+
+                foreach (array_keys($modules) as $key) {
+                    $module_data[] = array(
+                        'name' => $this->language->get('heading_title') . ' ' . $i++,
+                        'code' => $code . '.' . $key
+                    );
+                }
+            } else {
+                $module_data[] = array(
+                    'name' => $this->language->get('heading_title'),
+                    'code' => $code
+                );
+            }
+
+            if ($module_data) {
+                $data['load_modules'][] = array(
+                    'name'   => str_replace('</b>', '', str_replace('<b>', '', $this->language->get('heading_title'))),
+                    'module' => $module_data
+                );
+            }
+        }
+
+        // Ładowanie templatek modułów
+        $data['latest_blogs_templates'] = array();
+        $data['links_templates'] = array();
+        $data['newsletter_templates'] = array();
+        $data['products_templates'] = array();
+        $data['products_tabs_templates'] = array();
+        $data['collection_templates'] = array();
+        $data['future_templates'] = array();
+        $data['carousel_templates'] = array();
+
+        $data['templates'] = array();
+
+        $directories = glob(DIR_CATALOG . 'view/*', GLOB_ONLYDIR);
+        //var_dump($directories);exit;
+        foreach ($directories as $k=>$directory) {
+            if ($k == 4)
+            {
+            $directory = basename($directory);
+            $data['templates'][] = $directory;
+           /* $files_latest_blogs = glob(DIR_CATALOG . 'view/theme/' . $directory . '/template/module/advanced_grid/latest_blogs/*.tpl');
+            $files_links = glob(DIR_CATALOG . 'view/theme/' . $directory . '/template/module/advanced_grid/links/*.tpl');
+            $files_newsletter = glob(DIR_CATALOG . 'view/theme/' . $directory . '/template/module/advanced_grid/newsletter/*.tpl');
+            $files_products = glob(DIR_CATALOG . 'view/theme/' . $directory . '/template/module/advanced_grid/products/*.tpl');
+            $files_products_tabs = glob(DIR_CATALOG . 'view/theme/' . $directory . '/template/module/advanced_grid/products_tabs/*.tpl');
+            //add by yagami at 20161213
+            $files_collections = glob(DIR_CATALOG . 'view/theme/' . $directory . '/template/module/advanced_grid/collection/*.tpl');*/
+            $files_futures = glob(DIR_CATALOG . 'view/' . $directory . '/module/future_home/future_home/*.tpl');//Carousel
+            $files_carousels = glob(DIR_CATALOG . 'view/' . $directory . '/module/future_home/future_carousel/*.tpl');
+          //$files_future_products = glob(DIR_CATALOG . 'view/' . $directory . '/module/future_home/future_product/*.tpl');
+            $files_categorys = glob(DIR_CATALOG . 'view/' . $directory . '/module/future_home/future_category/*.tpl');
+           /* if(!empty($files_latest_blogs)) {
+                $data['latest_blogs_templates'][$directory] = array();
+                foreach ($files_latest_blogs as $file_latest_blogs) {
+                    $data['latest_blogs_templates'][$directory][] = basename($file_latest_blogs);
+                }
+            }
+
+            if(!empty($files_links)) {
+                $data['links_templates'][$directory] = array();
+                foreach ($files_links as $file_links) {
+                    $data['links_templates'][$directory][] = basename($file_links);
+                }
+            }
+
+            if(!empty($files_newsletter)) {
+                $data['newsletter_templates'][$directory] = array();
+                foreach ($files_newsletter as $file_newsletter) {
+                    $data['newsletter_templates'][$directory][] = basename($file_newsletter);
+                }
+            }
+
+            if(!empty($files_products)) {
+                $data['products_templates'][$directory] = array();
+                foreach ($files_products as $file_products) {
+                    $data['products_templates'][$directory][] = basename($file_products);
+                }
+            }
+
+            if(!empty($files_products_tabs)) {
+                $data['products_tabs_templates'][$directory] = array();
+                foreach ($files_products_tabs as $file_products_tabs) {
+                    $data['products_tabs_templates'][$directory][] = basename($file_products_tabs);
+                }
+            }
+            //add by yagami at 20161213
+            if(!empty($files_collections)) {
+                $data['collection_templates'][$directory] = array();
+                foreach ($files_collections as $files_collection) {
+                    $data['collection_templates'][$directory][] = basename($files_collection);
+                }
+            }*/
+            if(!empty($files_futures)) {
+                $data['future_templates'][$directory] = array();
+                foreach ($files_futures as $files_future) {
+                    $data['future_templates'][$directory][] = basename($files_future);
+                }
+            }
+
+            if(!empty($files_carousels)) {
+                $data['carousel_templates'][$directory] = array();
+                foreach ($files_carousels as $files_carousel) {
+                    $data['carousel_templates'][$directory][] = basename($files_carousel);
+                }
+            }
+
+           /* if (!empty($files_future_products)) {
+                $data['future_product_templates'][$directory] = array();
+                foreach ($files_future_products as $files_future_product) {
+                    $data['future_product_templates'][$directory][] = basename($files_future_product);
+                }
+            }*/
+
+            if (!empty($files_categorys)) {
+                $data['category_templates'][$directory] = array();
+                foreach ($files_categorys as $files_category) {
+                    $data['category_templates'][$directory][] = basename($files_category);
+                }
+            }
+        }
+        // Layouts
+        $this->load->model('design/layout');
+        $data['layouts'] = $this->model_design_layout->getLayouts();
+        // Languages
+        $this->load->model('localisation/language');
+        $data['languages'] = $this->model_localisation_language->getLanguages(1);
+        $data['breadcrumbs'] = array();
+
+        $data['breadcrumbs'][] = array(
+            'text' => $this->language->get('text_home'),
+            'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true)
+        );
+
+        $data['breadcrumbs'][] = array(
+            'text' => 'Modules',
+            'href' => $this->url->link('extension/module', 'token=' . $this->session->data['token'], true)
+        );
+
+        $data['breadcrumbs'][] = array(
+            'text' => 'future_home',
+            'href' => $this->url->link('module/future_home', 'token=' . $this->session->data['token'], true)
+        );
+
+        // No image
+        $this->load->model('tool/image');
+        $data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+        $this->response->setOutPut($this->load->view('module/future_home', $data));
+        }
+    }
+
+    protected function validate() {
+        if (!$this->user->hasPermission('modify', 'module/advanced_grid')) {
+            $this->error['warning'] = $this->language->get('error_permission');
+        }
+
+        if (!$this->error) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function image_ajax($image)
+    {
+        $this->load->model('tool/image');
+        if (is_file(DIR_IMAGE . $image)) {
+            $image = $this->model_tool_image->resize($image, 100, 100);
+        }  else {
+            $image = $this->model_tool_image->resize('no_image.png', 100, 100);
+        }
+        return $image;
+
+    }
+}

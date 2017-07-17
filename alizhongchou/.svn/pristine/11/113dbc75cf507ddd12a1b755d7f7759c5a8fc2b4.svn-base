@@ -1,0 +1,41 @@
+<?php
+class ControllerProjectCrowdFund extends Controller {
+	private $error = array();
+
+	public function index() {
+	    
+	    $this->document->addStyle('catalog/view/stylesheet/css/crowdfund.css');
+	    $data['personal'] = $this->url->link('project/crowdfund/personal');
+	    $data['company'] = $this->url->link('project/crowdfund/company');
+	    $data['footer'] = $this->load->controller('common/footer');
+		$data['header'] = $this->load->controller('common/header');
+	    $this->response->setOutput($this->load->view('project/crowdfund',$data));
+	}
+	
+	public function company(){
+	    
+	    $this->document->addStyle('catalog/view/stylesheet/css/crowdfund.css');
+	    $this->document->addScript('catalog/view/javascript/summernote/summernote.min.js');
+	    $this->document->addScript('catalog/view/javascript/laydate/laydate.js');
+	    $this->load->model('localisation/region');
+	    $data['provinces'] = $this->model_localisation_region->getProvinces();
+	    $data['footer'] = $this->load->controller('common/footer');
+	    $data['header'] = $this->load->controller('common/header');
+	    $this->response->setOutput($this->load->view('project/company',$data));
+	}
+	
+	public function personal(){
+	    $data['b'] = $this->request->post;
+	    var_dump($data['b']);
+	    $this->document->addStyle('catalog/view/stylesheet/css/crowdfund.css');
+	    $data['footer'] = $this->load->controller('common/footer');
+	    $data['header'] = $this->load->controller('common/header');
+	   // $this->response->setOutput($this->load->view('project/personal',$data));
+	}
+	
+	public function add(){
+	    
+	}
+	
+
+}

@@ -1,0 +1,24 @@
+<?php
+// Heading
+$_['heading_title']         = 'Customer Likes Report';
+
+// Text
+$_['text_list']             = 'Customer Likes List';
+$_['text_all_customer_group']       = 'All Customer Group';
+
+// Column
+$_['column_nickname']       = 'Customer Name';
+$_['column_groupname']          = 'Customer Group Name';
+$_['column_product_name'] = 'Product Name';
+$_['column_date_added']         = 'date_added';
+$_['column_orders']         = 'No. Orders';
+$_['column_products']       = 'No. Products';
+$_['column_total']          = 'Total';
+$_['column_action']         = 'Action';
+
+// Entry
+$_['entry_date_start']      = 'Date Start';
+$_['entry_date_end']        = 'Date End';
+$_['entry_customer_group']          = 'Customer Group';
+$_['entry_product']          = 'Product';
+$_['entry_product_name']          = 'Product Name';

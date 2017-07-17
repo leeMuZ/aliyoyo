@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]><html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><?php echo $title; ?></title>
+<base href="<?php echo $base; ?>" />
+<?php if ($description) { ?>
+<meta name="description" content="<?php echo $description; ?>" />
+<?php } ?>
+<?php if ($keywords) { ?>
+<meta name="keywords" content= "<?php echo $keywords; ?>" />
+<?php } ?>
+<script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+<link href="catalog/view/javascript/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen" />
+<script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="catalog/view/stylesheet/index.css" rel="stylesheet">
+
+<?php foreach ($styles as $style) { ?>
+<link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
+<?php } ?>
+<script src="catalog/view/javascript/common.js" type="text/javascript"></script>
+<?php foreach ($links as $link) { ?>
+<link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
+<?php } ?>
+<?php foreach ($scripts as $script) { ?>
+<script src="<?php echo $script; ?>" type="text/javascript"></script>
+<?php } ?>
+</head>
+
+<body>
+	<div class="standard-body">
+		<div class="full-width">
+			<div class="partten">
+				<div class="container">
+					<img src="img/ALIYOYO2.png" alt="" class="parttenimg">
+					<ul class="parttenulone" >
+						<li class="mouseoverli">
+							<a href="" class="parttenulone-a">
+								<span>Explore</span>
+								<i class="fa fa-angle-down"></i>
+							</a>
+							<div class="yincangfenlei" style="display:none;">
+								<ul>
+									<li>
+										<a href="">Tech & Innovation</a>
+										<a href="">Audio</a>
+										<a href="">Camera Gear</a>
+										<a href="">Energy & Green Tech</a>
+										<a href="">Fashion & Wearables</a>
+										<a href="">Food & Beverages</a>
+										<a href="">Health & Fitness</a>
+										<a href="">Home</a>
+										<a href="">Phones & Accessories</a>
+										<a href="">Productivity</a>
+										<a href="">Transportation</a>
+										<a href="">Travel & Outdoors</a>
+									</li>
+									<li>
+										<a href="">Creative Works</a>
+										<a href="">Art</a>
+										<a href="">Comics</a>
+										<a href="">Dance & Theater</a>
+										<a href="">Film</a>
+										<a href="">Music</a>
+										<a href="">Photography</a>
+										<a href="">Podcasts, Blogs & Vlogs</a>
+										<a href="">Tabletop Games</a>
+										<a href="">Video Games</a>
+										<a href="">Web Series & TV Shows</a>
+										<a href="">Writing & Publishing</a>
+									</li>
+									<li>
+										<a href="">Community Projects</a>
+										<a href="">Animal Rights</a>
+										<a href="">Culture</a>
+										<a href="">Education</a>
+										<a href="">Environment</a>
+										<a href="">Human Rights</a>
+										<a href="">Local Businesses</a>
+										<a href="">Spirituality</a>
+										<a href="">Wellness</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<a href="" class="parttenulone-a">
+								<span>Create</span>
+							</a>
+						</li>
+						<li>
+							<a href="" class="parttenulone-a">
+								<span>About us</span>
+							</a>
+						</li>
+						<li>
+							<a href="" class="parttenulone-a">
+								<span>Shop</span>
+							</a>
+						</li>
+					</ul>
+					
+					<ul class="parttenultwo">
+						<li>
+							<span class="parttenultwo-span"><i class="fa fa-search"></i></span>
+						</li>
+						<li>
+							<a href="">
+								<button class="btn">Sign in</button>
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<button class="btn">Sign up</button>
+							</a>
+						</li>
+					</ul>
+					<div class="inputsearch"><input type="text" class="inputsearch-input"></div>
+				</div>
+</div>

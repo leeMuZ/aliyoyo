@@ -1,0 +1,50 @@
+<?php
+class ModelReportWishlist extends Model {
+	public function getAllWishList($data=array()){
+		$sql="SELECT cw.date_added,pd.`name` AS productname,c.nickname,cgd.`name` AS groupname FROM " . DB_PREFIX . "customer_wishlist cw JOIN " . DB_PREFIX . "product_description pd ON pd.product_id = cw.product_id JOIN " . DB_PREFIX . "customer c ON c.customer_id = cw.customer_id JOIN " . DB_PREFIX . "customer_group_description cgd ON c.customer_group_id = cgd.customer_group_id WHERE cw.product_id > 0";
+		
+		if (!empty($data['filter_date_start'])) {
+			$sql .= " AND DATE(=cw.date_added) = '" . $data['filter_date_start'] . "'";
+		}
+		if (!empty($data['product_id'])) {
+			$sql .= " AND cw.product_id = ".$data['product_id'];
+		}
+		if (!empty($data['like_customerGroup_id'])) {
+			$sql .= " AND cgd.customer_group_id = ".$data['like_customerGroup_id'];
+		}
+		
+		$sql .= " GROUP BY cw.date_added DESC";
+		
+		if (isset($data['start']) || isset($data['limit'])) {
+			if ($data['start'] < 0) {
+				$data['start'] = 0;
+			}
+		
+			if ($data['limit'] < 1) {
+				$data['limit'] = 20;
+			}
+		
+			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
+		}
+		//var_dump($sql);exit;
+		$query = $this->db->query($sql);
+		
+		return $query->rows;
+	}
+	public function getWishListTotal($data=array()){
+		$sql="SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer_wishlist cw JOIN " . DB_PREFIX . "product_description pd ON pd.product_id = cw.product_id JOIN " . DB_PREFIX . "customer c ON c.customer_id = cw.customer_id JOIN " . DB_PREFIX . "customer_group_description cgd ON c.customer_group_id = cgd.customer_group_id WHERE cw.product_id > 0";
+	
+		if (!empty($data['filter_date_start'])) {
+			$sql .= " AND DATE(cw.date_added) = '" . $this->db->escape($data['filter_date_start']) . "'";
+		}
+		if (!empty($data['product_id'])) {
+			$sql .= " AND cw.product_id = ".$data['product_id'];
+		}
+		if (!empty($data['like_customerGroup_id'])) {
+			$sql .= " AND cgd.customer_group_id = ".$data['like_customerGroup_id'];
+		}
+		$query = $this->db->query($sql);
+	
+		return $query->row['total'];
+	}
+}

@@ -1,0 +1,28 @@
+<!--  categories  -->
+<div class="categories clearfix col-sm-12">
+    <div class="bottom">
+        <div class="clearfix col-sm-12 InDemand-top">
+            <span>Explore categories</span>
+            <a href="">View more</a>
+        </div>
+        <div class="categories-bottom">
+            <?php foreach(${$type}['array'] as $k=>$v):?>
+            <a href="<?php echo $v['price'];?>">
+            <div class="categories-div col-sm-3 <?php if($k==5){echo ' imgone';} if($k==6){echo 'imgtwo';} ?> ">
+                <img src="<?php echo $v['image'];?>" alt="">
+                <div class="img-zhezhao clearfix">
+                    <div class="zhezhaoimg">
+                    </div>
+                </div>
+                <div class="xianshidiv">
+                    <svg viewBox="0 0 16 16" class="aliyoyo-svg">
+                        <use  class="aliyoyo-icon" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="sylms.svg#<?php echo $v['icon'];?>" ></use>
+                    </svg>
+                    <span><?php echo $v['category_name'][1];?></span>
+                </div>
+            </div>
+            </a>
+            <?php endforeach;?>
+        </div>
+    </div>
+</div>

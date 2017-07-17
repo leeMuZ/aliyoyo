@@ -1,0 +1,114 @@
+<link rel="stylesheet" href="catalog/view/stylesheet/css/home.css">
+<?php
+include_once( DIR_TEMPLATE."/lib/module.php" );
+$modules_old_opencart = new Modules($registry);
+?>
+<!-- ========================banner bufen======================================== -->
+<?php
+$banner_result = $modules_old_opencart->getModules('header');
+foreach($banner_result as $k=>$v):
+   echo $v;
+endforeach;
+?>
+<!-- ========================banner bufen end======================================== -->
+
+<!-- ==================================fanzhuan tupian================================================== -->
+<div class="container">
+
+    <?php
+    $banner_result = $modules_old_opencart->getModules('middle');
+    foreach($banner_result as $k=>$v):
+    echo $v;
+    endforeach;
+    ?>
+</div>
+<!--  Product Marketplace -->
+
+<div class="Marketplace clearfix col-sm-12">
+    <div class="container">
+        <?php
+$banner_result = $modules_old_opencart->getModules('bottom');
+        foreach($banner_result as $k=>$v):
+        echo $v;
+        endforeach;
+        ?>
+    </div>
+
+
+</div>
+<!-- Mostfunded -->
+<?php
+$banner_result = $modules_old_opencart->getModules('other');
+foreach($banner_result as $k=>$v):
+echo $v;
+endforeach;
+?>
+</div>
+
+<script src="catalog/view/stylesheet/js/jquery.min.js"></script>
+<script src="catalog/view/stylesheet/js/bootstrap.min.js"></script>
+<script src="catalog/view/stylesheet/js/swiper-3.3.1.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        slidesPerView: 1,
+        paginationClickable: true,
+        spaceBetween: 30,
+        autoplay: 2500,
+        loop: true
+    });
+
+    // =====================================广告位占位============================
+
+    $(function(){
+        var $regularlyItems=$(".regularly-item-list li");
+        $regularlyItems.each(function(){
+            var _$this=$(this);
+            _$this.children(".flip-box").eq(0).addClass("out").removeClass("in");
+            setTimeout(function() {
+                _$this.find(".flip-box").show().eq(1).addClass("in").removeClass("out");
+                _$this.children(".flip-box").eq(0).hide();
+            }, 500);
+        });
+        $regularlyItems.hover(function(){
+            var _$this=$(this);
+            _$this.children(".flip-box").eq(1).addClass("out").removeClass("in");
+            setTimeout(function() {
+                _$this.find(".flip-box").show().eq(0).addClass("in").removeClass("out");
+                _$this.children(".flip-box").eq(1).hide();
+            }, 225);
+        },function(){
+            var _$this=$(this);
+            _$this.children(".flip-box").eq(0).addClass("out").removeClass("in");
+            setTimeout(function() {
+                _$this.find(".flip-box").show().eq(1).addClass("in").removeClass("out");
+                _$this.children(".flip-box").eq(0).hide();
+            }, 400);
+        });
+    });
+    //
+    var dd=$(".elect").length;
+    for(var i=0; i<=dd;i++){
+        var aa=$(".elect").eq(i).text();
+        var name=aa;
+        $(".svgimg").eq(i).css("background","url(img/"+name+"-1.svg) no-repeat");
+    };
+    $(".categories-div").hover(function() {
+        var name=$(this).children().children(".elect").text();
+        $(this).children().children(".svgimg").css("background-image","url(img/"+name+"-0.svg)");
+        $(this).children(".xianshidiv").addClass('xianshidiv-active');
+        $(this).siblings().children('.xianshidiv').removeClass('xianshidiv-active');
+
+
+
+    }, function() {
+        var name=$(this).children().children(".elect").text();
+        $(this).children().children(".svgimg").css("background-image","url(img/"+name+"-1.svg)");
+        $(this).children(".xianshidiv").removeClass('xianshidiv-active');
+        $(this).children('.xianshidiv').children('svg').children('path').removeClass('redsvgactive');
+
+    });
+
+</script>

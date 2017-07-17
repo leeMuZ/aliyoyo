@@ -1,0 +1,58 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: alice
+ * Date: 2017/4/6
+ * Time: 17:21
+ */
+class ControllerCrowdfundingGoods extends Controller
+{
+    public function index()
+    {
+        $id = $this->request->get['funding_id'];
+        $this->load->model('crowdfunding/crowdfunding');
+        $data['message'] = $this->model_crowdfunding_crowdfunding->getSingle($id);
+        //$data['message']['viedo'] = $this->httpGet($data['message']['viedo'])?$data['message']['viedo']:0;
+        if (empty($data['message']))
+        {
+            $data['continue'] = $this->url->link('common/home');
+            $this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
+            $data['footer'] = $this->load->controller('common/footer');
+            $data['header'] = $this->load->controller('common/header');
+            $this->response->setOutput($this->load->view('error/not_found', $data));
+            exit;
+        }
+
+       //var_dump($test);exit;
+        // $data['message']['date_ended'] = strtotime( $data['message']['date_ended']);
+        //$data['now'] = time();
+       // $data['rest']= ($data['message']['date_ended'] - $data['now'])>0?$data['rest']:0;
+        $data['back_link'] = $this->url->link("crowdfunding/back_project", "funding_id=".$id);
+       // $data['customer_id'] = $this->session->data['customer_id'];
+        return $this->load->view('crowdfunding/goods',$data);
+    }
+
+    public function httpGet($url)
+    {
+        if (!preg_match('/(http|https|ftp):\/\/[\w.]+[\w\/]*[\w.]*\??[\w=&\+\%]*/is',$url))
+        {
+            return 0;
+        }
+        if (function_exists('get_headers'))
+        {
+            $array = get_headers($url);
+            if (!preg_match('/200/', $array[0]))
+            {
+                return 0;
+            }else{
+                return 1;
+            }
+
+        } else {
+
+            return 1;
+
+        }
+    }
+
+}

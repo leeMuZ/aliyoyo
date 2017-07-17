@@ -1,0 +1,22 @@
+$(document).on("mouseover",".mouseoverli",function(){
+			$(this).children(".yincangfenlei").show();
+			$(this).children('.parttenulone-a').css('color', '#26cada');
+			// $(this).siblings('li').children('.parttenulone-a').css('color', '#353535');
+		})
+		$(document).mouseout(function(e){
+			var _con = $('.mouseoverli,.yincangfenlei');   // 设置目标区域
+			 if(!_con.is(e.target) && _con.has(e.target).length === 0){ // Mark 1
+			    $(".yincangfenlei").hide(); // 功能代码
+			    $(".mouseoverli").children('.parttenulone-a').css('color', '#353535');
+			 }
+});
+
+$(document).on("mouseover",".zhuangtai",function(){
+	$(this).children(".yincangzhuangtai").show();
+})
+$(document).mouseout(function(e){
+	var _con = $('.zhuangtai,.yincangzhuangtai');  
+	 if(!_con.is(e.target) && _con.has(e.target).length === 0){ 
+	    $(".yincangzhuangtai").hide(); 
+	  }
+});

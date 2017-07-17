@@ -1,0 +1,44 @@
+.disign{
+	text-align: center;
+	margin-bottom: 30px;
+	
+}
+.disign img{
+	-webkit-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+.disign img:hover {
+    -webkit-box-shadow: 0 20px 40px 0 rgba(168, 172, 185, 0.62);
+    box-shadow: 0 20px 40px 0 rgba(168, 172, 185, 0.62);
+}
+
+.disign-cirle-img{
+	width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin: 10px auto;
+    
+}
+.username-p{
+	font-size:16px;
+	font-weight: bold;
+	margin-bottom: 5px; 
+}
+.faverate-div{
+	color: #999;
+}
+.faverate-div span i{
+	margin-right: 5px;
+}
+/* add */
+.newsletter-v1 .input-group .input-group-btn{
+	top:0;
+}
+.input-group-btn:last-child > .btn{
+	margin-top: -5px;
+}
+.btn{
+	outline: none!important;
+}

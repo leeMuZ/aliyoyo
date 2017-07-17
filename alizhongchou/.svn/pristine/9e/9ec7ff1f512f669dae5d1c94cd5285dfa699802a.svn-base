@@ -1,0 +1,118 @@
+function addtolist(product_id){
+	$.ajax({
+		url: 'index.php?route=account/collection/getmodal',
+		type: "POST",
+		dataType: 'json',
+		data:{"product_id":product_id},
+		success: function(json) {
+			if (json['redirect']) {
+				location = json['redirect'];
+			}				
+			if(json['html']){
+				$('#addListModal').empty();
+				$('#addListModal').attr('data-p-id', product_id);
+				$('#addListModal').append(json['html']);
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});	
+}
+
+
+$(document).delegate('#btn-save-modal', 'click', function() {
+	var list = [];
+	$('.is_select').each(function(i) {
+		if($(this).attr('data-product-id')){
+			p_id = $(this).attr('data-product-id');
+		}
+		list[i] = $(this).attr('data-collection-id') + '||' + $(this).children('.span-length').html();
+	});
+	if(list.length == 0){
+		alert("You must choose some list for this product!");
+		return;
+	}
+	if($('#modal-review').val().length > 0 && ($('#modal-review').val().length < 20 || $('#modal-review').val().length > 200)){
+		alert("The length of review must be between 20 and 200 characters!");
+		return;
+	}
+	$.ajax({
+		url: 'index.php?route=account/collection/setmodal',
+		type: "POST",
+		dataType: 'json',
+		data:{"c_lists":list,"product_id":$('#addListModal').attr('data-p-id'),"review":$('#modal-review').val()},
+		success: function(json) {
+			if (json['redirect']) {
+				location = json['redirect'];
+			}
+			if (json['error']) {
+				alert(json['error']);
+			}	
+			if(json['success']){
+				alert(json['success']);
+				$('#addListModal').modal('hide');
+				$('#addListModal').empty();
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+});
+//modal
+$(document).delegate('#addListModal .add_btn', 'click', function() {
+	var text=$.trim($(".add-content").val());
+	if(text=="" || text==undefined || text==null){
+		alert("Please enter the name");
+		return;
+	}
+	if(text.length > 30){
+		alert("The name of collection is between 1 and 30 characters!");
+		return;
+	}
+	var temp='<li data-product-id="' + $('addListModal').attr('data-p-id') + '" data-collection-id="new" class="checking_li is_select removeClass_liall abc"><span class="l span-length">'+text+'</span><i class="fa fa-check check-box r add_ul_li"></i></li>';	 
+	if(text!=""){
+		$(".add-ul").append(temp);
+		$(".add-content").val("");
+	 }else{
+	 	$(".add_btn").enabled = false;
+	 }
+});
+
+$(document).delegate(".checking_li","click",function(){
+	if($(this).hasClass('is_select')){
+		$(this).attr("class", "checking_li abc");
+		$(this).children('.abc').attr("class", "l span-length");
+		$(this).children('i').attr("class", "fa fa-check check-box r");
+	}else{
+		$(this).children('.check-box').addClass('add_ul_li');
+		$(this).addClass('is_select');
+	}	
+});
+
+$(document).delegate(".is_select","mouseover",function() {
+	$(this).addClass('afetr-check');
+	$(this).children('.check-box').attr("class", "fa fa-close r close_box");
+	$(this).removeClass('abc');
+});
+
+$(document).delegate(".is_select","mouseout",function() {
+	$(this).removeClass('afetr-check');
+	$(this).addClass('abc');
+	$(this).children('.close_box').attr("class", "fa fa-check check-box r");
+	$(this).children('.check-box').addClass('add_ul_li');
+	$(this).addClass('removeClass_liall');
+});
+/*
+$(document).delegate(".removeClass_liall .close_box","click",function() {
+	$(this).attr("class", "fa fa-check check-box r");
+	$(this).parent().removeClass('is_select');
+	$(this).parent().attr("class", "checking_li abc");
+});*/
+
+$(document).keydown(function(event){ 
+	if(event.keyCode==13){ 
+ $(".add_btn").click(); 
+}
+});

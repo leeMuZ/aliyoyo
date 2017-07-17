@@ -1,0 +1,7 @@
+<?php
+class ControllerCommonFooter extends Controller {
+	public function index() {
+	    $data['title'] = $this->document->getTitle();
+		return $this->load->view('common/footer', $data);
+	}
+}

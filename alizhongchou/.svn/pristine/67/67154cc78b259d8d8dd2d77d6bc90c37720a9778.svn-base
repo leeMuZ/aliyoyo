@@ -1,0 +1,40 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: alice
+ * Date: 2017/4/7
+ * Time: 11:34
+ */
+class ControllerCrowdfundingCommunity extends Controller
+{
+    public function index()
+    {
+        //$id = 1;//项目id
+        $data['funding_id'] = $this->request->get['funding_id'];
+        $document_message = array(
+            "title"       => "community",
+            "description" => "community",
+            "keywords"    => "community"
+        );
+        $data['link'] = array(
+            'campaign' => $this->url->link('crowdfunding/campaign', "funding_id=".$data['funding_id']),
+            'updates'  => $this->url->link('crowdfunding/updates', "funding_id=".$data['funding_id']),
+            'comments' => $this->url->link('crowdfunding/comments', "funding_id=".$data['funding_id']),
+            'community'=> $this->url->link('crowdfunding/community', "funding_id=".$data['funding_id'])
+        );
+        $this->document->setTitle($document_message['title']);
+        $this->document->setDescription($document_message['description']);
+        $this->document->setKeywords($document_message['keywords']);
+        $data['index_goods']  = $this->load->controller('crowdfunding/goods');
+        $data['index_js']     = $this->load->controller('common/js');
+        $data['footer'] = $this->load->controller('common/footer');
+        $data['header'] = $this->load->controller('common/header');
+
+        //find this persons
+        $this->load->model('crowdfunding/crowdfunding');
+        $data['person']=$this->model_crowdfunding_crowdfunding->findPerson( $data['funding_id']);
+        $this->response->setOutput($this->load->view('crowdfunding/community', $data));
+    }
+
+
+}

@@ -1,0 +1,178 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: alice
+ * Date: 2017/4/13
+ * Time: 11:19
+ */
+class ControllerCrowdfundingPayment extends Controller
+{
+    public function index()
+    {
+        if (empty($this->session->data['customer_id'])) {
+            echo "<script>alert('You haven not logged in!');</script>";
+            $this->response->redirect($this->url->link('account/login', '', true));
+            exit;
+        }
+        if (!isset($this->request->post['funding_id']) || !isset($this->request->post['support_price'])) {
+            echo "<script>alert('Please select the product you want to support!');</script>";
+            $this->response->redirect($this->url->link('error/not_found'));
+            exit;
+        }
+        //先进行对是否有限制条件是否限制数量
+        $this->load->model('crowdfunding/crowdfunding');
+        $check = $this->model_crowdfunding_crowdfunding->getAloneOrder($this->session->data['customer_id'], $this->request->post['funding_id'], $this->request->post['reward_id']);
+        if ($check == 0)
+        {
+            echo "<script>alert('You have exceeded the limit');history.go(-1);</script>";
+            exit;
+        }
+         if ($this->request->post['input_post']=="0")
+         {
+             $data['input_post'] = 0;
+
+         } else {
+             if (!empty($this->request->post['input_post']) && is_numeric($this->request->post['input_post'])) {
+                 $data['input_post'] = $this->model_crowdfunding_crowdfunding->takePost($this->request->post['input_post']);
+
+             } elseif (!empty($this->request->post['input_post']) && is_string($this->request->post['input_post'])) {
+                 $data['input_post'] = $this->model_crowdfunding_crowdfunding->getPostage($this->request->post['reward_id']);
+             }
+         }
+        $data['reward_id'] = isset($this->request->post['reward_id'])?$this->request->post['reward_id']:0;
+        if ($data['reward_id']!=0)
+        {
+            $_SESSION['reward_id'] = $data['reward_id'];
+        }
+        $data['customer_id'] = $this->session->data['customer_id'];
+        $data['funding_id']   = $this->request->post['funding_id'];
+        $data['support_price']= $this->request->post['support_price'];
+        $data['total']        =   $data['input_post']+$data['support_price'];
+        $data['deal_link']    = $this->url->link("crowdfunding/payment/deal_order");
+        $data['ticket']       = $this->url->link("crowdfunding/payment/ticket");
+        if ($data['reward_id'] == 0)
+        {
+            $data['pay_message'] = $this->model_crowdfunding_crowdfunding->selectGoodMessage($data['funding_id']);
+        }else{
+            $data['pay_message'] = $this->model_crowdfunding_crowdfunding->selectGoodMessage($data['funding_id'], $data['reward_id']);
+        }
+
+
+        $_SESSION['order_id'] = $this->make_order();
+        $array = array(
+            'order_id'   => $_SESSION['order_id'],
+            'customer_id'=>$data['customer_id'],
+            'total'      =>$data['total'],
+            'date_added' =>date('Y-m-d H:i:s',time())
+        );
+        $order_id = $this->model_crowdfunding_crowdfunding->insertOrderBasic($array);
+
+        $data['address_post'] = $this->url->link('crowdfunding/payment/add_address');
+        //find this man's address
+        $data['addresses'] = $this->model_crowdfunding_crowdfunding->select_my_address($data['customer_id']);
+
+        $data['checkout_post'] = $this->url->link('crowdfunding/payment/checkout');
+        $data['add_address'] = $this->url->link('crowdfunding/payment/add_address');
+        //select countries
+        $data['countries'] = json_encode($this->model_crowdfunding_crowdfunding->select_counties());
+        $document_message = array(
+            "title"       => "payment",
+            "description" => "payment",
+            "keywords"    => "payment"
+        );
+        $this->document->setTitle($document_message['title']);
+        $this->document->setDescription($document_message['description']);
+        $this->document->setKeywords($document_message['keywords']);
+        $data['index_js']     = $this->load->controller('common/js');
+        $data['footer'] = $this->load->controller('common/footer');
+        $data['header'] = $this->load->controller('common/header');
+
+        $this->response->setOutput($this->load->view('crowdfunding/payment', $data));
+    }
+
+    public function add_address()
+    {
+        $data['customer_id'] = $this->session->data['customer_id'];
+        $data['firstname'] = $this->request->post['firstname'];
+        $data['lastname']  = $this->request->post['lastname'];
+        $data['telephone'] = $this->request->post['telephone'];
+        $data['company']   = $this->request->post['company'];
+        $data['address_1'] = $this->request->post['address_1'];
+        $data['city']      = $this->request->post['city'];
+        $data['postcode']  = $this->request->post['postcode'];
+        $data['country_id']= $this->request->post['country_id'];
+        $data['zone_id']   = $this->request->post['zone_id'];
+        $data['address_2'] = $this->request->post['custom_field'];
+        $this->load->model('crowdfunding/crowdfunding');
+        $result = $this->model_crowdfunding_crowdfunding->insertAddress($data);
+        if ($result)
+        {
+            echo $result;
+        }else{
+            echo '0';
+        }
+
+    }
+
+    public function make_order()
+    {
+        return  'R'.mt_rand(0,999999999);
+    }
+
+    public function deal_order()
+    {
+       //$order_id = $_SESSION['order_id'];
+       $data['address_id'] = $this->request->post['address_id'];
+        $this->load->model('crowdfunding/crowdfunding');
+       //get address
+       $data = $this->model_crowdfunding_crowdfunding->show_request_address($data['address_id']);
+       //$data['payment'] = $this->request->post['payment'];
+      // $data['coupon_input'] = $this->request->post['coupon_input'];//查询优惠券的折扣删除当前总额生成订单最后金额
+       $data['order_status_id'] = 0;
+       $data['ip'] = $this->get_client_ip();
+       $this->load->model('crowdfunding/crowdfunding');
+       $this->model_crowdfunding_crowdfunding->updateOrderMessage($data,$_SESSION['order_id']);//更新订单表信息
+       //$this->model_crowdfunding_crowdfunding->insert_final_checkout($array);//插入order_total的信息
+       //先判断改方案的当前剩余量，如有有余先删除1
+        if (isset($_SESSION['reward_id']))
+        {
+            $result = $this->model_crowdfunding_crowdfunding->selectSortReward($_SESSION['reward_id']);
+            if ($result==0)
+            {
+                echo "<script>alert('No share!');history.go(-1);</script>";
+                exit;
+            }
+        }
+
+        //跳转至付款页面;
+        //如果没有收到付款或者付款失败将最后份额加1并将支持人数加1
+    }
+
+    public function get_client_ip($type = 0) {
+        $type       =  $type ? 1 : 0;
+        static $ip  =   NULL;
+        if ($ip !== NULL) return $ip[$type];
+        if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $arr    =   explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+            $pos    =   array_search('unknown',$arr);
+            if(false !== $pos) unset($arr[$pos]);
+            $ip     =   trim($arr[0]);
+        }elseif (isset($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip     =   $_SERVER['HTTP_CLIENT_IP'];
+        }elseif (isset($_SERVER['REMOTE_ADDR'])) {
+            $ip     =   $_SERVER['REMOTE_ADDR'];
+        }
+        // IP地址合法验证
+        $long = sprintf("%u",ip2long($ip));
+        $ip   = $long ? array($ip, $long) : array('0.0.0.0', 0);
+        return $ip[$type];
+    }
+
+    public function ticket()
+    {
+        $ticket = $this->request->post['ticket'];
+        $this->load->model('crowdfunding/crowdfunding');
+        $data = $this->model_crowdfunding_crowdfunding->check_ticket($ticket);
+        exit($data);
+    }
+}

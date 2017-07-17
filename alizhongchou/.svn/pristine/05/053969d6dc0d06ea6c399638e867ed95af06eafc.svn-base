@@ -1,0 +1,19 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: alice
+ * Date: 2017/5/26
+ * Time: 18:07
+ */
+class ControllerCheckoutSuccess extends Controller
+{
+    public function index()
+    {
+        $data['footer'] = $this->load->controller('common/footer');
+        $data['header'] = $this->load->controller('common/header');
+        $data['continue'] = $this->url->link("common/home");
+        $data['text_message'] = "Your order has been successfully processed!<br/>Please direct any questions you have to the store owner.<br/>Thanks for shopping with us online!";
+        $data['button_continue'] = "Continue";
+        $this->response->setOutput($this->load->view('common/success', $data));
+    }
+}

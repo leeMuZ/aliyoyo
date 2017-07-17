@@ -1,0 +1,185 @@
+<?php echo $header; ?>
+
+
+<body>
+<style>
+body {
+    background: #f5f5f5;
+    font-family: "Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif;
+    font-size: 14px;
+    color:#353535;
+    margin: 0;
+    padding: 0;
+}
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;text-decoration:none;}
+img{
+    display: block;
+}
+
+.l{
+    float: left;
+}
+.r{
+    float:right;
+}
+@media (max-width: 768px){
+    .container {
+        width: 100%;
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+    }
+}
+.container{
+	margin:auto;
+}
+
+@media (min-width: 992px){
+    .container {
+        width: 970px;
+    }
+}
+@media (min-width: 1200px){
+    .container {
+        width: 1170px;
+		
+    }
+}
+/* zhengwen */
+p{
+    font-size: 18px;
+}
+.privacypolicy_all{
+   background: #fff;
+   padding: 0;
+}
+.privacypolicy{
+    width: 80%;
+    margin: 50px auto;
+	padding-top: 50px;
+}
+.privacypolicy h1{
+    margin-bottom: 50px;
+    font-weight: bold;
+}
+.blue-p{
+    width: 70px;
+    border-top:5px solid #26cada;
+    margin-bottom: 30px;
+}
+.privacypolicy .p-next{
+    font-size: 18px;
+    margin-bottom: 20px;
+
+}
+.privacypolicy ul{
+    padding-left: 30px;
+}
+.privacypolicy ul li{
+    font-size: 18px;
+    line-height: 35px;
+}
+.p-next span,.p-weight{
+    font-weight: bold;
+}
+.p-next a{
+    color: #26cada;
+    font-weight: bold;
+}
+.p-weight{
+    font-size: 26px;
+}
+/* 88888888888 */
+.termsuse_all{
+   background: #fff;
+   padding: 0;
+}
+.termsuse{
+    width: 70%;
+    margin:0 auto;
+}
+.termsuse h1{
+    margin-bottom: 50px;
+    margin-top: 50px;
+    font-weight: bold;
+}
+.termsuse h3{
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+.termsuse .p{
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+.termsuse .p a{
+    color: #26cada;
+}
+.termsuse ul{
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+.termsuse .p-next{
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.termsuse ul li{
+    font-size: 18px;
+}
+.termsuse ul li p{
+    line-height: 35px;
+    margin-bottom: 0;
+}
+.termsuse .pp{
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.pp-last{
+    margin-bottom: 30px!important;
+}
+</style>
+<div class="standard-body">
+	<div class="full-width">
+		<div class="partten">
+			<div class="container">
+				<div class="privacypolicy_all col-sm-12 clearfix">
+					<div class="privacypolicy">
+						<h1>Cookies & Other Technologies</h1>
+						<!-- one -->
+						<p class="p-weight">What they are</p><br>
+						<p class="p-next">Cookies are small data files that are issued to your device when you visit a website and that store information about your use of a service. Pixel tags (which are also called clear GIFs, web beacons, or pixels) are little snippets of code or tiny images embedded on websites and in email that help us learn how you interact with our site and emails.</p><br>
+						<!--  -->
+						<p class="blue-p"></p>
+						<p class="p-weight">Why we use them</p><br>
+						<p class="p-next">6FUTURE uses cookies and these other technologies to help recognize you as a repeat visitor, to improve the quality of our Services, and to make your browsing experience more meaningful.</p><br>
+						<!--  -->
+						<p class="blue-p"></p>
+						<p class="p-weight">How they work</p><br>
+						<p class="p-next">When you visit 6FUTURE, our web server sends a cookie to your device, which allows us to recognize your device (but not the specific person using it). By associating the identification numbers in the cookies with other account information when, for example, you log in to the Services, we know that the cookie information relates to your user account. Similarly, pixel tags on Kickstarter and in email communications help us identify how your device is being used to interact with Kickstarter materials. Some of the tags and cookies used by our Services are served by us, and some are served by trusted partners who are delivering services on our behalf.<br><br>
+						Some examples of the types of cookies and other technologies 6FUTURE uses:</p><br>
+
+						<p class="p-weight">Authentication</p><br>
+						<p class="p-next">Kickstarter uses authentication cookies and similar technologies to tell us when you’re logged in to Kickstarter. This lets us show you personalized views related to your interests and connect you with projects you may already have backed.</p><br>
+						<p class="p-weight">Security</p><br>
+						<p class="p-next">Cookies also help keep Kickstarter secure by enabling security features and allowing us to detect activity that might violate our rules and terms of service.<br><br>These cookies help protect your account from being accessed by anyone other than you, alert you and us when your account is accessed, and provide capabilities that allow us to disable any active sessions you have (for example, when you log out or change your password).</p><br>
+						<p class="p-weight">Localization</p><br>
+						<p class="p-next">Some cookies help us provide localized experiences — for example, by making sure you see Kickstarter in your preferred language.</p><br>
+						<p class="p-weight">Site features and services</p><br>
+						<p class="p-next">Kickstarter uses cookies that provide functionality and help us deliver our products and services — for instance, by storing your preferences or by pre-filling the username field when you log in.</p><br><br>
+						<p class="p-weight">Performance</p><br>
+						<p class="p-next">Performance cookies help us route traffic between servers and understand how Kickstarter is performing, so we can provide you with the best experience possible.</p><br>
+						<p class="p-weight">Analytics and research</p><br>
+						<p class="p-next">Cookies and other technologies also help us to understand, improve, and research features and content on the Kickstarter site. For example, we may use cookies to understand how you are discovering projects or to determine which types of browsers or devices are accessing Kickstarter.</p><br>
+
+						<p class="p-next">Most web browsers automatically accept cookies but, if you prefer, you can change your browser to prevent that or to notify you each time a cookie is set. You can also learn more about cookies by visiting www.allaboutcookies.org, which includes useful information on cookies and how to block cookies using different browsers. Blocking or deleting cookies may prevent you from taking full advantage of our Services. Since "Do Not Track" is not yet a precisely defined standard, we currently treat DNT:1 signals according to the same standards set out in our Privacy and Cookie Policies.</p><br>
+						<!--  -->
+						<p class="blue-p"></p>
+						<p class="p-weight">Questions?</p><br>
+						<p class="p-next">If you have questions or suggestions, please contact us to 6FUTURE@6GUTURE.COM</p><br><br>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<?php echo $footer; ?>

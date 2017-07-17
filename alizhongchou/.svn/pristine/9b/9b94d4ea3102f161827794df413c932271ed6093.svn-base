@@ -1,0 +1,357 @@
+body {
+    background: #f5f5f5;
+    font-family: "Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif;
+    font-size: 14px;
+    color:#353535;
+    margin: 0;
+    padding: 0;
+}
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;text-decoration:none;}
+.l{
+    float: left;
+}
+.r{
+    float:right;
+}
+
+@media(min-width: 769px)and(max-width:1219px){
+    .backers_all {
+        width: 970px;
+    }
+}
+@media(min-width: 768px){
+    .backers_all {
+        width: 100%;
+		
+    }
+}
+.backers_all{
+	max-width: 1270px;
+	margin: 0px auto;
+	margin-top:20px;
+}
+@media (min-width: 1200px){
+    .backers_all{
+        width: 1170px!important;
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+    }
+}
+/* zheng wen */
+/* ************************************************************************* */
+/* backers */
+.backers,.videoplays,.postupdate{
+	background: #fff;
+	margin-bottom: 50px;
+}
+.backers{
+	padding:40px 40px 50px 40px;
+	margin-top:20px;
+}
+.backers-top,.backers-bottom{
+    padding:0;
+    margin-bottom: 20px;
+}
+.backers-top span{
+    float: left;
+    font-size: 20px;
+    color: #424242;
+    font-weight: bold;
+}
+.backers-top a{
+    float: right;
+    font-size: 16px;
+    color: #26cada;
+    line-height: 40px;
+    font-weight: bold;
+}
+.backer-select{
+	float: right;
+	height: 40px;
+	border-radius: 5px;
+	margin:0;
+	width: 25%;
+	padding-top: 0;
+    padding-bottom: 0;
+	display: none;
+	background: url(../img/jiao_down.png) no-repeat;
+	background-position: right;
+	cursor: pointer;
+}
+.backerstable{
+	width: 100%;
+}
+.backerstable-thead td{
+	padding:10px;
+	border-bottom: 5px solid #7d7d7d;
+}
+.backerstable-thead td i{
+	font-size: 18px;
+	margin-right: 10px;
+}
+.backerstable-tbody td{
+	padding:10px;
+	border:1px solid #bbb;
+}
+.center-td{
+	text-align: center;
+}
+.center-td i{
+	font-size: 18px;
+	color: #4cbcbc;
+}
+/* 小眼睛 模态框 */
+.eyedialog{
+    margin-top: 150px;
+}
+.eyedialog h4{
+    font-weight: bold;
+}
+.eyedialog .modal-header{
+    padding:25px 20px 25px 50px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+.close{
+    opacity: 1;
+}
+.close span i{
+    font-size: 20px;
+}
+.eyedialog .modal-body{
+    padding:30px 50px;
+}
+.pxinxi{
+    margin-bottom: 25px;
+}
+.pxinxi .spanicon{
+    font-size: 16px;
+}
+.pxinxi .spanicon i{
+    font-size: 20px;
+    margin-right: 10px;
+}
+.pxinxi span:last-child{
+    font-size: 14px;
+}
+.redmap{
+    background: url(../img/gq.jpg) no-repeat;
+    background-size:100% 100%;
+    width: 30px;
+    height:20px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+    margin-top: -5px;
+}
+ /* Video Plays */
+ .videoplays{
+ 	padding:0 40px;
+ }
+ /* left */
+.videoplays-left{
+	border-right: 1px solid #bbb;
+	padding:30px 40px 30px 0;
+}
+.videoplays-left .pone,.videoplays-right .pone{
+	font-size: 20px;
+	font-weight: bold;
+}
+.videoplays-left .ptwo{
+	font-size: 22px;
+	font-weight: bold;
+}
+.videoplays-left .pthree,.videoplays-right .pthree{
+	font-size: 16px;
+}
+/* right */
+.videoplays-right{
+	padding:30px 0px 30px 40px;
+}
+.videoplays-div{
+	padding:0;
+	margin-top: 7px;
+}
+.videoplays-div input,.postupdate-bottom-left input{
+	height: 40px;
+	border-radius: 3px!important;
+	border-color: #aaa!important;
+	background: #f2f2f2!important;
+	margin:0!important;
+	margin-right: 15px!important;
+	color: #c7c7c7!important;
+	letter-spacing: 1px!important;
+	font-size: 16px!important;
+}
+.postupdate-bottom-left input{
+	display: table;
+    margin-bottom: 20px!important;
+    width: 80%;
+	
+}
+@media (max-width: 769px){
+	.note-editor.note-frame {
+		width: 100%!important;
+	}
+	.postupdate-bottom-left input{
+		width: 100%!important;
+	}
+}
+
+
+
+.videoplays-div .btn{
+	height: 40px;
+	border:none;
+	background: #14c4c4;
+	color: #fff;
+	font-size: 16px;
+	margin:0;
+	border-radius: 3px;
+	text-transform: none;
+}
+/* postupdate */
+.postupdate{
+	padding:40px 40px 50px 40px;
+}
+.postupdate .backers-top{
+	margin-bottom: 40px;
+}
+.postupdate-bottom-left{
+	padding-left: 0;
+}
+#editor{
+	margin-bottom: 30px;
+}
+.note-editor.note-frame {
+    margin-top: 30px;
+    border-radius: 3px;
+    background-color: #f5f5f5;
+    border-color: #f5f5f5;
+	display:table;
+	width:80%;
+}
+.panel-heading.note-toolbar {
+   background: #dedede;
+   text-align: center;
+   padding-bottom: 0;
+}
+.note-editor.note-frame .note-editing-area .note-editable {
+   background: none;
+}
+.note-btn-group .btn{
+	border: none;
+    margin: 0;
+    background: none;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.note-btn-group .btn:hover{
+	color: #353535;
+}
+.note-btn-group .btn i{
+	font-size: 18px;
+}
+/* right */
+.inline-block {
+    display: inline-block;
+}
+.ksr_toggle {
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 6px;
+    border: 1px solid #F1EEEA;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+.ksr_toggle .bg {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background-color: #26cada;
+    border-radius: 6px;
+  
+}
+.ksr_toggle .bg.show {
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    -ms-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    -ms-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    display: block;
+}
+.ksr_toggle a {
+    -webkit-transition-property: color;
+    -moz-transition-property: color;
+    -ms-transition-property: color;
+    -o-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    -ms-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    -ms-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #3D3D66;
+    display: block;
+    float: left;
+    width: 50%;
+    margin-bottom: 0;
+    padding: 8px 0px 7px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+.ksr_toggle .radio-div.selected {
+    color: #fff;
+}
+.hidden {
+    display: none;
+}
+/**/
+.radio-div{
+	float:left;
+	position: relative;
+	width:50%;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+}
+.radio-div label{
+	padding:0;
+}
+.radio-div input{
+	display:none;
+}
+.sumitbutton{
+    text-align: center;
+    padding-top: 50px;
+}
+.sumitbutton .btn{
+    height: 45px;
+    background: #26cada;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 3px;
+    border:none;
+
+}
+.sumitbutton .btn:hover{
+    background:  #26cada;
+}
+.clearfix{
+    display: table;
+}

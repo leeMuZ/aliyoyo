@@ -1,0 +1,11 @@
+<?php
+class ControllerCommonFooter extends Controller {
+	public function index() {
+	    $data['title'] = $this->document->getTitle();
+	    $data['createProject'] = $this->url->link("project/crowdfund");
+	    $data['faq'] = $this->url->link('common/faq');
+	    $data['howitwork'] = $this->url->link('common/howitwork');
+	    $data['partner'] = $this->url->link('common/partner');
+		return $this->load->view('common/footer', $data);
+	}
+}

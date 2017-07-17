@@ -1,0 +1,128 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: alice
+ * Date: 2017/5/19
+ * Time: 11:01
+ */
+class ModelCheckOutOrder extends Model
+{
+    public function getOrder($order_id)
+    {
+        $order_query = $this->db->query("SELECT o.*, ot.rewards_id, ot.back_price, ot.shipping_price, ot.coupon_id, ot.discount, ot.total AS check_money ".
+                                        " FROM ".DB_PREFIX."order AS o INNER JOIN ".
+                                         DB_PREFIX."order_total AS ot ON o.order_id=ot.order_id WHERE o.order_id=".$order_id);
+
+        return $order_query->row;
+
+    }
+
+    public function getOwnerMessage($string)
+    {
+        $query = $this->db->query("SELECT value FROM ".DB_PREFIX."setting AS s WHERE s.key= '".$this->db->escape($string)."'");
+        return $query->row['value'];
+    }
+
+    public function addOrderHistory($order_id, $order_status_id, $comment= '', $notify = false, $override = false)
+    {
+        $order_info = $this->getOrder($order_id);
+        if ($order_id)
+        {
+            $this->load->model('account/customer');
+            $customer_info = $this->model_account_customer->getCustomer($order_info['customer_id']);
+
+            if ($customer_info && $customer_info['safe']) {
+                $safe = true;
+            } else {
+                $safe = false;
+            }
+
+
+            $data['order_id'] = $order_id;
+            $data['date_added'] = date('Y:h:d H:i:s', strtotime($order_info['date_added']));
+          //$data['payment_method'] = $order_info['payment_method'];
+          //$data['shipping_method'] = $order_info['shipping_method'];
+            $data['email'] = $order_info['email'];
+            $data['telephone'] = $order_info['shipping_telephone'];
+            $data['ip'] = $order_info['ip'];
+            $data['order_status'] = $order_info['order_status_id'];
+
+            if ($comment && $notify) {
+                $data['comment'] = nl2br($comment);
+            } else {
+                $data['comment'] = '';
+            }
+
+            $find = array(
+                '{firstname}',
+                '{lastname}',
+                '{address_1}',
+                '{address_2}',
+                '{city}',
+                '{postcode}',
+                '{zone}',
+                '{country}'
+            );
+
+            $replace = array(
+                'firstname' => $order_info['shipping_firstname'],
+                'lastname'  => $order_info['shipping_lastname'],
+                'address_1' => $order_info['shipping_address_1'],
+                'address_2' => $order_info['shipping_address_2'],
+                'city'      => $order_info['shipping_city'],
+                'postcode'  => $order_info['shipping_postcode'],
+                'zone'      => $order_info['shipping_zone'],
+                'country'   => $order_info['shipping_country']
+            );
+
+            //$data['payment_address'] = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));
+
+        }
+
+
+    }
+
+    /**
+     * @param $order_id
+     * @return bool
+     * 成功返此方法
+     *
+     */
+    public function dealSuccessOrder($order_id)
+    {
+        $this->db->query("UPDATE ".DB_PREFIX."order SET order_status_id=15 WHERE order_id=".$order_id);
+        if ($_SESSION['coupon_id'])
+        {
+            $result = $this->getOrder($order_id);
+            $this->db->query("UPDATE ".DB_PREFIX."coupon SET uses_total=uses_total-1");
+            $date = date("Y-m-d H:i:s", time());
+            $this->db->query("INSERT INTO ".DB_PREFIX."coupon_history (coupon_id,order_id,customer_id,amount,date_added) VALUES ({$_SESSION['coupon_id']},{$_SESSION['order_id']},{$this->session->data['customer_id']},{$result['total']},{$date})");
+        }
+
+        return true;
+
+    }
+
+    public function dealFailedOrder($order_id)
+    {
+        if ($_SESSION['reward_id'])
+        {
+            $this->db->query("UPDATE ".DB_PREFIX."crowdfunding_rewards SET stock=stock+1 WHERE rewards_id=".$_SESSION['reward_id']);
+        }
+        if ($_SESSION['coupon_id'])
+        {
+            $query=$this->db->query("SELECT * FROM ".DB_PREFIX."order_total WHERE order_id=".$order_id);
+            $result = $query->row;
+            $all_total = $result['back_price']+$result['shipping_price'];
+            $this->db->query("UPDATE ".DB_PREFIX."order SET total=".$all_total." WHERE order_id=".$order_id);
+            $this->db->query("UPDATE ".DB_PREFIX."order_total SET total=".$all_total .", coupon_id=0, discount=0 WHERE order_id=".$order_id);
+            unset($_SESSION['coupon_id']);
+        }
+
+        return true;
+
+
+    }
+
+
+}

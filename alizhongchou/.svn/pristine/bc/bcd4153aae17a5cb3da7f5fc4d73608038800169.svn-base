@@ -1,0 +1,67 @@
+$(document).on("mouseover",".mouseoverli",function(){
+			$(this).children(".yincangfenlei").show();
+			$(this).children('.parttenulone-a').css('color', '#26cada');
+			// $(this).siblings('li').children('.parttenulone-a').css('color', '#353535');
+		})
+		$(document).mouseout(function(e){
+			var _con = $('.mouseoverli,.yincangfenlei');   // 设置目标区域
+			 if(!_con.is(e.target) && _con.has(e.target).length === 0){ // Mark 1
+			    $(".yincangfenlei").hide(); // 功能代码
+			    $(".mouseoverli").children('.parttenulone-a').css('color', '#353535');
+			 }
+});
+
+$(document).on("mouseover",".zhuangtai",function(){
+	$(this).children(".yincangzhuangtai").show();
+})
+$(document).mouseout(function(e){
+	var _con = $('.zhuangtai,.yincangzhuangtai');  
+	 if(!_con.is(e.target) && _con.has(e.target).length === 0){ 
+	    $(".yincangzhuangtai").hide(); 
+	  }
+});
+
+$(window).resize(function(){
+		if($(window).width()<1100){
+			$(".inputsearch-input").hide();
+			var number=1
+			$(".parttenultwo-span").click(function(event) {
+				if(number){
+					$('.anotherinput').show();
+					$('.anotherinput input').focus();
+					number=0;
+				}else{
+					$('.anotherinput').hide();
+					number=1;
+				}
+			});
+	}else{
+		$(".inputsearch-input").show();
+		$('.anotherinput').hide();
+		$('.parttenultwo-span').unbind('click')
+	}
+});
+
+$(document).on("focus",".inputsearch-input",function(){
+	$(this).animate({"width":"160%"},500);
+	$(this).css('border-color', '#3f3f3f');
+}); 
+$(document).on("blur",".inputsearch-input",function(){
+	$(this).animate({"width":"100%"},500);
+	$(this).css('border-color', '#ccc');
+}); 
+
+function checkVideoIsYoutobe(){
+	var videoUrl=$(".youtobe_video").val();
+	var ytRegExp = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    var ytMatch = videoUrl.match(ytRegExp);
+    if (ytMatch && ytMatch[1].length === 11) {
+      var youtubeId = ytMatch[1];
+      var videoHtml  = '<iframe width="100%" height="390" src="https://www.youtube.com/embed/'+youtubeId+'" frameborder="0" allowfullscreen></iframe>';
+      $('#video_view').html(videoHtml);
+    }else{
+    	alert("视频地址不符合标准,请确认视频地址");
+    }
+}
+
+

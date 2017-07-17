@@ -1,0 +1,132 @@
+body {
+    background: #f5f5f5;
+    font-family: "Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif;
+    font-size: 14px;
+    color:#353535;
+    margin: 0;
+    padding: 0;
+}
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;text-decoration:none;}
+.l{
+    float: left;
+}
+.r{
+    float:right;
+}
+@media (max-width: 768px){
+    .container {
+        width: 100%;
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+    }
+}
+
+@media (min-width: 992px){
+    .container {
+        width: 970px;
+    }
+}
+@media (min-width: 1200px){
+    .container {
+        width: 1170px;
+    }
+}
+/* zheng wen */
+/* ************************************************************************* */
+/* backers */
+.backers,.videoplays,.postupdate{
+	background: #fff;
+	margin-bottom: 50px;
+}
+.backers{
+	padding:40px 40px 50px 40px;
+}
+.backers-top,.backers-bottom{
+    padding:0;
+    margin-bottom: 20px;
+}
+.backers-top span{
+    float: left;
+    font-size: 20px;
+    color: #424242;
+    font-weight: bold;
+}
+.backer-select{
+	float: right;
+	height: 40px;
+	border-radius: 5px;
+	margin:0;
+	width: 25%;
+	padding-top: 0;
+    padding-bottom: 0;
+	background: url(../img/jiao_down.png) no-repeat;
+	background-position: right;
+	cursor: pointer;
+}
+.backerstable{
+	width: 100%;
+}
+.backerstable-thead td{
+	padding:10px;
+	border-bottom: 5px solid #7d7d7d;
+}
+.backerstable-thead td i{
+	font-size: 18px;
+	margin-right: 10px;
+}
+.backerstable-tbody td{
+	padding:10px;
+	border:1px solid #bbb;
+}
+.center-td{
+	text-align: center;
+}
+.center-td i{
+	font-size: 18px;
+	color: #4cbcbc;
+}
+/* 小眼睛 模态框 */
+.eyedialog{
+    margin-top: 150px;
+}
+.eyedialog h4{
+    font-weight: bold;
+}
+.eyedialog .modal-header{
+    padding:25px 20px 25px 50px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+.close{
+    opacity: 1;
+}
+.close span i{
+    font-size: 20px;
+}
+.eyedialog .modal-body{
+    padding:30px 50px;
+}
+.pxinxi{
+    margin-bottom: 25px;
+}
+.pxinxi .spanicon{
+    font-size: 16px;
+}
+.pxinxi .spanicon i{
+    font-size: 20px;
+    margin-right: 10px;
+}
+.pxinxi span:last-child{
+    font-size: 14px;
+}
+.redmap{
+    background: url(../img/gq.jpg) no-repeat;
+    background-size:100% 100%;
+    width: 30px;
+    height:20px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+    margin-top: -5px;
+}

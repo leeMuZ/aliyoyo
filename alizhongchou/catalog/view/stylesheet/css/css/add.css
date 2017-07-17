@@ -1,0 +1,160 @@
+body{
+    background: #f9f9f9;
+}
+a img {
+    border: none;
+}
+*{
+	outline: none!important;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+body, html {
+    color: #183643;
+    background: white;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 22px;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    letter-spacing: 0.005rem;
+}
+.clearfix{
+    display: table;
+    width: 100%;
+}
+input,button{
+    outline: none!important;
+}
+.active-color{
+	background-color: rgba(134, 189, 233, 1);
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+.menu-title{
+	text-transform: none;
+}
+.beautifui-img{
+	margin-bottom: 30px;
+}
+
+/* shop */
+.piece-p{
+	font-size: 20px;
+}
+.custom-piece{
+	margin-top: 30px;
+}
+.step-one,.step-two{
+	color:#E4E4E4;
+	margin-left: 30px;
+}
+.step{
+	width: 20px;
+	display: inline-block;
+	height: 20px;
+	border-radius: 100%;
+	background: #ccc;
+	text-align: center;
+	line-height: 20px;
+	font-size: 14px;
+	margin-top: -5px;
+	vertical-align: middle;
+	color: #fff;
+}
+.stepcolor-active{
+	color: rgba(134, 189, 233, 1);
+}
+.stepcolor-active .step{
+	background: rgba(134, 189, 233, 1);
+	
+}
+
+/* 通用 */
+.sw--clearfix:before, .sw--clearfix:after {
+    display: table;
+    content: " ";
+}
+.sw--clearfix:after {
+    clear: both;
+}
+.sw--clearfix:before, .sw--clearfix:after {
+    display: table;
+    content: " ";
+}
+.sw--margin-right-1 {
+    margin-right: 5px;
+}
+.sw--margin-right-2 {
+    margin-right: 10px;
+}
+.sw--margin-right-3 {
+    margin-right: 15px;
+}
+.sw--margin-right-4 {
+    margin-right: 20px;
+}
+.sw--margin-left-1 {
+    margin-left: 5px;
+}
+.sw--margin-top-1{
+	margin-top: 5px;
+}
+.sw--margin-top-2{
+	margin-top: 10px;
+}
+.sw--margin-top-3{
+	margin-top: 15px;
+}
+.sw--margin-top-4{
+	margin-top: 20px;
+}
+.sw--margin-top-3 {
+    margin-top: 15px;
+}
+.sw--margin-top-4 {
+    margin-top: 20px;
+}
+.sw--margin-top-5 {
+    margin-top: 25px;
+}
+.sw--margin-top-6 {
+    margin-top: 30px;
+}
+.sw--margin-bottom-0 {
+    margin-bottom: 0;
+}
+.sw--margin-bottom-1 {
+    margin-bottom: 5px;
+}
+.sw--text-center {
+    text-align: center;
+}
+.sw--font-size-22 {
+    font-size: 1.571rem;
+}
+.sw--word-wrap {
+    word-wrap: break-word;
+}
+.sw--margin-top-1 {
+    margin-top: 5px;
+}
+.sw--margin-bottom-3 {
+    margin-bottom: 15px;
+}
+.sw--margin-bottom-4 {
+    margin-bottom: 20px;
+}
+.sw--margin-bottom-8{
+	 margin-bottom: 40px;
+}

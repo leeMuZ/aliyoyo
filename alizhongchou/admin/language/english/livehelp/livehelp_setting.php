@@ -1,0 +1,81 @@
+<?php
+$_['heading_title']                 = 'Setting';
+$_['text_livehelp']                 = 'Live Help';
+$_['text_sounds']                   = 'Sounds';
+$_['column_filename']               = 'Filename';
+$_['column_new_message']            = 'New message';
+$_['column_user_logged']            = 'User logged';
+$_['column_user_logout']            = 'User logout';
+$_['column_special_function']       = 'Special';
+$_['column_test_sound']             = 'Play';
+$_['column_operator_logged']        = 'Operator logged';
+$_['column_operator_logout']        = 'Operator logout';
+$_['text_off']                      = '-- OFF --';
+$_['entry_absolute_path']           = 'Absolute path:';
+$_['title_absolute_path']           = 'The path to the root directory of your business. It is used when inserting emoticons.';
+$_['text_sample_image_display']     = 'Is the picture showing corect?';
+$_['entry_text_max_length']         = 'Message max length:';
+$_['text_plugin']                   = 'Plugins';
+$_['entry_smiley_status']           = 'Emoticons:';
+$_['entry_bbcode_status']           = 'BB Code:';
+$_['text_sample_image']             = 'Sample image';
+$_['entry_refresh_rate']            = 'Refresh rate';
+$_['title_refresh_rate']            = 'The time interval starts when the data update. Quicker updates can have a negative impact on performance.';
+$_['entry_admin_inactive_timeout']  = 'Inactive timeout:';
+$_['title_admin_inactive_timeout']  = 'Time for which any length of time will automatically admin referred to as inactive.';
+$_['entry_admin_inactive_action']   = 'Inactive status change action:';
+$_['title_admin_inactive_action']   = 'The event, which will be executed when time expires';
+$_['text_logout']                   = 'Logout';
+$_['text_toggle_status']            = 'Toggle status';
+$_['entry_store_heading_title']     = 'Default heading title:';
+$_['text_accepting_html']           = 'Accepting HTML tags';
+$_['entry_data_warehouse_status']   = 'Use data warehouse for deleted thread:';
+$_['entry_store_inactive_timeout']  = 'Inactive timeout:';
+$_['title_store_inactive_timeout']  = 'The time difference that after the expiry marks the user as logged out and closed the thread';
+$_['entry_cart_update_interval']    = 'Update shopping cart every:';
+$_['title_cart_update_interval']    = 'It defines how often to update the shopping cart. Set to 0 for information on the cart after the user logs on.';
+$_['text_iteration']                = 'Iteration';
+$_['text_offline']                  = 'Offline state (operators are offline)';
+$_['entry_offline_form']            = 'Offline form:';
+$_['entry_offline_form_emails']     = 'Send to emails:';
+$_['text_entry_email']              = 'Entry email';
+$_['column_message_sent']           = 'Message sent';
+$_['text_spam_filter']              = 'SPAM Filter:';
+$_['text_count']                    = 'Count';
+$_['entry_spam_filter_status']      = 'SPAM filter status:';
+$_['entry_spam_filter_score_limit'] = 'Maximum message in one range:';
+$_['entry_spam_filter_penalty']     = 'Time penalty:';
+$_['entry_spam_filter_range']       = 'Time range length:';
+$_['title_spam_filter_penalty']     = 'The extra time that the user will need to wait before being able to re-write messages';
+$_['title_spam_filter_range']       = 'Range in which accumulates the total number of messages sent.';
+$_['text_success']                  = 'Success: You have modified LiveHelp setting!';
+$_['title_offline_form_emails']     = 'Additional emails for send customer message. Separated by comma!';
+$_['text_seconds']                  = 'Seconds';
+$_['text_miliseconds']              = 'Milliseconds';
+$_['text_play']                     = 'Play';
+
+$_['text_form']                     = 'LiveHelp Setting';
+$_['entry_auto_user_sign']          = 'Auto user sign:';
+$_['title_auto_user_sign']          = 'When some operator is online, automatically sign user to the chat when livehelp initialize. Form with entry name and select an operator will no longer be displayed!';
+$_['text_appearance']               = 'Widget Appearance';
+$_['entry_dragable_widget_status']  = 'Dragable widget:';
+$_['entry_widget_theme']            = 'Widget theme:';
+$_['entry_stick_position']          = 'Widget position stick:';
+
+$_['entry_page_title_alert']          = 'Page title message alerting:';
+$_['title_page_title_alert']          = 'When customer get new message from operator, system will periodicaly insert alert on page title, what user see in explorer tabs (eg. Firefox).';
+
+$_['entry_custom_message_slidebar']   = 'Use custom message slidebar';
+$_['title_custom_message_slidebar']   = 'Replace default slidebar by new one. This could exceptionally cause some performence problem (eg. freezing browser window).';
+$_['text_help_offline_form_emails']   = 'Separated by comma. <br> Defaultly will be send to store email.';
+
+
+$_['text_stick_right']          	= 'Stick right';
+$_['text_stick_left']          		= 'Stick left';
+$_['text_stick_bottom']          	= 'Stick bottom';
+
+$_['error_text_max_length']        = 'Maximum text length must be greater than 10!';
+$_['error_admin_refresh_rate']     = 'Refresh rate is required and must be greater than 2000(ms)!';
+$_['error_admin_inactive_timeout'] = 'Inactive timeout is required and must be greater than 60(s)!';
+$_['error_store_refresh_rate']     = 'Refresh rate is required and must be greater than 2000(ms)!';
+$_['error_store_inactive_timeout'] = 'Inactive timeout is required and must be greater than 60(s)!';

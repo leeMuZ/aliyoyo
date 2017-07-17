@@ -1,0 +1,27 @@
+.singleton{
+	margin-top: 50px;
+}
+.singleton-left{
+	background-color: rgba(251, 251, 251, 1);
+}
+.singleton-left .sidebar-menu{
+	font-weight: 700;
+    color: #999999;
+    font-size: 20px;
+}
+.singleton-left .menu-first{
+	margin-bottom: 30px;
+}
+.menu-second{
+	list-style: none;
+	padding-left: 15px;
+}
+.menu-second li{
+	font-size: 15px;
+	color: #999;
+	margin-top: 20px;
+}
+/*  */
+.singleton-center>div div{
+	margin-bottom: 20px;
+}

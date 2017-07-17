@@ -1,0 +1,105 @@
+<?php echo $header;?>
+<?php echo $index_goods?>
+<article class="campaign">
+    <div class="scroll-inforlink">
+        <ul class="inforlink">
+            <?php
+            foreach($link as $k=>$v):
+            ?>
+            <li><button class="<?php echo $k=='comments'?'btn forlinkactive':'btn';?>" onclick="window.location.href='<?php echo $v;?>'"><?php echo $k; ?></button></li>
+            <?php
+             endforeach;
+             ?>
+            <div class="scroll-project">
+                <div class="project-top  col-md-5">
+                    <a href="backproject.html"><button class="btn">Back This Project</button></a>
+                </div>
+                <div class="project-right col-md-4">
+                    <button class="btn huistar no-border"><i class="fa fa-star"></i><span>Remind me</span></button>
+                </div>
+            </div>
+        </ul>
+    </div>
+    <div class="campaigntableall">
+        <!-- ======================================table all one ============================================= -->
+    </div>
+        <div class="campaigntable campaigntableall-active col-md-12 col-sm-12" id="campaigntable-three">
+            <div class="Commentarea col-md-12 col-sm-12">
+                <div class="onlybacks col-md-offset-2 col-md-8 col-sm-12">
+                    Only backers can post comments. If you have a question,
+                    <span class="asking"  data-toggle="modal" data-target="#exampleModal">&nbsp;ask the project creator.</span>
+                </div>
+                <!-- asking neirong -->
+                <!-- Modal -->
+                <div class="modal fade asking-model" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="exampleModalLabel">Ask the project creator</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>If you have any questions please send an email to </p>
+                                <p class="modelp-bold">541844444@gamil.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- asking neirong end-->
+                <div class="commentssection col-md-12 col-sm-12">
+                    <ul class="">
+                        <?php foreach($index_comments as $v):?>
+                        <li>
+                            <div class="lileft">
+                                <img src="<?php echo $v['image'];?>" alt="">
+                            </div>
+                            <div class="liright">
+                                <p class="commonname">
+                                    <span class="spanblack"><?php echo $v['firstname']." ".$v['lastname'];?></span>
+                                    <span class="spanriqi"><?php echo $v['date_added'];?></span>
+                                </p>
+                                <p class="commoncontent"><?php echo $v['content'];?></p>
+                            </div>
+                        </li>
+                        <?php endforeach;?>
+                    </ul>
+                    <div class="pinglun-div col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10">
+                        <div class="col-md-12 col-sm-12">
+                            <textarea name="content" id="comment_content" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="col-md-12 col-sm-12 pinglun-divbutton">
+                            <input type="hidden" name="my_customer_id" value="<?php echo isset($customer_id)?$customer_id:''; ?>"/><!--之后写入当前用户ID-->
+                            <input type="hidden" name="this_funding_id" value="<?php echo $id;?>"/>
+                            <button id="my_submit" type="submit" class="btn">Sumblit</button>
+                        </div>
+                    </div>
+                        <script type="application/javascript">
+                            $('#my_submit').click(function () {
+                                var customer = $('input[name="my_customer_id"]').val();
+                                if(customer == "")
+                                    {
+                                        alert("please login");
+                                        window.location.href = "<?php echo $login;?>";
+                                        return;
+                                    }
+                                var funding  = $('input[name="this_funding_id"]').val();
+                                var content  = $('#comment_content').val();
+                                $.post('<?php echo $comment_post;?>', {'customer':customer, 'funding':funding, 'content':content}, function (data) {
+                                       if (data==1) {
+                                           history.go(0);
+                                       }else {
+                                           alert('You also did not support the project!');
+                                       }
+                                })
+                            });
+                        </script>
+                </div>
+            </div>
+        </div>
+        <!---必带----->
+    </div>
+</article>
+</div>
+<!---必带----->
+<?php echo $index_js?>
+<?php echo $footer?>

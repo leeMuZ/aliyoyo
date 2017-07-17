@@ -1,0 +1,68 @@
+<div class="bottoms">
+    <div class="clearfix col-sm-12 InDemand-top">
+        <span>Aliyoyo Product Marketplace</span>
+        <a href="">View more</a>
+    </div>
+    <!-- <div class="container-fluid warrp col-md-12">
+        <!--slide-->
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="carousel slide" id="myCarousel">
+                <div class="carousel-inner product-grid">
+                    <?php
+                    $length = count(${$type}['array']);
+                    $num    = ceil($length/4);
+                    sort(${$type}['array']);
+                    for($n=1;$n<$num+1;$n++) {
+                       if($n==$num){
+                          $x = $length;
+                       }else{
+                          $x = $n*4;
+                       }
+                      ?>
+                    <div class="item <?php if($n==1){ echo 'active';} ?>">
+                        <ul class="thumbnails product product-hover">
+                            <?php
+                            for($i=($n-1)*4;$i<$x;$i++) {
+                            ?>
+                            <li class="span3 ">
+                                <div class="left">
+                                    <div class="image ">
+                                        <a href="" target="_blank">
+                                            <img src="<?php echo  ${$type}['array'][$i]['image'];?>" alt="<?php echo ${$type}['array'][$i]['product_name'][1];?>" class="zoom-image-effect">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <div class="name">
+                                        <a href="<?php echo ${$type}['array'][$i]['link'];?>"><?php echo ${$type}['array'][$i]['product_name'][1];?></a>
+                                    </div>
+                                    <div class="price">$<?php echo ${$type}['array'][$i]['price']?> </div>
+                                </div>
+                            </li>
+                            <?php } ?>
+                        </ul>
+                    </div><!-- /Slide1 -->
+                    <?php  } ?>
+                </div>
+
+                <!-- <div class="control-box hidden-lg">
+                    <a data-slide="prev" href="#myCarousel" class="left carousel-control left-bj">‹</a>
+                    <a data-slide="next" href="#myCarousel" class="right carousel-control left-bj">›</a>
+                </div> --><!-- /.control-box -->
+            </div><!-- /#myCarousel -->
+        </div><!-- /.span12 -->
+    </div><!-- /.row -->
+    <!--slide end-->
+</div>
+
+<a data-slide="prev" href="#myCarousel" class="left carousel-control left-bj hidden-xs" id="sever-prev">
+			<span id="prev-nav" aria-hidden="true">
+				<i class="fa fa-angle-left"></i>
+			</span>
+</a>
+<a data-slide="next" href="#myCarousel" class="right carousel-control left-bj hidden-xs" id="sever-next">
+			<span id="next-nav" aria-hidden="true">
+				<i class="fa fa-angle-right"></i>
+			</span>
+</a>

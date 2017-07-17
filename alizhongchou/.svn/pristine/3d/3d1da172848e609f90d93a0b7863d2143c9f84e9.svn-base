@@ -1,0 +1,101 @@
+body{
+	background: #f0f0f2;;
+	color: #101010;
+	font-family: "Microsoft YaHei","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif;
+	font-size: 16px;
+	position: relative;
+}
+.standard-body .full-width .container {
+    max-width: 1270px;
+    margin: 0px auto;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+@media (min-width: 1200px){
+	.container {
+	    width: 1170px;
+	}
+}
+
+@media (min-width: 992px){
+	.container {
+    	width: 970px;
+	}
+}
+@media (min-width: 768px){
+	.container {
+	    width: 100%;
+	    padding-left: 0px!important;
+	    padding-right: 0px!important;
+	}
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.panel-body{
+	background: #fff;
+	display: table;
+	width: 100%;
+	border-bottom: 1px solid #ccc;
+}
+.orderin{
+	padding: 33px 0px 0 0px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+}
+#payment-new,.payment-old{
+	padding-right: 80px;
+
+}
+
+#payment-new .input-group .input-group-addon{
+	padding:6px 20px;
+}
+.order-right{
+	 padding-top: 35px;
+	 padding-bottom: 35px;
+    font-size: 16px;
+}
+.order-right .xing-red{
+	color: #f71449;
+}
+.order-right .xing-name{
+	padding-right: 15px;
+}
+.order-right .xing-radio-p{
+	float: left;
+}
+.projectinformation{
+	display: table;
+	width: 100%;
+}
+.projectinformation textarea{
+	width: 70%;
+	border-radius: 5px;
+	resize: none;
+}
+@media (max-width: 768px){
+	.projectinformation textarea{
+		width: 90%;
+	}
+}
+.projectinformation-btn{
+	text-align: center;
+    width: 60%;
+    margin-top: 30px;
+}
+.projectinformation-btn .btn{
+	width: 190px;
+	height: 45px;
+	background: #42c7c7;
+	color: #fff;
+	border:none;
+	border-radius: 3px;
+	text-transform: none;
+}

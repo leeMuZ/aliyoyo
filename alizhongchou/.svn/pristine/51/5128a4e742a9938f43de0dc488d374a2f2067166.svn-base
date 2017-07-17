@@ -1,0 +1,231 @@
+<?php
+class ModelProjectCrowdFund extends Model {
+    public function creatProject($type){
+        $funding_id = time().rand(0, 9);
+        $query = $this->db->query("INSERT INTO ".DB_PREFIX."crowdfunding set funding_id='".$funding_id."',customer_id='".$this->customer->getId()."',date_added=NOW()");
+        $query = $this->db->query("INSERT INTO ".DB_PREFIX."crowdfunding_rewards set funding_id='".$funding_id."'");
+        $query = $this->db->query("INSERT INTO ".DB_PREFIX."crowdfunding_description set funding_id='".$funding_id."'");
+        $query = $this->db->query("INSERT INTO ".DB_PREFIX."funds_recipient_address set province_id='0',city_id='0',area_id='0'");
+        $address_id = $this->db->getLastId();
+        if($type){
+            $query = $this->db->query("INSERT INTO ".DB_PREFIX."funds_recipient_company set funding_id='".$funding_id."',address_id='".$address_id."'");
+        }else{
+            $query = $this->db->query("INSERT INTO ".DB_PREFIX."funds_recipient_pesonal set funding_id='".$funding_id."',address_id='".$address_id."'");
+        }
+        
+        return $funding_id;
+    }
+    public function editProject($data){
+        $query = $this->db->query("UPDATE ".DB_PREFIX."crowdfunding set image='".$data['project_image']."',name='".$data['project_name']."',introduce='".$data['project_introduce']."',category_id='".$data['project_category']."',date_start='".$data['date_start']."',date_ended='".$data['date_ended']."',total_goal='".$data['total_goal']."' WHERE funding_id='".$data['funding_id']."'");
+        $query = $this->db->query("UPDATE ".DB_PREFIX."crowdfunding_rewards set crowdfunding_name='".$data['project_name']."' WHERE funding_id='".$data['funding_id']."'");
+         
+    }
+    public function editRewards($data){
+        foreach ($data['reward'] as $reward){
+        $estimated_delivery =$reward['estimated_delivery_year']."-".$reward['estimated_delivery_month'];
+        
+        if(isset($reward['limit_availability'])){
+            $limit_availability = $reward['limit_availability'];
+        }else{
+            $limit_availability = 0;
+        }
+        if(isset($reward['limit_backer_availability'])){
+            $limit_backer_availability = $reward['limit_backer_availability'];
+        }else{
+            $limit_backer_availability = 0;
+        }
+        
+        if(isset($reward['limit_time_availability'])){
+            $limit_time_availability = $reward['limit_time_availability'];
+        }else{
+            $limit_time_availability = 0;
+        }
+        if(isset($reward['limit_backer'])){
+            $limit_backer = $reward['limit_backer'];
+        }else{
+            $limit_backer = 0;
+        }
+        if(isset($reward['limit_time_begin'])){
+            $limit_time_begin = $reward['limit_time_begin'];
+        }else{
+            $limit_time_begin = "0000-00-00";
+        }
+        if(isset($reward['limit_time_end'])){
+            $limit_time_end = $reward['limit_time_end'];
+        }else{
+            $limit_time_end = "0000-00-00";
+        }
+        if(isset($reward['rewards_id'])){
+        $this->db->query("UPDATE ".DB_PREFIX."crowdfunding_rewards set name='".$this->db->escape($reward['tile'])."',pledge_amount='".$reward['pledge_amount']."',description='".$this->db->escape($reward['description'])."',shipping_method='".$reward['shipping_method']."',shipping_postage='".$reward['shipping_postage']."',estimated_delivery='".$estimated_delivery."',limit_availability='".$limit_availability."',limit_backer_availability='".$limit_backer_availability."',limit_time_availability='".$limit_time_availability."',limit_backer='".$limit_backer."',stock='".$limit_backer."',limit_time_begin='".$limit_time_begin."',limit_time_end='".$limit_time_end."' where rewards_id='".$reward['rewards_id']."'");
+        $this->db->query("DELETE FROM " . DB_PREFIX . "rewards_shipping where rewards_id='".$reward['rewards_id']."'");
+        if(isset($reward['rewards_shipping_country'])){
+        foreach ($reward['rewards_shipping_country'] as $key=>$value){
+        $this->db->query("INSERT INTO ".DB_PREFIX."rewards_shipping set rewards_id='".$reward['rewards_id'] ."',country_id='".$value['country']."',Postage='".$reward['rewards_shipping_Postage'][$key]['postage']."'");
+         }
+        }
+        }else{
+           $crowdfunding_name =  $this->getCrowdFunding($data['funding_id']);
+           $this->db->query("INSERT INTO ".DB_PREFIX."crowdfunding_rewards set funding_id='".$data['funding_id']."',crowdfunding_name='".$crowdfunding_name."',name='".$this->db->escape($reward['tile'])."',pledge_amount='".$reward['pledge_amount']."',description='".$this->db->escape($reward['description'])."',shipping_method='".$reward['shipping_method']."',shipping_postage='".$reward['shipping_postage']."',estimated_delivery='".$estimated_delivery."',limit_availability='".$limit_availability."',limit_backer_availability='".$limit_backer_availability."',limit_time_availability='".$limit_time_availability."',limit_backer='".$limit_backer."',stock='".$limit_backer."',limit_time_begin='".$limit_time_begin."',limit_time_end='".$limit_time_end."'");
+           $reward_id = $this->db->getLastId();
+           if(isset($reward['rewards_shipping_country'])){
+          foreach ($reward['rewards_shipping_country'] as $key=>$value){
+             $this->db->query("INSERT INTO ".DB_PREFIX."rewards_shipping set rewards_id='".$reward_id ."',country_id='".$value['country']."',Postage='".$reward['rewards_shipping_Postage'][$key]['postage']."'");
+          }
+           }
+        }
+        
+        }
+    }
+    public function editDescription($data){
+        $this->db->query("UPDATE ".DB_PREFIX."crowdfunding set viedo='".$this->db->escape($data['project_video'])."' where funding_id='".$data['funding_id']."'");
+        $this->db->query("UPDATE ".DB_PREFIX."crowdfunding_description set description='".$this->db->escape($data['project_description'])."',risk_description='".$this->db->escape($data['risk_description'])."' where funding_id='".$data['funding_id']."'");
+    }
+    public function editCompanyAccount($data){
+        if($data['licenceType']=="1"){
+            $businessLicence =$data['businessLicence1']; 
+            $organizationCode =$data['organizationCode1'];
+        }else{
+            $businessLicence = $data['businessLicence'];
+            $organizationCode = $data['organizationCode'];
+        }
+        $this->db->query("UPDATE ".DB_PREFIX."funds_recipient_company set name='".$this->db->escape($data['name'])."',identity_image_face='".$data['identity_image_face']."',identity_image_back='".$data['identity_image_back']."',phone='".$data['phone']."',email='".$this->db->escape($data['email'])."',licence_type='".$data['licenceType']."',businessLicence='".$businessLicence."',organizationCode='".$organizationCode."',taxRegCertificate='".$data['taxRegCertificate']."',bankAccPermits='".$data['bankAccPermits']."',company_name='".$this->db->escape($data['company_name'])."',registeredTime='".$data['registeredTime']."',company_description='".$this->db->escape($data['company_description'])."',payee='".$this->db->escape($data['payee'])."',payee_phone='".$data['payee_phone']."',bank_card='".$this->db->escape($data['bank_card'])."',bank_name='".$this->db->escape($data['bank_name'])."' where funding_id='".$data['funding_id']."'");
+        $this->db->query("UPDATE ".DB_PREFIX."funds_recipient_address set province_id='".$data['province']."',city_id='".$data['city']."',area_id='".$data['region']."',address='".$this->db->escape($data['company_address'])."'");
+    }
+    
+	public function getCrowdFunding($funding_id) {
+		$query = $this->db->query("SELECT 
+		     funding_id,
+		     customer_id,
+		     name,
+		     introduce,
+		     current_goal,
+		     total_goal,
+		     backers,
+		     image,
+		     viedo,
+		     status,
+		     category_id,
+		     date_added,
+		     date_modified,
+		     DATE_FORMAT(date_start,'%Y-%m-%d') as date_start,
+		     DATE_FORMAT(date_ended,'%Y-%m-%d') as date_ended,
+		     sort_order
+		     FROM " . DB_PREFIX . "crowdfunding WHERE funding_id = '" . $funding_id . "'");
+		return $query->row;
+	}
+	
+	public function getCrowdFundingDescription($funding_id) {
+	    $query = $this->db->query("SELECT 
+	        description,
+	        risk_description,
+	        meta_title,
+	        meta_description,
+	        meta_keyword 
+	        FROM " . DB_PREFIX . "crowdfunding_description WHERE funding_id = '" . $funding_id . "'");
+	    return $query->row;
+	}
+	
+	public function getCrowdFundingUpdates($data) {
+	    $sql = "SELECT
+	        update_id,
+	        title,
+	        content,
+	        like_num,
+	        comment_num,
+	        post_type,
+	        date_added
+	        FROM " . DB_PREFIX . "crowdfunding_updates WHERE funding_id = '" . $data['funding_id'] . "'";
+	    //支持者不传post_type 非支持者传0
+	    if(isset($data['post_type'])){
+	       $sql.= " AND post_type='0'";
+	    }
+	            
+	    $query = $this->db->query($sql);
+	    return $query->rows;
+	}
+	
+	public function getCrowdFundingUpdate($update_id) {
+	    $query = $this->db->query("SELECT
+	        update_id,
+	        title,
+	        content,
+	        like_num,
+	        comment_num,
+	        post_type,
+	        date_added
+	        FROM " . DB_PREFIX . "crowdfunding_updates WHERE update_id = '" . $update_id . "'");
+	    return $query->row;
+	}
+	
+	public function getCrowdFundingComment($funding_id){
+	    $query = $this->db->query("SELECT
+	        customer_id,
+	        target_customer_id,
+	        content,
+	        date_added
+	        FROM " . DB_PREFIX . "crowdfunding_comment WHERE funding_id = '" . $funding_id . "'");
+	    return $query->row;
+	}
+	
+	public function getPersonalInfo($funding_id){
+	    $query = $this->db->query("SELECT
+	        frp.name,
+	        frp.identity_code,
+	        frp.identity_image_face,
+	        frp.identity_image_back,
+	        frp.phone,
+	        frp.email,
+	        frp.bank_card,
+	        frp.bank_name,
+	        frp.address_id,
+	        fra.province_id,
+	        fra.city_id,
+	        fra.area_id,
+	        fra.address
+	        FROM " . DB_PREFIX . "funds_recipient_pesonal frp LEFT JOIN " . DB_PREFIX . "funds_recipient_address fra ON frp.address_id=fra.address_id  WHERE funding_id = '" . $funding_id . "'");
+	    return $query->row;
+	}
+	
+	public function getCompanyInfo($funding_id){
+	    $query = $this->db->query("SELECT
+	        frc.name,
+	        frc.identity_code,
+	        frc.identity_image_face,
+	        frc.identity_image_back,
+	        frc.phone,
+	        frc.email,
+	        frc.address_id,
+	        frc.licence_type,
+	        frc.businessLicence,
+	        frc.organizationCode,
+	        frc.taxRegCertificate,
+	        frc.bankAccPermits,
+	        frc.company_name,
+	        DATE_FORMAT(frc.registeredTime,'%Y-%m-%d') as registeredTime,
+	        frc.company_intorduce,
+	        frc.company_description,
+	        frc.payee,
+	        frc.payee_phone,
+	        frc.bank_card,
+	        frc.bank_name,
+	        fra.province_id,
+	        fra.city_id,
+	        fra.area_id,
+	        fra.address
+	        FROM " . DB_PREFIX . "funds_recipient_company frc LEFT JOIN " . DB_PREFIX . "funds_recipient_address fra ON frc.address_id=fra.address_id  WHERE funding_id = '" . $funding_id . "'");
+	    return $query->row;
+	}
+	public function review($funding_id){
+	    $this->db->query("UPDATE ".DB_PREFIX."crowdfunding set status=5 where funding_id='".$funding_id."'");
+	}
+	
+	public function edit($funding_id){
+	    $this->db->query("UPDATE ".DB_PREFIX."crowdfunding set status=0 where funding_id='".$funding_id."'");
+	    
+	}
+	public function publish($funding_id){
+	    $this->db->query("UPDATE ".DB_PREFIX."crowdfunding set status=15 where funding_id='".$funding_id."'");
+	     
+	}
+	
+}

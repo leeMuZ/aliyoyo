@@ -1,0 +1,122 @@
+<?php echo $header; ?><?php echo $column_left; ?>
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <h1><?php echo $heading_title; ?></h1>
+      <ul class="breadcrumb">
+        <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+        <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+        <?php } ?>
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-bar-chart"></i> <?php echo $text_list; ?></h3>
+      </div>
+      <div class="panel-body">
+        <div class="well">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="control-label" for="input-date-start"><?php echo $entry_date_start; ?></label>
+                <div class="input-group date">
+                  <input type="text" name="filter_date_start" value="<?php echo $filter_date_start; ?>" placeholder="<?php echo $entry_date_start; ?>" data-date-format="YYYY-MM-DD" id="input-date-start" class="form-control" />
+                  <span class="input-group-btn">
+                  <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                  </span></div>
+              </div>
+              <div class="form-group">
+              <label class="control-label" for="input-date-start"><?php echo $entry_list; ?></label>
+	              <input type="text" name="list_name" value="<?php echo $list_name; ?>" placeholder="<?php echo $entry_list_name; ?>" id="input-product" class="form-control" />
+	          </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="control-label" for="input-status"><?php echo $entry_customer_group; ?></label>
+                <select name="like_customerGroup_id" id="input-customerGrpup" class="form-control">
+                  <option value="0"><?php echo $text_all_customer_group; ?></option>
+                  <?php foreach ($customerGroups as $customerGroup) { ?>
+                  <?php if ($customerGroup['customer_group_id'] == $like_customerGroup_id) { ?>
+                  <option value="<?php echo $customerGroup['customer_group_id']; ?>" selected="selected"><?php echo $customerGroup['name']; ?></option>
+                  <?php } else { ?>
+                  <option value="<?php echo $customerGroup['customer_group_id']; ?>"><?php echo $customerGroup['name']; ?></option>
+                  <?php } ?>
+                  <?php } ?>
+                </select>
+              </div>
+            </div>
+            <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> <?php echo $button_filter; ?></button>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <td class="text-left"><?php echo $column_nickname; ?></td>
+                <td class="text-left"><?php echo $column_groupname; ?></td>
+                <td class="text-left"><?php echo $column_list_name; ?></td>
+                <td class="text-left"><?php echo $column_list_product_num; ?></td>
+                <td class="text-left"><?php echo $column_list_product_follow_num; ?></td>
+                <td class="text-left"><?php echo $column_date_added; ?></td>
+              </tr>
+            </thead>
+            <tbody>
+              <?php if ($lists) { ?>
+              <?php foreach ($lists as $list) { ?>
+              <tr>
+                <td class="text-left"><?php echo $list['nickname']; ?></td>
+                <td class="text-left"><?php echo $list['groupname']; ?></td>
+                <td class="text-left"><?php echo $list['listname']; ?></td>
+                <td class="text-left"><?php echo $list['listProductNum']; ?></td>
+                <td class="text-left"><?php echo $list['listFollowNum']; ?></td>
+                <td class="text-left"><?php echo $list['date_added']; ?></td>
+              </tr>
+              <?php } ?>
+              <?php } else { ?>
+              <tr>
+                <td class="text-center" colspan="8"><?php echo $text_no_results; ?></td>
+              </tr>
+              <?php } ?>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 text-left"><?php echo $pagination; ?></div>
+          <div class="col-sm-6 text-right"><?php echo $results; ?></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript"><!--
+$('#button-filter').on('click', function() {
+	url = 'index.php?route=report/customer_list&token=<?php echo $token; ?>';
+	
+	var filter_date_start = $('input[name=\'filter_date_start\']').val();
+	
+	if (filter_date_start) {
+		url += '&filter_date_start=' + encodeURIComponent(filter_date_start);
+	}
+
+	var list_name = $('input[name=\'list_name\']').val();
+	
+	if (list_name) {
+		url += '&list_name=' + encodeURIComponent(list_name);
+	}
+	var like_customerGroup_id = $('select[name=\'like_customerGroup_id\']').val();
+	
+	if (like_customerGroup_id != 0) {
+		url += '&like_customerGroup_id=' + encodeURIComponent(like_customerGroup_id);
+	}	
+
+	location = url;
+});
+//--></script> 
+  <script type="text/javascript"><!--
+ 
+$('.date').datetimepicker({
+	pickTime: false
+});
+//--></script></div>
+<?php echo $footer; ?>

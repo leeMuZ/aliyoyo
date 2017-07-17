@@ -1,0 +1,232 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: alice
+ * Date: 2017/5/19
+ * Time: 11:01
+ */
+class ModelCheckOutOrder extends Model
+{
+    public function getOrder($order_id)
+    {
+        $order_query = $this->db->query("SELECT o.*, ot.rewards_id, ot.back_price, ot.shipping_price, ot.coupon_id, ot.discount, ot.total AS check_money ".
+                                        " FROM ".DB_PREFIX."order AS o INNER JOIN ".
+                                         DB_PREFIX."order_total AS ot ON o.order_id=ot.order_id WHERE o.order_id=".$order_id);
+        return $order_query->row;
+
+    }
+
+    public function getOwnerMessage($string)
+    {
+        $query = $this->db->query("SELECT value FROM ".DB_PREFIX."setting AS s WHERE s.key= '".$this->db->escape($string)."'");
+        return $query->row['value'];
+    }
+
+    public function addOrderHistory($order_id, $order_status_id, $comment= '', $notify = false, $override = false)
+    {
+        $order_info = $this->getOrder($order_id);
+        if ($order_id)
+        {
+            $this->load->model('account/customer');
+            $customer_info = $this->model_account_customer->getCustomer($order_info['customer_id']);
+
+            if ($customer_info && $customer_info['safe']) {
+                $safe = true;
+            } else {
+                $safe = false;
+            }
+
+
+            $data['order_id'] = $order_id;
+            $data['date_added'] = date('Y:h:d H:i:s', strtotime($order_info['date_added']));
+          //$data['payment_method'] = $order_info['payment_method'];
+          //$data['shipping_method'] = $order_info['shipping_method'];
+            $data['email'] = $order_info['email'];
+            $data['telephone'] = $order_info['shipping_telephone'];
+            $data['ip'] = $order_info['ip'];
+            $data['order_status'] = $order_info['order_status_id'];
+
+            if ($comment && $notify) {
+                $data['comment'] = nl2br($comment);
+            } else {
+                $data['comment'] = '';
+            }
+
+            $find = array(
+                '{firstname}',
+                '{lastname}',
+                '{address_1}',
+                '{address_2}',
+                '{city}',
+                '{postcode}',
+                '{zone}',
+                '{country}'
+            );
+
+            $replace = array(
+                'firstname' => $order_info['shipping_firstname'],
+                'lastname'  => $order_info['shipping_lastname'],
+                'address_1' => $order_info['shipping_address_1'],
+                'address_2' => $order_info['shipping_address_2'],
+                'city'      => $order_info['shipping_city'],
+                'postcode'  => $order_info['shipping_postcode'],
+                'zone'      => $order_info['shipping_zone'],
+                'country'   => $order_info['shipping_country']
+            );
+
+            //$data['payment_address'] = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));
+
+        }
+
+
+    }
+
+    /**
+     * @param $order_id
+     * @return bool
+     * 成功返此方法
+     *
+     */
+    public function dealSuccessOrder($order_id)
+    {
+        $this->db->query("UPDATE ".DB_PREFIX."order SET order_status_id=15 WHERE order_id=".$order_id);
+        if ($this->session->data['reward_id'])
+        {
+            $this->db->query("UPDATE ".DB_PREFIX."crowdfunding_rewards SET stock=stock-1 WHERE rewards_id=".$this->session->data['reward_id']);
+        }
+        if ( $this->session->data['coupon'])
+        {
+            $result = $this->getOrder($order_id);
+            $this->db->query("UPDATE ".DB_PREFIX."coupon SET uses_total=uses_total-1");
+            $date = date("Y-m-d H:i:s", time());
+            $this->db->query("INSERT INTO ".DB_PREFIX."coupon_history (coupon_id,order_id,customer_id,amount,date_added) VALUES ({ $this->session->data['coupon']},{ $this->session->data['order_id']},{$this->session->data['customer_id']},{$result['total']},{$date})");
+        }
+
+        return true;
+
+    }
+
+    public function dealFailedOrder($order_id)
+    {
+        /*if ( $this->session->data['reward_id'])
+        {
+            $this->db->query("UPDATE ".DB_PREFIX."crowdfunding_rewards SET stock=stock+1 WHERE rewards_id=". $this->session->data['reward_id']);
+        }*/
+        if ( $this->session->data['coupon'])
+        {
+            $query=$this->db->query("SELECT * FROM ".DB_PREFIX."order_total WHERE order_id=".$order_id);
+            $result = $query->row;
+            $all_total = $result['back_price']+$result['shipping_price'];
+            $this->db->query("UPDATE ".DB_PREFIX."order SET total=".$all_total.", order_status_id=3 WHERE order_id=".$order_id);
+            $this->db->query("UPDATE ".DB_PREFIX."order_total SET total=".$all_total .", coupon_id=0, discount=0 WHERE order_id=".$order_id);
+            unset( $this->session->data['coupon']);
+        }
+
+        return true;
+
+
+    }
+
+    /**
+     * @param $order_info
+     * @param $text
+     * @param $data
+     * 邮件处理
+     */
+    public function dealEmailOrder($order_info, $text, $data)
+    {
+        $mail = new Mail();
+        $language_code = empty($this->config->get('config_language'))?$this->config->get('config_language'):1;
+        $language = new Language($language_code);
+        $subject = sprintf($language->get('text_new_subject'), html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'), $order_info['order_id']);
+        $mail->protocol = $this->config->get('config_mail_protocol');
+        $mail->parameter = $this->config->get('config_mail_parameter');
+        $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+        $mail->smtp_username = $this->config->get('config_mail_smtp_username');
+        $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+        $mail->smtp_port = $this->config->get('config_mail_smtp_port');
+        $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+
+        $mail->setTo($order_info['email']);
+        $mail->setFrom($this->config->get('config_email'));
+        $mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
+        $mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
+        $mail->setHtml($this->load->view('mail/order', $data));
+        $mail->setText($text);
+        $mail->send();
+    }
+
+    public function dealEmailData($order_info, $order_status_id)
+    {
+        $data = array();
+        $language_code = empty($this->config->get('config_language'))?$this->config->get('config_language'):1;
+        $language = new Language($language_code);
+        $data['title'] = sprintf($language->get('text_new_subject'), $order_info['store_name'], $order_info['order_id']);
+
+        $this->load->model('crowdfunding/crowdfunding');
+        $data['order_message'] = $this->model_crowdfunding_crowdfunding->TakeMyOrder();
+        $data['store_url'] = $_SERVER['SERVER_NAME'];
+        $data['store_name']= "6#Future";
+        $data['text_link'] = $language->get('text_new_link');
+        $data['text_download'] = $language->get('text_new_download');
+        $data['text_order_detail'] = $language->get('text_new_order_detail');
+        $data['text_instruction'] = $language->get('text_new_instruction');
+        $data['text_order_id'] = $language->get('text_new_order_id');
+        $data['text_date_added'] = $language->get('text_new_date_added');
+        $data['text_payment_method'] = $language->get('text_new_payment_method');
+        $data['text_shipping_method'] = $language->get('text_new_shipping_method');
+        $data['text_email'] = $language->get('text_new_email');
+        $data['text_telephone'] = $language->get('text_new_telephone');
+        $data['text_ip'] = $language->get('text_new_ip');
+        $data['text_order_status'] = $language->get('text_new_order_status');
+        $data['text_payment_address'] = $language->get('text_new_payment_address');
+        $data['text_shipping_address'] = $language->get('text_new_shipping_address');
+        $data['text_product'] = $language->get('text_new_product');
+        $data['text_model'] = $language->get('text_new_model');
+        $data['text_quantity'] = $language->get('text_new_quantity');
+        $data['text_price'] = $language->get('text_new_price');
+        $data['text_total'] = $language->get('text_new_total');
+        $data['text_footer'] = $language->get('text_new_footer');
+        $order_status_query = $this->db->query("SELECT order_status_id FROM " . DB_PREFIX . "order WHERE order_id = '" . (int)$order_info['order_id']);
+            switch ($order_status_query->row['order_status_id'])
+            {
+                case 15:
+                    $order_status = 'Processed';
+                    break;
+                case 3:
+                    $order_status = 'Canceled';
+                    break;
+                case 8:
+                    $order_status = 'Shipping';
+                    break;
+                case 4:
+                    $order_status = 'Refunding';
+                    break;
+                case 5:
+                    $order_status = 'Refunded';
+                    break;
+                default:
+                    $order_status = '';
+            }
+
+        if ($this->session->data['payment_method'])
+        {
+            $data['payment_method'] = $this->session->data['payment_method'];
+        }
+        $data['order_status'] = $order_status;
+        $data['order_id'] = $order_info['order_id'];
+        $data['ip'] = $order_info['ip'];
+        $data['telephone'] = $order_info['telephone'];
+        $data['email'] = $order_info['email'];
+        $data['date_added'] = $order_info['date_added'];
+        $data['shipping_method'] =  $data['order_message']['total']['shipping_price'];
+        $data['logo'] = $this->config->get('config_url') . 'image/' . $this->config->get('config_logo');
+        $data['customer_id'] = $order_info['customer_id'];
+        $data['link'] =  "http://".$data['store_url']."/index.php?route=crowdfunding/back_project&funding_id=".$this->session->data['funding_id'];
+        return $data;
+    }
+
+
+
+
+}

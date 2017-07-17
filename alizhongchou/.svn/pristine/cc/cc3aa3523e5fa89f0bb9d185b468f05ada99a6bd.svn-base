@@ -1,0 +1,227 @@
+<?php echo $header;?>
+<?php echo $index_goods?>
+<article class="campaign">
+    <div class="scroll-inforlink">
+        <ul class="inforlink">
+            <?php
+            foreach($link as $k=>$v):
+             ?>
+             <li><button class="<?php echo $k=='campaign'?'btn forlinkactive':'btn';?>" onclick="window.location.href='<?php echo $v;?>'"><?php echo $k; ?></button></li>
+             <?php
+             endforeach;
+             ?>
+            <div class="scroll-project">
+                <div class="project-top  col-md-5">
+                    <a href="backproject.html"><button class="btn">Back This Project</button></a>
+                </div>
+                <div class="project-right col-md-4">
+                    <button class="btn huistar no-border"><i class="fa fa-star"></i><span>Remind me</span></button>
+                </div>
+            </div>
+        </ul>
+    </div>
+    <!-- ======================================table all============================================= -->
+    <div class="campaigntableall">
+        <!-- ======================================table all one ============================================= -->
+        <div class="campaigntable campaigntableall-active">
+            <div class="abouttheproduct col-md-8 col-sm-8">
+                <div class="productjieshao">
+                    <p class="about-p">Reward</p>
+                    <p class="marbot">We want to bring a cat cafe to St. Louis!</p>
+                    <p class="marbot">Coffee. Cats. Snuggling. A place where YOU GET TO HANG OUT WITH CATS AND DRINK COFFEE!The absolute BEST part about this is that the cats in the cafe will be adoptable!</p>
+                    <p>The cats in the cafe will be exposed to a lot of potential adopters that they wouldn’t otherwise get to meet. This increases adoption rates dramatically, which in turn opens up more spots for cats that need help.</p>
+                    <img src="img/vdio.jpg" alt="">
+                    <p class="marbot">Why would you come to a cat cafe?</p>
+                    <p>love cats, but partner is allergic</p>
+                    <p>not allowed to have pets in home/apartment</p>
+                    <p>don't have time to take care of pets, but need snuggles</p>
+                    <p>visiting St. Louis and homesick for your kitties</p>
+                    <p>you require the magic only a room full of cats provides!</p>
+                    <p><?php echo $reward[0]['description'];?></p>
+                    <img src="img/vdio.jpg" alt="">
+                    <div>
+                        <p class="about-p"> Risks and challenges</p>
+                        <div class="risks-p">
+                            <p>
+                                We are very fortunate with the team that we build around this project.<?php echo $reward[0]['risk_description'];?>
+                                <br>All our recipes have been tested by generations of home-cooks, and perfected by Chef Juan, Eat Offbeat's own Chief Culinary Officer, who has worked in restaurants with over 13 Michelin stars combined. The recipes have also been approved by thousands of New Yorkers (15,000, to be precise), who now rave about them.
+                                <br>We have not finalized the number of recipes and stories included: The more we raise in the campaign, the more chefs we will be able to hire and feature in the cookbook.
+                            </p>
+                            <p>
+                                While this will be our first book at Eat Offbeat, everyone working on delivering has a ton of experience and we have surrounded ourselves with talented professionals such as Leanne Brown, Signe Birck, and Hanane Kahi.
+                                <br>That being said, there is a possibility of delays with printing and distribution of the cookbook but we will do our best to deliver all books on time.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rewords col-md-4 col-sm-4">
+                <div class="teantheme-lunbo">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="circle-person">
+                                    <img src="<?php echo $reward[0]['image'];?>" alt="">
+                                    <div class="chose">
+                                        <p>Project sponsor</p>
+                                        <p class="chose-name"><?php echo $reward[0]['firstname'].$reward[0]['lastname'];?></p>
+                                        <p><?php echo $reward[0]['word'];?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="about-p">About the product</p>
+                <ul class="pledgeall">
+                    <?php foreach($reward as $reward):?>
+                    <?php if((strtotime($reward['limit_time_end']) > time()) && $reward['stock'] > 0 ){ ?>
+                    <li>
+                        <p class="ple">Pledge $<?php echo $reward['pledge_amount']; ?> or more</p>
+                        <p style="font-size:14px;">
+											<span class="backspan">
+												<i class="fa fa-male"></i>
+												 <?php echo $reward['all_man'];?> backers
+											</span>
+                            <span class="gone">Limited (<?php echo $reward['backers']; ?> left of <?php echo $reward['all_man'];?>)</span>
+                        </p>
+                        <p><span class="gone"><?php echo $reward['begin_project'];?>&nbsp;&nbsp;&nbsp; to &nbsp;&nbsp;&nbsp;<?php echo $reward['end_project'];?></p>
+                        <p class="ps">****<?php echo $reward['name'];?>****</p>
+                        <p class="ps">Materials - Your choices of:</p>
+                        <p class="ps">• All Stainless Steel</p>
+                        <p class="ps">• All Brass</p>
+                        <p class="ps">• <?php echo $reward['award'];?></p>
+                        <p class="ps--"> >>All of your pledge details will be collected after the campaign ends.<< </p>
+                        <p class="ps">
+                            <span class="ps-span col-md-6 col-sm-6">Estimated delivery: <br><?php echo $reward['new_last'];?></span>
+                            <span class="ps-span col-md-6 col-sm-6">Ships to: <br> <?php echo $reward['shipping_method']==1?'Limit countries or regions':'Anywhere in the world'?></span>
+                        </p>
+                        <div class="everyoneneirong">
+                            <div class="xuxian"></div>
+                            <div class="form-group" id="selecttttt">
+                                <?php if($reward['shipping_method']!=0){ ?>
+                                <label for="sel">Shipping destination</label>
+                                <select class="form-control" id="select_post">
+                                    <?php if($reward['shipping_method']==1){ ?>
+                                    <?php foreach($reward['my_post'] as $v): ?>
+                                    <option value="<?php echo $v['shipping_id'];?>"><?php echo $v['name'].'---$'.$v['Postage'];?></option>
+                                    <?php endforeach; ?>
+                                    <option value="a" >Anywhere in the world---<?php echo  $reward['shipping_postage'];?></option>
+                                    <?php }else{ ?>
+                                    <option value="a" >Anywhere in the world---<?php echo  $reward['shipping_postage'];?></option>
+                                    <?php }?>
+                                </select>
+                                <i class="fa fa-angle-down xialatubiao" ></i>
+                            </div>
+                                <?php } ?>
+                            <div class="form-group">
+                                <label for="tax">Pledge amount</label>
+                                <input type="text" id="price_support<?php echo $reward['rewards_id'];?>" class="form-control" id="tax" placeholder="$10">
+                            </div>
+                            <button type="button" id="submit_price<?php echo $reward['rewards_id'];?>" class="btn btn-primary btn-lg btn-block">Continue</button>
+                            <script type="application/javascript">
+                                $(document).ready(function () {
+                                    $("#submit_price<?php echo $reward['rewards_id'];?>").click(function () {
+
+                                        var price = $("#price_support<?php echo $reward['rewards_id'];?>").val();
+                                        var is_limit = <?php echo $reward['limit_availability'];?>;
+                                        var stock    = <?php echo $reward['stock'];?>;
+                                        var rewards_id = <?php echo $reward['rewards_id'];?>;
+                                        var shipping_id = $('#select_post').val();
+                                        $('#input_post').val(shipping_id);
+                                        $('#reward_id_input').val(rewards_id);
+                                        if(is_limit==1)
+                                        {
+                                            var limit_backer = <?php echo $reward['limit_backer'];?>;
+                                            if(price > limit_backer)
+                                            {
+                                                alert('Over limit');
+                                                return;
+
+                                            } else {
+
+                                                if(price > stock)
+                                                {
+                                                    alert('Excess share');
+                                                    return;
+                                                }else{
+                                                    $('#input_support_price').val(price);
+                                                    $('#pay_form').submit();
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if(price > stock)
+                                            {
+                                                alert('Excess share');
+                                                return;
+                                            }else{
+                                                $('#input_support_price').val(price);
+                                                $('#pay_form').submit();
+                                            }
+                                        }
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </li>
+                    <?php }else{ ?>
+                    <li>
+                        <p class="ple">Pledge $<?php echo $reward['pledge_amount']; ?> or more</p>
+                        <p>
+											<span class="backspan">
+												<i class="fa fa-male"></i>
+                                                <?php echo $reward['all_man'];?> backers
+											</span>
+                            <span class="gone">All gone!</span>
+                        </p>
+                        <p class="ps">****<?php echo $reward['name'];?>****</p>
+                        <p class="ps">Materials - Your choices of:</p>
+                        <p class="ps">• All Stainless Steel</p>
+                        <p class="ps">• All Brass</p>
+                        <p class="ps">• <?php echo $reward['award'];?></p>
+                        <p class="ps--"> >>All of your pledge details will be collected after the campaign ends.<< </p>
+                        <p class="ps">
+                            <span class="ps-span col-md-6 col-sm-6">Estimated delivery: <br> <?php echo $reward['new_last'];?></span>
+                            <span class="ps-span col-md-6 col-sm-6">Ships to: <br> <?php echo $reward['shipping_method']==1?'Limit countries or regions':'Anywhere in the world'?></span>
+                        </p>
+                      <!--  <div class="everyoneneirong">
+                            <div class="xuxian"></div>
+                            <div class="form-group" id="selecttttt">
+                                <label for="sel">Shipping destination</label>
+                                <select class="form-control" id="sel">
+                                    <option>china</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                                <i class="fa fa-angle-down xialatubiao" ></i>
+                            </div>
+                            <div class="form-group">
+                                <label for="tax">Pledge amount</label>
+                                <input type="text" class="form-control" id="tax" placeholder="$54">
+                            </div>
+                            <button type="button" class="btn btn-primary btn-lg btn-block">Continue</button>
+                        </div>-->
+                    </li>
+                    <?php } ?>
+                    <?php endforeach;?>
+                </ul>
+            </div>
+        </div>
+        <form action="<?php echo $payment;?>" method="post" id="pay_form">
+            <input type="hidden" name="funding_id" value="<?php echo $funding_id;?>"/>
+            <input type="hidden" name="support_price" id="input_support_price" value=""/>
+            <input type="hidden" name="reward_id" id="reward_id_input" value=""/>
+            <input type="hidden" name="input_post" id="input_post" value=""/>
+        </form>
+
+ <!---必带----->
+    </div>
+</article>
+</div>
+<!---必带----->
+<?php echo $index_js?>
+<?php echo $footer?>

@@ -1,0 +1,69 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: alice
+ * Date: 2017/4/6
+ * Time: 17:15
+ */
+class ControllerCrowdfundingCampaign extends Controller
+{
+    public function index()
+    {
+        //$data['funding_id'] = 1;//之后换成该项目id
+        $data['funding_id'] = $this->request->get['funding_id'];
+        $this->load->model('crowdfunding/crowdfunding');
+        $this->load->model('tool/time');
+        $data['reward'] = $this->model_crowdfunding_crowdfunding->getReward($data['funding_id']);
+        $data['payment'] = $this->url->link('crowdfunding/payment');
+        $data['login'] = $this->url->link("account/login");
+        if (!empty($this->session->data['customer_id'])){
+            $data['customer_id'] = $this->session->data['customer_id'];
+        }
+        $image = $this->image_ajax($data['reward'][0]['image']);
+        foreach ($data['reward'] as $k=>$v)
+        {
+            $data['reward'][$k]['new_last'] = $this->model_crowdfunding_crowdfunding->changeTime($v['limit_time_end']);
+            $data['reward'][$k]['begin_project'] = $this->model_crowdfunding_crowdfunding->changeTime($v['limit_time_begin'],1);
+            $data['reward'][$k]['end_project'] = $this->model_crowdfunding_crowdfunding->changeTime($v['limit_time_end'],1);
+            $data['reward'][$k]['image']    = $this->image_ajax($v['image']);
+            if($data['reward'][$k]['shipping_method']!=0) {
+                if ($data['reward'][$k]['shipping_method'] == 1)
+                {
+                    $data['reward'][$k]['my_post'] = $this->model_crowdfunding_crowdfunding->getPost($v['rewards_id']);
+                }
+            }
+        }
+        $document_message = array(
+            "title"       => $data['reward'][0]['meta_title'],
+            "description" => $data['reward'][0]['meta_description'],
+            "keywords"    => $data['reward'][0]['meta_keyword']
+        );
+        $data['link'] = array(
+            'campaign' => $this->url->link('crowdfunding/campaign', "funding_id=".$data['funding_id']),
+            'updates'  => $this->url->link('crowdfunding/updates', "funding_id=".$data['funding_id']),
+            'comments' => $this->url->link('crowdfunding/comments', "funding_id=".$data['funding_id']),
+            'community'=> $this->url->link('crowdfunding/community', "funding_id=".$data['funding_id'])
+        );
+        $this->document->setTitle($document_message['title']);
+        $this->document->setDescription($document_message['description']);
+        $this->document->setKeywords($document_message['keywords']);
+        $data['index_goods']  = $this->load->controller('crowdfunding/goods');
+        $data['index_js']     = $this->load->controller('common/js');
+        $data['footer'] = $this->load->controller('common/footer');
+        $data['header'] = $this->load->controller('common/header');
+        //var_dump($data['reward']);exit;
+        $this->response->setOutput($this->load->view('crowdfunding/Campaign', $data));
+    }
+
+    public function image_ajax($image)
+    {
+        $this->load->model('tool/image');
+        if (is_file(DIR_IMAGE . $image)) {
+            $image = $this->model_tool_image->resize($image, 100, 100);
+        }  else {
+            $image = $this->model_tool_image->resize('no_image.png', 100, 100);
+        }
+        return $image;
+
+    }
+}

@@ -1,0 +1,233 @@
+<?php echo $header;?>
+<?php echo $index_goods?>
+<article class="campaign">
+    <div class="scroll-inforlink">
+        <ul class="inforlink">
+            <?php
+            foreach($link as $k=>$v):
+            ?>
+            <li><button class="<?php echo $k=='updates'?'btn forlinkactive':'btn';?>" onclick="window.location.href='<?php echo $v;?>'"><?php echo $k; ?></button></li>
+            <?php
+             endforeach;
+             ?>
+            <div class="scroll-project">
+                <div class="project-top  col-md-5">
+                    <a href="backproject.html"><button class="btn">Back This Project</button></a>
+                </div>
+                <div class="project-right col-md-4">
+                    <button class="btn huistar no-border"><i class="fa fa-star"></i><span>Remind me</span></button>
+                </div>
+            </div>
+        </ul>
+    </div>
+    <!-- ======================================table all============================================= -->
+    <div class="campaigntableall">
+        <!-- ======================================table all one ============================================= -->
+
+            <div class="campaigntable-active" id="show_message_div">
+                <!-- left -->
+                <div class="timeaxis col-md-12 col-sm-12">
+                    <p class="about-p">About the product</p>
+                    <div class="kongbai"></div>
+                    <div class="timeline">
+                        <?php foreach($update as $k=>$v):?>
+                        <div class="timeline__item timeline__item--<?php echo $k%2==0?'left':'right';?>">
+                            <div class="grid-post link">
+                                <p class="grid-post__date">
+                                    <!-- <time>February 12</time> -->
+                                    <span><?php echo $v['date_added'];?></span>
+                                </p>
+                                <h2 class="grid-post__title">
+                                    Tooling Begins. Aim for On-Time Delivery(NO SUCH SURFACE)
+                                </h2>
+                                <p class="gard-post_p">
+                                    Dear Backers:
+                                    <br><br>
+                                    <?php echo $v['content'].'.......';?>
+                                    <a href="javascript:void(0);" data-text="readme-<?php echo $k+1;?>" class="turn-off">Read more</a>
+                                </p>
+                                <div class="grid-post__metadata">
+													<span>
+														<em><?php echo $v['comment_num'];?></em>
+														comments
+													</span>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <span>
+														<em><?php echo $v['like_num'];?></em>
+														likes
+													</span>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach;?>
+
+                    </div>
+                    <div class="timeline__divider timeline__divider--launched timeline__divider--launched--food">
+                        <div class="timeline__divider_content">
+                            <div class="f5 bold mb2">
+                                <span>February 12</span>
+                            </div>
+                            <div class="f2">
+                                Project launched
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end -->
+                <!-- right -->
+
+                <!-- end -->
+            </div>
+        <?php foreach($update as $k=>$v): ?>
+            <div class="readme col-md-12 col-sm-12"  id="readme-<?php echo $k+1;?>">
+                <div class="Commentarea col-md-12 col-sm-12">
+                    <div class="readmeall col-md-8 col-sm-12">
+                        <div class="updataid">
+                            <p class="col-md-10 col-sm-10 idj">Update #<?php echo $k+1;?></p>
+                            <p class="col-md-2 col-sm-2 "><?php echo $v['date_added'];?></p>
+                        </div>
+                        <h2>500% Funded. Thank YOU!</h2>
+                        <div class="grid-post__metadata">
+										<span>
+											<em><?php echo $v['comment_num'];?></em>
+											comments
+										</span>
+                            &nbsp;&nbsp;&nbsp;
+                            <span>
+											<em><?php echo $v['like_num'];?></em>
+											likes
+										</span>
+                        </div>
+                        <p class="gard-post_p">Dear Backers:
+                            <br><br>
+                            Up to now, our WRENCHit project is sitting at 1140% funded. We really appreciate all your support to make this funding campaign successful, but we realize it... .
+                            <div class="duanluoone">
+                        <p>1)	WRENCHit has become #1 in popularity among 5000+ Kickstarter live projects.</p>
+                        <img src="img/vdio.jpg" alt="">
+                    </div>
+                    <div class="duanluoone">
+                        <p>
+                            2)	Among current 900+ early backers, about 70% are our original Tool Pen & mini pen backers, and 30% are new friends. We’re truly blessed to have all original backers’ help in this passionate community, also highly welcome new friends to join our awesome journey from this campaign. <br><br>
+
+                            Though the project just begins, we shall start preparing for the production soon. As promise, we’ll keep working hard and do best to deliver all rewards on time as before.<br><br>
+
+                            Please stay connecting with us and share our project with more people. Thank you again for everything!<br><br>
+
+                            team mininch.......<?php echo $v['content'];?>
+                        </p>
+                        <div class="Commentarea col-md-12 col-sm-12">
+                            <p class="coments">Comments</p>
+                            <div class="onlybacks">
+                                Only backers can post comments. If you have a question,
+                                <span class="asking"  data-toggle="modal" data-target="#exampleModaltwo">&nbsp;ask the project creator.</span>
+                            </div>
+                            <!-- model -->
+                            <div class="modal fade asking-model" id="exampleModaltwo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="exampleModalLabel">Ask the project creator</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>If you have any questions please send an email to </p>
+                                            <p class="modelp-bold">541844444@gamil.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- model end -->
+                            <div class="commentssection">
+                                <?php if(!empty($v['now_comment'])){ ?>
+                                <ul class="">
+                                    <?php foreach($v['now_comment'] as $kk=>$vv):?>
+                                    <li>
+                                        <div class="lileft">
+                                            <img src="<?php echo $vv['di']?>" alt="">
+                                        </div>
+                                        <div class="liright">
+                                            <p class="commonname">
+                                                <span class="spanblack"><?php echo $vv['firstname'].' '.$vv['lastname'];?></span>
+                                                <span class="spanriqi">
+                                                    <?php
+                                                     $time =  date("Y-m-d H:i:s", time());
+                                                     $now_time = strtotime($time);
+                                                     $start_time = strtotime($vv['date_added']);
+                                                     $change = $now_time-$start_time;
+
+                                                     switch($change){
+                                                          case $change < 60:
+                                                          $str = $change." seconds ago";
+                                                          break;
+                                                          case $change < 3600;
+                                                          $str = floor($change/60)." minutes ago";
+                                                          break;
+                                                          case $change < 86400;
+                                                          $str = floor($change/3600)." hours ago";
+                                                          break;
+                                                          case $change < 2592000;
+                                                          $str = floor($change/86400)." days ago";
+                                                          break;
+                                                          default:
+                                                          $str = "long time ago";
+                                                     }
+                                                        echo $str;
+                                                     ?></span>
+                                            </p>
+                                            <p class="commoncontent"><?php echo $vv['content'];?></p>
+                                        </div>
+                                    </li>
+                                    <?php endforeach;?>
+                                </ul>
+                                <?php }?>
+                                <!-- yincang bufen -->
+                                <div class="pinglun-div col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10">
+                                    <div class="col-md-12 col-sm-12">
+                                        <textarea  id="text_comment<?php echo $v['update_id']?>" cols="30" rows="10"></textarea>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 pinglun-divbutton">
+                                        <input type="hidden" name="customer_id" value="<?php echo isset($customer_id)?$customer_id:''; ?>"/>
+                                        <button class="btn" id="post_comment<?php echo $v['update_id'];?>">Sumblit</button>
+                                    </div>
+                                    <script>
+                                        $("#post_comment<?php echo $v['update_id'];?>").click(function () {
+
+                                            var comment     = $('#text_comment'+<?php echo $v['update_id']?>).val();
+                                            var customer_id = $("input[name='customer_id']").val();
+                                            if(customer_id=="")
+                                            {
+                                                alert("please login");
+                                                window.location.href = "<?php echo $login;?>";
+                                                return;
+                                            }
+                                            $.post('<?php echo $ajax;?>', {'funding_id':<?php echo $v['funding_id'];?>,'update_id':<?php echo $v['update_id']; ?>,'customer_id':customer_id,'content':comment}, function (data) {
+                                                                            if(data==1) {
+                                                                                alert('Successful publication!');
+                                                                                history.go(0);
+                                                                            }else {
+                                                                                alert('failed');
+                                                                            }
+
+                                            });
+                                            }
+                                        );
+                                    </script>
+                                </div>
+                                <!-- yincang bufen end-->
+                            </div>
+                        </div>
+                    </div>
+                    </p>
+                </div>
+            </div>
+    </div>
+        <?php endforeach;?>
+    </div>
+
+ <!---必带----->
+        </div>
+</article>
+</div>
+<!---必带----->
+<?php echo $index_js?>
+<?php echo $footer?>
